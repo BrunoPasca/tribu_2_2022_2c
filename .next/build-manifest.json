@@ -30,10 +30,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/create": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/create.js"
+    ],
+    "/edit": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/edit.js"
+    ],
     "/soporte": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/soporte.js"
+    ],
+    "/view": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/view.js"
     ]
   },
   "ampFirstPages": []

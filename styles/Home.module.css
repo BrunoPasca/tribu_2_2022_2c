@@ -153,3 +153,62 @@
 .headerDer div{
   margin-right: 40px;
 }
+
+.titulos{
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  font-size: 30px;
+}
+
+.form{
+  background-color: #0070f3;
+  width: 100vw;
+  height: 100vh;
+}
+
+.form label{
+  margin: 10px;
+  font-size: 20px;
+}
+
+.form input{
+  margin: 10px;
+}
+
+.form select{
+  margin: 10px;
+}
+
+.form button{
+  margin: 10px;
+  width: 100px;
+}
+
+.form h1{
+  margin: 10px;
+  font-size: 50px;
+}
+/*------VISUALIZACION DEL TICKET------*/
+.view{
+  background-color: #0070f3;
+  width: 100vw;
+  height: 100vh;
+}
+
+.view div{
+  margin: 20px;
+}
+
+.datosCliente{
+  display: flex;
+}
+.datosCliente div{
+  margin: 0px;
+  margin-right: 100px;
+}
+
+.view h1{
+  margin: 20px;
+  
+}

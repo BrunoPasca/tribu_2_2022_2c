@@ -33,7 +33,7 @@ export default function Home() {
             className={styles.card}
           >
             <h2>Modulo de Proyectos</h2>
-            <p>bla bla bla descripcion</p>
+            <p>bla</p>
           </a>
 
         </div>

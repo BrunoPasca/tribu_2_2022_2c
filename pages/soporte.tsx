@@ -17,14 +17,30 @@ export default function Soporte() {
                 <div>Filtro</div>
             </div>
         </header>
+        
+        <div className={styles.titulos}>
+              <div>
+                Abierto
+              </div>
+              <div>
+                En analisis
+              </div>
+              <div>
+                Derivado
+              </div>
+              <div>
+                Resuelto
+              </div>
+              <div>
+                Cancelado
+              </div>
+            </div>
         <main className={styles.main}>
-
-            <button>CREAR TICKET</button>
+   
+            <a href='/create'><button>CREAR TICKET</button></a>
 
         </main>
   
-        
-
         <footer className={styles.footer}>
 
         </footer>
