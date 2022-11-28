@@ -2,10 +2,14 @@ import Head from 'next/head'
 import styles from '../../styles/ticket.module.css'
 import Head_ from '../head'
 import Header from '../header'
+import ClienteSelect from './clienteSelect';
+import { ClientesProperties } from './types';
 
 
 export default function TicketCreate() {
-  return (
+
+  
+      return (
 
       <form className={styles.form} action="/moduloSoporte/soporte" method="post">
 
@@ -50,6 +54,9 @@ export default function TicketCreate() {
             <br></br>
 
             <label htmlFor="last">Cliente</label>
+            
+            <ClienteSelect></ClienteSelect>
+            
             <select>
                   <option value="abierto">Abierto</option>
                   <option value="analisis">En Analisis</option>
@@ -57,6 +64,10 @@ export default function TicketCreate() {
                   <option value="resuelto">Resuelto</option>
                   <option value="cancelado">Cancelado</option>
             </select>
+
+
+
+
             <label htmlFor="last">Producto</label>
             <select>
                   <option value="critica">Critica</option>

@@ -6,3 +6,8 @@ export interface TicketProperties {
     estado: string;
 }
 
+export interface ClientesProperties {
+    legajo:number;
+    Nombre: string;
+    Apellido: string;
+}

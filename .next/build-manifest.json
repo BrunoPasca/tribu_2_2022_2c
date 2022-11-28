@@ -25,10 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/moduloSoporte/soporte": [
+    "/moduloSoporte/ticketCreate": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/moduloSoporte/soporte.js"
+      "static/chunks/pages/moduloSoporte/ticketCreate.js"
     ]
   },
   "ampFirstPages": []

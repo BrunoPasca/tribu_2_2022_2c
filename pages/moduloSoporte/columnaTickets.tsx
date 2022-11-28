@@ -30,7 +30,6 @@ const tickets = [
     }
   ]
   
-
 export default function ColumnaTicket({filtro}: {filtro:string}) {
 
     return (
