@@ -1,0 +1,111 @@
+
+/* CARGAR DATOS */
+.cargarDatos{
+    text-align: center;
+    background-color: #8DA9C4;
+    width: 100vw;
+    height: 100vh;
+}
+
+.cargarDatos > h1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cargarDatos > form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width:fit-content;
+}
+
+.cargarDatos > form * {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.cargarDatos > form > h1{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.inputLabel {
+    display:inline-block;
+    width:80px;
+}
+
+.cargarDatos > form > p > input {
+    margin: 10px;
+}
+
+.selectInput{
+    margin-right: auto;
+    margin-left: 0.5rem;
+}
+
+.calendarInput{
+    display: flex;
+    justify-content: space-between;
+    gap: 1.2rem;
+}
+
+.containerBotones {
+    display: flex;
+    justify-content: space-between;
+    margin-top:30px;
+}
+
+/* CARGAR TAREA */
+
+.cargarTarea {
+    display: flex;
+    justify-content: center;
+    background-color: #8DA9C4;
+    width: 100vw;
+    height: 100vh;
+}
+
+.ingresarInfoTarea{
+    height:fit-content;
+    width:fit-content;
+}
+
+.ingresarInfoTarea * input, .ingresarInfoTarea * button{
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.selectInput{
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.ingresarInfoTarea > label, .ingresarInfoTarea label{
+    margin: 10px;
+}
+
+.smallInputLabel {
+    display:inline;
+    width:fit-content;
+}
+
+.flexContainer {
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+    text-align: center;
+    margin-left: 10px;
+    width: fit-content;
+}
+
+.flexContainer .datePicker {
+    width: 100px;
+    margin: auto 50px;
+}
+
+
+
+
+
