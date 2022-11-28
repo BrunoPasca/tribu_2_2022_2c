@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css'
 import Head_ from './head'
 import Header from './header'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
 
         <div className={styles.grid}>
 
-          <a href="/moduloSoporte/soporte" className={styles.card}>
+          <Link href="/moduloSoporte/soporte" className={styles.card}>
             <div>
               <h2>Soporte</h2>
               <ul>
@@ -25,18 +26,18 @@ export default function Home() {
                 <li>Creacion de tareas a partir de tickets</li>
               </ul>
             </div>
-          </a>
+          </Link>
 
-          <a href="/moduloRecursos/landingRecursos" className={styles.card}>
+          <Link href="/moduloRecursos/landingRecursos" className={styles.card}>
             <h2>Recursos Humanos</h2>
             <ul>
               <li>Manejo de Recursos Humanos</li>
               <li>Sistema de carga de horas</li>
               <li>Carga de vacaciones y licencias</li>
             </ul>
-          </a>
+          </Link>
 
-          <a
+          <Link
             href=""
             className={styles.card}
           >
@@ -46,7 +47,7 @@ export default function Home() {
               <li>Administracion de tareas dentro de proyectos</li>
               <li>Integraciones con modulos relacionados</li>
             </ul>
-          </a>
+          </Link>
 
         </div>
       </main>
