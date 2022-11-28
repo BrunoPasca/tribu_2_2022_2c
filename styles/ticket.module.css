@@ -117,3 +117,12 @@
   .severidadCard{
     font-size: 20px;
   }
+
+
+  .ticketCard:hover,
+.ticketCard:focus,
+.ticketCard:active {
+  color: white;
+  border-color: #0B2545;
+  box-shadow: 0px 0px 10px rgb(82, 82, 82);
+}
