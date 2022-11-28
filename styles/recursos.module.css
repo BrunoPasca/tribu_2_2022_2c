@@ -1,51 +1,50 @@
-
 /* CARGAR DATOS */
-.cargarDatos{
+.cargarDatos {
     text-align: center;
     background-color: #8DA9C4;
     width: 100vw;
     height: 100vh;
 }
 
-.cargarDatos > h1 {
+.cargarDatos>h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-.cargarDatos > form {
+.cargarDatos>form {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
-    width:fit-content;
+    width: fit-content;
 }
 
-.cargarDatos > form * {
+.cargarDatos>form * {
     padding: 5px;
     border-radius: 5px;
 }
 
-.cargarDatos > form > h1{
+.cargarDatos>form>h1 {
     text-align: center;
     margin-bottom: 60px;
 }
 
 .inputLabel {
-    display:inline-block;
-    width:80px;
+    display: inline-block;
+    width: 80px;
 }
 
-.cargarDatos > form > p > input {
+.cargarDatos>form>p>input {
     margin: 10px;
 }
 
-.selectInput{
+.selectInput {
     margin-right: auto;
     margin-left: 0.5rem;
 }
 
-.calendarInput{
+.calendarInput {
     display: flex;
     justify-content: space-between;
     gap: 1.2rem;
@@ -54,7 +53,7 @@
 .containerBotones {
     display: flex;
     justify-content: space-between;
-    margin-top:30px;
+    margin-top: 30px;
 }
 
 /* CARGAR TAREA */
@@ -67,28 +66,30 @@
     height: 100vh;
 }
 
-.ingresarInfoTarea{
-    height:fit-content;
-    width:fit-content;
+.ingresarInfoTarea {
+    height: fit-content;
+    width: fit-content;
 }
 
-.ingresarInfoTarea * input, .ingresarInfoTarea * button{
+.ingresarInfoTarea * input,
+.ingresarInfoTarea * button {
     padding: 5px;
     border-radius: 5px;
 }
 
-.selectInput{
+.selectInput {
     padding: 5px;
     border-radius: 5px;
 }
 
-.ingresarInfoTarea > label, .ingresarInfoTarea label{
+.ingresarInfoTarea>label,
+.ingresarInfoTarea label {
     margin: 10px;
 }
 
 .smallInputLabel {
-    display:inline;
-    width:fit-content;
+    display: inline;
+    width: fit-content;
 }
 
 .flexContainer {
@@ -106,6 +107,36 @@
 }
 
 
+.navbarIzq {
+    margin: 30px;
+
+}
+
+.navbarDer {
+    margin: 30px;
+}
+
+.titulos {
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    font-size: 30px;
+}
 
 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid black 3px;
+}
 
+.select {
+    height: 30px;
+    width: 150px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+}

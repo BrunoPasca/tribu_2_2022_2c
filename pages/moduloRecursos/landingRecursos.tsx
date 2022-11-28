@@ -1,4 +1,4 @@
-import styles from '../../styles/soporte.module.css'
+import styles from '../../styles/recursos.module.css'
 import Header from '../header';
 import Head_ from '../head';
 
@@ -23,9 +23,9 @@ export default function LandingRecurso() {
             </div>
         </div>
 
-        <div className={styles.titulos}>
-            <div>
-                <select>
+        <div className={styles.titulos} style={{ justifyContent: "center" }}>
+            <div style={{ justifyContent: "space-between" }}>
+                <select className={styles.select}>
                     <option disabled={true} value="">
                         Cargar Horas
                     </option>
@@ -34,7 +34,7 @@ export default function LandingRecurso() {
                     <option>Faltas</option>
                 </select>
 
-                <select>
+                <select className={styles.select}>
                     <option disabled={true} value="">
                         Consultar Recursos
                     </option>
@@ -43,6 +43,6 @@ export default function LandingRecurso() {
                 </select>
             </div>
         </div>
-    </div>
+    </div >
     );
 }
