@@ -13,6 +13,25 @@ export default function Soporte() {
       
         <Header></Header>
 
+        <div className={styles.navbar}>
+          <div className={styles.navbarIzq}> 
+            <h1>Soporte</h1>
+          </div>
+          <div className={styles.navbarDer}> 
+            <input placeholder='ingrese un nombre'></input>
+            <select>
+              <option>Creador</option>
+              <option>Resolutor</option>
+              <option>Responsable</option>
+              <option>Cliente</option>
+            </select>
+
+            <button>Filtrar</button>
+
+
+          </div>
+        </div>
+
         <div className={styles.titulos}>
               <div>
 
