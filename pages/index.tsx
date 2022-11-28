@@ -15,7 +15,7 @@ export default function Home() {
 
 
         <div className={styles.grid}>
-          
+
           <a href="/moduloSoporte/soporte" className={styles.card}>
             <div>
               <h2>Soporte</h2>
@@ -27,7 +27,7 @@ export default function Home() {
             </div>
           </a>
 
-          <a href="" className={styles.card}>
+          <a href="/moduloRecursos/landingRecursos" className={styles.card}>
             <h2>Recursos Humanos</h2>
             <ul>
               <li>Manejo de Recursos Humanos</li>

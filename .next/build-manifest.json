@@ -25,6 +25,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/moduloRecursos/landingRecursos": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/moduloRecursos/landingRecursos.js"
+    ],
     "/moduloSoporte/soporte": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
