@@ -29,11 +29,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/moduloRecursos/landingRecursos.js"
-    ],
-    "/moduloSoporte/soporte": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/moduloSoporte/soporte.js"
     ]
   },
   "ampFirstPages": []

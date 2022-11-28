@@ -13,18 +13,12 @@ export default function LandingRecurso() {
 
         <div className={styles.navbar}>
             <div className={styles.navbarIzq}>
-                <h1>Recursos</h1>
+                <h1>RRHH</h1>
+
             </div>
             <div className={styles.navbarDer}>
-                <input placeholder='ingrese un nombre'></input>
-                <select>
-                    <option>Creador</option>
-                    <option>Resolutor</option>
-                    <option>Responsable</option>
-                    <option>Cliente</option>
-                </select>
-
-                <button>Filtrar</button>
+                <input placeholder='Empleado o proyecto'></input>
+                <button>Cargar Horas</button>
 
             </div>
         </div>
