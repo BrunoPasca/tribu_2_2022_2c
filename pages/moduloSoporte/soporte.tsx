@@ -1,7 +1,9 @@
 import styles from '../../styles/soporte.module.css'
 import Header from '../header';
-import Ticket from './ticket';
+import TicketCard from './ticketCard';
 import Head_ from '../head';
+import ColumnaTicket from './columnaTickets';
+
 
 export default function Soporte() {
 
@@ -13,27 +15,29 @@ export default function Soporte() {
 
         <div className={styles.titulos}>
               <div>
+
                 <p>Abierto</p>
-                <Ticket></Ticket>
+                <ColumnaTicket filtro='Abierto'></ColumnaTicket>
+               
               </div>
+
               <div>
               <p>En analisis</p>
-                <Ticket></Ticket>
+              <ColumnaTicket filtro='En analisis'></ColumnaTicket>
               </div>
               <div>
               <p>Derivado</p>
-                <Ticket></Ticket>
+              <ColumnaTicket filtro='Derivado'></ColumnaTicket>
               </div>
               <div>
               <p>Resuelto</p>
-                <Ticket></Ticket>
+              <ColumnaTicket filtro='Resuelto'></ColumnaTicket>
               </div>
               <div>
               <p>Cancelado</p>
-                <Ticket></Ticket>
-                <Ticket></Ticket>
-                <Ticket></Ticket>
-                <Ticket></Ticket>
+              <ColumnaTicket filtro='Cancelado'></ColumnaTicket>
+
+
               
               </div>
             </div>
