@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '../../styles/ticket.module.css'
+import Head_ from '../head'
 import Header from '../header'
 
 
@@ -7,6 +8,8 @@ export default function TicketView() {
     return (
 
         <>
+        <Head_ nombre='Ticket'></Head_>
+
         <Header></Header>
 
         <div className={styles.ticketView}>
@@ -28,7 +31,7 @@ export default function TicketView() {
 
             <div className={styles.botonesView}>
                 <button>Eliminar</button>
-                <a href='/moduloSoporte/edit'><button>Editar</button></a>
+                <a href='/moduloSoporte/ticketEdit'><button>Editar</button></a>
                 <button>Crear tarea</button>
             </div>
 

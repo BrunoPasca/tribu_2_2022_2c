@@ -1,11 +1,16 @@
 import Head from 'next/head'
 import styles from '../../styles/ticket.module.css'
+import Head_ from '../head'
 import Header from '../header'
 
 
 export default function TicketCreate() {
   return (
-    <form className={styles.form} action="/moduloSoporte/soporte" method="post">
+
+      <form className={styles.form} action="/moduloSoporte/soporte" method="post">
+
+      <Head_ nombre='Crear Ticket'></Head_>
+      
 
       <Header></Header>
 

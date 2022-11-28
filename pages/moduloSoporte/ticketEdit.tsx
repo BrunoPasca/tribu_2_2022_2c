@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '../../styles/ticket.module.css'
+import Head_ from '../head'
 import Header from '../header'
 
 
@@ -7,6 +8,8 @@ export default function TicketEdit() {
     return (
       <form className={styles.form} action="/moduloSoporte/soporte" method="post">
       
+      <Head_ nombre='Editar Ticket'></Head_>
+
       <Header></Header>
       
       <div className={styles.camposForm}>

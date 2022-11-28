@@ -15,25 +15,6 @@
     align-items: center;
   }
 
-.header{
-    background-color: #0B2545;
-    color: #EEF4ED;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .headerIzq{
-    display: flex;
-    margin: 20px;
-  }
-  .headerDer{
-    display: flex;
-    margin: 20px;
-  }
-  
-  .headerDer div{
-    margin-right: 40px;
-  }
   
   .titulos{
     color: white;
