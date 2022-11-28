@@ -19,7 +19,7 @@ export default function LandingRecurso() {
                 </div>
                 <div className={styles.navbarDer}>
                     <input placeholder='Empleado o proyecto'></input>
-                    <button>Cargar Horas</button>
+                    <a href="./cargarDatos"><button>Cargar Horas</button></a>
 
                 </div>
             </div>
