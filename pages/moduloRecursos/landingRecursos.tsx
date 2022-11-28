@@ -17,7 +17,7 @@ export default function LandingRecurso() {
 
             </div>
             <div className={styles.navbarDer}>
-                <input placeholder='Empleado o p royecto'></input>
+                <input placeholder='Empleado o proyecto'></input>
                 <button>Cargar Horas</button>
 
             </div>
@@ -25,7 +25,22 @@ export default function LandingRecurso() {
 
         <div className={styles.titulos}>
             <div>
+                <select>
+                    <option disabled={true} value="">
+                        Cargar Horas
+                    </option>
+                    <option>Horas</option>
+                    <option>Licencia</option>
+                    <option>Faltas</option>
+                </select>
 
+                <select>
+                    <option disabled={true} value="">
+                        Consultar Recursos
+                    </option>
+                    <option>Por Persona</option>
+                    <option>Por Recurso</option>
+                </select>
             </div>
         </div>
     </div>

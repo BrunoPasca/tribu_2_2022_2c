@@ -9,3 +9,6 @@
 #!next*
 #!next/static
 #!next/static
+#!.next*
+#!.next/static
+#!.next/static
