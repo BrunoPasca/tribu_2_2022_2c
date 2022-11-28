@@ -6,4 +6,6 @@
 #*.next
 #.pack
 #.old
-#!/next*
+#!next*
+#!next/static
+#!next/static
