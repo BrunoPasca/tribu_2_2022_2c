@@ -1,24 +1,34 @@
 import styles from '../styles/header.module.css'
+import Link from 'next/link';
+import Image from 'next/image'
 
 export default function Header() {
 
     return (
-        <header className={styles.header}>
-            <div className={styles.headerIzq}>
-                <a href="/moduloRecursos/landingRecursos"><div>RRHH</div></a>
-                <a><div>Proyectos</div></a>
-                <a href="/moduloSoporte/soporte"><div>Soporte</div></a>
-            </div>
+        <div>
+            <header className={styles.header}>
+                <div>
+                    <Link href="/">
+                        <Image
+                            priority
+                            src="/../public/logoPSA.png"
+                            height={74}
+                            width={139}
+                            alt={''}
+                        />
+                    </Link>
+                </div>
+                <div className={styles.headerIzq}>
+                    <Link href="/"><div>Home</div></Link>
+                    <Link href="/moduloRecursos/landingRecursos"><div>RRHH</div></Link>
+                    <a><div>Proyectos</div></a>
+                    <Link href="/moduloSoporte/soporte"><div>Soporte</div></Link>
+                </div>
 
-            <div className={styles.headerCen}>
-                <a href="/"><div>Home</div></a>
-
-
-            </div>
-
-            <div className={styles.headerDer}>
-                <a><div>Cerrar sesion</div></a>
-            </div>
-        </header>
+                <div className={styles.headerDer}>
+                    <a><div>Cerrar sesion</div></a>
+                </div>
+            </header>
+        </div>
     );
 }

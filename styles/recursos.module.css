@@ -1,3 +1,9 @@
+/* FONDO */
+.container {
+    background-color: #EEF4ED;
+    height: 100vh;
+}
+
 /* CARGAR DATOS */
 .cargarDatos {
     text-align: center;

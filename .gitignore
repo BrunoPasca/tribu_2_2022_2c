@@ -1,15 +1,6 @@
 # IDE
-#.idea
+.idea
 
 # Dependencies
-/node_modules
-*.next
-/next
-.pack
-.old
-!next*
-!next/static
-!next/static
-!.next*
-!.next/static
-!.next/static
+node_modules
+.next
