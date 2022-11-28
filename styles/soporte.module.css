@@ -45,9 +45,7 @@
   }
 
   .contenedorBoton{
-    border: red solid 3px;
-    align-items: center;
-    justify-content: center;
+    text-align: right;
   }
 
   .contenedorBoton button{
