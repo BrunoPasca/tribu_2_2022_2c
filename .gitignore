@@ -3,4 +3,6 @@
 
 # Dependencies
 #node_modules
-#.next
+#*.next
+#.pack
+#.old
