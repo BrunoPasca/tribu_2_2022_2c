@@ -15,11 +15,6 @@
   ],
   "rootMainFiles": [],
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
@@ -30,25 +25,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/create": [
+    "/moduloSoporte/soporte": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/create.js"
+      "static/chunks/pages/moduloSoporte/soporte.js"
     ],
-    "/edit": [
+    "/moduloSoporte/ticketView": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/edit.js"
-    ],
-    "/soporte": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/soporte.js"
-    ],
-    "/view": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/view.js"
+      "static/chunks/pages/moduloSoporte/ticketView.js"
     ]
   },
   "ampFirstPages": []

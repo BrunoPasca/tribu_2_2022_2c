@@ -1,14 +1,14 @@
 
 .container {
-  background-color: #0070f3;
+  background-color: #EEF4ED;
 }
 
 .main {
+  color: #EEF4ED;
   min-height: 100vh;
-  padding: 4rem 0;
+  
   flex: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -41,7 +41,7 @@
 }
 
 .title {
-  margin: 0;
+  margin: 100px;
   line-height: 1.15;
   font-size: 4rem;
 }
@@ -72,32 +72,37 @@
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
-  max-width: 800px;
+  width: 100vw;
 }
 
 .card {
+  background-color: #8DA9C4;
   margin: 1rem;
   padding: 1.5rem;
-  text-align: left;
   color: inherit;
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  width: 500px;
-  text-align: center;
+  width: 80%;
+  justify-content: center;
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #000000;
-  border-color: #000000;
+  color: #0B2545;
+  border-color: #0B2545;
 }
 
 .card h2 {
-  margin: 0 0 1rem 0;
+
   font-size: 1.5rem;
+}
+
+.card ol{
+  display: block;
+
 }
 
 .card p {
@@ -133,82 +138,4 @@
 
 
 
-/*------------PAGINA DE SOPORTE----------------*/
 
-.header{
-  background-color: black;
-  display: flex;
-  justify-content: space-between;
-}
-
-.headerIzq{
-  display: flex;
-  margin: 20px;
-}
-.headerDer{
-  display: flex;
-  margin: 20px;
-}
-
-.headerDer div{
-  margin-right: 40px;
-}
-
-.titulos{
-  display: flex;
-  justify-content: space-between;
-  margin: 30px;
-  font-size: 30px;
-}
-
-.form{
-  background-color: #0070f3;
-  width: 100vw;
-  height: 100vh;
-}
-
-.form label{
-  margin: 10px;
-  font-size: 20px;
-}
-
-.form input{
-  margin: 10px;
-}
-
-.form select{
-  margin: 10px;
-}
-
-.form button{
-  margin: 10px;
-  width: 100px;
-}
-
-.form h1{
-  margin: 10px;
-  font-size: 50px;
-}
-/*------VISUALIZACION DEL TICKET------*/
-.view{
-  background-color: #0070f3;
-  width: 100vw;
-  height: 100vh;
-}
-
-.view div{
-  margin: 20px;
-}
-
-.datosCliente{
-  display: flex;
-}
-.datosCliente div{
-  margin: 0px;
-  margin-right: 100px;
-}
-
-.view h1{
-  margin: 20px;
-  
-}

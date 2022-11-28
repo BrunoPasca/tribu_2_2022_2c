@@ -1,0 +1,47 @@
+/*------------PAGINA DE SOPORTE----------------*/
+
+
+.container {
+  background-color: #134074;
+  }
+
+.main {
+    min-height: 100vh;
+    padding: 4rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.header{
+    background-color: #0B2545;
+    color: #EEF4ED;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .headerIzq{
+    display: flex;
+    margin: 20px;
+  }
+  .headerDer{
+    display: flex;
+    margin: 20px;
+  }
+  
+  .headerDer div{
+    margin-right: 40px;
+  }
+  
+  .titulos{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    font-size: 30px;
+  }
+
+  
+  
