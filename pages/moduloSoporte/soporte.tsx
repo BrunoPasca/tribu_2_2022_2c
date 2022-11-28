@@ -28,7 +28,6 @@ export default function Soporte() {
 
             <button>Filtrar</button>
 
-
           </div>
         </div>
 
@@ -60,15 +59,14 @@ export default function Soporte() {
               
               </div>
             </div>
-        <main className={styles.main}>
-   
+     
+
+
+            <div className={styles.contenedorBoton}>
             <a href='/moduloSoporte/ticketCreate'><button>CREAR TICKET</button></a>
-
-        </main>
+            </div>
   
-        <footer className={styles.footer}>
-
-        </footer>
+  
       </div>
     );
   }

@@ -2,22 +2,13 @@
 
 
 .container {
-  background-color: #134074;
+  background-color: #EEF4ED;
+  height: 100vh;
   }
 
-.main {
-    min-height: 100vh;
-    padding: 4rem 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 
-  
   .titulos{
-    color: white;
+    color: black;
     display: flex;
     justify-content: space-between;
     margin: 30px;
@@ -29,10 +20,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: solid black 3px;
   }
 
   .navbarIzq{
     margin:30px;
+    
   }
 
   .navbarDer{
@@ -49,4 +42,16 @@
 
   .navbarDer button{
     margin-right: 10px;
+  }
+
+  .contenedorBoton{
+    border: red solid 3px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contenedorBoton button{
+    margin: 50px;
+    padding: 10px;
+    border-radius: 20px;
   }
