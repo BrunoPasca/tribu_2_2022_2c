@@ -41,9 +41,10 @@ export default function ProyectoView() {
         </div>
 
             <div className={styles.botonesView}>
-                <button>Eliminar</button>
-                <a href='/moduloSoporte/ticketEdit'><button>Editar</button></a>
+                <a href = "" ><button>Eliminar</button> </a>
+                <a href='/moduloProyectos/editProject/1'><button>Editar</button></a>
                 <button>Ver tareas</button>
+
             </div>
 
         </div>

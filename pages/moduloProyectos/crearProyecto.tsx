@@ -96,7 +96,7 @@ export default function crearProyecto() {
           <label htmlFor = "CancelButton">
           </label>
           <br/>
-          <a href="">
+          <a href="/moduloProyectos/proyectos">
           <button className = {styles.negative_button_style}>
             Cancelar
           </button>
