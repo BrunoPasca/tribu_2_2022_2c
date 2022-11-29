@@ -24,8 +24,8 @@ export default function TicketView() {
         datoContacto: "julian@gmail",
         nombreProducto: "fasfaf",
         versionProducto: "fasfsafsa",
-        fechaEmision: "fecha efassa",
-        fechaResolucion:"fdafasfsa",
+        fechaEmision: new Date('Jul 12 2011').toDateString(),
+        fechaResolucion:new Date('Jul 12 2011').toDateString(),
       
         },
         {   
