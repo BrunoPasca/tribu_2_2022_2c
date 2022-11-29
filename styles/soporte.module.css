@@ -21,6 +21,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: solid black 3px;
+    color: black;
   }
 
   .navbarIzq{
@@ -49,7 +50,16 @@
   }
 
   .contenedorBoton button{
-    margin: 50px;
+    margin: 20px;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 30px;
+    width: 200px;
+    background-color: #0B2545;
+    border: none
+  }
+
+  .contenedorBoton button:hover{  
+    box-shadow: 0px 0px 10px rgb(82, 82, 82);
+    background-color: #134074;
+
   }
