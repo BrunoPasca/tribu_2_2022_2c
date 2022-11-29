@@ -1,10 +1,10 @@
 import { Router } from "express";
 import {
-  getTickets,
-  getTicket,
-  createTickets,
-  updateTickets,
-  deteleTickets,
+	getTickets,
+	getTicket,
+	createTicket,
+	updateTicket,
+	deteleTicket,
 } from "../controllers/tickets.controller.js";
 
 const router = Router();
@@ -13,10 +13,10 @@ router.get("/tickets", getTickets);
 
 router.get("/tickets/:id", getTicket);
 
-router.post("/tickets", createTickets);
+router.post("/tickets", createTicket);
 
-router.put("/tickets", updateTickets);
+router.put("/tickets/:id", updateTicket);
 
-router.delete("/tickets", deteleTickets);
+router.delete("/tickets/:id", deteleTicket);
 
 export default router;
