@@ -1,9 +1,11 @@
 /*------VISUALIZACION DEL TICKET------*/
+
 .header{
     background-color: #0B2545;
     color: #EEF4ED;
     display: flex;
     justify-content: space-between;
+
   }
   
   .headerIzq{
@@ -25,6 +27,7 @@
   background-color: #134074;
     width: 100vw;
     height: 100vh;
+
   }
   
   .view div{
@@ -46,7 +49,7 @@
 
 .form{
   color: #EEF4ED;
-  background-color: #134074;
+  background-color: #EEF4ED;
   width: 100vw;
   height: 100vh;
 
@@ -71,12 +74,23 @@
   }
   
   .form h1{
-    margin: 10px;
+    
     font-size: 50px;
   }
 
   .camposForm{
     margin: 20px;
+    color: black;
+    width: 500px;
+    background-color: #8DA9C4;
+    padding: 30px;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    border: #0B2545 1px solid;
+    box-shadow: 0px 0px 5px rgb(82, 82, 82);
+
+
+
   }
 
   .ticketView{
@@ -84,6 +98,7 @@
     background-color: #EEF4ED;
     color: black;
     height: 100vh;
+
   }
   .ticketView div{
     margin-bottom: 20px;
@@ -111,14 +126,19 @@
   .ticketCard{
     background-color: #8DA9C4;
     padding: 20px;
-    margin-bottom: 30px;
-    margin-right: 30px;
+    margin: 15px;
     border-radius: 20px;
+    width: 250px;
+    border: #0B2545 0.4px solid;
+
+
   }
 
   .tituloCard{
     font-size: 25px;
     margin-bottom: 10px;
+    font-weight: bold;
+
   }
 
   .severidadCard{
@@ -139,4 +159,8 @@
   width: 500px;
   padding: 20px;
   border-radius: 20px;
+  font-family: 'Roboto', sans-serif;
+  border: #0B2545 1px solid;
+  box-shadow: 0px 0px 5px rgb(82, 82, 82);
+
 }

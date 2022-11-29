@@ -3,6 +3,8 @@
   color: #EEF4ED;
   display: flex;
   justify-content: space-between;
+  font-family: 'Roboto', sans-serif;
+
 }
 
 .headerIzq {

@@ -19,6 +19,7 @@ export default function Home() {
 
           <Link href="/moduloSoporte/soporte" className={styles.card}>
             <div>
+              <img className={styles.icono} src={"/soporte.png"} alt={"Icono Soporte"} width={50} height={50}/>
               <h2>Soporte</h2>
               <ul>
                 <li>Manejo de Tickets</li>
@@ -29,6 +30,7 @@ export default function Home() {
           </Link>
 
           <Link href="/moduloRecursos/landingRecursos" className={styles.card}>
+          <img className={styles.icono} src={"/recursosHumanos.png"} alt={"Icono Recursos"} width={50} height={50}/>
             <h2>Recursos Humanos</h2>
             <ul>
               <li>Manejo de Recursos Humanos</li>
@@ -41,6 +43,7 @@ export default function Home() {
             href="/moduloProyectos/crearTarea"
             className={styles.card}
           >
+            <img className={styles.icono} src={"/proyectos.png"} alt={"Icono Proyectos"} width={50} height={50}/>
             <h2>Proyectos</h2>
             <ul>
               <li>Manejo de Proyectos</li>

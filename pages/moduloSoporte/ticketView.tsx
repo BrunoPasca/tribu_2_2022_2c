@@ -30,6 +30,9 @@ export default function TicketView() {
                 <div>Nombre del producto: dasdasd</div>
                 <div>Version del producto: 124</div>
 
+                <div>Fecha de emision: 30/06/2022</div>
+                <div>Fecha de resolucion: 12/09/2022</div>
+
                 <div className={styles.botonesView}>
                     <button>Eliminar</button>
                     <a href='/moduloSoporte/ticketEdit'><button>Editar</button></a>

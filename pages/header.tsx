@@ -19,14 +19,13 @@ export default function Header() {
                     </Link>
                 </div>
                 <div className={styles.headerIzq}>
-                    <Link href="/"><div>Home</div></Link>
                     <Link href="/moduloRecursos/landingRecursos"><div>RRHH</div></Link>
                     <a><div>Proyectos</div></a>
                     <Link href="/moduloSoporte/soporte"><div>Soporte</div></Link>
                 </div>
 
                 <div className={styles.headerDer}>
-                    <a><div>Cerrar sesion</div></a>
+                    <Link href="/login"><div>Cerrar sesion</div></Link>
                 </div>
             </header>
         </div>

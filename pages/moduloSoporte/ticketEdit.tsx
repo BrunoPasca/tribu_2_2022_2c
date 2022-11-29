@@ -59,9 +59,14 @@ export default function TicketEdit() {
                   <option value="baja">Baja</option>
             </select>
             <br></br>
-            <button type="reset">Cancelar</button>
-            <button type="submit">Guardar</button>
-        </div>
+
+            <div className={styles.botonesView}>
+                  <button type="reset">Cancelar</button>
+                  <button type="submit">Guardar</button>
+            <div/>
+        
+      </div>
+      </div>
       </form>
     )
   }

@@ -66,8 +66,6 @@ export default function TicketCreate() {
             </select>
 
 
-
-
             <label htmlFor="last">Producto</label>
             <select>
                   <option value="critica">Critica</option>
@@ -76,8 +74,11 @@ export default function TicketCreate() {
                   <option value="baja">Baja</option>
             </select>
             <br></br>
+
+            <div className={styles.botonesView}>
             <button type="reset">Cancelar</button>
             <button type="submit">Guardar</button>
+            </div>
             </div>
     </form>
   )
