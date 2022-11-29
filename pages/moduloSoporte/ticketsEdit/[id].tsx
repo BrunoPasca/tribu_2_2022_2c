@@ -3,6 +3,7 @@ import styles from '../../../styles/ticket.module.css'
 import Head_ from '../../head'
 import Header from '../../header'
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 
 export default function TicketEdit() {
@@ -137,7 +138,7 @@ export default function TicketEdit() {
       <Header></Header>
       
       <div className={styles.camposForm}>
-            <h1>{ticket?.titulo}</h1>
+            <h1>{ticket?.id} - {ticket?.titulo}</h1>
 
             <label htmlFor="last">Descripcion</label>
             <input type="text" id="last" name="last" required placeholder={ticket?.descripcion}/>
@@ -185,7 +186,7 @@ export default function TicketEdit() {
             <br></br>
 
             <div className={styles.botonesView}>
-                  <button type="reset">Cancelar</button>
+            <Link href={'/moduloSoporte/tickets/' + id}> <button type="reset">Cancelar</button> </Link>
                   <button type="submit">Guardar</button>
             <div/>
         
