@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, Component } from "react"
 import CargarFalta from "./cargarFalta";
 import CargarTarea from "./cargarTarea";
 import CrearReporteTrabajo from "./cargarDatos";
@@ -10,10 +10,17 @@ import Head_ from '../head';
 export default function LoadData() {
     const [mostrarTarea, setCargarTarea] = React.useState(false);
     const [periodo, setPeriodo] = React.useState("Semanal");
+    const [estadoActual, setEstadoActual] = React.useState<number>(1);
+    const componentes: { [key: number]: JSX.Element } = {
+        1: (<CargarTarea period={periodo} />),
+        2: (<CargarFalta />),
+        3: (<CrearReporteTrabajo setter={setCargarTarea} />)
+    }
+    let screenToRender = componentes[estadoActual];
     return (
         <div>
             <Header></Header>
-            {mostrarTarea ? <CargarTarea period={periodo} /> : <CrearReporteTrabajo setter={setCargarTarea} />}
+            {mostrarTarea ? screenToRender : <CrearReporteTrabajo setter={setCargarTarea} />}
         </div>
     );
 }
