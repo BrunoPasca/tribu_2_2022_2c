@@ -81,8 +81,8 @@
 
   .ticketView{
     padding: 20px;
-    background-color: #134074;
-    color: #EEF4ED;
+    background-color: #EEF4ED;
+    color: black;
     height: 100vh;
   }
   .ticketView div{
@@ -91,14 +91,21 @@
 
   .botonesView{
     margin-top: 100px;
+    text-align: center;
   }
   .botonesView button{
-    margin-right: 50px;
+    margin: 20px;
     padding: 10px;
     border-radius: 30px;
     width: 100px;
-  
+    background-color: #0B2545;
     border: none
+  }
+
+  .botonesView button:hover{  
+    box-shadow: 0px 0px 10px rgb(82, 82, 82);
+    background-color: #134074;
+
   }
 
   .ticketCard{
@@ -125,4 +132,11 @@
   color: white;
   border-color: #0B2545;
   box-shadow: 0px 0px 10px rgb(82, 82, 82);
+}
+
+.camposView{
+  background-color: #8DA9C4;
+  width: 500px;
+  padding: 20px;
+  border-radius: 20px;
 }

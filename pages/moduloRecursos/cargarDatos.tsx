@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from "react";
 import DatePicker  from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
@@ -87,7 +87,6 @@ export default function CrearReporteTrabajo() {
         const areNotEmpty = Object.values(formData).every(
             value => value != ""
         );
-
         return areNotEmpty;
     }
 
@@ -106,7 +105,8 @@ export default function CrearReporteTrabajo() {
     function handleClickCancelar() {
         window.location.href = "/"
     }
-    
+
+
     return (
             
         <div className={styles.cargarDatos}>
