@@ -20,7 +20,7 @@ export default function Header() {
                 </div>
                 <div className={styles.headerIzq}>
                     <Link href="/moduloRecursos/landingRecursos"><div>RRHH</div></Link>
-                    <a><div>Proyectos</div></a>
+                    <Link href="/moduloProyectos/proyectos"><div>Proyectos</div></Link>
                     <Link href="/moduloSoporte/soporte"><div>Soporte</div></Link>
                 </div>
 

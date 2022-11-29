@@ -40,7 +40,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href="/moduloProyectos/crearTarea"
+            href="/moduloProyectos/proyectos"
             className={styles.card}
           >
             <img className={styles.icono} src={"/proyectos.png"} alt={"Icono Proyectos"} width={50} height={50}/>
