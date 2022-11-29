@@ -1,15 +1,14 @@
-import Head_ from "../../head";
-import Header from "../../header";
-import { useRouter } from 'next/router'
+import Head from 'next/head'
 import styles from '../../../styles/ticket.module.css'
-import path from "path";
-import Link from "next/link";
+import Head_ from '../../head'
+import Header from '../../header'
+import { useRouter } from 'next/router';
 
-export default function TicketView() {
-    
+
+export default function TicketEdit() {
+
     const router = useRouter();
     const {id} = router.query;
-
     const tickets = [
         {   
         titulo: "Arreglar front",
@@ -129,45 +128,70 @@ export default function TicketView() {
 
     const ticket = tickets.find(t => t.id == Number(id)) 
 
+
     return (
+      <form className={styles.form} action="/moduloSoporte/soporte" method="post">
+      
+      <Head_ nombre='Editar Ticket'></Head_>
 
-        <>
-        <Head_ nombre='Ticket'></Head_>
+      <Header></Header>
+      
+      <div className={styles.camposForm}>
+            <h1>{ticket?.titulo}</h1>
 
-        <Header></Header>
+            <label htmlFor="last">Descripcion</label>
+            <input type="text" id="last" name="last" required placeholder={ticket?.descripcion}/>
+            <br></br>
+            <label htmlFor="last">Responsable</label>
+            <select>
+                  <option value="juan1">juan1</option>
+                  <option value="juan2">juan2</option>
+                  <option value="juan3">juan3</option>
+            </select>
+            <br></br>
+      
+            <label htmlFor="last">Estado</label>
+            <select>
+                  <option value="abierto">Abierto</option>
+                  <option value="analisis">En Analisis</option>
+                  <option value="devariado">Derivado</option>
+                  <option value="resuelto">Resuelto</option>
+                  <option value="cancelado">Cancelado</option>
+            </select>
+            <label htmlFor="last">Severidad</label>
+            <select>
+                  <option value="critica">Critica</option>
+                  <option value="alta">Alta</option>
+                  <option value="media">Media</option>
+                  <option value="baja">Baja</option>
+            </select>
+            <br></br>
+      
+            <label htmlFor="last">Cliente</label>
+            <select>
+                  <option value="abierto">Abierto</option>
+                  <option value="analisis">En Analisis</option>
+                  <option value="devariado">Derivado</option>
+                  <option value="resuelto">Resuelto</option>
+                  <option value="cancelado">Cancelado</option>
+            </select>
+            <label htmlFor="last">Producto</label>
+            <select>
+                  <option value="critica">Critica</option>
+                  <option value="alta">Alta</option>
+                  <option value="media">Media</option>
+                  <option value="baja">Baja</option>
+            </select>
+            <br></br>
 
-        <div className={styles.ticketView}>
+            <div className={styles.botonesView}>
+                  <button type="reset">Cancelar</button>
+                  <button type="submit">Guardar</button>
+            <div/>
         
-            <div className={styles.camposView}>
-                <h1>{ticket?.id} - {ticket?.titulo}</h1>
-                
-                
-                <div>Severidad: {ticket?.severidad}</div>
-                <div>Estado: {ticket?.estado}</div>
-                <div>Descripcion: {ticket?.descripcion}</div>
-                
-                <div>Datos del cliente: {ticket?.datosCliente}</div>
-                <div>ID CLIENTE: {ticket?.idCliente}</div>
-            
-                <div>Medio de contacto: {ticket?.medioContacto}</div>
-                <div>Datos de contacto: {ticket?.datoContacto}</div>
-                <div>Nombre del producto: {ticket?.nombreProducto}</div>
-                <div>Version del producto: {ticket?.versionProducto}</div>
-
-                <div>Fecha de emision: {ticket?.fechaEmision}</div>
-                <div>Fecha de resolucion: {ticket?.fechaResolucion}</div>
-
-                <div className={styles.botonesView}>
-                    <button>Eliminar</button>
-                    <Link href={'/moduloSoporte/ticketsEdit/' + id}><button>Editar</button></Link>
-                    <button>Crear tarea</button>
-                </div>
-            </div>
-        </div>
-
-        </>
-   
-   
-   )
+      </div>
+      </div>
+      </form>
+    )
   }
-
+  
