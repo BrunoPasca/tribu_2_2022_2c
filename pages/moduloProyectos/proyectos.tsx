@@ -22,14 +22,32 @@ export default function Soporte() {
       
         <Header></Header>
 
-        <div className={styles.tituloPrincipal}>
+        <div className={styles.navbar}>
+          <div className={styles.navbarIzq}> 
+            <h1>Proyectos</h1>
+          </div>
+          <div className={styles.navbarDer}> 
+            <input placeholder='ingrese un nombre'></input>
+            <select>
+              <option>Creador</option>
+              <option>Resolutor</option>
+              <option>Responsable</option>
+              <option>Cliente</option>
+            </select>
+
+            <button>Filtrar</button>
+
+          </div>
+        </div>
+
+        {/*<div className={styles.tituloPrincipal}>
             <div><p>Proyectos</p></div>
             <div>
                 <form className={styles.barraBusqueda}>
                   <input id="buscar" type="text" placeholder="Buscar..."/>
                 </form>
             </div>
-        </div>
+    </div>*/}
 
         <div className={styles.grilla}>
             <div key={proyecto.id}>

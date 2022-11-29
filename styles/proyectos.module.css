@@ -1,13 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 /* FONDO */
 
-/*.container {
+.container {
     background-color: #EEF4ED;
     height: 100vh;
-}*/
-
-.container {
-  background-color: #134074;
 }
 
 .new_project_window{
@@ -89,33 +85,45 @@
     text-align: center;
     padding-top: 50px;
 }
-  
+
+/*------*/
+
 .proyectoCard{
-    background-color: #8DA9C4;
-    padding: 20px;
-    margin: 30px;
-    border-radius: 20px;
+  background-color: #8DA9C4;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 20px;
+  border: #0B2545 0.4px solid;
+  color:black;
 }
 
 .tituloCard{
-    font-size: 40px;
-    margin-bottom: 10px;
-    font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .textoCard{
-    font-size: 20px;
-    font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.proyectoCard:hover,
+.proyectoCard:focus,
+.proyectoCard:active {
+  color: white;
+  border-color: #0B2545;
+  box-shadow: 0px 0px 10px rgb(82, 82, 82);
 }
 
 .contenedorInfo{
-    background-color: #0B2545;
-    border-radius: 5px;
+  background-color: #0B2545;
+  border-radius: 5px;
 }
 
 .contenedorStakeholders{
-    background-color: #0B2545;
-    border-radius: 5px;
+  background-color: #0B2545;
+  border-radius: 5px;
 }
 
 /* --- */
@@ -131,13 +139,101 @@
 }
 
 .botonesView{
-    margin-top: 100px;
+  margin-top: 100px;
+  text-align: center;
+}
+.botonesView button{
+  margin: 20px;
+  padding: 10px;
+  border-radius: 30px;
+  width: 100px;
+  background-color: #0B2545;
+  border: none;
+  color: white;
 }
 
-.botonesView button{
-    margin-right: 50px;
-    padding: 10px;
-    border-radius: 30px;
-    width: 100px;
-    border: none
+.botonesView button:hover{  
+  box-shadow: 0px 0px 10px rgb(82, 82, 82);
+  background-color: #134074;
+
 }
+
+.titulos div p{
+  text-align: center;
+}
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid black 3px;
+  color: black;
+}
+
+.navbarIzq{
+  margin:30px;
+}
+
+.navbarDer{
+  margin: 30px;
+}
+
+.navbarDer input{
+  margin-right: 40px;
+}
+
+.navbarDer select{
+  margin-right: 40px;
+}
+
+.navbarDer button{
+  margin-right: 10px;
+}
+
+/* ----- FORM ------*/
+
+.form{
+  color: #EEF4ED;
+  background-color: #EEF4ED;
+  width: 100vw;
+  height: 100vh;
+
+}
+  
+  .form label{
+    margin: 10px;
+    font-size: 20px;
+  }
+  
+  .form input{
+    margin: 10px;
+  }
+  
+  .form select{
+    margin: 10px;
+  }
+  
+  .form button{
+    margin: 10px;
+    width: 100px;
+  }
+  
+  .form h1{
+    
+    font-size: 50px;
+  }
+
+  .camposForm{
+    margin: 20px;
+    color: black;
+    width: 500px;
+    background-color: #8DA9C4;
+    padding: 30px;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    border: #0B2545 1px solid;
+    box-shadow: 0px 0px 5px rgb(82, 82, 82);
+
+
+
+  }
