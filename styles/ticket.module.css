@@ -114,7 +114,8 @@
     border-radius: 30px;
     width: 100px;
     background-color: #0B2545;
-    border: none
+    border: none;
+    color: white;
   }
 
   .botonesView button:hover{  
