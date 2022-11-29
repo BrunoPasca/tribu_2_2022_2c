@@ -38,7 +38,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href=""
+            href="/moduloProyectos/crearTarea"
             className={styles.card}
           >
             <h2>Proyectos</h2>

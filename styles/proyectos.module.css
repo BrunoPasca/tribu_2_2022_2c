@@ -1,0 +1,51 @@
+/* FONDO */
+.container {
+    background-color: #EEF4ED;
+    height: 100vh;
+}
+
+.new_project_window{
+    border-radius: 1px;
+    background-color: #EEF4ED;
+    padding: 10px;
+    margin:auto;
+    width: 200%;
+  }
+
+  .positive_button_style{
+    border-radius: 1px;
+    background-color: #09a11d;
+    width: 200px;
+    height: 25px;
+    margin-left: 0px;
+    color: white;
+  }
+  
+  .negative_button_style{
+    border-radius: 1px;
+    background-color: #911909;
+    width: 200px;
+    height: 25px;
+    margin-left: 0px;
+    color: white;
+  }
+
+  .grid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100vw;
+    grid-template-columns: 200px 200px 200px;
+    grid-auto-rows: 40px;
+  }
+
+
+
+  .ventana{
+    display:flex;
+    border-radius: 100px;
+    border: 500px red;
+
+  }
