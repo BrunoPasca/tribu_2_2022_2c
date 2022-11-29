@@ -3,34 +3,10 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
-
-const PROYECTOS_REST_API_URL = "http://localhost:8080/proyectos";
-
-async function getProyectos(){
-    return fetch(PROYECTOS_REST_API_URL,{ 
-        method: 'get',
-            headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-            },
-            'credentials': 'same-origin'
-    })
-    .then(res => res.json());        
-}
-async function getTareasByProyecto(proyecto_id : any){
-    return fetch(PROYECTOS_REST_API_URL + "/" + proyecto_id + "/tareas",{ 
-        method: 'get',
-            headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json',
-            },
-            'credentials': 'same-origin'
-    })
-    .then(res => res.json());        
-}
+import SeleccionarActividad from "./seleccionarActividad";
+import { getProyectos, getTareasByProyecto } from "./services/ProyectoService";
 
 export default function CargarTarea() {
-    const [actividad, setActividad] = React.useState("Tarea")
     const [fecha, setFecha] = React.useState()
     const [horaInicio, setHoraInicio] = React.useState(new Date())
     const [horaFin, setHoraFin] = React.useState(new Date())
@@ -80,24 +56,7 @@ export default function CargarTarea() {
             <Header></Header>
             <div className={styles.cargarTarea}>
                 <div className={styles.ingresarInfoTarea}>
-                    <label className={styles.inputLabel}>Actividad</label>
-                                <select 
-                                    id="actividad" 
-                                    className={styles.selectInput}
-                                    value={actividad}
-                                    onChange={(e) => {
-                                        setActividad(e.currentTarget.value)
-                                      }}
-                                    name="actividad"
-                                >
-                                    <option value="Tarea">Tarea</option>
-                                    <option value="Guardia">Guardia</option>
-                                    <option value="Falta">Falta</option>
-                                    <option value="Licencia">Licencia</option>
-                                    <option value="Fuera de Proyecto">Fuera de Proyecto</option>
-                                </select> 
-                    <br></br>
-                    <br></br>
+                    <SeleccionarActividad actividad="Tarea"/>
 
                     <label className={styles.inputLabel}>Proyecto</label>
                     <select 
@@ -109,11 +68,11 @@ export default function CargarTarea() {
                         }}
                         name="actividad"
                     >
-                        {
+                    {
                         proyectos.map(proyecto =>
                             <option key={proyecto.id} value={proyecto.id}>{proyecto.nombre}</option>  
                         )
-                        }  
+                    }  
                     </select> 
                     <br></br>
                     <br></br>
@@ -128,11 +87,11 @@ export default function CargarTarea() {
                           }}
                         name="actividad"
                     >
-                        {
+                    {
                         tareas.map(tarea =>
                             <option key={tarea.id} value={tarea.id}>{tarea.descripcion}</option>  
                         )
-                        }  
+                    }  
                     </select> 
                     <br></br>
                     <br></br>

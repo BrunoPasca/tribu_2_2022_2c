@@ -7,7 +7,7 @@
 /* CARGAR DATOS */
 .cargarDatos {
     text-align: center;
-    background-color: #8DA9C4;
+    background-color: #EEF4ED;
     width: 100vw;
     height: 100vh;
 }
@@ -20,13 +20,19 @@
 
 .cargarDatos>form {
     display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
     text-align: left;
     width: fit-content;
+    margin: 20px;
+    color: black;
+    width: 700px;
+    background-color: #8DA9C4;
+    padding: 30px;
+    border-radius: 20px;
+    border: #0B2545 1px solid;
+    box-shadow: 0px 0px 5px rgb(82, 82, 82);
 }
 
-.cargarDatos * input, .cargarDatos * button{
+.cargarDatos * input{
     padding: 5px;
     border-radius: 5px;
 }
@@ -67,7 +73,7 @@
 .cargarTarea {
     display: flex;
     justify-content: center;
-    background-color: #8DA9C4;
+    background-color: #EEF4ED;
     width: 100vw;
     height: 100vh;
 }
@@ -77,8 +83,7 @@
     width: fit-content;
 }
 
-.ingresarInfoTarea * input,
-.ingresarInfoTarea * button {
+.ingresarInfoTarea * input {
     padding: 5px;
     border-radius: 5px;
 }
@@ -100,11 +105,10 @@
 
 .flexContainer {
     display: flex;
-    text-align: left;
     justify-content: space-between;
     text-align: center;
-    margin-left: 10px;
     width: fit-content;
+    align-items: center;
 }
 
 .flexContainer .datePicker {
@@ -112,6 +116,41 @@
     margin: auto 50px;
 }
 
+.containerBotones  button {
+    margin: 20px;
+    padding: 10px;
+    border-radius: 30px;
+    width: 100px;
+    background-color: #EEF4ED;
+    border: none
+}
+
+.containerBotones button:hover{  
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgb(82, 82, 82);
+    background-color: #134074;
+}
+
+  
+.ingresarInfoTarea {
+    margin: 20px;
+    color: black;
+    width: 500px;
+    background-color: #8DA9C4;
+    padding: 30px;
+    border-radius: 20px;
+    border: #0B2545 1px solid;
+    box-shadow: 0px 0px 5px rgb(82, 82, 82);
+}
+
+/* CARGAR FALTA */
+.flexContainer textarea {
+    width: 300px;
+    height: 70px;
+}
+
+/************************************/
 
 .navbarIzq {
     margin: 30px;

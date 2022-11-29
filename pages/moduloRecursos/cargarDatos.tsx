@@ -6,9 +6,6 @@ import Header from '../header';
 
 export default function CrearReporteTrabajo() {
 
-    /*
-    Hay que usar un endpoint de proyectos para mostrar los proyectos/tareas
-    */
     const [formData, setFormData] = React.useState(
         {
             nombre: "", 
@@ -111,8 +108,6 @@ export default function CrearReporteTrabajo() {
             
         <div className={styles.cargarDatos}>
             <Header></Header>
-            <h1> PSA</h1>
-            <br></br>
             <form>
                 <p>
                   <label className={styles.inputLabel}>Nombre</label>
