@@ -1,9 +1,11 @@
 /*------VISUALIZACION DEL TICKET------*/
+
 .header{
     background-color: #0B2545;
     color: #EEF4ED;
     display: flex;
     justify-content: space-between;
+
   }
   
   .headerIzq{
@@ -25,6 +27,7 @@
   background-color: #134074;
     width: 100vw;
     height: 100vh;
+
   }
   
   .view div{
@@ -82,6 +85,8 @@
     background-color: #8DA9C4;
     padding: 30px;
     border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+
   }
 
   .ticketView{
@@ -124,6 +129,7 @@
   .tituloCard{
     font-size: 25px;
     margin-bottom: 10px;
+    font-weight: bold;
   }
 
   .severidadCard{
@@ -144,4 +150,6 @@
   width: 500px;
   padding: 20px;
   border-radius: 20px;
+  font-family: 'Roboto', sans-serif;
+
 }

@@ -4,6 +4,8 @@
 .container {
   background-color: #EEF4ED;
   height: 100vh;
+  font-family: 'Roboto', sans-serif;
+
   }
 
 
@@ -13,6 +15,8 @@
     justify-content: space-between;
     margin: 30px;
     font-size: 30px;
+
+    
   }
 
   .titulos div p{
