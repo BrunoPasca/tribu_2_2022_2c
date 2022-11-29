@@ -4,7 +4,7 @@ import TicketCard from './ticketCard';
 import Head_ from '../head';
 import ColumnaTicket from './columnaTickets';
 import SearchBar from './searchBar';
-import TicketData from './Tickets.json'
+import TicketData from './TicketsData.json'
 
 
 

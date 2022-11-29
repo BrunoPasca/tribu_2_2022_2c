@@ -136,7 +136,7 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
         <div className={styles.search}>
             <div className={styles.searchInput}> 
                 <input type='text' placeholder={placeholder} onChange={handleFilter}/>
-                <div className={styles.searchIcon}> </div>
+                <div className={styles.searchIcon}> <img className={styles.icono} src={"/searchIcon.png"} alt={"Icono Soporte"} width={20} height={20}/> </div>
 
             </div> 
             {   filteredData.length != 0 && 
