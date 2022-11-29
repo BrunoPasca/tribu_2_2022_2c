@@ -3,10 +3,8 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
-import type { Proyecto, Tarea } from "./types"
 
 const PROYECTOS_REST_API_URL = "http://localhost:8080/proyectos";
-const TAREAS_REST_API_URL = "http://localhost:8080/proyectos/"
 
 async function getProyectos(){
     return fetch(PROYECTOS_REST_API_URL,{ 
@@ -20,7 +18,7 @@ async function getProyectos(){
     .then(res => res.json());        
 }
 async function getTareasByProyecto(proyecto_id : any){
-    return fetch(TAREAS_REST_API_URL + proyecto_id + "/tareas",{ 
+    return fetch(PROYECTOS_REST_API_URL + "/" + proyecto_id + "/tareas",{ 
         method: 'get',
             headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -29,27 +27,6 @@ async function getTareasByProyecto(proyecto_id : any){
             'credentials': 'same-origin'
     })
     .then(res => res.json());        
-}
-
-const inicioProyecto: Proyecto ={
-    id : 0,
-    nombre : "",
-    fecha_inicio : new Date(),
-    fecha_fin: new Date(),
-    estado : "",
-    prioridad: "",
-    costo_acumulado: 0,
-    horas_estimadas: 0,
-    horas_reales:0 
-}
-
-const inicioTarea: Tarea ={
-    id : 0,
-    id_proyecto: 0,
-    estado: "",
-    descripcion: "",
-    horas_estimadas: 0,
-    horas_totales: 0,
 }
 
 export default function CargarTarea() {
@@ -61,8 +38,6 @@ export default function CargarTarea() {
     const [proyectos, setProyectos] = React.useState<any[]>([])
     const [tareas, setTareas] = React.useState<any[]>([])
 
-    const [proyecto, setProyecto] = React.useState<Proyecto>(inicioProyecto)
-    const [tarea, setTarea] = React.useState<Tarea>(inicioTarea)
     const [proyectoId, setProyectoId] = React.useState("")
     const [tareaId, setTareaId] = React.useState("")
 
@@ -74,10 +49,8 @@ export default function CargarTarea() {
         // Recupero los datos
         if (typeof window !== "undefined") {
             datos = JSON.parse(window.sessionStorage.getItem("datos") || "{}");
-            console.log(datos)
             setFechaInicio(new Date(datos.inicio));
             setFechaFin(new Date(datos.fin));
-
         }
 
         getProyectos().then((data) => {
@@ -86,9 +59,14 @@ export default function CargarTarea() {
           .catch(function (ex) {
               console.log('Response parsing failed. Error: ', ex);
           });;
+
+        if (!proyectos[0]) return;
+        setProyectoId(proyectos[0].id)
     }, [])
 
+    // Cuando selecciona otro proyecto obtengo las tareas asociadas
     useEffect(() => {
+        if (!proyectoId) return;
         getTareasByProyecto(proyectoId).then((data) => {
             setTareas(data);
           })
@@ -125,17 +103,17 @@ export default function CargarTarea() {
                     <select 
                         id="proyecto" 
                         className={styles.selectInput}
-                        value={proyecto.id}
+                        value={proyectoId}
                         onChange={(e) => {
                             setProyectoId(e.currentTarget.value)
                         }}
                         name="actividad"
                     >
-                    {
-                    proyectos.map(proyecto =>
-                        <option key={proyecto.id} value={proyecto.id}>{proyecto.nombre}</option>  
-                    )
-                    }  
+                        {
+                        proyectos.map(proyecto =>
+                            <option key={proyecto.id} value={proyecto.id}>{proyecto.nombre}</option>  
+                        )
+                        }  
                     </select> 
                     <br></br>
                     <br></br>
@@ -144,18 +122,17 @@ export default function CargarTarea() {
                     <select 
                         id="tarea" 
                         className={styles.selectInput}
-                        value={tarea.id}
+                        value={tareaId}
                         onChange={(e) => {
                             setTareaId(e.currentTarget.value)
                           }}
                         name="actividad"
                     >
-                    {
-                    tareas.map(tarea =>
-                        <option key={tarea.tareaId} value={tarea.id}>{tarea.nombre}</option>  
-                    )
-                    }  
-
+                        {
+                        tareas.map(tarea =>
+                            <option key={tarea.id} value={tarea.id}>{tarea.descripcion}</option>  
+                        )
+                        }  
                     </select> 
                     <br></br>
                     <br></br>
@@ -180,11 +157,6 @@ export default function CargarTarea() {
                     </div>
 
                 </div>
-
-                <div className={styles.tareasCargadas}>
-                
-                </div>
-
             </div>            
             </div>
 
