@@ -23,13 +23,13 @@ const rows = [
     createData('Tarea 5', '05/10/2022', 10),
 ];
 
-export default function MuiTable() {
+export default function MuiTable({ valor }: { valor: string }) {
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 300 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Nombre Tarea</TableCell>
+                        <TableCell>{valor}</TableCell>
                         <TableCell >Inicio DD/MM/YYYY</TableCell>
                         <TableCell align="right"> Cantidad horas</TableCell>
                     </TableRow>

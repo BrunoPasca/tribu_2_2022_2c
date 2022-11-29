@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
 
-export default function CrearReporteTrabajo() {
+export default function CrearReporteTrabajo({ setter }: { setter: any }) {
 
     const [formData, setFormData] = React.useState(
         {
@@ -97,7 +97,7 @@ export default function CrearReporteTrabajo() {
         const datos = { ...formData, inicio: inicio, fin: fin, periodo: periodo };
 
         sessionStorage.setItem("datos", JSON.stringify(datos))
-        window.location.href = "/moduloRecursos/cargarTarea"
+        setter(true);
     }
     function handleClickCancelar() {
         window.location.href = "/"
@@ -107,7 +107,6 @@ export default function CrearReporteTrabajo() {
     return (
 
         <div className={styles.cargarDatos}>
-            <Header></Header>
             <form>
                 <p>
                     <label className={styles.inputLabel}>Nombre</label>

@@ -7,7 +7,8 @@ import SeleccionarActividad from "./seleccionarActividad";
 import { getProyectos, getTareasByProyecto } from "./services/ProyectoService";
 import MuiTable from "./tablaHoras";
 
-export default function CargarTarea() {
+
+export default function CargarTarea({ period }: { period: string }) {
     const [fecha, setFecha] = React.useState()
     const [horaInicio, setHoraInicio] = React.useState(new Date())
     const [horaFin, setHoraFin] = React.useState(new Date())
@@ -21,9 +22,6 @@ export default function CargarTarea() {
     let datos; // datos que se cargan con sessionStorage en page cargarDatos
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
     const [fechaFin, setFechaFin] = React.useState(new Date())
-
-    const [periodo, setPeriodo] = React.useState("Semanal")
-
     useEffect(() => {
         // Recupero los datos
         if (typeof window !== "undefined") {
@@ -41,7 +39,9 @@ export default function CargarTarea() {
 
         if (!proyectos[0]) return;
         setProyectoId(proyectos[0].id)
+
     }, [])
+
 
     // Cuando selecciona otro proyecto obtengo las tareas asociadas
     useEffect(() => {
@@ -56,7 +56,7 @@ export default function CargarTarea() {
 
     return (
         <div>
-            <Header></Header>
+
             <div className={styles.cargarTarea}>
                 <div className={styles.ingresarInfoTarea}>
                     <SeleccionarActividad actividad="Tarea" />
@@ -120,8 +120,8 @@ export default function CargarTarea() {
                 <div className={styles.ingresarInfoTarea}>
                     <div className={styles.holder}>
                         <label className={styles.titleLabel}>Actividades Cargadas</label>
-                        <label className={styles.titleLabel}>Periodo: {periodo}</label>
-                        <MuiTable />
+                        <label className={styles.titleLabel}>Periodo: {period}</label>
+                        <MuiTable valor={"Valor de prueba"} />
                     </div>
                 </div>
             </div>

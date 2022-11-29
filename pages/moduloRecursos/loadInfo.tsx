@@ -9,11 +9,11 @@ import Head_ from '../head';
 
 export default function LoadData() {
     const [mostrarTarea, setCargarTarea] = React.useState(false);
-
+    const [periodo, setPeriodo] = React.useState("Semanal");
     return (
         <div>
             <Header></Header>
-            {mostrarTarea ? <CargarTarea /> : <CrearReporteTrabajo />}
+            {mostrarTarea ? <CargarTarea period={periodo} /> : <CrearReporteTrabajo setter={setCargarTarea} />}
         </div>
     );
 }
