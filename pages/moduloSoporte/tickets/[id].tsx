@@ -14,6 +14,7 @@ export default function TicketView() {
         {   
         titulo: "Arreglar front",
         id: 1,
+        responsable: "juan",
         severidad: "Critico",
         estado: "Abierto",
         descripcion:"tengo que arreglar el front porque sino desaprobaremos la materia. Juan ceo quiere que se vea lindo" ,
@@ -164,6 +165,10 @@ export default function TicketView() {
 
                 <div>Fecha de emision: {ticket?.fechaEmision}</div>
                 <div>Fecha de resolucion: {ticket?.fechaResolucion}</div>
+
+                <br></br>
+
+                <div>Responsable: {ticket?.responsable}</div>
 
                 <div className={styles.botonesView}>
                     <button>Eliminar</button>
