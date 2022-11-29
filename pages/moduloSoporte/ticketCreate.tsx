@@ -57,13 +57,6 @@ export default function TicketCreate() {
             
             <ClienteSelect></ClienteSelect>
             
-            <select>
-                  <option value="abierto">Abierto</option>
-                  <option value="analisis">En Analisis</option>
-                  <option value="devariado">Derivado</option>
-                  <option value="resuelto">Resuelto</option>
-                  <option value="cancelado">Cancelado</option>
-            </select>
 
 
             <label htmlFor="last">Producto</label>
