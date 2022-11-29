@@ -1,4 +1,4 @@
-import { pool as pooldb } from "../db.js";
+import { pooldb } from "../db.js";
 
 export const getHoras = async (req, res) => {
     try {
@@ -46,7 +46,7 @@ export const updateHoras = async (req, res) => {
 	let { id_tarea, cant_horas } = req.body;
 
 	let [rows] = await pooldb.query(
-		"update tickets set id_tarea = ?, cant_horas = ?  where id = ?",
+		"update tbl_horas set id_tarea = ?, cant_horas = ?  where id = ?",
 		[id_tarea, cant_horas, id]
 	);
 
@@ -55,7 +55,7 @@ export const updateHoras = async (req, res) => {
 			message: "Hora not found",
 		});
 
-	let [result] = await pooldb.query("select * from tickets where id = ?", [id]);
+	let [result] = await pooldb.query("select * from tbl_horas where id = ?", [id]);
 
 	res.json(result[0]);
 };
