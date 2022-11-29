@@ -121,11 +121,11 @@ const tickets = [
   },
 ]
   
-export default function ColumnaTicket({filtro}: {filtro:string}) {
+export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
 
     return (
         <div>
-          {(tickets).filter(i => i.estado == filtro).map((ticket) => ( 
+          {(tickets).filter(i => i.estado == estadoFiltro).map((ticket) => ( 
             <div key={ticket.id}>
               <Link href={'/moduloSoporte/tickets/' + ticket.id}><TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard></Link>
             </div>
