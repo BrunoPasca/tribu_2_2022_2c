@@ -1,5 +1,5 @@
 .form{
-    color: black;
+    color: #0B2545;
     background-color: #EEF4ED;
     width: 100vw;
     height: 100vh;
@@ -49,6 +49,7 @@
         margin-top: 100px;
         text-align: center;
         justify-content: center;
+        
     }
 
     .contenedorBoton button{
@@ -57,6 +58,8 @@
         border-radius: 20px;
         text-align: center;
         justify-content: center;
+        color: #0B2545;
+        background-color: #8DA9C4;
 
     }
 
