@@ -17,7 +17,7 @@ export default function ClienteSelect() {
     return (
         <select>
           {clientes.map((cliente) => ( 
-              <option  key={cliente.legajo}>{cliente.Nombre}</option>
+              <option  key={cliente.legajo}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
           ))}
         </select>
       )
