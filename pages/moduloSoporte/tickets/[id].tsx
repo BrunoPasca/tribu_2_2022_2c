@@ -5,15 +5,13 @@ import styles from '../../../styles/ticket.module.css'
 import path from "path";
 
 export default function TicketView() {
-
-    //aca tendria que haber un get ticket by id
     
     const router = useRouter();
     const {id} = router.query;
 
     const tickets = [
         {   
-        titulo: "string",
+        titulo: "Arreglar front",
         id: 1,
         severidad: "Critico",
         estado: "Abierto",
@@ -26,10 +24,10 @@ export default function TicketView() {
         versionProducto: "fasfsafsa",
         fechaEmision: "fecha efassa",
         fechaResolucion:"fdafasfsa",
-
+      
         },
         {   
-          titulo: "dasdasda",
+          titulo: "Hacer sistema de tickets",
           id: 2,
           severidad: "Critico",
           estado: "En analisis",
@@ -44,7 +42,7 @@ export default function TicketView() {
           fechaResolucion:"fdafasfsa",
         },
         {   
-        titulo: "aaaa",
+        titulo: "Vacaciones",
         id: 3,
         severidad: "Critico",
         estado: "Abierto",
@@ -59,7 +57,7 @@ export default function TicketView() {
         fechaResolucion:"fdafasfsa",
         },
         {   
-          titulo: "strifsaasasfasfng",
+          titulo: "Contar hasta 43",
           id: 4,
           severidad: "Critico",
           estado: "Resuelto",
@@ -92,7 +90,7 @@ export default function TicketView() {
       
         },
         {   
-          titulo: "strifsaasasfasfng",
+          titulo: "Aprender next",
           id: 6,
           severidad: "Critico",
           estado: "Derivado",
@@ -108,7 +106,7 @@ export default function TicketView() {
       
         },
         {   
-          titulo: "fasfsasaf safasassaf nnasjf nasjfnasjn fjnasjn  fjansjnfsajn",
+          titulo: "Vamos river",
           id: 7,
           severidad: "Critico",
           estado: "En analisis",
