@@ -25,7 +25,7 @@ export default function Header() {
                 </div>
 
                 <div className={styles.headerDer}>
-                    <a><div>Cerrar sesion</div></a>
+                    <Link href="/login"><div>Cerrar sesion</div></Link>
                 </div>
             </header>
         </div>
