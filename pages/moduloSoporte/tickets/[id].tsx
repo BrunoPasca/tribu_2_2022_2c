@@ -14,17 +14,18 @@ export default function TicketView() {
         {   
         titulo: "Arreglar front",
         id: 1,
+        responsable: "juan",
         severidad: "Critico",
         estado: "Abierto",
-        descripcion:"lorem ipsum" ,
+        descripcion:"tengo que arreglar el front porque sino desaprobaremos la materia. Juan ceo quiere que se vea lindo" ,
         datosCliente: "Dasdasdas",
         idCliente: 3,
         medioContacto: "email",
         datoContacto: "julian@gmail",
         nombreProducto: "fasfaf",
         versionProducto: "fasfsafsa",
-        fechaEmision: "fecha efassa",
-        fechaResolucion:"fdafasfsa",
+        fechaEmision: new Date('Jul 12 2011').toDateString(),
+        fechaResolucion:new Date('Jul 12 2011').toDateString(),
       
         },
         {   
@@ -145,17 +146,29 @@ export default function TicketView() {
                 <div>Severidad: {ticket?.severidad}</div>
                 <div>Estado: {ticket?.estado}</div>
                 <div>Descripcion: {ticket?.descripcion}</div>
-                
+
+                <br></br>
+
                 <div>Datos del cliente: {ticket?.datosCliente}</div>
-                <div>ID CLIENTE: {ticket?.idCliente}</div>
-            
+                <div>ID del cliente: {ticket?.idCliente}</div>
+
                 <div>Medio de contacto: {ticket?.medioContacto}</div>
                 <div>Datos de contacto: {ticket?.datoContacto}</div>
+
+
+                <br></br>
+
                 <div>Nombre del producto: {ticket?.nombreProducto}</div>
                 <div>Version del producto: {ticket?.versionProducto}</div>
 
+                <br></br>
+
                 <div>Fecha de emision: {ticket?.fechaEmision}</div>
                 <div>Fecha de resolucion: {ticket?.fechaResolucion}</div>
+
+                <br></br>
+
+                <div>Responsable: {ticket?.responsable}</div>
 
                 <div className={styles.botonesView}>
                     <button>Eliminar</button>

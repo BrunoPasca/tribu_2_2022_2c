@@ -13,7 +13,7 @@ const tickets = [
   id: 1,
   severidad: "Critico",
   estado: "Abierto",
-  descripcion:"lorem ipsum" ,
+  descripcion:"tengo que arreglar el front porque sino desaprobaremos la materia. Juan ceo quiere que se vea lindo" ,
   datosCliente: "Dasdasdas",
   idCliente: 3,
   medioContacto: "email",
@@ -121,11 +121,11 @@ const tickets = [
   },
 ]
   
-export default function ColumnaTicket({filtro}: {filtro:string}) {
+export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
 
     return (
         <div>
-          {(tickets).filter(i => i.estado == filtro).map((ticket) => ( 
+          {(tickets).filter(i => i.estado == estadoFiltro).map((ticket) => ( 
             <div key={ticket.id}>
               <Link href={'/moduloSoporte/tickets/' + ticket.id}><TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard></Link>
             </div>

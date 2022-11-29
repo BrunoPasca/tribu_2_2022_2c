@@ -57,7 +57,19 @@ export default function TicketCreate() {
             
             <ClienteSelect></ClienteSelect>
             
+            <br></br>
+            
+            <label htmlFor="datosCliente">Datos del cliente</label>
+            <input type="text" id="datosCliente" name="datosCliente" />
+            <br></br>
+            
+            <label htmlFor="medioContacto">Medio de contacto</label>
+            <input type="text" id="medioContacto" name="medioContacto" placeholder='email, telefono, paloma'/>
+            <br></br>
 
+            <label htmlFor="datoContacto">Dato de contacto</label>
+            <input type="text" id="datoContacto" name="datoContacto" placeholder='pepe@gmail.com'/>
+            <br></br>
 
             <label htmlFor="last">Producto</label>
             <select>
@@ -68,6 +80,14 @@ export default function TicketCreate() {
             </select>
             <br></br>
 
+            <label htmlFor="fechaEmision">Fecha de emision</label>
+            <input type="date" id="fechaEmision" name="fechaEmsion" required/>
+            <br></br>
+
+            <label htmlFor="fechaResolucion">Fecha de resolucion</label>
+            <input type="date" id="fechaResolcion" name="fechaResolcion"/>
+            <br></br>
+
             <div className={styles.botonesView}>
             <button type="reset">Cancelar</button>
             <button type="submit">Guardar</button>
@@ -76,3 +96,17 @@ export default function TicketCreate() {
     </form>
   )
 }
+/*
+titulo: "Vamos river",
+id: 7,
+severidad: "Critico",
+estado: "En analisis",
+descripcion:"lorem ipsum" ,
+datosCliente: "Dasdasdas",
+idCliente: 3,
+medioContacto: "email",
+datoContacto: "julian@gmail",
+nombreProducto: "fasfaf",
+versionProducto: "fasfsafsa",
+fechaEmision: "fecha efassa",
+fechaResolucion:"fdafasfsa",*/

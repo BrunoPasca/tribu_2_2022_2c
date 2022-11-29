@@ -9,12 +9,14 @@ export default function crearProyecto() {
     <>
     <Head_ nombre='Nuevo proyecto'></Head_>
     <Header></Header>
+    <main className={styles.main}>
+
     <div className={styles.container}>
 
 
-
-        <form action="una_accion.php" className={styles.form}>
+        <form action="una_accion.php">
         <div className = {styles.camposForm}>
+          <h1 className={styles.tituloForm}>Nuevo proyecto</h1>
 
           <div>
           <label htmlFor="fname">Nombre proyecto </label>
@@ -23,13 +25,14 @@ export default function crearProyecto() {
             </input>
 
           </div>
+          <br />
           <div>
           <label htmlFor="projectID">ID </label>
           <br/>
           <input type="text"  id="projectID" name="projectid" placeholder="New project id"  >
             </input>
           </div>
-
+          <br />
           <div>
             <label htmlFor = "projectState">
               Estado 
@@ -42,13 +45,13 @@ export default function crearProyecto() {
                 <option value = "optionPostProduccion">Post Producción </option>
             </select>
           </div>
-
+          <br />
           <div>
             <label  htmlFor = "Client name">Cliente  </label>
             <br/>
             <input type = "text" id = "projectClient" placeholder="A client"></input>
           </div >
-
+          <br />
           <div>
             <label htmlFor = "ClientType" >
               Tipo de cliente:
@@ -59,27 +62,27 @@ export default function crearProyecto() {
                 <option > Tipo cliente 1</option>
             </select>
           </div>
-
+          <br />
           <div>
             <label htmlFor = "FechaDeInicio"> Fecha de inicio </label>
             <br/>
             <input type = "date" id = "FechaDeInicio" name = "comienzoDeProyecto">
             </input>
           </div>
-
+          <br />
           <div>
             <label htmlFor = "FechaDeFin"> Fecha estimada de fin </label>
             <br/>
               <input type = "date" id = "FechaDeFin" name = "finDeProyecto">
               </input>
           </div>
-
+          <br />
           <div>
             <label  htmlFor = "productManager">PM  </label>
             <br/>
             <input type = "text" id = "productManager" placeholder="PM"></input>
           </div >
-        
+          
           <div className={styles.botonesView}>
             <button type="reset">Cancelar</button>
             <button type="submit">Guardar</button>
@@ -88,6 +91,7 @@ export default function crearProyecto() {
             
         </form>
     </div>
+    </main>
   </>
   );
 }

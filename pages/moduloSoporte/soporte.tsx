@@ -7,6 +7,7 @@ import SearchBar from './searchBar';
 import TicketData from './Tickets.json'
 
 
+
 export default function Soporte() {
 
     return(<div className={styles.container}>
@@ -37,25 +38,26 @@ export default function Soporte() {
               <div>
 
                 <p>Abierto</p>
-                <ColumnaTicket filtro='Abierto'></ColumnaTicket>
+                
+                <ColumnaTicket estadoFiltro='Abierto'></ColumnaTicket>
                
               </div>
 
               <div>
               <p>En analisis</p>
-              <ColumnaTicket filtro='En analisis'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='En analisis'></ColumnaTicket>
               </div>
               <div>
               <p>Derivado</p>
-              <ColumnaTicket filtro='Derivado'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='Derivado'></ColumnaTicket>
               </div>
               <div>
               <p>Resuelto</p>
-              <ColumnaTicket filtro='Resuelto'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='Resuelto'></ColumnaTicket>
               </div>
               <div>
               <p>Cancelado</p>
-              <ColumnaTicket filtro='Cancelado'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='Cancelado'></ColumnaTicket>
 
 
               
