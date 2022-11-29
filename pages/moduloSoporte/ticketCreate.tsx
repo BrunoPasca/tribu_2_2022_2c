@@ -66,8 +66,6 @@ export default function TicketCreate() {
             </select>
 
 
-
-
             <label htmlFor="last">Producto</label>
             <select>
                   <option value="critica">Critica</option>

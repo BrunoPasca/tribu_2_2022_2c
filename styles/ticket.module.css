@@ -86,6 +86,10 @@
     padding: 30px;
     border-radius: 20px;
     font-family: 'Roboto', sans-serif;
+    border: #0B2545 1px solid;
+    box-shadow: 0px 0px 5px rgb(82, 82, 82);
+
+
 
   }
 
@@ -94,6 +98,7 @@
     background-color: #EEF4ED;
     color: black;
     height: 100vh;
+
   }
   .ticketView div{
     margin-bottom: 20px;
@@ -124,12 +129,16 @@
     margin: 15px;
     border-radius: 20px;
     width: 250px;
+    border: #0B2545 0.4px solid;
+
+
   }
 
   .tituloCard{
     font-size: 25px;
     margin-bottom: 10px;
     font-weight: bold;
+
   }
 
   .severidadCard{
@@ -151,5 +160,7 @@
   padding: 20px;
   border-radius: 20px;
   font-family: 'Roboto', sans-serif;
+  border: #0B2545 1px solid;
+  box-shadow: 0px 0px 5px rgb(82, 82, 82);
 
 }
