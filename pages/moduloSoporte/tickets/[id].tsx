@@ -145,14 +145,22 @@ export default function TicketView() {
                 <div>Severidad: {ticket?.severidad}</div>
                 <div>Estado: {ticket?.estado}</div>
                 <div>Descripcion: {ticket?.descripcion}</div>
-                
+
+                <br></br>
+
                 <div>Datos del cliente: {ticket?.datosCliente}</div>
-                <div>ID CLIENTE: {ticket?.idCliente}</div>
-            
+                <div>ID del cliente: {ticket?.idCliente}</div>
+
                 <div>Medio de contacto: {ticket?.medioContacto}</div>
                 <div>Datos de contacto: {ticket?.datoContacto}</div>
+
+
+                <br></br>
+
                 <div>Nombre del producto: {ticket?.nombreProducto}</div>
                 <div>Version del producto: {ticket?.versionProducto}</div>
+
+                <br></br>
 
                 <div>Fecha de emision: {ticket?.fechaEmision}</div>
                 <div>Fecha de resolucion: {ticket?.fechaResolucion}</div>
