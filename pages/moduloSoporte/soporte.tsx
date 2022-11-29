@@ -3,6 +3,8 @@ import Header from '../header';
 import TicketCard from './ticketCard';
 import Head_ from '../head';
 import ColumnaTicket from './columnaTickets';
+import SearchBar from './searchBar';
+import TicketData from './Tickets.json'
 
 
 export default function Soporte() {
@@ -18,7 +20,7 @@ export default function Soporte() {
             <h1>Soporte</h1>
           </div>
           <div className={styles.navbarDer}> 
-            <input placeholder='ingrese un nombre'></input>
+            <SearchBar placeholder="Ingrese un nombre" data={TicketData}/>
             <select>
               <option>Creador</option>
               <option>Resolutor</option>
