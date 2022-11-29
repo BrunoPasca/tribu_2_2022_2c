@@ -116,9 +116,9 @@
   .ticketCard{
     background-color: #8DA9C4;
     padding: 20px;
-    margin-bottom: 30px;
-    margin-right: 30px;
+    margin: 15px;
     border-radius: 20px;
+    width: 250px;
   }
 
   .tituloCard{

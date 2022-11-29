@@ -15,6 +15,9 @@
     font-size: 30px;
   }
 
+  .titulos div p{
+    text-align: center;
+  }
   
   .navbar{
     display: flex;

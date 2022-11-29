@@ -76,8 +76,11 @@ export default function TicketCreate() {
                   <option value="baja">Baja</option>
             </select>
             <br></br>
+
+            <div className={styles.botonesView}>
             <button type="reset">Cancelar</button>
             <button type="submit">Guardar</button>
+            </div>
             </div>
     </form>
   )

@@ -27,7 +27,29 @@ const tickets = [
       severidad: "Critico",
       estado: "Resuelto"
   
-    }
+    },
+
+    {   
+      titulo: "me gusta mucho escribir un titulo largo asi no entra y rompe todo",
+      id: 4,
+      severidad: "Critico",
+      estado: "Cancelado"
+  
+    },
+    {   
+      titulo: "strifsaasasfasfng",
+      id: 4,
+      severidad: "Critico",
+      estado: "Derivado"
+  
+    },
+    {   
+      titulo: "fasfsasaf safasassaf nnasjf nasjfnasjn fjnasjn  fjansjnfsajn",
+      id: 4,
+      severidad: "Critico",
+      estado: "En analisis"
+  
+    },
   ]
   
 export default function ColumnaTicket({filtro}: {filtro:string}) {
