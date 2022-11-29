@@ -20,8 +20,7 @@ export default function ClienteSelect() {
 
 
     }).catch(err => console.error(err));
-
-
+    
     return (
         <select>
           {clientes.map((cliente) => ( 
