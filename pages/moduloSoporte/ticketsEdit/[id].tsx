@@ -17,7 +17,7 @@ export default function TicketEdit() {
         id: 1,
         severidad: "Critico",
         estado: "Abierto",
-        descripcion:"lorem ipsum" ,
+        descripcion:"tengo que arreglar el front porque sino desaprobaremos la materia. Juan ceo quiere que se vea lindo" ,
         datosCliente: "Dasdasdas",
         idCliente: 3,
         medioContacto: "email",
@@ -142,7 +142,8 @@ export default function TicketEdit() {
             <h1>{ticket?.id} - {ticket?.titulo}</h1>
 
             <label htmlFor="last">Descripcion</label>
-            <input type="text" id="last" name="last"  required value={ticket?.descripcion}/>
+            <br></br>
+            <input className={styles.descripcionEdit} type="text" id="last" name="last"  required value={ticket?.descripcion}/>
             <br></br>
             <label htmlFor="last">Responsable</label>
             <select>

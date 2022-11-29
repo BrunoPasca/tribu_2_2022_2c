@@ -13,7 +13,7 @@ const tickets = [
   id: 1,
   severidad: "Critico",
   estado: "Abierto",
-  descripcion:"lorem ipsum" ,
+  descripcion:"tengo que arreglar el front porque sino desaprobaremos la materia. Juan ceo quiere que se vea lindo" ,
   datosCliente: "Dasdasdas",
   idCliente: 3,
   medioContacto: "email",
