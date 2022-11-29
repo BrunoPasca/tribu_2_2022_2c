@@ -46,7 +46,7 @@
 
 .form{
   color: #EEF4ED;
-  background-color: #134074;
+  background-color: #EEF4ED;
   width: 100vw;
   height: 100vh;
 
@@ -71,12 +71,17 @@
   }
   
   .form h1{
-    margin: 10px;
+    
     font-size: 50px;
   }
 
   .camposForm{
     margin: 20px;
+    color: black;
+    width: 500px;
+    background-color: #8DA9C4;
+    padding: 30px;
+    border-radius: 20px;
   }
 
   .ticketView{
