@@ -13,6 +13,7 @@ export function  getProyectos(){
     .then(res => res.json());        
 }
 
+
 export function getTareasByProyecto(proyecto_id : any){
     return fetch(PROYECTOS_REST_API_URL + "/" + proyecto_id + "/tareas",{ 
         method: 'get',
