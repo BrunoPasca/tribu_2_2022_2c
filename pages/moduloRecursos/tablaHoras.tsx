@@ -31,12 +31,13 @@ export default function MuiTable(props : any) {
 
     /* HAY QUE USAR UN ENDPOINT */
     const reportes =         [
+        // Formato fecha dd/mm/yyyy
         {
             id: "1",
             legajo_empleado: "1",
             id_tarea: "3",
             cant_horas:"5",
-            fecha: "11/13/2022",
+            fecha: "11/11/2022",
             estado: "abierto",
         },
         {
@@ -44,17 +45,32 @@ export default function MuiTable(props : any) {
             legajo_empleado: "3",
             id_tarea: "4",
             cant_horas:"2",
-            fecha: "11/30/2022",
+            fecha: "21/11/2022",
+            estado: "abierto",
+        },
+        {
+            id: "4",
+            legajo_empleado: "22",
+            id_tarea: "5",
+            cant_horas:"2",
+            fecha: "7/11/2022",
             estado: "abierto",
         }
     ]
 
-    var getvalidDate = function(d : any){ return new Date(d) }
-    function DateBetweenTwoDates(fromDate : any, toDate : any, givenDate : any){
-        console.log("inicio", fromDate)
-        console.log("fin", toDate)
-        console.log("given", givenDate)
-        return getvalidDate(givenDate) <= getvalidDate(toDate) && getvalidDate(givenDate) >= getvalidDate(fromDate);
+    // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
+    function modificarFormatoFecha(date : string) {
+        const [day, month, year] = date.split('/');
+        // @ts-ignore
+        return new Date(+year, month - 1, +day);
+    }
+
+    function DateBetweenTwoDates(fromDate : string, toDate : string, givenDate : string) {
+        const start = modificarFormatoFecha(fromDate);
+        const end = modificarFormatoFecha(toDate);
+        const date = modificarFormatoFecha(givenDate);
+
+        return (start <= date && date <= end);
     }
     
 
@@ -78,7 +94,7 @@ export default function MuiTable(props : any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes.filter(reporte => reporte.legajo_empleado == legajo && DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
+                    {reportes.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
                         <TableRow
                             key={reporte.id_tarea}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

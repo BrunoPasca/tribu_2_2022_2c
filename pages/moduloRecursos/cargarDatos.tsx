@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
-import Header from '../header';
 import Link from 'next/link';
 
 export default function CrearReporteTrabajo({ setter }: { setter: any }) {
@@ -33,8 +32,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
                 if (inicio.getDate() === 1) {
                     fechaFin.setDate(14)
                 } else {
-                    let ultimoDiaDelMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0);
-                    fechaFin = ultimoDiaDelMes
+                    fechaFin = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0)
                 }
                 break;
             default:
@@ -85,10 +83,9 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     }
 
     function validateForm() {
-        const areNotEmpty = Object.values(formData).every(
+        return Object.values(formData).every(
             value => value != ""
         );
-        return areNotEmpty;
     }
 
     function handleClickContinuar() {
@@ -140,7 +137,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
 
                 <div className={styles.calendarInput}>
                     <label className={styles.inputLabel}>Inicio</label>
-                    <DatePicker className={styles.calendar} selected={inicio} onChange={(date: any) => setInicio(date)}
+                    <DatePicker className={styles.calendar} selected={inicio} dateFormat='dd/MM/yyyy' onChange={(date: any) => setInicio(date)}
                         filterDate={filterDate}
                     />
                 </div>
