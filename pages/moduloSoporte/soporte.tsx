@@ -21,15 +21,8 @@ export default function Soporte() {
             <h1>Soporte</h1>
           </div>
           <div className={styles.navbarDer}> 
+          
             <SearchBar placeholder="Ingrese un nombre" data={TicketData}/>
-            <select>
-              <option>Creador</option>
-              <option>Resolutor</option>
-              <option>Responsable</option>
-              <option>Cliente</option>
-            </select>
-
-            <button>Filtrar</button>
 
           </div>
         </div>
