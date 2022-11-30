@@ -14,7 +14,7 @@ export default function crearProyecto() {
     <div className={styles.container}>
 
 
-        <form action="una_accion.php">
+        <form action = "">
         <div className = {styles.camposForm}>
           <h1 className={styles.tituloForm}>Nuevo proyecto</h1>
 
@@ -85,7 +85,7 @@ export default function crearProyecto() {
           
           <div className={styles.botonesView}>
             <button type="reset">Cancelar</button>
-            <button type="submit">Guardar</button>
+            <button onClick = {button_function}>Guardar</button>
           </div>
         </div>
             
@@ -95,3 +95,11 @@ export default function crearProyecto() {
   </>
   );
 }
+
+
+function button_create_project(){
+  alert("Back end creame un proyecto");
+  return true;
+}
+
+var button_function = button_create_project;

@@ -4,8 +4,11 @@ import styles from '../../../styles/proyectos.module.css'
 import sup_styles from '../../../styles/soporte.module.css'
 import { useRouter } from 'next/router'
 import { getProyectos } from '../../moduloRecursos/services/ProyectoService'
+import { createSemanticDiagnosticsBuilderProgram } from 'typescript'
 
-export default function proyectoEdit(){
+
+
+export default function proyectoEdit(this: any){
 
     const router = useRouter();
     const {id} = router.query;
@@ -90,59 +93,78 @@ export default function proyectoEdit(){
             </div>
             <div className = {sup_styles.navbarDer}>
                 <a href="/moduloProyectos/proyectos">
-                    <button className = {styles.negative_button_style}>Cancelar</button>
+                    <button className = {styles.negative_button_style}>Regresar</button>
                 </a>
             <div >
             <br>
             </br>
-                <button form = "form_id" className = {styles.positive_button_style}>
+                <button form = "form_id" onClick = {button_press} className = {styles.positive_button_style}>
                     Editar proyecto
                 </button>
             </div>
             </div>
         </div>
-    </div>
+    
 
-        <form action="" id="form_id" >       
+        <form action  = "" id="form_id" >       
             <div className = {styles.four_column_grid}>
                 <label id="estadoId">Estado del proyecto</label>
-                <select>
+                <select id = "estadoProyecto">
                     <option disabled selected> {proyecto.estado}</option>
-                    <option value = "optionDesarrollo"> Desarrollo </option>
-                    <option value = "optionProduccion"> Producción</option>
-                    <option value = "optionPostProduccion">Post Producción </option>
+                    <option value = "Desarrollo"> Desarrollo </option>
+                    <option value = "Produccion"> Producción</option>
+                    <option value = "PostProduccion">Post Producción </option>
                 </select>
-                <label id="nombreid">Nombre del cliente</label>
+                <label >Nombre del cliente</label>
                 <input type="text" id = "nombreid" placeholder = "Nuevo nombre"></input>
 
 
-                <label id = "pmid">PM</label>
+                <label >PM</label>
                 <input type="text" id = "pmid" placeholder = "PM"></input>
-                <label id = "cuit">CUIT</label>
+                <label >CUIT</label>
                 <input type="text" id = "cuit" placeholder = "CUIT"></input>
 
-                <label id = "fechainitid"> Fecha de inicio real</label>
+                <label > Fecha de inicio real</label>
                 <input type="date" id= "fechainitid" ></input>
-                <label id="contactoid">Contacto</label>
+                <label >Contacto</label>
                 <input type="text" id="contactoid" placeholder = "contacto@mail.com"></input>
 
-                <label id = "fechafinid">Fecha de fin estimada</label>
+                <label >Fecha de fin estimada</label>
                 <input type="date" id= "fechafinid" ></input>
-                <label id = "tipocliente">Tipo de cliente</label>
+                <label >Tipo de cliente</label>
                 <input type = "text" id = "tipocliente" placeholder = "Tipo"></input>
 
-                <label id= "horasinsumidas">Horas insumidas</label>
-                <input type="number" min = "0"></input>
+                <label >Horas insumidas</label>
+                <input type="number" id= "horasinsumidas" min = "0"></input>
                 <label id="proyectoSoporteId">Proyecto de soporte</label>
                 <select>
-                    <option value = "opcionNo">No</option>
-                    <option value = "opcionSi">Si</option>
+                    <option value = "No">No</option>
+                    <option value = "Si">Si</option>
                 </select>
             </div>
             
             
         </form>  
-        
+        </div> 
     </>
     )
 }
+
+
+
+
+
+function button_press(){
+    alert("Back end tiene que hacer algo "); 
+    var estado_proyecto = document.getElementById('estadoProyecto').value; 
+    var nombre_ciente = document.getElementById('nombreid').value;
+    var pm = document.getElementById('pmid').value;
+    var cuit = document.getElementById('cuit').value;
+    var fecha_inicio_real  = document.getElementById('fechainitid').value;
+    var fecha_fin_estimada = document.getElementById('fechafinid').value;
+    var tipo_cliente = document.getElementById('tipocliente').value;
+    var horas_insumidas = document.getElementById('horasinsumidas').value;
+    var proyectoSoporte  = document.getElementById('proyectoSoporteId').value;
+    return true;
+}
+var function_button = button_press;

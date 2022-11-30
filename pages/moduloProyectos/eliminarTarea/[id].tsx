@@ -14,16 +14,19 @@ export default function eliminarProyecto(){
 
     return (
         <>
-        <Head_ nombre='Eliminar proyecto'></Head_>
+        <Head_ nombre='Eliminar tarea'></Head_>
         <Header></Header>
 
         <div className={styles.new_project_window}>
         <div>
-                    Confirmacion. Desea eliminar el proyecto: {id}?
+                    Confirmacion. Desea eliminar la tarea: {id}?
         </div>
+        <a href= "/moduloProyectos/proyectoView">
         <button onClick = {function_button}className = {styles.positive_button_style}>
                         Confirmar
         </button>
+        </a>
+        
         <a href="/moduloProyectos/proyectoView">
         <button className = {styles.negative_button_style}>
                         Cancelar
@@ -40,7 +43,7 @@ export default function eliminarProyecto(){
 
 /*Aca el back tiene que editar los campos*/
 function button_press(){
-    alert("back end eliminame el proyecto");
+    alert("back end eliminame la tarea");
     return true;
 }
 var function_button = button_press;

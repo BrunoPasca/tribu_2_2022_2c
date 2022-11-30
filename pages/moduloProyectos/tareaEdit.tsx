@@ -37,13 +37,13 @@ export default function tareaEdit(){
             <div >
             <br>
             </br>
-                <button form = "form_id" className = {styles.positive_button_style}>
+                <button form = "form_id" onClick = {function_button} className = {styles.positive_button_style}>
                     Editar tarea
                 </button>
             </div>
             </div>
         </div>
-    </div>
+    
         <form action = "" id = "a_form_id">
             <div className = {styles.four_column_grid}>
                 <label>Descripcion </label>
@@ -83,10 +83,18 @@ export default function tareaEdit(){
 
         </form>
         
-   
+        </div>
         
 
 
         </>
     )
 }
+
+
+/*Aca el back tiene que editar los campos*/
+function button_press(){
+    alert("Back end editame la tarea "); 
+    return true;
+}
+var function_button = button_press;

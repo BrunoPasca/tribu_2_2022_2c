@@ -2,6 +2,8 @@ import styles from '../../styles/proyectos.module.css'
 import Head_ from '../head'
 import Header from '../header'
 
+/*hardocdeada nomas para mostrar. Tiene que tener un id dinamico la tarea*/
+const tarea_id = 1;
 
 export default function TareaView() {
     return (
@@ -35,8 +37,8 @@ export default function TareaView() {
         </div>
 
             <div className={styles.botonesView}>
-                <button>Eliminar</button>
-                <a href='/moduloProyectos/tareaEdit'><button>Editar</button></a>
+                <a href={'/moduloProyectos/eliminarTarea/' + tarea_id} ><button>Eliminar</button> </a>
+                <a href={'/moduloProyectos/editTarea/'+ tarea_id}><button>Editar</button></a>
             </div>
 
         </div>
@@ -46,3 +48,4 @@ export default function TareaView() {
    
    )
   }
+

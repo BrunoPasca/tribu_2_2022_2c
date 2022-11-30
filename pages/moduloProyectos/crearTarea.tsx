@@ -97,3 +97,10 @@ export default function crearTarea(){
         </>
     )
 }
+
+/*Poner logica para crear tarea*/
+function button_press(){
+    alert("TODO: guardar tarea"); 
+    return true;
+}
+var function_button = button_press;

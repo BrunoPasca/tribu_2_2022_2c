@@ -2,6 +2,8 @@ import styles from '../../styles/proyectos.module.css'
 import Head_ from '../head'
 import Header from '../header'
 
+/*puesto aca solo para tener bien las rutas. El proyecto deberia tener un id*/
+var id_proyecto = 1;
 
 export default function ProyectoView() {
     return (
@@ -41,8 +43,8 @@ export default function ProyectoView() {
         </div>
 
             <div className={styles.botonesView}>
-                <a href = "/moduloProyectos/eliminarProyecto/1" ><button>Eliminar</button> </a>
-                <a href='/moduloProyectos/editProject/1'><button>Editar</button></a>
+                <a href = {"/moduloProyectos/eliminarProyecto/"+ id_proyecto} ><button>Eliminar</button> </a>
+                <a href={'/moduloProyectos/editProject/' + id_proyecto}><button>Editar</button></a>
                 <a href="/moduloProyectos/tareas"><button>Ver tareas</button></a>
             </div>
 
