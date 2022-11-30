@@ -6,6 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { IconButton } from '@mui/material';
 
 function createData(
     name: string,
@@ -26,12 +28,13 @@ const rows = [
 export default function MuiTable({ valor }: { valor: string }) {
     return (
         <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 300 }} aria-label="simple table">
+            <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell>{valor}</TableCell>
-                        <TableCell >Inicio DD/MM/YYYY</TableCell>
-                        <TableCell align="right"> Cantidad horas</TableCell>
+                        <TableCell align="center">{valor}</TableCell>
+                        <TableCell align="center">DD/MM/YYYY</TableCell>
+                        <TableCell align="center">Horas</TableCell>
+                        <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -40,11 +43,16 @@ export default function MuiTable({ valor }: { valor: string }) {
                             key={row.name}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell component="th" scope="row">
+                            <TableCell align="center" component="th" scope="row">
                                 {row.name}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
+                            <TableCell align="center">{row.calories}</TableCell>
+                            <TableCell align="center">{row.fat}</TableCell>
+                            <TableCell>
+                                <IconButton>
+                                    <DeleteIcon />
+                                </IconButton>
+                            </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

@@ -1,6 +1,7 @@
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
 import Head_ from '../head';
+import Link from 'next/link';
 
 
 export default function LandingRecurso() {
@@ -19,8 +20,7 @@ export default function LandingRecurso() {
                 </div>
                 <div className={styles.navbarDer}>
                     <input placeholder='Empleado o proyecto'></input>
-                    <a href="./loadInfo"><button>Cargar Horas</button></a>
-
+                    <Link href="./loadInfo"><button>Cargar Horas</button></Link>
                 </div>
             </div>
 
