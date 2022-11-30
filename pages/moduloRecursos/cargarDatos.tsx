@@ -1,40 +1,45 @@
 import React, { useEffect } from "react";
-import DatePicker  from "react-datepicker";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
+import { useState } from 'react';
+import Link from 'next/link';
 
-export default function CrearReporteTrabajo() {
-
-    const [formData, setFormData] = React.useState(
+export default function CrearReporteTrabajo({ setter }: { setter: any }) {
+    const [formData, setFormData] = useState(
         {
-            nombre: "", 
-            apellido: "", 
-            legajo: "", 
+            nombre: "",
+            apellido: "",
+            legajo: "",
         }
     )
 
-    const [inicio, setInicio] = React.useState(new Date())
-    const [periodo, setPeriodo] = React.useState("semanal")
-    const [fin, setFormFin] = React.useState(new Date())
+    const [inicio, setInicio] = useState(new Date())
+    const [periodo, setPeriodo] = useState("semanal")
+    const [fin, setFormFin] = useState(new Date())
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData(prevFormData => ({ ...prevFormData, [event.target.name] : event.target.value }))
+        setFormData(prevFormData => ({ ...prevFormData, [event.target.name]: event.target.value }))
     };
 
     // Cuando se cambia la fecha de inicio seteo la fecha final del periodo
     useEffect(() => {
         let fechaFin = new Date(inicio);
-        console.log(fechaFin)
-        switch(periodo) {
+        switch (periodo) {
             case "semanal":
                 fechaFin.setDate(fechaFin.getDate() + 6)
                 break;
             case "quincenal":
-                fechaFin.setDate(fechaFin.getDate() + 14)
+                if (inicio.getDate() === 1) {
+                    fechaFin.setDate(14)
+                } else {
+                    let ultimoDiaDelMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0);
+                    fechaFin = ultimoDiaDelMes
+                }
                 break;
             default:
-                let ultimoDiaDelMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth()+1, 0);
+                let ultimoDiaDelMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0);
                 fechaFin = ultimoDiaDelMes
         }
 
@@ -47,7 +52,7 @@ export default function CrearReporteTrabajo() {
         let year = fechaInicio.getFullYear();
         let month = fechaInicio.getMonth();
 
-        switch(periodo) {
+        switch (periodo) {
             case "semanal":
                 let targetDate = new Date(fechaInicio);
                 let targetMonth = targetDate.getMonth();
@@ -55,7 +60,7 @@ export default function CrearReporteTrabajo() {
                 let firstDateInMonth = new Date(targetYear, targetMonth, 1);
                 let firstWeekdayInMonth = firstDateInMonth.getDay();
                 let firstMondayDate = 1 + ((8 - firstWeekdayInMonth) % 7);
-                fechaInicio =  new Date(targetYear, targetMonth, firstMondayDate);
+                fechaInicio = new Date(targetYear, targetMonth, firstMondayDate);
                 break;
             case "quincenal":
                 fechaInicio = new Date(year, month, 15)
@@ -66,10 +71,10 @@ export default function CrearReporteTrabajo() {
 
         setInicio(fechaInicio)
     }, [periodo])
-    
+
     // Filtra las fechas válidas según el periodo (semanal empieza lunes, quincenal 1 ó 15, mensual 1)
-    function filterDate(current : any) {
-        switch(periodo) {
+    function filterDate(current: any) {
+        switch (periodo) {
             case "semanal":
                 return new Date(current).getDay() === 1;
             case "quincenal":
@@ -94,42 +99,37 @@ export default function CrearReporteTrabajo() {
             return;
         }
 
-        const datos = {...formData, inicio : inicio, fin : fin, periodo : periodo};
-    
-        sessionStorage.setItem("datos", JSON.stringify(datos))
-        window.location.href = "/moduloRecursos/cargarTarea"
-    }
-    function handleClickCancelar() {
-        window.location.href = "/"
-    }
+        const datos = { ...formData, inicio: inicio, fin: fin, periodo: periodo };
 
+        sessionStorage.setItem("datos", JSON.stringify(datos))
+        setter(true);
+    }
 
     return (
-            
+
         <div className={styles.cargarDatos}>
-            <Header></Header>
             <form>
                 <p>
-                  <label className={styles.inputLabel}>Nombre</label>
-                  <input id="nombre" type="text" placeholder="Nombre" name='nombre' onChange={handleChange} value={formData.nombre}></input>
+                    <label className={styles.inputLabel}>Nombre</label>
+                    <input id="nombre" type="text" placeholder="Nombre" name='nombre' onChange={handleChange} value={formData.nombre}></input>
 
-                  <label className={styles.inputLabel}>Apellido</label>
-                  <input type="text" placeholder="Apellido" name='apellido' onChange={handleChange} value={formData.apellido}></input>
+                    <label className={styles.inputLabel}>Apellido</label>
+                    <input type="text" placeholder="Apellido" name='apellido' onChange={handleChange} value={formData.apellido}></input>
                 </p>
 
                 <p>
-                  <label className={styles.inputLabel}>Legajo</label>
-                  <input type="number" placeholder="Legajo" name='legajo' onChange={handleChange} value={formData.legajo}></input>
+                    <label className={styles.inputLabel}>Legajo</label>
+                    <input type="number" placeholder="Legajo" name='legajo' onChange={handleChange} value={formData.legajo}></input>
                 </p>
 
                 <label className={styles.inputLabel}>Periodo</label>
-                <select 
-                    id="periodo" 
+                <select
+                    id="periodo"
                     className={styles.selectInput}
                     value={periodo}
                     onChange={(e) => {
                         setPeriodo(e.currentTarget.value)
-                      }}
+                    }}
                     name="periodo"
                 >
                     <option value="semanal">Semanal</option>
@@ -138,18 +138,20 @@ export default function CrearReporteTrabajo() {
                 </select>
                 <br></br>
                 <br></br>
-                
-                <div className={styles.calendarInput}>    
+
+                <div className={styles.calendarInput}>
                     <label className={styles.inputLabel}>Inicio</label>
-                    <DatePicker className={styles.calendar} selected={inicio} onChange={(date : any) => setInicio(date)} 
+                    <DatePicker className={styles.calendar} selected={inicio} onChange={(date: any) => setInicio(date)}
                         filterDate={filterDate}
                     />
                 </div>
                 <br></br>
 
                 <div className={styles.containerBotones}>
-                    <button type="button"  title="Continuar" onClick={handleClickContinuar}>Continuar</button>
-                    <button type="button" title="Cancelar" onClick={handleClickCancelar}>Cancelar</button>
+                    <button type="button" title="Continuar" onClick={handleClickContinuar}>Continuar</button>
+                    <button type="button" title="Cancelar">
+                        <Link href="/">Cancelar</Link>
+                    </button>
                 </div>
             </form>
 
