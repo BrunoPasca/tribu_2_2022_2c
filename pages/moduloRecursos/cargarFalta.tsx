@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
 import SeleccionarActividad from "./seleccionarActividad";
+import Muitable from "./tablaFaltas"
 
 export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
     const [fecha, setFecha] = React.useState()
@@ -41,14 +42,6 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
                     <br></br>
 
                     <div className={styles.flexContainer}>
-                        <label className={styles.smallInputLabel}>De</label>
-                        <DatePicker className={styles.datePicker} dateFormat="h aa" showTimeSelect showTimeSelectOnly selected={horaInicio} onChange={(date: any) => setHoraInicio(date)} />
-                        <label className={styles.smallInputLabel}>a</label>
-                        <DatePicker className={styles.datePicker} dateFormat="h aa" showTimeSelect showTimeSelectOnly selected={horaFin} onChange={(date: any) => setHoraFin(date)} />
-                    </div>
-                    <br></br>
-
-                    <div className={styles.flexContainer}>
                         <label className={styles.inputLabel}>Justificante</label>
                         <textarea id="justificante" name="justificante" value={justificante} onChange={(text: any) => setJustificante(text.target.value)}></textarea>
                     </div>
@@ -56,8 +49,15 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
                         <button>Cancelar</button>
                         <button>Cargar Falta</button>
                     </div>
-
                 </div>
+
+                <div className={styles.ingresarInfoTarea}>
+                        <div className={styles.holder}>
+                            <h2>Faltas Cargadas</h2>
+                            <h3>{fechaInicio.toLocaleDateString()} - {fechaFin.toLocaleDateString()}</h3>
+                            <Muitable valor={"tarea"} />
+                        </div>
+                    </div>
             </div>
         </div>
 

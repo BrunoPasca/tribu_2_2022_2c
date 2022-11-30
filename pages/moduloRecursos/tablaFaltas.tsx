@@ -7,11 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import { IconButton } from '@mui/material';
-import BorrarHoraModal from './borrarHoraModal';
-import Edit from '@mui/icons-material/Edit';
-import EditarHoraModal from './editarHoraModal';
+import BorrarFaltaModal from './borrarFaltaModal';
 
 export default function MuiTable(props : any) {
     // Pop up para editar las horas de una tarea
@@ -28,55 +25,42 @@ export default function MuiTable(props : any) {
         {
             id: "1",
             legajo_empleado: "2",
-            id_tarea: "3",
-            cant_horas:"5",
             fecha: "11/10/2022",
-            estado: "abierto",
+            justificante: "tenia covid"
         },
         {
             id: "2",
             legajo_empleado: "3",
-            id_tarea: "4",
-            cant_horas:"2",
-            fecha: "11/02/2022",
-            estado: "abierto",
+            fecha: "05/10/2022",
+            justificante: "habia un piquete"
         }
     ]
-
     
-    
-
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell align="center">TareaId</TableCell>
                         <TableCell align="center">Fecha</TableCell>
-                        <TableCell align="center">Horas</TableCell>
+                        <TableCell align="center">Justificante</TableCell>
                         <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {reportes.map((reporte) => (
                         <TableRow
-                            key={reporte.id_tarea}
+                            key={reporte.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell align="center" component="th" scope="row">
-                                {reporte.id_tarea}
+                                {reporte.fecha}
                             </TableCell>
-                            <TableCell align="center">{reporte.fecha}</TableCell>
-                            <TableCell align="center">{reporte.cant_horas}</TableCell>
+                            <TableCell align="center">{reporte.justificante}</TableCell>
                             <TableCell>
                                 <IconButton onClick={handleOpenDelete}>
                                     <DeleteIcon/>
                                 </IconButton>
-                                <BorrarHoraModal isOpen = {openDelete} setOpen={setOpenDelete} reporteId={reporte.id}></BorrarHoraModal>
-                                <IconButton onClick={handleOpenEdit}>
-                                    <EditIcon/>
-                                </IconButton>
-                                <EditarHoraModal isOpen = {openEdit} setOpen={setOpenEdit} reporteId={reporte.id} tareaId={reporte.id_tarea} cantHoras={reporte.cant_horas}></EditarHoraModal>
+                                <BorrarFaltaModal isOpen = {openDelete} setOpen={setOpenDelete} idReporte={reporte.id}></BorrarFaltaModal>
                             </TableCell>
                         </TableRow>
                     ))}

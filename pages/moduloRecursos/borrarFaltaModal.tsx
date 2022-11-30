@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 
-export default function BorrarHoraModal(props: any) {
+export default function BorrarFaltaModal(props: any) {
   var open = props.isOpen
   var setOpen = props.setOpen
   const handleOpen = () => setOpen(true);
@@ -25,7 +25,7 @@ export default function BorrarHoraModal(props: any) {
 
   function handleBorrar() {
     /* LLAMAR A ENDPOINT */
-    // deleteHorasById(props.reporteId)
+    // deleteFaltaById(props.reporteId)
     setOpen(false)
 
     // Hay que hacer reload para que se actualice la tabla, pero vuelve al home
@@ -50,7 +50,7 @@ export default function BorrarHoraModal(props: any) {
         >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2" style={{textAlign:"center"}}>
-            ¿Está seguro que quiere eliminar este reporte?
+            ¿Está seguro que quiere eliminar esta falta?
           </Typography>
           <Button style={{backgroundColor: "#134074", color:"white", float:"left"}} onClick={handleCancelar}>Cancelar</Button>
           <Button style={{backgroundColor: "#134074", color:"white", float:"right"}} onClick={handleBorrar}>Borrar</Button>

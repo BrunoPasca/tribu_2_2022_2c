@@ -10,8 +10,7 @@ import MuiTable from "./tablaHoras";
 
 export default function CargarTarea({ period, screenSetter }: { period: string, screenSetter: any }) {
     const [fecha, setFecha] = React.useState()
-    const [horaInicio, setHoraInicio] = React.useState(new Date())
-    const [horaFin, setHoraFin] = React.useState(new Date())
+    const [cantHoras, setCantHoras] = React.useState()
 
     const [proyectos, setProyectos] = React.useState<any[]>([])
     const [tareas, setTareas] = React.useState<any[]>([])
@@ -60,6 +59,10 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                 console.log('Response parsing failed. Error: ', ex);
             });;
     }, [proyectoId])
+
+    function handleChangeHoras(e : any) {
+        setCantHoras(e.target.value)
+    }
 
     return (
         <div>
@@ -113,12 +116,9 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                     </div>
                     <br></br>
 
-                    <div className={styles.flexContainer}>
-                        <label className={styles.smallInputLabel}>De</label>
-                        <DatePicker className={styles.datePicker} dateFormat="h aa" showTimeSelect showTimeSelectOnly selected={horaInicio} onChange={(date: any) => setHoraInicio(date)} />
-                        <label className={styles.smallInputLabel}>a</label>
-                        <DatePicker className={styles.datePicker} dateFormat="h aa" showTimeSelect showTimeSelectOnly selected={horaFin} onChange={(date: any) => setHoraFin(date)} />
-                    </div>
+                    <label className={styles.inputLabel}>Horas</label>
+                    <input min="1" type="number" placeholder="Horas" name='horas' onChange={handleChangeHoras} value={cantHoras}></input>
+
                     <div className={styles.containerBotones}>
                         <button>Cancelar</button>
                         <button>Cargar Tarea</button>

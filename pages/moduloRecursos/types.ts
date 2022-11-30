@@ -11,10 +11,10 @@ export type Proyecto = {
 }
 
 export type Tarea = {
-    id : number,
-    id_proyecto: number,
+    id: number,
+    legajo_empleado: number,
+    id_tarea: number,
+    cant_horas:number,
+    fecha: Date,
     estado: string,
-    descripcion: string,
-    horas_estimadas: number,
-    horas_totales: number,
 }
