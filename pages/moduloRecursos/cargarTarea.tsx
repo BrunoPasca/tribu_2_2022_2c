@@ -126,8 +126,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                 </div>
                 <div className={styles.ingresarInfoTarea}>
                     <div className={styles.holder}>
-                        <label className={styles.titleLabel}>Actividades Cargadas</label>
-                        <label className={styles.titleLabel}>Periodo: {period}</label>
+                        <h2>Tareas Cargadas</h2>
+                        <h3>{fechaInicio.toLocaleDateString()} - {fechaFin.toLocaleDateString()}</h3>
                         <MuiTable valor={"tarea"} />
                     </div>
                 </div>
