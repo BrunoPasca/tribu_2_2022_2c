@@ -69,7 +69,7 @@ export default function crearTarea(){
                 <div>
                     <label id = "recursosAsignadosID" >Recursos asignados </label>
                 </div>
-                <select id="optionDropDown" size="2" multiple> </select>
+                <select id="optionDropDown" size={2} multiple> </select>
                 <Script src = "../../dropdown.js"></Script>
                 <div></div>
 
@@ -78,7 +78,7 @@ export default function crearTarea(){
                 <div>
                     <label id = "tareasCondicionalID" >Tareas condicionales </label>
                 </div>
-                <select id="tareaOptionDropDown" size="2" multiple > </select>
+                <select id="tareaOptionDropDown" size={2} multiple > </select>
                 <Script src = "../../modulo_proyectos_dropdown_tareas.js"></Script>
                 <div></div>
 

@@ -60,6 +60,11 @@
   background-color: #EEF4ED;
 }
 
+.colorFondo{
+  background-color: #EEF4ED;
+
+}
+
 /*-----*/
   
 .barraBusqueda{
@@ -69,10 +74,14 @@
   
 .grilla{
     display: grid;
-    align-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 20px;
+}
+
+.grillaEncabezado{
+  color: black;
+  font-size: 30px;
 }
 
 .contenedorBoton{
@@ -80,13 +89,14 @@
 }
 
 .contenedorBoton button{
-  margin: 20px;
+  margin: 50px;
   padding: 10px;
   border-radius: 30px;
   width: 200px;
   background-color: #0B2545;
   border: none;
   color: white;
+  height: 50px;
 }
 
 .contenedorBoton button:hover{  
