@@ -5,8 +5,7 @@ export default function proyectoCard({nombre, id, cliente, estado, fechaInicio, 
     return(
         <a href="/moduloProyectos/proyectoView">
         <div className={styles.proyectoCard}>
-            <div className={styles.tituloCard}>{nombre}</div>
-            <div className={styles.textoCard}>{id}</div>
+            <div className={styles.tituloCard}>{id} - {nombre}</div>
             <div className={styles.textoCard}>{cliente}</div>
             <div className={styles.textoCard}>{estado}</div>
             <div className={styles.textoCard}>{fechaInicio}</div>

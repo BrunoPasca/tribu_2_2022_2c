@@ -70,10 +70,10 @@ export default function tareaEdit(){
                 <input type = "date" placeholder = {tarea.Fecha_real_de_fin}></input>
             
                 <label>Recursos asignados </label> 
-                <select id="optionDropDown" size="2" multiple> </select>
+                <select id="optionDropDown" size={2} multiple> </select>
                 <Script src = "../../dropdown.js"></Script>
                 <div></div>
-                <select id="tareaOptionDropDown" size="2" multiple > </select>
+                <select id="tareaOptionDropDown" size={2} multiple > </select>
                 <Script src = "../../modulo_proyectos_dropdown_tareas.js"></Script>
                 <div></div>
                 
