@@ -26,13 +26,17 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     // Cuando se cambia la fecha de inicio seteo la fecha final del periodo
     useEffect(() => {
         let fechaFin = new Date(inicio);
-        console.log(fechaFin)
         switch (periodo) {
             case "semanal":
                 fechaFin.setDate(fechaFin.getDate() + 6)
                 break;
             case "quincenal":
-                fechaFin.setDate(fechaFin.getDate() + 14)
+                if (inicio.getDate() === 1) {
+                    fechaFin.setDate(14)
+                } else {
+                    let ultimoDiaDelMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0);
+                    fechaFin = ultimoDiaDelMes
+                }
                 break;
             default:
                 let ultimoDiaDelMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0);
