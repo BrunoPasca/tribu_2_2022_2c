@@ -36,7 +36,7 @@ export default function TareaView() {
 
             <div className={styles.botonesView}>
                 <button>Eliminar</button>
-                <a href='/moduloSoporte/ticketEdit'><button>Editar</button></a>
+                <a href='/moduloProyectos/tareaEdit'><button>Editar</button></a>
             </div>
 
         </div>

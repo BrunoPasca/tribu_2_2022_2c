@@ -1,19 +1,19 @@
 import styles from '../../styles/proyectos.module.css'
 import Header from '../header';
-import TareaCard from './tareaCard';
 import Head_ from '../head';
-
-//tarea de prueba
-const tarea = {
-        nombre: "Desarrollo",
-        id: 1,
-        desc: "Desarrollar",
-        estado: "Completada", 
-        fechaEstFin: "01/01/2023", 
-    }
-
+import ColumnaTarea from './columnaTareas';
+import React from 'react';
 
 export default function Tarea() {
+
+  const [initialRenderComplete, setInitialRenderComplete] = React.useState(false);
+	React.useEffect(() => {
+		setInitialRenderComplete(true);
+	}, []);
+
+	if (!initialRenderComplete) {
+		return null;
+	} else {
 
     return(<div className={styles.container}>
 
@@ -38,14 +38,31 @@ export default function Tarea() {
 
           </div>
         </div>
-
-        <div className={styles.grilla}>
-            <div key={tarea.id}>
-              <TareaCard nombre={tarea.nombre} id={tarea.id} desc={tarea.desc} estado={tarea.estado} fechaEstFin={tarea.fechaEstFin}></TareaCard>
-            </div>
-        </div>
         
-        <main className={styles.main}>
+        <div className={styles.grilla}>
+            <div>
+              <h2 className={styles.grillaEncabezado}>A</h2>  
+              <ColumnaTarea estadoFiltro='A'></ColumnaTarea>  
+            </div>
+            <div>
+            <h2 className={styles.grillaEncabezado}>B</h2>  
+              <ColumnaTarea estadoFiltro='B'></ColumnaTarea>
+            </div>
+            <div>
+            <h2 className={styles.grillaEncabezado}>C</h2>  
+              <ColumnaTarea estadoFiltro='C'></ColumnaTarea>
+            </div>
+            <div>
+            <h2 className={styles.grillaEncabezado}>D</h2>  
+              <ColumnaTarea estadoFiltro='D'></ColumnaTarea>
+            </div>
+            <div>
+            <h2 className={styles.grillaEncabezado}>E</h2>  
+              <ColumnaTarea estadoFiltro='E'></ColumnaTarea>
+            </div>
+          </div>
+        
+        <main className={styles.colorFondo}>
           <div className={styles.contenedorBoton}>
             <a href='/moduloProyectos/crearTarea'><button>Agregar nueva tarea</button></a>
           </div>
@@ -58,3 +75,4 @@ export default function Tarea() {
       </div>
     );
   }
+}

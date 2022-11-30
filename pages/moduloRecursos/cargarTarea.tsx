@@ -7,7 +7,8 @@ import SeleccionarActividad from "./seleccionarActividad";
 import { getProyectos, getTareasByProyecto } from "./services/ProyectoService";
 import MuiTable from "./tablaHoras";
 
-export default function CargarTarea() {
+
+export default function CargarTarea({ period, screenSetter }: { period: string, screenSetter: any }) {
     const [fecha, setFecha] = React.useState()
     const [horaInicio, setHoraInicio] = React.useState(new Date())
     const [horaFin, setHoraFin] = React.useState(new Date())
@@ -15,15 +16,19 @@ export default function CargarTarea() {
     const [proyectos, setProyectos] = React.useState<any[]>([])
     const [tareas, setTareas] = React.useState<any[]>([])
 
+    const actividades = {
+        "Tarea": 1,
+        "Guardia": 2,
+        "Falta": 3,
+        "Licencia": 4,
+    }
+
     const [proyectoId, setProyectoId] = React.useState("")
     const [tareaId, setTareaId] = React.useState("")
 
     let datos; // datos que se cargan con sessionStorage en page cargarDatos
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
     const [fechaFin, setFechaFin] = React.useState(new Date())
-
-    const [periodo, setPeriodo] = React.useState("Semanal")
-
     useEffect(() => {
         // Recupero los datos
         if (typeof window !== "undefined") {
@@ -41,7 +46,9 @@ export default function CargarTarea() {
 
         if (!proyectos[0]) return;
         setProyectoId(proyectos[0].id)
+
     }, [])
+
 
     // Cuando selecciona otro proyecto obtengo las tareas asociadas
     useEffect(() => {
@@ -56,10 +63,10 @@ export default function CargarTarea() {
 
     return (
         <div>
-            <Header></Header>
+
             <div className={styles.cargarTarea}>
                 <div className={styles.ingresarInfoTarea}>
-                    <SeleccionarActividad actividad="Tarea" />
+                    <SeleccionarActividad actividad="Tarea" screenSetter={screenSetter} />
                     <label className={styles.inputLabel}>Proyecto</label>
                     <select
                         id="proyecto"
@@ -120,8 +127,8 @@ export default function CargarTarea() {
                 <div className={styles.ingresarInfoTarea}>
                     <div className={styles.holder}>
                         <label className={styles.titleLabel}>Actividades Cargadas</label>
-                        <label className={styles.titleLabel}>Periodo: {periodo}</label>
-                        <MuiTable />
+                        <label className={styles.titleLabel}>Periodo: {period}</label>
+                        <MuiTable valor={"tarea"} />
                     </div>
                 </div>
             </div>

@@ -3,10 +3,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
+import { useState } from 'react';
+import Link from 'next/link';
 
-export default function CrearReporteTrabajo() {
-
-    const [formData, setFormData] = React.useState(
+export default function CrearReporteTrabajo({ setter }: { setter: any }) {
+    const [formData, setFormData] = useState(
         {
             nombre: "",
             apellido: "",
@@ -14,9 +15,9 @@ export default function CrearReporteTrabajo() {
         }
     )
 
-    const [inicio, setInicio] = React.useState(new Date())
-    const [periodo, setPeriodo] = React.useState("semanal")
-    const [fin, setFormFin] = React.useState(new Date())
+    const [inicio, setInicio] = useState(new Date())
+    const [periodo, setPeriodo] = useState("semanal")
+    const [fin, setFormFin] = useState(new Date())
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFormData(prevFormData => ({ ...prevFormData, [event.target.name]: event.target.value }))
@@ -25,13 +26,17 @@ export default function CrearReporteTrabajo() {
     // Cuando se cambia la fecha de inicio seteo la fecha final del periodo
     useEffect(() => {
         let fechaFin = new Date(inicio);
-        console.log(fechaFin)
         switch (periodo) {
             case "semanal":
                 fechaFin.setDate(fechaFin.getDate() + 6)
                 break;
             case "quincenal":
-                fechaFin.setDate(fechaFin.getDate() + 14)
+                if (inicio.getDate() === 1) {
+                    fechaFin.setDate(14)
+                } else {
+                    let ultimoDiaDelMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0);
+                    fechaFin = ultimoDiaDelMes
+                }
                 break;
             default:
                 let ultimoDiaDelMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0);
@@ -97,17 +102,12 @@ export default function CrearReporteTrabajo() {
         const datos = { ...formData, inicio: inicio, fin: fin, periodo: periodo };
 
         sessionStorage.setItem("datos", JSON.stringify(datos))
-        window.location.href = "/moduloRecursos/cargarTarea"
+        setter(true);
     }
-    function handleClickCancelar() {
-        window.location.href = "/"
-    }
-
 
     return (
 
         <div className={styles.cargarDatos}>
-            <Header></Header>
             <form>
                 <p>
                     <label className={styles.inputLabel}>Nombre</label>
@@ -149,7 +149,9 @@ export default function CrearReporteTrabajo() {
 
                 <div className={styles.containerBotones}>
                     <button type="button" title="Continuar" onClick={handleClickContinuar}>Continuar</button>
-                    <button type="button" title="Cancelar" onClick={handleClickCancelar}>Cancelar</button>
+                    <button type="button" title="Cancelar">
+                        <Link href="/">Cancelar</Link>
+                    </button>
                 </div>
             </form>
 
