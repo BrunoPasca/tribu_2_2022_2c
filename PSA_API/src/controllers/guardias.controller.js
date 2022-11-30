@@ -40,6 +40,23 @@ export const getGuardia = async (req, res) => {
     }
 };
 
+export const getGuardiaEmpleado = async (req, res) => {
+    try {
+        const { legajo } = req.params;
+        const [rows] = await pooldb.query("SELECT * FROM tbl_guardia WHERE legajo_empleado = ?", [
+            legajo,
+        ]);
+
+        if (rows.length <= 0) {
+            return res.status(404).json({ message: "Guardia not found" });
+        }
+
+        res.json(rows[0]);
+    } catch (error) {
+        return res.status(500).json({ message: "Something goes wrong" });
+    }
+};
+
 export const deleteGuardia = async (req, res) => {
     try {
         const { id } = req.params.id;
