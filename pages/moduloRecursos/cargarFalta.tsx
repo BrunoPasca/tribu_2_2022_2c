@@ -9,9 +9,6 @@ import Link from "next/link";
 
 export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
     const [fecha, setFecha] = React.useState(new Date())
-    const [horaInicio, setHoraInicio] = React.useState(new Date())
-    const [horaFin, setHoraFin] = React.useState(new Date())
-
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
     const [fechaFin, setFechaFin] = React.useState(new Date())
     const [legajo, setLegajo] = React.useState("")
@@ -25,14 +22,14 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
             setFechaInicio(new Date(datos.inicio));
             setFechaFin(new Date(datos.fin));
             setLegajo(datos.legajo)
-            setFecha(datos.inicio)
+            setFecha(new Date(datos.inicio))
         }
     }, [])
 
 
     async function handleClickCargar(){
         const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
-        const faltaDatos = {legajo: legajo, fecha :  _fecha, jsutificante : justificante}
+        const faltaDatos = {legajo: legajo, fecha :  _fecha, justificante : justificante}
 
         const areNotEmpty = Object.values(faltaDatos).every(
             value => value != ""
