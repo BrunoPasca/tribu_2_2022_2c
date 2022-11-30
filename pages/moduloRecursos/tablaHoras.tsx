@@ -31,13 +31,13 @@ export default function MuiTable(props : any) {
 
     /* HAY QUE USAR UN ENDPOINT */
     const reportes =         [
-        // Formato fecha dd/mm/yyyy
+        // Formato fecha mm/dd/yyyy
         {
             id: "1",
             legajo_empleado: "1",
             id_tarea: "3",
             cant_horas:"5",
-            fecha: "11/11/2022",
+            fecha: "11/07/2022",
             estado: "abierto",
         },
         {
@@ -45,7 +45,7 @@ export default function MuiTable(props : any) {
             legajo_empleado: "3",
             id_tarea: "4",
             cant_horas:"2",
-            fecha: "21/11/2022",
+            fecha: "10/10/2022",
             estado: "abierto",
         },
         {
@@ -53,26 +53,15 @@ export default function MuiTable(props : any) {
             legajo_empleado: "22",
             id_tarea: "5",
             cant_horas:"2",
-            fecha: "7/11/2022",
+            fecha: "11/13/2022",
             estado: "abierto",
         }
     ]
 
-    // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
-    function modificarFormatoFecha(date : string) {
-        const [day, month, year] = date.split('/');
-        // @ts-ignore
-        return new Date(+year, month - 1, +day);
+    var getvalidDate = function(d : any){ return new Date(d) }
+    function DateBetweenTwoDates(fromDate : any, toDate : any, givenDate : any){
+        return getvalidDate(givenDate) <= getvalidDate(toDate) && getvalidDate(givenDate) >= getvalidDate(fromDate);
     }
-
-    function DateBetweenTwoDates(fromDate : string, toDate : string, givenDate : string) {
-        const start = modificarFormatoFecha(fromDate);
-        const end = modificarFormatoFecha(toDate);
-        const date = modificarFormatoFecha(givenDate);
-
-        return (start <= date && date <= end);
-    }
-    
 
     return (
         <TableContainer component={Paper} sx={{borderRadius:"2rem"}}>
@@ -88,7 +77,8 @@ export default function MuiTable(props : any) {
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell align="center">TareaId</TableCell>
+                        <TableCell align="center">ID</TableCell>
+                        <TableCell align="center">ID Tarea</TableCell>
                         <TableCell align="center">Fecha</TableCell>
                         <TableCell align="center">Horas</TableCell>
                     </TableRow>
@@ -96,12 +86,13 @@ export default function MuiTable(props : any) {
                 <TableBody>
                     {reportes.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
                         <TableRow
-                            key={reporte.id_tarea}
+                            key={reporte.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell align="center" component="th" scope="row">
-                                {reporte.id_tarea}
+                            <TableCell component="th" scope="row">
+                                {reporte.id}
                             </TableCell>
+                            <TableCell align="center">{reporte.id_tarea}</TableCell>
                             <TableCell align="center">{reporte.fecha}</TableCell>
                             <TableCell align="center">{reporte.cant_horas}</TableCell>
                             <TableCell padding="none" align="right">

@@ -68,14 +68,15 @@ export default function MuiTable(props : any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes.filter(reporte => reporte.legajo_empleado == legajo && DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
+                    {reportes.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
                         <TableRow
                             key={reporte.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell align="center" component="th" scope="row">
-                                {reporte.fecha}
+                            <TableCell component="th" scope="row">
+                                {reporte.id}
                             </TableCell>
+                            <TableCell align="center">{reporte.fecha}</TableCell>
                             <TableCell align="center">{reporte.justificante}</TableCell>
                             <TableCell padding='none'>
                                 <IconButton onClick={handleOpenDelete}>

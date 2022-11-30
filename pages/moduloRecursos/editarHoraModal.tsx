@@ -34,7 +34,7 @@ export default function EditarHoraModal(props: any) {
     
     setOpen(false)
 
-    // Hay que hacer reload para que se actualice la tabla, pero vuelve al home
+    // Hay que hacer reload para que se actualice la tabla, o useInterval para que se carguen los reportes cada x tiempo (?)
     document.location.reload()
   }
   function handleCancelar() {
