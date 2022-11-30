@@ -69,10 +69,8 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
                     </div>
                 </div>
 
-                <div className={styles.ingresarInfoTarea}>
-                        <div className={styles.holder}>
-                            <Muitable valor={"tarea"} legajo={legajo} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()}/>
-                        </div>
+                <div className={styles.holder}>
+                    <Muitable valor={"tarea"} legajo={legajo} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()}/>
                 </div>
             </div>
         </div>

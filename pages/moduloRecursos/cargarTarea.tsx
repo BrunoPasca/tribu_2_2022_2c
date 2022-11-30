@@ -166,10 +166,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                         <button onClick={handleClickCargar}>Cargar Tarea</button>
                     </div>
                 </div>
-                <div className={styles.ingresarInfoTarea}>
-                    <div className={styles.holder}>
-                        <MuiTable valor={"tarea"} legajo={legajo} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()} />
-                    </div>
+                <div className={styles.holder}>
+                    <MuiTable valor={"tarea"} legajo={legajo} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()} />
                 </div>
             </div>
         </div>
