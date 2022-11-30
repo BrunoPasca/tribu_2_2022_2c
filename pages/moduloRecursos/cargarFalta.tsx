@@ -71,9 +71,7 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
 
                 <div className={styles.ingresarInfoTarea}>
                         <div className={styles.holder}>
-                            <h2>Faltas Cargadas</h2>
-                            <h3>{fechaInicio.toLocaleDateString()} - {fechaFin.toLocaleDateString()}</h3>
-                            <Muitable valor={"tarea"} />
+                            <Muitable valor={"tarea"} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()}/>
                         </div>
                     </div>
             </div>

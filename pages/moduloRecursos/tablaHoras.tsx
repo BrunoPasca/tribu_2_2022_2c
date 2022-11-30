@@ -23,6 +23,9 @@ export default function MuiTable(props : any) {
     const handleOpenEdit = () => setOpenEdit(true);
     const handleCloseEdit = () => setOpenEdit(false);
 
+    const inicio = props.fechaInicio
+    const fin = props.fechaFin
+
     /* HAY QUE USAR UN ENDPOINT */
     const reportes =         [
         {
@@ -30,7 +33,7 @@ export default function MuiTable(props : any) {
             legajo_empleado: "2",
             id_tarea: "3",
             cant_horas:"5",
-            fecha: "11/10/2022",
+            fecha: "11/06/2022",
             estado: "abierto",
         },
         {
@@ -38,10 +41,15 @@ export default function MuiTable(props : any) {
             legajo_empleado: "3",
             id_tarea: "4",
             cant_horas:"2",
-            fecha: "11/02/2022",
+            fecha: "11/13/2022",
             estado: "abierto",
         }
     ]
+
+    var getvalidDate = function(d : any){ return new Date(d) }
+    function DateBetweenTwoDates(fromDate : any, toDate : any, givenDate : any){
+        return getvalidDate(givenDate) <= getvalidDate(toDate) && getvalidDate(givenDate) >= getvalidDate(fromDate);
+    }
     
 
     return (
@@ -66,7 +74,7 @@ export default function MuiTable(props : any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes.map((reporte) => (
+                    {reportes.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
                         <TableRow
                             key={reporte.id_tarea}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

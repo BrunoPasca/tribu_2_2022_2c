@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { IconButton } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 
 export default function MuiTable(props : any) {
@@ -20,12 +20,15 @@ export default function MuiTable(props : any) {
     const handleOpenEdit = () => setOpenEdit(true);
     const handleCloseEdit = () => setOpenEdit(false);
 
+    const inicio = props.fechaInicio
+    const fin = props.fechaFin
+
     /* HAY QUE USAR UN ENDPOINT */
     const reportes =         [
         {
             id: "1",
             legajo_empleado: "2",
-            fecha: "11/10/2022",
+            fecha: "11/13/2022",
             justificante: "tenia covid"
         },
         {
@@ -35,10 +38,26 @@ export default function MuiTable(props : any) {
             justificante: "habia un piquete"
         }
     ]
+
+    var getvalidDate = function(d : any){ return new Date(d) }
+    function DateBetweenTwoDates(fromDate : any, toDate : any, givenDate : any){
+        return getvalidDate(givenDate) <= getvalidDate(toDate) && getvalidDate(givenDate) >= getvalidDate(fromDate);
+    }
     
     return (
         <TableContainer component={Paper}>
+            <Typography
+                sx={{ flex: '1 1 100%' }}
+                variant="h6"
+                id="tableTitle"
+                component="div"
+                align="center"
+            >
+                Tareas Cargadas <br></br> {props.fechaInicio} - {props.fechaFin}
+            </Typography>
+
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
+
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">Fecha</TableCell>
@@ -47,7 +66,7 @@ export default function MuiTable(props : any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes.map((reporte) => (
+                    {reportes.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
                         <TableRow
                             key={reporte.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
