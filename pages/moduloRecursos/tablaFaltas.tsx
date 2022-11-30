@@ -30,7 +30,7 @@ export default function MuiTable(props : any) {
         {
             id: "1",
             legajo_empleado: "2",
-            fecha: "11/15/2022",
+            fecha: "11/13/2022",
             justificante: "tenia covid"
         },
         {
@@ -63,6 +63,7 @@ export default function MuiTable(props : any) {
 
                 <TableHead>
                     <TableRow>
+                        <TableCell align="center">ID</TableCell>
                         <TableCell align="center">Fecha</TableCell>
                         <TableCell align="center">Justificante</TableCell>
                     </TableRow>

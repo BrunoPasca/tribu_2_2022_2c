@@ -3,6 +3,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Link from 'next/link';
+import Header from '../header';
+import Router, { useRouter } from 'next/router';
 
 export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     const [formData, setFormData] = useState(
@@ -12,6 +14,8 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
             legajo: "",
         }
     )
+
+    const router = useRouter()
 
     const [inicio, setInicio] = useState(new Date())
     const [periodo, setPeriodo] = useState("semanal")
@@ -98,12 +102,13 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
         const datos = { ...formData, inicio: inicio, fin: fin, periodo: periodo };
 
         sessionStorage.setItem("datos", JSON.stringify(datos))
-        setter(true);
+        router.push("./cargarTarea")
     }
 
     return (
 
         <div className={styles.cargarDatos}>
+            <Header></Header>
             <form>
                 <p>
                     <label className={styles.inputLabel}>Nombre</label>

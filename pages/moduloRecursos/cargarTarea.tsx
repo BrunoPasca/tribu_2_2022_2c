@@ -93,9 +93,10 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
 
     return (
         <div>
+            <Header></Header>
             <div className={styles.cargarTarea}>
                 <div className={styles.ingresarInfoTarea}>
-                    <SeleccionarActividad actividad="Tarea" screenSetter={screenSetter} />
+                    <SeleccionarActividad actividad="Tarea"/>
                     <label className={styles.inputLabel}>Proyecto</label>
                     <select
                         id="proyecto"

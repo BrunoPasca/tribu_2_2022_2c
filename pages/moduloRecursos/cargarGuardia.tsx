@@ -2,10 +2,10 @@ import React, { useEffect } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
-import Header from '../header';
 import SeleccionarActividad from "./seleccionarActividad";
 import Muitable from "./tablaGuardias"
 import Link from "next/link";
+import Header from "../header";
 
 export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
     const [fecha, setFecha] = React.useState(new Date())
@@ -56,9 +56,10 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
 
     return (
         <div>
+            <Header></Header>
             <div className={styles.cargarTarea } >
                 <div className={styles.ingresarInfoTarea}>
-                    <SeleccionarActividad actividad="Guardia" screenSetter={screenSetter} />
+                    <SeleccionarActividad actividad="Guardia"/>
 
                     <div className={styles.calendarInput} >
                         <label className={styles.inputLabel}>Periodo</label>

@@ -47,9 +47,10 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
 
     return (
         <div>
+            <Header></Header>
             <div className={styles.cargarTarea}>
                 <div className={styles.ingresarInfoTarea}>
-                    <SeleccionarActividad actividad="Falta" screenSetter={screenSetter} />
+                    <SeleccionarActividad actividad="Falta"/>
 
                     <div className={styles.calendarInput}>
                         <label className={styles.inputLabel}>Fecha</label>
