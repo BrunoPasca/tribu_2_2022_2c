@@ -75,8 +75,8 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
                     </div>
 
                     <div className={styles.containerBotones} style={{alignItems:"center"}}>
-                        <Link href="./loadInfo"><button>Atrás</button></Link>
                         <button onClick={handleClickCargar}>Cargar Guardia</button>
+                        <Link href="./cargarDatos"><button>Atrás</button></Link>
                     </div>
 
                 </div>

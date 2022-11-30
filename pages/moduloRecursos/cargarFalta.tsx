@@ -65,8 +65,8 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
                         <textarea id="justificante" name="justificante" value={justificante} onChange={(text: any) => setJustificante(text.target.value)}></textarea>
                     </div>
                     <div className={styles.containerBotones}>
-                        <Link href="./loadInfo"><button>Atrás</button></Link>
                         <button onClick={handleClickCargar}>Cargar Falta</button>
+                        <Link href="./cargarDatos"><button>Atrás</button></Link>
                     </div>
                 </div>
 

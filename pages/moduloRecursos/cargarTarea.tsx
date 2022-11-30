@@ -163,8 +163,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                     <input className={styles.selectInput} min="1" type="number" placeholder="Horas" name='horas' onChange={handleChangeHoras} value={cantHoras}></input>
 
                     <div className={styles.containerBotones}>
-                        <Link href="./loadInfo"><button>Atrás</button></Link>
                         <button onClick={handleClickCargar}>Cargar Tarea</button>
+                        <Link href="./cargarDatos"><button>Atrás</button></Link>
                     </div>
                 </div>
                 <div className={styles.holder}>
