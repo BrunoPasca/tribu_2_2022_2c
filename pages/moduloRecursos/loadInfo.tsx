@@ -12,10 +12,16 @@ export default function LoadData() {
     const [periodo, setPeriodo] = React.useState("Semanal");
     const [estadoActual, setEstadoActual] = React.useState<number>(1);
     const componentes: { [key: number]: JSX.Element } = {
-        1: (<CargarTarea period={periodo} />),
-        2: (<CargarFalta />),
-        3: (<CrearReporteTrabajo setter={setCargarTarea} />)
+        1: (<CargarTarea period={periodo} screenSetter={setEstadoActual} />),
+        2: (<CargarFalta screenSetter={setEstadoActual} />),
+        3: (<CargarFalta screenSetter={setEstadoActual} />),
+        4: (<CargarTarea period={periodo} screenSetter={setEstadoActual} />),
     }
+
+    useEffect(() => {
+        console.log(estadoActual)
+    }, [estadoActual])
+
     let screenToRender = componentes[estadoActual];
     return (
         <div>

@@ -8,13 +8,20 @@ import { getProyectos, getTareasByProyecto } from "./services/ProyectoService";
 import MuiTable from "./tablaHoras";
 
 
-export default function CargarTarea({ period }: { period: string }) {
+export default function CargarTarea({ period, screenSetter }: { period: string, screenSetter: any }) {
     const [fecha, setFecha] = React.useState()
     const [horaInicio, setHoraInicio] = React.useState(new Date())
     const [horaFin, setHoraFin] = React.useState(new Date())
 
     const [proyectos, setProyectos] = React.useState<any[]>([])
     const [tareas, setTareas] = React.useState<any[]>([])
+
+    const actividades = {
+        "Tarea": 1,
+        "Guardia": 2,
+        "Falta": 3,
+        "Licencia": 4,
+    }
 
     const [proyectoId, setProyectoId] = React.useState("")
     const [tareaId, setTareaId] = React.useState("")
@@ -59,7 +66,7 @@ export default function CargarTarea({ period }: { period: string }) {
 
             <div className={styles.cargarTarea}>
                 <div className={styles.ingresarInfoTarea}>
-                    <SeleccionarActividad actividad="Tarea" />
+                    <SeleccionarActividad actividad="Tarea" screenSetter={screenSetter} />
                     <label className={styles.inputLabel}>Proyecto</label>
                     <select
                         id="proyecto"
