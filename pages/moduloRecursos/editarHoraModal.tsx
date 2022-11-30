@@ -27,9 +27,11 @@ export default function EditarHoraModal(props: any) {
     const reporteId = props.reporteId
     const [cantHoras, setCantHoras] = React.useState(props.cantHoras)
 
-  function handleEditar() {
-    /* LLAMAR A ENDPOINT */
-    // updateHora()
+  async function handleEditar() {
+    await fetch("https://aninfo2c222back-production.up.railway.app/api/horas/" + props.reporteId, {
+      method: "DELETE",
+    })
+    
     setOpen(false)
 
     // Hay que hacer reload para que se actualice la tabla, pero vuelve al home

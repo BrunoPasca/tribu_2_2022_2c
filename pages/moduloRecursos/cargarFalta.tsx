@@ -5,9 +5,10 @@ import styles from '../../styles/recursos.module.css'
 import Header from '../header';
 import SeleccionarActividad from "./seleccionarActividad";
 import Muitable from "./tablaFaltas"
+import Link from "next/link";
 
 export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
-    const [fecha, setFecha] = React.useState()
+    const [fecha, setFecha] = React.useState(new Date())
     const [horaInicio, setHoraInicio] = React.useState(new Date())
     const [horaFin, setHoraFin] = React.useState(new Date())
 
@@ -24,8 +25,28 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
             setFechaInicio(new Date(datos.inicio));
             setFechaFin(new Date(datos.fin));
             setLegajo(datos.legajo)
+            setFecha(datos.inicio)
         }
     }, [])
+
+
+    async function handleClickCargar(){
+        const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
+        const faltaDatos = {legajo: legajo, fecha :  _fecha, jsutificante : justificante}
+
+        const areNotEmpty = Object.values(faltaDatos).every(
+            value => value != ""
+        );
+        if (!areNotEmpty) {
+            alert("Complete todos los campos antes de cargar.")
+            return
+        }
+
+        await fetch("https://aninfo2c222back-production.up.railway.app/api/faltas", {
+          method: "POST",
+          body: JSON.stringify(faltaDatos),
+        })
+    }
 
     return (
         <div>
@@ -46,8 +67,8 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
                         <textarea id="justificante" name="justificante" value={justificante} onChange={(text: any) => setJustificante(text.target.value)}></textarea>
                     </div>
                     <div className={styles.containerBotones}>
-                        <button>Cancelar</button>
-                        <button>Cargar Falta</button>
+                        <Link href="./loadInfo"><button>Atrás</button></Link>
+                        <button onClick={handleClickCargar}>Cargar Falta</button>
                     </div>
                 </div>
 

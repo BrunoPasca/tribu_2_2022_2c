@@ -23,9 +23,11 @@ export default function BorrarHoraModal(props: any) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  function handleBorrar() {
-    /* LLAMAR A ENDPOINT */
-    // deleteHorasById(props.reporteId)
+  async function handleBorrar() {
+    await fetch("https://aninfo2c222back-production.up.railway.app/api/horas/" + props.reporteId, {
+      method: "DELETE",
+    })
+
     setOpen(false)
 
     // Hay que hacer reload para que se actualice la tabla, pero vuelve al home

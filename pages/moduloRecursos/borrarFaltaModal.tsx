@@ -23,9 +23,11 @@ export default function BorrarFaltaModal(props: any) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  function handleBorrar() {
-    /* LLAMAR A ENDPOINT */
-    // deleteFaltaById(props.reporteId)
+  async function handleBorrar() {
+    await fetch("https://aninfo2c222back-production.up.railway.app/api/faltas/" + props.reporteId, {
+      method: "DELETE",
+    })
+    
     setOpen(false)
 
     // Hay que hacer reload para que se actualice la tabla, pero vuelve al home
