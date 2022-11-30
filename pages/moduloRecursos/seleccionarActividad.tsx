@@ -1,9 +1,6 @@
 import React, { useEffect } from "react"
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
-import { useRouter } from 'next/router';
-
-
 
 export default function SeleccionarActividad({ actividad, screenSetter }: { actividad: string, screenSetter: any }) {
 

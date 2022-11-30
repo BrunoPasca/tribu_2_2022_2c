@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
-import { useState } from 'react';
 import Link from 'next/link';
 
 export default function CrearReporteTrabajo({ setter }: { setter: any }) {

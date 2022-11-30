@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { IconButton } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import BorrarHoraModal from './borrarHoraModal';
 import Edit from '@mui/icons-material/Edit';
 import EditarHoraModal from './editarHoraModal';
@@ -48,12 +48,22 @@ export default function MuiTable(props : any) {
 
     return (
         <TableContainer component={Paper}>
+            <Typography
+                sx={{ flex: '1 1 100%' }}
+                variant="h6"
+                id="tableTitle"
+                component="div"
+                align="center"
+            >
+                Tareas Cargadas <br></br> {props.fechaInicio} - {props.fechaFin}
+            </Typography>
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">TareaId</TableCell>
                         <TableCell align="center">Fecha</TableCell>
                         <TableCell align="center">Horas</TableCell>
+                        <TableCell></TableCell>
                         <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
@@ -68,15 +78,15 @@ export default function MuiTable(props : any) {
                             </TableCell>
                             <TableCell align="center">{reporte.fecha}</TableCell>
                             <TableCell align="center">{reporte.cant_horas}</TableCell>
-                            <TableCell>
-                                <IconButton onClick={handleOpenDelete}>
-                                    <DeleteIcon/>
-                                </IconButton>
+                            <TableCell padding="none" align="right">
+                                <IconButton onClick={handleOpenDelete}><DeleteIcon/></IconButton>
                                 <BorrarHoraModal isOpen = {openDelete} setOpen={setOpenDelete} reporteId={reporte.id}></BorrarHoraModal>
-                                <IconButton onClick={handleOpenEdit}>
-                                    <EditIcon/>
-                                </IconButton>
-                                <EditarHoraModal isOpen = {openEdit} setOpen={setOpenEdit} reporteId={reporte.id} tareaId={reporte.id_tarea} cantHoras={reporte.cant_horas}></EditarHoraModal>
+                            </TableCell>
+                            <TableCell padding="none">
+                                <IconButton onClick={handleOpenEdit}><EditIcon/></IconButton>
+                                <EditarHoraModal isOpen = {openEdit} setOpen={setOpenEdit} reporteId={reporte.id}
+                                                 tareaId={reporte.id_tarea} cantHoras={reporte.cant_horas}>
+                                </EditarHoraModal>
                             </TableCell>
                         </TableRow>
                     ))}

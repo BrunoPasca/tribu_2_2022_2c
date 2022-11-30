@@ -16,7 +16,6 @@ export default function LandingRecurso() {
             <div className={styles.navbar}>
                 <div className={styles.navbarIzq}>
                     <h1>RRHH</h1>
-
                 </div>
                 <div className={styles.navbarDer}>
                     <input placeholder='Empleado o proyecto'></input>
