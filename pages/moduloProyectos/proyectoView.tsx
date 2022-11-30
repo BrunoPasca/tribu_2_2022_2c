@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import styles from '../../styles/proyectos.module.css'
 import Head_ from '../head'
 import Header from '../header'
@@ -11,13 +10,14 @@ export default function ProyectoView() {
         <Head_ nombre='Proyecto'></Head_>
 
         <Header></Header>
+        
         <div className={styles.proyectoView}>
         
-            <h1>PROYECTO XXXX</h1>
+            <h1 className={styles.tituloProyecto}>PROYECTO XXXX</h1>
             
         <div className={styles.contenedorPadre}>
 
-            <div className={styles.contenedorInfo}>
+            <div className={styles.camposForm}>
 
                 <div>Id: 00-00</div>
                 <div>Estado: En desarrollo</div>
@@ -28,7 +28,7 @@ export default function ProyectoView() {
                 <div>Tipo de proyecto: XXXXX</div>
             </div>
 
-            <div className={styles.contenedorStakeholders}>
+            <div className={styles.camposForm}>
                 <div>Nombre CLIENTE: XXXXXXXXX</div>
                 <div>CUIT CLIENTE: 00-00000000-0</div>
                 <div>Tipo de CLIENTE: XXXXXX</div>
@@ -41,10 +41,9 @@ export default function ProyectoView() {
         </div>
 
             <div className={styles.botonesView}>
-                <a href = "" ><button>Eliminar</button> </a>
+                <a href = "/moduloProyectos/eliminarProyecto/1" ><button>Eliminar</button> </a>
                 <a href='/moduloProyectos/editProject/1'><button>Editar</button></a>
-                <button>Ver tareas</button>
-
+                <a href="/moduloProyectos/tareas"><button>Ver tareas</button></a>
             </div>
 
         </div>

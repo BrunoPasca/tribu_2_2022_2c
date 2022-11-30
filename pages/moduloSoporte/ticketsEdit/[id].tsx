@@ -3,6 +3,8 @@ import styles from '../../../styles/ticket.module.css'
 import Head_ from '../../head'
 import Header from '../../header'
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import ClienteSelect from '../clienteSelect';
 
 
 export default function TicketEdit() {
@@ -15,15 +17,15 @@ export default function TicketEdit() {
         id: 1,
         severidad: "Critico",
         estado: "Abierto",
-        descripcion:"lorem ipsum" ,
+        descripcion:"tengo que arreglar el front porque sino desaprobaremos la materia. Juan ceo quiere que se vea lindo" ,
         datosCliente: "Dasdasdas",
         idCliente: 3,
         medioContacto: "email",
         datoContacto: "julian@gmail",
         nombreProducto: "fasfaf",
         versionProducto: "fasfsafsa",
-        fechaEmision: "fecha efassa",
-        fechaResolucion:"fdafasfsa",
+        fechaEmision: new Date('Jul 12 2011').toDateString(),
+        fechaResolucion:new Date('Jul 12 2011').toDateString(),
       
         },
         {   
@@ -137,10 +139,10 @@ export default function TicketEdit() {
       <Header></Header>
       
       <div className={styles.camposForm}>
-            <h1>{ticket?.titulo}</h1>
+            <h1>{ticket?.id} - {ticket?.titulo}</h1>
 
             <label htmlFor="last">Descripcion</label>
-            <input type="text" id="last" name="last" required placeholder={ticket?.descripcion}/>
+            <input type="text" id="last" name="last" required value={ticket?.descripcion}/>
             <br></br>
             <label htmlFor="last">Responsable</label>
             <select>
@@ -149,7 +151,7 @@ export default function TicketEdit() {
                   <option value="juan3">juan3</option>
             </select>
             <br></br>
-      
+
             <label htmlFor="last">Estado</label>
             <select>
                   <option value="abierto">Abierto</option>
@@ -166,15 +168,25 @@ export default function TicketEdit() {
                   <option value="baja">Baja</option>
             </select>
             <br></br>
-      
+
             <label htmlFor="last">Cliente</label>
-            <select>
-                  <option value="abierto">Abierto</option>
-                  <option value="analisis">En Analisis</option>
-                  <option value="devariado">Derivado</option>
-                  <option value="resuelto">Resuelto</option>
-                  <option value="cancelado">Cancelado</option>
-            </select>
+            
+            <ClienteSelect></ClienteSelect>
+            
+            <br></br>
+            
+            <label htmlFor="datosCliente">Datos del cliente</label>
+            <input type="text" id="datosCliente" name="datosCliente" value={ticket?.datosCliente}/>
+            <br></br>
+            
+            <label htmlFor="medioContacto">Medio de contacto</label>
+            <input type="text" id="medioContacto" name="medioContacto" value={ticket?.medioContacto}/>
+            <br></br>
+
+            <label htmlFor="datoContacto">Dato de contacto</label>
+            <input type="text" id="datoContacto" name="datoContacto" value={ticket?.datoContacto}/>
+            <br></br>
+
             <label htmlFor="last">Producto</label>
             <select>
                   <option value="critica">Critica</option>
@@ -184,8 +196,16 @@ export default function TicketEdit() {
             </select>
             <br></br>
 
+            <label htmlFor="fechaEmision">Fecha de emision</label>
+            <input type="date" id="fechaEmision" name="fechaEmsion" required />
+            <br></br>
+
+            <label htmlFor="fechaResolucion">Fecha de resolucion</label>
+            <input type="date" id="fechaResolcion" name="fechaResolcion"/>
+            <br></br>
+
             <div className={styles.botonesView}>
-                  <button type="reset">Cancelar</button>
+            <Link href={'/moduloSoporte/tickets/' + id}> <button type="reset">Cancelar</button> </Link>
                   <button type="submit">Guardar</button>
             <div/>
         

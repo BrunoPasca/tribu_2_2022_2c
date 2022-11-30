@@ -3,6 +3,9 @@ import Header from '../header';
 import TicketCard from './ticketCard';
 import Head_ from '../head';
 import ColumnaTicket from './columnaTickets';
+import SearchBar from './searchBar';
+import TicketData from './TicketsData.json'
+
 
 
 export default function Soporte() {
@@ -18,7 +21,7 @@ export default function Soporte() {
             <h1>Soporte</h1>
           </div>
           <div className={styles.navbarDer}> 
-            <input placeholder='ingrese un nombre'></input>
+            <SearchBar placeholder="Ingrese un nombre" data={TicketData}/>
             <select>
               <option>Creador</option>
               <option>Resolutor</option>
@@ -35,25 +38,26 @@ export default function Soporte() {
               <div>
 
                 <p>Abierto</p>
-                <ColumnaTicket filtro='Abierto'></ColumnaTicket>
+                
+                <ColumnaTicket estadoFiltro='Abierto'></ColumnaTicket>
                
               </div>
 
               <div>
               <p>En analisis</p>
-              <ColumnaTicket filtro='En analisis'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='En analisis'></ColumnaTicket>
               </div>
               <div>
               <p>Derivado</p>
-              <ColumnaTicket filtro='Derivado'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='Derivado'></ColumnaTicket>
               </div>
               <div>
               <p>Resuelto</p>
-              <ColumnaTicket filtro='Resuelto'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='Resuelto'></ColumnaTicket>
               </div>
               <div>
               <p>Cancelado</p>
-              <ColumnaTicket filtro='Cancelado'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='Cancelado'></ColumnaTicket>
 
 
               

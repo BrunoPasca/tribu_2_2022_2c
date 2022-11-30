@@ -1,30 +1,29 @@
 import styles from '../../styles/proyectos.module.css'
 import Header from '../header';
-import ProyectoCard from './proyectoCard';
+import TareaCard from './tareaCard';
 import Head_ from '../head';
 
-//proyecto de prueba
-const proyecto = {
-        nombre: "Gama",
+//tarea de prueba
+const tarea = {
+        nombre: "Desarrollo",
         id: 1,
-        cliente: "Microsoft",
-        estado: "Completado", 
-        fechaInicio: "01/01/2022", 
-        pm: "Juan"
+        desc: "Desarrollar",
+        estado: "Completada", 
+        fechaEstFin: "01/01/2023", 
     }
 
 
-export default function Soporte() {
+export default function Tarea() {
 
     return(<div className={styles.container}>
 
-       <Head_ nombre='Proyectos'></Head_>
+       <Head_ nombre='Tareas'></Head_>
       
         <Header></Header>
 
         <div className={styles.navbar}>
           <div className={styles.navbarIzq}> 
-            <h1>Proyectos</h1>
+            <h1>Tareas del proyecto XXXX</h1>
           </div>
           <div className={styles.navbarDer}> 
             <input placeholder='ingrese un nombre'></input>
@@ -41,14 +40,14 @@ export default function Soporte() {
         </div>
 
         <div className={styles.grilla}>
-            <div key={proyecto.id}>
-              <ProyectoCard nombre={proyecto.nombre} id={proyecto.id} cliente={proyecto.cliente} estado={proyecto.estado} fechaInicio={proyecto.fechaInicio} pm={proyecto.pm}></ProyectoCard>
+            <div key={tarea.id}>
+              <TareaCard nombre={tarea.nombre} id={tarea.id} desc={tarea.desc} estado={tarea.estado} fechaEstFin={tarea.fechaEstFin}></TareaCard>
             </div>
         </div>
         
         <main className={styles.main}>
           <div className={styles.contenedorBoton}>
-            <a href='/moduloProyectos/crearProyecto'><button>Agregar nuevo proyecto</button></a>
+            <a href='/moduloProyectos/crearTarea'><button>Agregar nueva tarea</button></a>
           </div>
 
         </main>
