@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
-import Header from '../header';
 import Link from 'next/link';
+import Header from '../header';
+import Router, { useRouter } from 'next/router';
 
 export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     const [formData, setFormData] = useState(
@@ -13,6 +14,8 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
             legajo: "",
         }
     )
+
+    const router = useRouter()
 
     const [inicio, setInicio] = useState(new Date())
     const [periodo, setPeriodo] = useState("semanal")
@@ -33,8 +36,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
                 if (inicio.getDate() === 1) {
                     fechaFin.setDate(14)
                 } else {
-                    let ultimoDiaDelMes = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0);
-                    fechaFin = ultimoDiaDelMes
+                    fechaFin = new Date(fechaFin.getFullYear(), fechaFin.getMonth() + 1, 0)
                 }
                 break;
             default:
@@ -85,10 +87,9 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     }
 
     function validateForm() {
-        const areNotEmpty = Object.values(formData).every(
+        return Object.values(formData).every(
             value => value != ""
         );
-        return areNotEmpty;
     }
 
     function handleClickContinuar() {
@@ -101,12 +102,13 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
         const datos = { ...formData, inicio: inicio, fin: fin, periodo: periodo };
 
         sessionStorage.setItem("datos", JSON.stringify(datos))
-        setter(true);
+        router.push("./cargarTarea")
     }
 
     return (
 
         <div className={styles.cargarDatos}>
+            <Header></Header>
             <form>
                 <p>
                     <label className={styles.inputLabel}>Nombre</label>
@@ -148,9 +150,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
 
                 <div className={styles.containerBotones}>
                     <button type="button" title="Continuar" onClick={handleClickContinuar}>Continuar</button>
-                    <button type="button" title="Cancelar">
-                        <Link href="/">Cancelar</Link>
-                    </button>
+                    <Link href='/'><button>Cancelar</button></Link>
                 </div>
             </form>
 

@@ -49,12 +49,11 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
             .catch(function (ex) {
                 console.log('Response parsing failed. Error: ', ex);
             });
-
-        if (!proyectos[0]) return;
+            
+       if (!proyectos[0]) return;
         setProyectoId(proyectos[0].id)
 
     }, [])
-
 
     // Cuando selecciona otro proyecto obtengo las tareas asociadas
     useEffect(() => {
@@ -94,9 +93,10 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
 
     return (
         <div>
+            <Header></Header>
             <div className={styles.cargarTarea}>
                 <div className={styles.ingresarInfoTarea}>
-                    <SeleccionarActividad actividad="Tarea" screenSetter={screenSetter} />
+                    <SeleccionarActividad actividad="Tarea"/>
                     <label className={styles.inputLabel}>Proyecto</label>
                     <select
                         id="proyecto"
@@ -163,14 +163,12 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                     <input className={styles.selectInput} min="1" type="number" placeholder="Horas" name='horas' onChange={handleChangeHoras} value={cantHoras}></input>
 
                     <div className={styles.containerBotones}>
-                        <Link href="./loadInfo"><button>Atrás</button></Link>
                         <button onClick={handleClickCargar}>Cargar Tarea</button>
+                        <Link href="./cargarDatos"><button>Atrás</button></Link>
                     </div>
                 </div>
-                <div className={styles.ingresarInfoTarea}>
-                    <div className={styles.holder}>
-                        <MuiTable valor={"tarea"} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()} />
-                    </div>
+                <div className={styles.holder}>
+                    <MuiTable valor={"tarea"} legajo={legajo} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()} />
                 </div>
             </div>
         </div>

@@ -2,17 +2,24 @@ import React, { useEffect } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
-import Header from '../header';
 import SeleccionarActividad from "./seleccionarActividad";
-import Muitable from "./tablaFaltas"
+import Muitable from "./tablaGuardias"
 import Link from "next/link";
+import Header from "../header";
 
-export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
+export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
     const [fecha, setFecha] = React.useState(new Date())
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
     const [fechaFin, setFechaFin] = React.useState(new Date())
     const [legajo, setLegajo] = React.useState("")
-    const [justificante, setJustificante] = React.useState("")
+
+    const [startDate, setStartDate] = React.useState(new Date());
+    const [endDate, setEndDate] = React.useState(null);
+    const onChange = (dates : any) => {
+      const [start, end] = dates;
+      setStartDate(start);
+      setEndDate(end);
+    };
 
     let datos; // datos que se cargan con sessionStorage en page cargarDatos
 
@@ -29,9 +36,9 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
 
     async function handleClickCargar(){
         const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
-        const faltaDatos = {legajo: legajo, fecha :  _fecha, justificante : justificante}
+        const guardiaDatos = {legajo: legajo, fecha :  _fecha, fecha_inicio : startDate, fecha_fin : endDate}
 
-        const areNotEmpty = Object.values(faltaDatos).every(
+        const areNotEmpty = Object.values(guardiaDatos).every(
             value => value != ""
         );
         if (!areNotEmpty) {
@@ -39,37 +46,41 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
             return
         }
 
-        await fetch("https://aninfo2c222back-production.up.railway.app/api/faltas", {
+        console.log(JSON.stringify(guardiaDatos))
+
+        await fetch("https://aninfo2c222back-production.up.railway.app/api/guardias", {
           method: "POST",
-          body: JSON.stringify(faltaDatos),
+          body: JSON.stringify(guardiaDatos),
         })
     }
 
     return (
         <div>
             <Header></Header>
-            <div className={styles.cargarTarea}>
+            <div className={styles.cargarTarea } >
                 <div className={styles.ingresarInfoTarea}>
-                    <SeleccionarActividad actividad="Falta"/>
+                    <SeleccionarActividad actividad="Guardia"/>
 
-                    <div className={styles.calendarInput}>
-                        <label className={styles.inputLabel}>Fecha</label>
-                        <DatePicker className={styles.datePicker} selected={fecha} onChange={(date: any) => setFecha(date)}
-                            minDate={fechaInicio} maxDate={fechaFin}
+                    <div className={styles.calendarInput} >
+                        <label className={styles.inputLabel}>Periodo</label>
+                        <DatePicker
+                            selected={startDate}
+                            onChange={onChange}
+                            startDate={startDate}
+                            endDate={endDate}
+                            selectsRange
+                            minDate={fechaInicio}
+                            maxDate={fechaFin}
                         />
                     </div>
-                    <br></br>
 
-                    <div className={styles.flexContainer}>
-                        <label className={styles.inputLabel}>Justificante</label>
-                        <textarea id="justificante" name="justificante" value={justificante} onChange={(text: any) => setJustificante(text.target.value)}></textarea>
-                    </div>
-                    <div className={styles.containerBotones}>
-                        <button onClick={handleClickCargar}>Cargar Falta</button>
+                    <div className={styles.containerBotones} style={{alignItems:"center"}}>
+                        <button onClick={handleClickCargar}>Cargar Guardia</button>
                         <Link href="./cargarDatos"><button>Atrás</button></Link>
                     </div>
-                </div>
 
+                </div>
+                
                 <div className={styles.holder}>
                     <Muitable valor={"tarea"} legajo={legajo} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()}/>
                 </div>

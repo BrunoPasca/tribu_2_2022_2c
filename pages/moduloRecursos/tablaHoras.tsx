@@ -12,6 +12,7 @@ import { IconButton, Typography } from '@mui/material';
 import BorrarHoraModal from './borrarHoraModal';
 import Edit from '@mui/icons-material/Edit';
 import EditarHoraModal from './editarHoraModal';
+import styles from '../../styles/recursos.module.css'
 
 export default function MuiTable(props : any) {
     // Pop up para editar las horas de una tarea
@@ -23,14 +24,20 @@ export default function MuiTable(props : any) {
     const handleOpenEdit = () => setOpenEdit(true);
     const handleCloseEdit = () => setOpenEdit(false);
 
+    const legajo = props.legajo
+
+    const inicio = props.fechaInicio
+    const fin = props.fechaFin
+
     /* HAY QUE USAR UN ENDPOINT */
     const reportes =         [
+        // Formato fecha mm/dd/yyyy
         {
             id: "1",
-            legajo_empleado: "2",
+            legajo_empleado: "1",
             id_tarea: "3",
             cant_horas:"5",
-            fecha: "11/10/2022",
+            fecha: "11/07/2022",
             estado: "abierto",
         },
         {
@@ -38,14 +45,26 @@ export default function MuiTable(props : any) {
             legajo_empleado: "3",
             id_tarea: "4",
             cant_horas:"2",
-            fecha: "11/02/2022",
+            fecha: "10/10/2022",
+            estado: "abierto",
+        },
+        {
+            id: "4",
+            legajo_empleado: "22",
+            id_tarea: "5",
+            cant_horas:"2",
+            fecha: "11/13/2022",
             estado: "abierto",
         }
     ]
-    
+
+    var getvalidDate = function(d : any){ return new Date(d) }
+    function DateBetweenTwoDates(fromDate : any, toDate : any, givenDate : any){
+        return getvalidDate(givenDate) <= getvalidDate(toDate) && getvalidDate(givenDate) >= getvalidDate(fromDate);
+    }
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{borderRadius:"2rem"}}>
             <Typography
                 sx={{ flex: '1 1 100%' }}
                 variant="h6"
@@ -58,22 +77,22 @@ export default function MuiTable(props : any) {
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell align="center">TareaId</TableCell>
+                        <TableCell align="center">ID</TableCell>
+                        <TableCell align="center">ID Tarea</TableCell>
                         <TableCell align="center">Fecha</TableCell>
                         <TableCell align="center">Horas</TableCell>
-                        <TableCell></TableCell>
-                        <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes.map((reporte) => (
+                    {reportes.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
                         <TableRow
-                            key={reporte.id_tarea}
+                            key={reporte.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell align="center" component="th" scope="row">
-                                {reporte.id_tarea}
+                            <TableCell component="th" scope="row">
+                                {reporte.id}
                             </TableCell>
+                            <TableCell align="center">{reporte.id_tarea}</TableCell>
                             <TableCell align="center">{reporte.fecha}</TableCell>
                             <TableCell align="center">{reporte.cant_horas}</TableCell>
                             <TableCell padding="none" align="right">

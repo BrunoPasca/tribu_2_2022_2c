@@ -1,28 +1,34 @@
-import React, { useEffect } from "react"
+import React from "react"
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
+import { useRouter } from "next/router";
 
-export default function SeleccionarActividad({ actividad, screenSetter }: { actividad: string, screenSetter: any }) {
+export default function SeleccionarActividad(props : any) {
 
-    function handleChange(event: any) {
-        screenSetter(event.currentTarget.value);
+    const [actividad, setActividad] = React.useState(props.actividad)
+    const router = useRouter()
+
+    function handleChange(event : any) {
+        setActividad(event.currentTarget.value)
+        let url = "/moduloRecursos/cargar" + event.currentTarget.value
+        router.push(url)
     }
 
-    return (
+    return(
         <div>
             <label className={styles.inputLabel}>Actividad</label>
-            <select
-                id="actividad"
+            <select 
+                id="actividad" 
                 className={styles.selectInput}
-
+                value={actividad}
                 onChange={handleChange}
                 name="actividad"
             >
-                <option value={1}>Tarea</option>
-                <option disabled value={2}>Guardia</option>
-                <option value={3}>Falta</option>
-                <option disabled value={4}>Licencia</option>
-            </select>
+                <option value="Tarea">Tarea</option>
+                <option value="Guardia">Guardia</option>
+                <option value="Falta">Falta</option>
+                <option disabled value="Licencia">Licencia</option>
+            </select> 
             <br></br>
             <br></br>
         </div>
