@@ -49,12 +49,11 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
             .catch(function (ex) {
                 console.log('Response parsing failed. Error: ', ex);
             });
-
-        if (!proyectos[0]) return;
+            
+       if (!proyectos[0]) return;
         setProyectoId(proyectos[0].id)
 
     }, [])
-
 
     // Cuando selecciona otro proyecto obtengo las tareas asociadas
     useEffect(() => {
@@ -169,7 +168,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                 </div>
                 <div className={styles.ingresarInfoTarea}>
                     <div className={styles.holder}>
-                        <MuiTable valor={"tarea"} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()} />
+                        <MuiTable valor={"tarea"} legajo={legajo} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()} />
                     </div>
                 </div>
             </div>

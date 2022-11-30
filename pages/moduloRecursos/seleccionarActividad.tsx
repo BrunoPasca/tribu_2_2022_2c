@@ -19,7 +19,7 @@ export default function SeleccionarActividad({ actividad, screenSetter }: { acti
                 name="actividad"
             >
                 <option value={1}>Tarea</option>
-                <option disabled value={2}>Guardia</option>
+                <option value={2}>Guardia</option>
                 <option value={3}>Falta</option>
                 <option disabled value={4}>Licencia</option>
             </select>

@@ -12,6 +12,7 @@ import { IconButton, Typography } from '@mui/material';
 import BorrarHoraModal from './borrarHoraModal';
 import Edit from '@mui/icons-material/Edit';
 import EditarHoraModal from './editarHoraModal';
+import styles from '../../styles/recursos.module.css'
 
 export default function MuiTable(props : any) {
     // Pop up para editar las horas de una tarea
@@ -23,6 +24,8 @@ export default function MuiTable(props : any) {
     const handleOpenEdit = () => setOpenEdit(true);
     const handleCloseEdit = () => setOpenEdit(false);
 
+    const legajo = props.legajo
+
     const inicio = props.fechaInicio
     const fin = props.fechaFin
 
@@ -30,10 +33,10 @@ export default function MuiTable(props : any) {
     const reportes =         [
         {
             id: "1",
-            legajo_empleado: "2",
+            legajo_empleado: "1",
             id_tarea: "3",
             cant_horas:"5",
-            fecha: "11/06/2022",
+            fecha: "11/13/2022",
             estado: "abierto",
         },
         {
@@ -41,19 +44,22 @@ export default function MuiTable(props : any) {
             legajo_empleado: "3",
             id_tarea: "4",
             cant_horas:"2",
-            fecha: "11/13/2022",
+            fecha: "11/30/2022",
             estado: "abierto",
         }
     ]
 
     var getvalidDate = function(d : any){ return new Date(d) }
     function DateBetweenTwoDates(fromDate : any, toDate : any, givenDate : any){
+        console.log("inicio", fromDate)
+        console.log("fin", toDate)
+        console.log("given", givenDate)
         return getvalidDate(givenDate) <= getvalidDate(toDate) && getvalidDate(givenDate) >= getvalidDate(fromDate);
     }
     
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{borderRadius:"2rem"}}>
             <Typography
                 sx={{ flex: '1 1 100%' }}
                 variant="h6"
@@ -69,12 +75,10 @@ export default function MuiTable(props : any) {
                         <TableCell align="center">TareaId</TableCell>
                         <TableCell align="center">Fecha</TableCell>
                         <TableCell align="center">Horas</TableCell>
-                        <TableCell></TableCell>
-                        <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
+                    {reportes.filter(reporte => reporte.legajo_empleado == legajo && DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
                         <TableRow
                             key={reporte.id_tarea}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
