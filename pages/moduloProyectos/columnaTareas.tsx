@@ -23,7 +23,7 @@ export default function ColumnaTarea({estadoFiltro}: {estadoFiltro:string}) {
         <div>
           {(tareas).filter(i => i.estado == estadoFiltro).map((tarea) => ( 
             <div key={tarea.id}>
-              <Link href={'/moduloProyectos/tareaView'}><TareaCard nombre={tarea.nombre} id={tarea.id} estado={tarea.estado} desc={tarea.desc} fechaEstFin={tarea.fechaEstFin}></TareaCard></Link>
+              <Link href={'/moduloProyectos/tareaView/'+tarea.id}><TareaCard nombre={tarea.nombre} id={tarea.id} estado={tarea.estado} desc={tarea.desc} fechaEstFin={tarea.fechaEstFin}></TareaCard></Link>
             </div>
           ))}
         </div>

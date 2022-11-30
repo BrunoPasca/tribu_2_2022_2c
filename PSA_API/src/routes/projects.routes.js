@@ -16,4 +16,12 @@ router.get('/eliminarTarea/:id', (req,res) => {
 	res.send(req.params);
 })
 
+router.get('/projectView/:id', (req,res) => {
+	res.send(req.params);
+})
+
+router.get('/tareaView/:id', (req,res) => {
+	res.send(req.params);
+})
+
 export default router;
