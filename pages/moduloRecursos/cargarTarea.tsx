@@ -6,11 +6,13 @@ import Header from '../header';
 import SeleccionarActividad from "./seleccionarActividad";
 import { getProyectos, getTareasByProyecto } from "./services/ProyectoService";
 import MuiTable from "./tablaHoras";
+import Link from "next/link";
 
 
 export default function CargarTarea({ period, screenSetter }: { period: string, screenSetter: any }) {
-    const [fecha, setFecha] = React.useState()
-    const [cantHoras, setCantHoras] = React.useState()
+    const [cantHoras, setCantHoras] = React.useState("")
+    const [extra, setExtra] = React.useState("")
+    const [fecha, setFecha] = React.useState(new Date())
 
     const [proyectos, setProyectos] = React.useState<any[]>([])
     const [tareas, setTareas] = React.useState<any[]>([])
@@ -28,12 +30,17 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     let datos; // datos que se cargan con sessionStorage en page cargarDatos
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
     const [fechaFin, setFechaFin] = React.useState(new Date())
+
+    const [legajo, setLegajo] = React.useState("")
+
     useEffect(() => {
         // Recupero los datos
         if (typeof window !== "undefined") {
             datos = JSON.parse(window.sessionStorage.getItem("datos") || "{}");
             setFechaInicio(new Date(datos.inicio));
             setFechaFin(new Date(datos.fin));
+            setFecha(new Date(datos.inicio))
+            setLegajo(datos.legajo)
         }
 
         getProyectos().then((data) => {
@@ -59,10 +66,31 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                 console.log('Response parsing failed. Error: ', ex);
             });;
     }, [proyectoId])
+    
 
     function handleChangeHoras(e : any) {
         setCantHoras(e.target.value)
     }
+
+    async function handleClickCargar(){
+
+        const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
+        const horaDatos = {legajo: legajo, id_tarea : 1, cant : cantHoras, fecha :  _fecha, extra : extra}
+
+        const areNotEmpty = Object.values(horaDatos).every(
+            value => value != ""
+        );
+        if (!areNotEmpty) {
+            alert("Complete todos los campos antes de cargar.")
+            return
+        }
+
+        await fetch("https://aninfo2c222back-production.up.railway.app/api/horas", {
+          method: "POST",
+          body: JSON.stringify(horaDatos),
+        })
+    }
+
 
     return (
         <div>
@@ -114,14 +142,30 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                             minDate={fechaInicio} maxDate={fechaFin}
                         />
                     </div>
-                    <br></br>
+
+                    <div className={styles.flexContainer}>
+                        <label className={styles.inputLabel} style={{textAlign:"left"}}>Fuera de Horario</label>
+                        <select
+                        id="extra"
+                        className={styles.selectInput}
+                        value={extra}
+                        onChange={(e) => {
+                            setExtra(e.currentTarget.value)
+                        }}
+                        name="extra"
+                        >
+                            <option value="0">No</option>
+                            <option value="1">Sí</option>
+                        </select>
+                        <br></br>
+                    </div>
 
                     <label className={styles.inputLabel}>Horas</label>
-                    <input min="1" type="number" placeholder="Horas" name='horas' onChange={handleChangeHoras} value={cantHoras}></input>
+                    <input className={styles.selectInput} min="1" type="number" placeholder="Horas" name='horas' onChange={handleChangeHoras} value={cantHoras}></input>
 
                     <div className={styles.containerBotones}>
-                        <button>Cancelar</button>
-                        <button>Cargar Tarea</button>
+                        <Link href="./loadInfo"><button>Atrás</button></Link>
+                        <button onClick={handleClickCargar}>Cargar Tarea</button>
                     </div>
                 </div>
                 <div className={styles.ingresarInfoTarea}>

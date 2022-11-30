@@ -42,8 +42,6 @@ export default function MuiTable(props : any) {
             estado: "abierto",
         }
     ]
-
-    
     
 
     return (

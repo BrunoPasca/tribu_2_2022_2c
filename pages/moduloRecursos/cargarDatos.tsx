@@ -95,7 +95,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     function handleClickContinuar() {
         // Verifica no haya un campo vacío
         if (!validateForm()) {
-            alert("Complete todos los campos antes de enviar.")
+            alert("Complete todos los campos antes de continuar.")
             return;
         }
 
