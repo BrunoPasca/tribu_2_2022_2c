@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
@@ -14,8 +14,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     const [extra, setExtra] = React.useState("")
     const [fecha, setFecha] = React.useState(new Date())
 
-    const [proyectos, setProyectos] = React.useState<any[]>([])
-    const [tareas, setTareas] = React.useState<any[]>([])
+    const [proyectos, setProyectos] = useState<any[]>([])
+    const [tareas, setTareas] = useState<any[]>([])
 
     const actividades = {
         "Tarea": 1,
@@ -24,8 +24,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
         "Licencia": 4,
     }
 
-    const [proyectoId, setProyectoId] = React.useState("")
-    const [tareaId, setTareaId] = React.useState("")
+    const [proyectoId, setProyectoId] = useState("")
+    const [tareaId, setTareaId] = useState("")
 
     let datos; // datos que se cargan con sessionStorage en page cargarDatos
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
@@ -48,7 +48,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
         })
             .catch(function (ex) {
                 console.log('Response parsing failed. Error: ', ex);
-            });;
+            });
 
         if (!proyectos[0]) return;
         setProyectoId(proyectos[0].id)
@@ -64,7 +64,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
         })
             .catch(function (ex) {
                 console.log('Response parsing failed. Error: ', ex);
-            });;
+            });
     }, [proyectoId])
     
 
@@ -94,7 +94,6 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
 
     return (
         <div>
-
             <div className={styles.cargarTarea}>
                 <div className={styles.ingresarInfoTarea}>
                     <SeleccionarActividad actividad="Tarea" screenSetter={screenSetter} />
@@ -170,9 +169,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                 </div>
                 <div className={styles.ingresarInfoTarea}>
                     <div className={styles.holder}>
-                        <h2>Tareas Cargadas</h2>
-                        <h3>{fechaInicio.toLocaleDateString()} - {fechaFin.toLocaleDateString()}</h3>
-                        <MuiTable valor={"tarea"} />
+                        <MuiTable valor={"tarea"} fechaInicio={fechaInicio.toLocaleDateString()} fechaFin={fechaFin.toLocaleDateString()} />
                     </div>
                 </div>
             </div>

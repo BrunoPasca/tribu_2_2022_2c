@@ -8,9 +8,9 @@ import Head_ from '../head';
 
 
 export default function LoadData() {
-    const [mostrarTarea, setCargarTarea] = React.useState(false);
-    const [periodo, setPeriodo] = React.useState("Semanal");
-    const [estadoActual, setEstadoActual] = React.useState<number>(1);
+    const [mostrarTarea, setCargarTarea] = useState(false);
+    const [periodo, setPeriodo] = useState("Semanal");
+    const [estadoActual, setEstadoActual] = useState<number>(1);
     const componentes: { [key: number]: JSX.Element } = {
         1: (<CargarTarea period={periodo} screenSetter={setEstadoActual} />),
         2: (<CargarFalta screenSetter={setEstadoActual} />),
