@@ -31,7 +31,7 @@ export default function MuiTable({ valor }: { valor: string }) {
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell align="center">{valor}</TableCell>
+                        <TableCell align="center">Nombre de {valor}</TableCell>
                         <TableCell align="center">DD/MM/YYYY</TableCell>
                         <TableCell align="center">Horas</TableCell>
                         <TableCell></TableCell>

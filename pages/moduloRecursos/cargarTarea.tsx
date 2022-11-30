@@ -128,7 +128,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                     <div className={styles.holder}>
                         <label className={styles.titleLabel}>Actividades Cargadas</label>
                         <label className={styles.titleLabel}>Periodo: {period}</label>
-                        <MuiTable valor={"Valor de prueba"} />
+                        <MuiTable valor={"tarea"} />
                     </div>
                 </div>
             </div>
