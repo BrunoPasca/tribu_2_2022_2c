@@ -1,15 +1,17 @@
 import React from "react"
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
+import { useRouter } from 'next/router';
 
 export default function SeleccionarActividad(props : any) {
+
+    const router = useRouter();
 
     const [actividad, setActividad] = React.useState(props.actividad)
 
     function handleChange(event : any) {
         setActividad(event.currentTarget.value)
-        let url = "/moduloRecursos/cargar" + event.currentTarget.value
-        window.location.href = url
+        router.push("/moduloRecursos/cargar" + event.currentTarget.value);
     }
 
     return(

@@ -3,10 +3,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
+import { useState } from 'react';
+import Link from 'next/link';
 
 export default function CrearReporteTrabajo({ setter }: { setter: any }) {
-
-    const [formData, setFormData] = React.useState(
+    const [formData, setFormData] = useState(
         {
             nombre: "",
             apellido: "",
@@ -14,9 +15,9 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
         }
     )
 
-    const [inicio, setInicio] = React.useState(new Date())
-    const [periodo, setPeriodo] = React.useState("semanal")
-    const [fin, setFormFin] = React.useState(new Date())
+    const [inicio, setInicio] = useState(new Date())
+    const [periodo, setPeriodo] = useState("semanal")
+    const [fin, setFormFin] = useState(new Date())
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setFormData(prevFormData => ({ ...prevFormData, [event.target.name]: event.target.value }))
@@ -99,10 +100,6 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
         sessionStorage.setItem("datos", JSON.stringify(datos))
         setter(true);
     }
-    function handleClickCancelar() {
-        window.location.href = "/"
-    }
-
 
     return (
 
@@ -148,7 +145,9 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
 
                 <div className={styles.containerBotones}>
                     <button type="button" title="Continuar" onClick={handleClickContinuar}>Continuar</button>
-                    <button type="button" title="Cancelar" onClick={handleClickCancelar}>Cancelar</button>
+                    <button type="button" title="Cancelar">
+                        <Link href="/">Cancelar</Link>
+                    </button>
                 </div>
             </form>
 
