@@ -52,7 +52,7 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
                     <div className={styles.calendarInput}>
                         <label className={styles.inputLabel}>Fecha</label>
                         <DatePicker className={styles.datePicker} selected={fecha} onChange={(date: any) => setFecha(date)}
-                            minDate={fechaInicio} maxDate={fechaFin}
+                            minDate={fechaInicio} maxDate={fechaFin} dateFormat="dd/MM/yyyy"
                         />
                     </div>
                     <br></br>

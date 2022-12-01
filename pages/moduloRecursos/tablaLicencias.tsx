@@ -33,8 +33,8 @@ export default function MuiTable(props : any) {
             legajo_empleado: "2",
             tipo_licencia: "examen",
             descripcion:"tuve un examen de MemoI",
-            fecha_inicio: "11/07/2022",
-            fecha_fin: "11/07/2022",
+            fecha_inicio: "8/12/2022",
+            fecha_fin: "10/12/2022",
             goce_sueldo : "0"
         },
         {
@@ -42,15 +42,25 @@ export default function MuiTable(props : any) {
             legajo_empleado: "5",
             tipo_licencia: "medica",
             descripcion:"accidente de auto",
-            fecha_inicio: "11/07/2022",
-            fecha_fin: "11/20/2022",
+            fecha_inicio: "11/12/2022",
+            fecha_fin: "11/12/2022",
             goce_sueldo : "1"
         }
     ]
 
-    var getvalidDate = function(d : any){ return new Date(d) }
-    function DateBetweenTwoDates(fromDate : any, toDate : any, givenDate : any){
-        return getvalidDate(givenDate) <= getvalidDate(toDate) && getvalidDate(givenDate) >= getvalidDate(fromDate);
+    // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
+    function modificarFormatoFecha(date : string) {
+        const [day, month, year] = date.split('/');
+        // @ts-ignore
+        return new Date(+year, month - 1, +day);
+    }
+
+    function DateBetweenTwoDates(fromDate : string, toDate : string, givenDate : string) {
+        const start = modificarFormatoFecha(fromDate);
+        const end = modificarFormatoFecha(toDate);
+        const date = modificarFormatoFecha(givenDate);
+
+        return (start <= date && date <= end);
     }
     
     return (

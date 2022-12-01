@@ -134,7 +134,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
 
                     <div className={styles.calendarInput}>
                         <label className={styles.inputLabel}>Fecha</label>
-                        <DatePicker className={styles.datePicker} selected={fecha} onChange={(date: any) => setFecha(date)}
+                        <DatePicker className={styles.datePicker} selected={fecha} dateFormat="dd/MM/yyyy"
+                                    onChange={(date: any) => setFecha(date)}
                             minDate={fechaInicio} maxDate={fechaFin}
                         />
                     </div>

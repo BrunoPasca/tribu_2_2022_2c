@@ -2,9 +2,10 @@ import Head from 'next/head'
 import styles from '../../styles/ticket.module.css'
 import Head_ from '../head'
 import Header from '../header'
-import { ClientesProperties, EmpleadoProperties } from './types';
+import { ClientesProperties, EmpleadoProperties, TicketProperties } from './types';
 import { useEffect, useState } from "react";
-
+import { useForm } from 'react-hook-form';
+import Link from 'next/link';
 
 
 export default function TicketCreate() {
@@ -30,9 +31,25 @@ export default function TicketCreate() {
           })
       }, [])    
       
+
+ 
+
+      const {register, handleSubmit} = useForm<TicketProperties>()
+
+      const onSubmit = handleSubmit((data) =>{
+            console.log(JSON.stringify(data))
+            fetch("https://aninfo2c222back-production.up.railway.app/api/tickets", {
+                  method: 'POST', // or 'PUT'
+                  body: JSON.stringify(data), // data can be `string` or {object}!
+                  headers:{
+                    'Content-Type': 'application/json'
+                  }
+                })
+      })
+
       return (
 
-      <form className={styles.form} action="https://aninfo2c222back-production.up.railway.app/api/tickets" method="post" encType="mult">
+      <form className={styles.form} onSubmit={onSubmit}>
 
       <Head_ nombre='Crear Ticket'></Head_>
       
@@ -43,23 +60,23 @@ export default function TicketCreate() {
             <h1>Nuevo Ticket</h1>
 
             <label htmlFor="titulo">Titulo</label>
-            <input type="text" id="titulo" name="titulo" required />
+            <input type="text" {...register("titulo")} required />
             <br></br>
             
             <label htmlFor="descripcion">Descripcion</label>
-            <input type="text" id="descripcion" name="descripcion" required />
+            <input type="text" {...register("descripcion")} required />
             <br></br>
             <label htmlFor="id_responsable">Responsable</label>
            
-            <select id="id_responsable" name='id_responsable'>
+            <select {...register("id_responsable")}>
             {empleados.map((empleado) => ( 
-                  <option  value={empleado.legajo}  key={empleado.legajo}>{empleado.nombre} {empleado.apellido} - Legajo: {empleado.legajo}</option>
+                  <option  value={Number(empleado.legajo)}  key={empleado.legajo}>{empleado.nombre} {empleado.apellido} - Legajo: {empleado.legajo}</option>
             ))}
             </select>
             <br></br>
 
             <label htmlFor="estado">Estado</label>
-            <select name='estado'>
+            <select {...register("estado")}>
                   <option id="estado" value="abierto">Abierto</option>
                   <option id="estado" value="analisis">En Analisis</option>
                   <option id="estado" value="devariado">Derivado</option>
@@ -67,7 +84,7 @@ export default function TicketCreate() {
                   <option id="estado" value="cancelado">Cancelado</option>
             </select>
             <label htmlFor="severidad">Severidad</label>
-            <select name='severidad'>
+            <select {...register("severidad")}>
                   <option id="severidad" value="critica">Critica</option>
                   <option id="severidad" value="alta">Alta</option>
                   <option id="severidad" value="media">Media</option>
@@ -77,37 +94,37 @@ export default function TicketCreate() {
 
             <label htmlFor="id_cliente">Cliente</label>
                  
-            <select name = "id_cliente">
+            <select {...register("id_cliente")}>
             {clientes.map((cliente) => ( 
-                  <option id="id_cliente" value={cliente.legajo} key={cliente.legajo}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
+                  <option id="id_cliente" value={Number(cliente.legajo)} key={cliente.legajo}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
             ))}
             </select>
 
             <br></br>
              
             <label htmlFor="medio_contacto">Medio de contacto</label>
-            <input type="text" id="medio_contacto" name="medio_contacto" placeholder='email, telefono, paloma'/>
+            <input type="text" {...register("medio_contacto")} placeholder='email, telefono, paloma'/>
             <br></br>
 
             <label htmlFor="dato_contacto">Dato de contacto</label>
-            <input type="text" id="dato_contacto" name="dato_contacto" placeholder='pepe@gmail.com'/>
+            <input type="text" {...register("dato_contacto")} placeholder='pepe@gmail.com'/>
             <br></br>
 
             <label htmlFor="id_producto">Producto</label>
-            <select name='id_producto'>
-                  <option id="id_producto" value="1">Critica</option>
-                  <option id="id_producto" value="2">Alta</option>
-                  <option id="id_producto" value="3">Media</option>
-                  <option id="id_producto" value="4">Baja</option>
+            <select {...register("id_producto")}>
+                  <option id="id_producto" value={1}>Critica</option>
+                  <option id="id_producto" value={2}>Alta</option>
+                  <option id="id_producto" value={3}>Media</option>
+                  <option id="id_producto" value={4}>Baja</option>
             </select>
             <br></br>
 
             <label htmlFor="fechaEmision">Fecha de emision</label>
-            <input type="date" id="fecha_emision" name="fecha_emision" required/>
+            <input type="date" {...register("fecha_emision")} required/>
             <br></br>
 
             <label htmlFor="fechaResolucion">Fecha de resolucion</label>
-            <input type="date" id="fecha_resolcion" name="fecha_resolcion"/>
+            <input type="date" {...register("fecha_resolucion")}/>
             <br></br>
 
             <div className={styles.botonesView}>

@@ -28,24 +28,35 @@ export default function MuiTable(props : any) {
 
     /* HAY QUE USAR UN ENDPOINT */
     const reportes =         [
+        // Formato fecha dd/MM/yyyy
         {
             id: "1",
             legajo_empleado: "2",
-            fecha_inicio: "11/07/2022",
-            fecha_fin: "11/20/2022"
+            fecha_inicio: "7/12/2022",
+            fecha_fin: "9/12/2022"
         },
         {
             id: "2",
             legajo_empleado: "4",
-            fecha_inicio: "11/15/2022",
-            fecha_fin: "11/20/2022"
+            fecha_inicio: "15/11/2022",
+            fecha_fin: "20/11/2022"
         }
         
     ]
 
-    var getvalidDate = function(d : any){ return new Date(d) }
-    function DateBetweenTwoDates(fromDate : any, toDate : any, givenDate : any){
-        return getvalidDate(givenDate) <= getvalidDate(toDate) && getvalidDate(givenDate) >= getvalidDate(fromDate);
+    // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
+    function modificarFormatoFecha(date : string) {
+        const [day, month, year] = date.split('/');
+        // @ts-ignore
+        return new Date(+year, month - 1, +day);
+    }
+
+    function DateBetweenTwoDates(fromDate : string, toDate : string, givenDate : string) {
+        const start = modificarFormatoFecha(fromDate);
+        const end = modificarFormatoFecha(toDate);
+        const date = modificarFormatoFecha(givenDate);
+
+        return (start <= date && date <= end);
     }
     
     return (
