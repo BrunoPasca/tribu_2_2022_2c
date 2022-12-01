@@ -29,9 +29,6 @@ export default function BorrarHoraModal(props: any) {
     })
 
     setOpen(false)
-
-    // Hay que hacer reload para que se actualice la tabla, o useInterval para que se carguen los reportes cada x tiempo (?)
-    document.location.reload()
   }
   function handleCancelar() {
     setOpen(false)

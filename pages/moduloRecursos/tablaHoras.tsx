@@ -13,6 +13,7 @@ import BorrarHoraModal from './borrarHoraModal';
 import Edit from '@mui/icons-material/Edit';
 import EditarHoraModal from './editarHoraModal';
 import styles from '../../styles/recursos.module.css'
+import { useInterval } from '../moduloSoporte/utils';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -70,6 +71,14 @@ export default function MuiTable(props: any) {
                 setHoras(data)
             })
     }, [])
+
+    useInterval(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/horas")
+          .then((res) => res.json())
+          .then((data) => {
+            setHoras(data)
+          })
+      }, 1500)
 
 
     // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
