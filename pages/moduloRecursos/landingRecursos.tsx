@@ -32,7 +32,7 @@ export default function LandingRecurso() {
 
                     <select onChange={handleChange} className={styles.select}>
                         <option disabled={true} value="" selected>
-                            Consultar Recursos
+                            Consultar Horas
                         </option>
                         <option value={"/cargarPorPersonas"}>Por Persona</option>
                         <option value={"/cargarPorRecursos"}>Por Proyecto</option>
