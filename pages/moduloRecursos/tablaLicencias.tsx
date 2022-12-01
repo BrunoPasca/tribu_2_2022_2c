@@ -114,7 +114,7 @@ export default function MuiTable(props: any) {
                                 <TableCell align="center">{reporte.descripcion}</TableCell>
                                 <TableCell align="center">{reporte.fecha_inicio}</TableCell>
                                 <TableCell align="center">{reporte.fecha_fin}</TableCell>
-                                <TableCell align="center">{reporte.goce_sueldo}</TableCell>
+                                <TableCell align="center">{reporte.goce_sueldo? "Sí" : "No"}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>
                                         <DeleteIcon />

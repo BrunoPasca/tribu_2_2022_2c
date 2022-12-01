@@ -12,7 +12,7 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
     const [fechaFin, setFechaFin] = React.useState(new Date())
     const [legajo, setLegajo] = React.useState("")
-    const [tipo, setTipo] = React.useState("")
+    const [tipo, setTipo] = React.useState("Médica")
     const [descripcion, setDescripcion] = React.useState("")
 
     const [goceSueldo, setGoceSueldo] = React.useState(false)
@@ -52,14 +52,14 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
         const areNotEmpty = Object.values(licenciaDatos).every(
             value => value != ""
         );
-        if (!areNotEmpty) {
+        if (!endDate || !descripcion) {
             alert("Complete todos los campos antes de cargar.")
             return
         }
 
         console.log(JSON.stringify(licenciaDatos))
 
-        await fetch("https://aninfo2c222back-production.up.railway.app/api/licencias", {
+        await fetch("https://aninfo2c222back-production.up.railway.app/api/licencia", {
           method: "POST",
           body: JSON.stringify(licenciaDatos),
         })
@@ -101,6 +101,7 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
                     <option value="Exámen">Exámen</option>
                     <option value="Casamiento">Casamiento</option>
                     <option value="Fallecimiento">Fallecimiento</option>
+                    <option value="Vacaciones">Vacaciones</option>
                     </select>
                     <br></br>
                     <br></br>

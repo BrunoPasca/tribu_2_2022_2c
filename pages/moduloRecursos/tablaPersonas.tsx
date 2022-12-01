@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
 import SearchBar from 'material-ui-search-bar';
-
+import Link from 'next/link';
 
 export default function TablaPersonas(props: any) {
     const [empleados, setEmpleados] = React.useState([])
@@ -96,9 +96,15 @@ export default function TablaPersonas(props: any) {
                             <TableCell align="center">{empleado.horas_totales}</TableCell>
                             <TableCell align="center">{empleado.guardia}</TableCell>
                             <TableCell align="center">{empleado.horas_extra}</TableCell>
-                            <TableCell padding='none'>
-                                <button>Ampliar</button>
-                            </TableCell>
+                            
+                                <div>
+                                    <Link href={"./reportes/" + empleado.legajo}>
+                                        <TableCell padding='none'>
+                                            <button>Ampliar</button>
+                                        </TableCell>
+                                    </Link>
+                                    
+                                </div>
                             <TableCell padding='none'>
                                 <button>Generar Reporte</button>
                             </TableCell>

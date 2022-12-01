@@ -124,7 +124,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                         name="actividad"
                     >
                         {
-                            tareas.filter(tarea => tarea.proyecto_id == proyectoId).map(tarea =>
+                            (tareas).filter(tarea => tarea.proyecto_id == proyectoId).map(tarea =>
                                 <option key={tarea.id} value={tarea.id}>{tarea.descripcion}</option>
                             )
                         }
