@@ -3,6 +3,7 @@ import Header from '../header';
 import Head_ from '../head';
 import Link from 'next/link';
 import { useRouter } from "next/router";
+import Reportes from './reportes';
 
 
 export default function LandingRecurso() {
@@ -30,7 +31,7 @@ export default function LandingRecurso() {
                     <Link href="./cargarDatos"><button className={styles.select}>Cargar Horas</button></Link>
 
                     <select onChange={handleChange} className={styles.select}>
-                        <option disabled={true} value="">
+                        <option disabled={true} value="" selected>
                             Consultar Recursos
                         </option>
                         <option value={"/cargarPorPersonas"}>Por Persona</option>
@@ -38,6 +39,7 @@ export default function LandingRecurso() {
                     </select>
                 </div>
             </div>
+            <Reportes></Reportes>
         </div >
     );
 }

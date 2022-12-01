@@ -1,0 +1,23 @@
+.titulos{
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    font-size: 30px;
+ }
+
+ .reporteCard{
+    background-color: #8DA9C4;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 20px;
+    width: 250px;
+    border: #0B2545 0.4px solid;
+  }
+
+  .tituloCard{
+    font-size: 25px;
+    margin-bottom: 10px;
+    font-weight: bold;
+
+  }

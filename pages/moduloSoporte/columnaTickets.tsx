@@ -3,11 +3,6 @@ import { useEffect, useState } from 'react';
 import TicketCard from './ticketCard';
 import { TicketProperties } from './types';
 
-//probando con un array 
-
-//aca tendria que hacer get tickets
-
-
 
   
 export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
@@ -23,6 +18,7 @@ export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
 
       })
   }, [])
+
 
     return (
         <div>
