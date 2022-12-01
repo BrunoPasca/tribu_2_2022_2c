@@ -1,6 +1,0 @@
-# IDE
-.idea
-
-# Dependencies
-node_modules
-.env
