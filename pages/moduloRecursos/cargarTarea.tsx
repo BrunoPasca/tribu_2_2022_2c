@@ -14,15 +14,12 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     const [extra, setExtra] = React.useState("")
     const [fecha, setFecha] = React.useState(new Date())
 
+    const handleChangeExtra = () => {
+        setExtra(!extra)
+    }
+
     const [proyectos, setProyectos] = useState<any[]>([])
     const [tareas, setTareas] = useState<any[]>([])
-
-    const actividades = {
-        "Tarea": 1,
-        "Guardia": 2,
-        "Falta": 3,
-        "Licencia": 4,
-    }
 
     const [proyectoId, setProyectoId] = useState("")
     const [tareaId, setTareaId] = useState("")
@@ -144,18 +141,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
 
                     <div className={styles.flexContainer}>
                         <label className={styles.inputLabel} style={{textAlign:"left"}}>Fuera de Horario</label>
-                        <select
-                        id="extra"
-                        className={styles.selectInput}
-                        value={extra}
-                        onChange={(e) => {
-                            setExtra(e.currentTarget.value)
-                        }}
-                        name="extra"
-                        >
-                            <option value="0">No</option>
-                            <option value="1">Sí</option>
-                        </select>
+                        <input type="checkbox" onChange={handleChangeExtra}></input>
                         <br></br>
                     </div>
 

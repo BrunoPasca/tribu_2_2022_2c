@@ -48,7 +48,7 @@ export default function MuiTable(props : any) {
     
     
     return (
-        <TableContainer component={Paper} sx={{borderRadius:"2rem"}}>
+        <TableContainer component={Paper} sx={{borderRadius:"2rem", width:"600px"}}>
             <Typography
                 sx={{ flex: '1 1 100%' }}
                 variant="h6"
