@@ -29,6 +29,7 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
 
     async function handleClickCargar(){
         const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
+        console.log(_fecha)
         const faltaDatos = {legajo: legajo, fecha :  _fecha, justificante : justificante}
 
         if (!justificante) {

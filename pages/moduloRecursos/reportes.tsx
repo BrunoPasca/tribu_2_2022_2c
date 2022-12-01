@@ -23,7 +23,7 @@ export default function Reportes( ) {
                 <ColumnaLicencia></ColumnaLicencia>
             </div>
             <div>
-                <p>Guardia</p>
+                <p>Guardias</p>
                 <ColumnaGuardia></ColumnaGuardia>
             </div>
 

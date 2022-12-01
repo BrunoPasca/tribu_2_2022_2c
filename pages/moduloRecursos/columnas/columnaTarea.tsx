@@ -22,7 +22,7 @@ export default function ColumnaTarea() {
         <div>
           {(reportes).map((reporte) => ( 
             <div key={reporte.id}>
-              <TareaCard fecha={reporte.fecha} cant_horas={reporte.cant_horas}></TareaCard>
+              <TareaCard fecha={reporte.fecha} cant_horas={reporte.cant_horas} id_tarea={reporte.id_tarea}></TareaCard>
             </div>
           ))}
         </div>

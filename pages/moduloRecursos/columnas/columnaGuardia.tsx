@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import GuardiaCard from '../cards/tareaCard';
+import GuardiaCard from '../cards/guardiaCard';
 import { Guardia } from '../types';
 
   

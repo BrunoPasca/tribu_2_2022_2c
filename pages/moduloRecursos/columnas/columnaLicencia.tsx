@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import LicenciaCard from '../cards/tareaCard';
+import LicenciaCard from '../cards/licenciaCard';
 import { Licencia } from '../types';
 
   
