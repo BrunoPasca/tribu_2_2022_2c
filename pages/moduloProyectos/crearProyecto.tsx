@@ -35,6 +35,10 @@ export default function crearProyecto() {
 
   const onSubmit = handleSubmit((data) =>{
     console.log(JSON.stringify(data))
+    data.prioridad = "HOLA"
+    data.costo_acumulado = 0;
+    data.horas_reales = 0;
+    data.horas_estimadas= 40;
     fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos", {
           method: 'POST', // or 'PUT'
           body: JSON.stringify(data), // data can be `string` or {object}!
@@ -58,16 +62,18 @@ export default function crearProyecto() {
             <div>
               <label htmlFor="fname">Nombre proyecto </label>
               <br/>
-              <input type="text"  id="fname" name="firstname" placeholder="Nombre de proyecto" size={50} >
+              <input type="text"  {...register("nombre")} placeholder="Nombre de proyecto" size={50} >
               </input>
             </div>
+
             <br />
             <div>
               <label htmlFor = "projectState">
                 Estado 
               </label>
               <br/>
-              <select>
+
+              <select {...register("estado")} >
                   <option disabled selected> Estado</option>
                   <option value = "optionDesarrollo"> Desarrollo </option>
                   <option value = "optionProduccion"> Producción</option>
@@ -75,24 +81,21 @@ export default function crearProyecto() {
               </select>
             </div>
             <br />
-            <div>
-              <label  htmlFor = "Client name">Cliente  </label>
-              <br/>
-              <input type = "text" id = "projectClient" placeholder="Nombre cliente" size={50}></input>
-            </div >
+           
+
             <br />
 
             <div>
               <label htmlFor = "FechaDeInicio"> Fecha de inicio </label>
               <br/>
-              <input type = "date" id = "FechaDeInicio" name = "comienzoDeProyecto" size={50}>
+              <input type = "date" id = "FechaDeInicio" {...register("fecha_inicio")}  size={50}>
               </input>
             </div>
             <br />
             <div>
               <label htmlFor = "FechaDeFin"> Fecha estimada de fin </label>
               <br/>
-                <input type = "date" id = "FechaDeFin" name = "finDeProyecto">
+                <input type = "date" id = "FechaDeFin" {...register("fecha_fin")} >
                 </input>
             </div>
             <br />
