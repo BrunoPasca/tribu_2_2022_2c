@@ -10,9 +10,9 @@ import { Typography } from '@mui/material';
 
 
 export default function TablaPersonas(props: any) {
-
+    const [empleados, setEmpleados] = React.useState([])
     /* HAY QUE USAR UN ENDPOINT */
-    const empleados = [
+    const empleados_test = [
         {
             legajo: "1",
             nombre: "Bruno",
@@ -35,6 +35,15 @@ export default function TablaPersonas(props: any) {
             horas_extra: "17",
         },
     ]
+
+    React.useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/employees/")
+
+            .then((res) => res.json())
+            .then((data) => {
+                setEmpleados(data)
+            })
+    }, [])
 
 
     return (
@@ -64,7 +73,7 @@ export default function TablaPersonas(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {empleados.map((empleado) => (
+                    {empleados_test.map((empleado) => (
                         <TableRow
                             key={empleado.legajo}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
