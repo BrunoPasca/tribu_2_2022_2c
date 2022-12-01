@@ -17,7 +17,7 @@ export default function eliminarProyecto(){
         <Head_ nombre='Eliminar proyecto'></Head_>
         <Header></Header>
         <main className={styles.main}>
-            <form method = "GET" action = {"https://aninfo2c222back-production.up.railway.app/api/proyectos/"+id}>
+            <form method = "DELETE" action = {"https://aninfo2c222back-production.up.railway.app/api/proyectos/"+id}>
             <div className={styles.container}>
                 <div className={styles.confirmacion}>
                     <h1 className={styles.tituloForm}>¡Atención!</h1>
