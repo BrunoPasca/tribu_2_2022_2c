@@ -50,6 +50,18 @@ export default function TablaPersonas(props: any) {
             })
     }, [])
 
+    function obtenerDesvio(proyecto: any) {
+        const desvio = proyecto["horas_esperadas"] - proyecto["horas_totales"];
+        if (desvio < 0) {
+            return (
+                <h3 style={{ color: 'red' }}>{desvio}</h3>
+            );
+        } else {
+            return (
+                <h3 style={{ color: 'green' }}>{desvio}</h3>
+            );
+        }
+    }
 
     return (
         <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
@@ -73,21 +85,23 @@ export default function TablaPersonas(props: any) {
                         <TableCell align="center">Fecha Fin</TableCell>
                         <TableCell align="center">Horas Estimadas</TableCell>
                         <TableCell align="center">Horas Totales</TableCell>
+                        <TableCell align="center">Desvío</TableCell>
                         <TableCell align="center"></TableCell>
                         <TableCell align="center"></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {proyectos_test.map((proyecto) => (
+                    {proyectos.map((proyecto) => (
                         <TableRow
-                            key={proyecto.id}
+                            key={proyecto["id"]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell align="center">{proyecto.nombre}</TableCell>
-                            <TableCell align="center">{proyecto.fecha_inicio}</TableCell>
-                            <TableCell align="center">{proyecto.fecha_fin}</TableCell>
-                            <TableCell align="center">{proyecto.horas_esperadas}</TableCell>
-                            <TableCell align="center">{proyecto.horas_totales}</TableCell>
+                            <TableCell align="center">{proyecto["nombre"]}</TableCell>
+                            <TableCell align="center">{proyecto["fecha_inicio"]}</TableCell>
+                            <TableCell align="center">{proyecto["fecha_fin"]}</TableCell>
+                            <TableCell align="center">{proyecto["horas_esperadas"]}</TableCell>
+                            <TableCell align="center">{proyecto["horas_totales"]}</TableCell>
+                            <TableCell align="center">{obtenerDesvio(proyecto)}</TableCell>
                             <TableCell padding='none'>
                                 <button>Ampliar</button>
                             </TableCell>

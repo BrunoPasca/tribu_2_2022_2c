@@ -83,69 +83,74 @@ export default function proyectoEdit(this: any){
             <Head_ nombre='Editar proyecto'>
             </Head_>
             <Header></Header>
-        
-      <main className={styles.main}>
-        <div className={styles.container}>    
-          <h1 className={styles.tituloEdit}>Editar proyecto {id}</h1>
-          <form action= "" id="form_id">   
-            <div className={styles.camposForm}>
-              <div>
-                <label id="estadoId">Estado del proyecto</label>
-              </div>
-                <select id = "estadoProyecto">
-                    <option disabled selected> {proyecto.estado}</option>
-                    <option value = "Desarrollo"> Desarrollo </option>
-                    <option value = "Produccion"> Producción</option>
-                    <option value = "PostProduccion">Post Producción </option>
-                </select>
-                <div>
-                  <label >Nombre del cliente</label>
-                </div>
-                  <input type="text" id = "nombreid" placeholder = "Nuevo nombre" size={50}></input>
-                <div>
-                  <label >PM</label>
-                </div>
-                  <input type="text" id = "pmid" placeholder = "PM" size={50}></input>
-                <div>
-                  <label >CUIT</label>
-                </div>
-                  <input type="text" id = "cuit" placeholder = "CUIT" size={50}></input>
-                <div>
-                  <label > Fecha de inicio real</label>
-                </div>
-                  <input type="date" id= "fechainitid" ></input>
-                <div>
-                  <label >Contacto</label>
-                </div>
-                  <input type="text" id="contactoid" placeholder = "contacto@mail.com" size={50}></input>
-                <div>
-                  <label >Fecha de fin estimada</label>
-                </div>
-                  <input type="date" id= "fechafinid" ></input>
-                <div>
-                  <label >Tipo de cliente</label>
-                </div>
-                  <input type = "text" id = "tipocliente" placeholder = "Tipo" size={50}></input>
-                <div>
-                  <label >Horas insumidas</label>
-                </div>
-                  <input type="number" id= "horasinsumidas" min = "0"></input>
-                <div>
-                  <label id="proyectoSoporteId">Proyecto de soporte</label>
-                </div>
-                  <select>
-                      <option value = "No">No</option>
-                      <option value = "Si">Si</option>
-                  </select>
-            </div>    
+      
 
-            <div className={styles.botonesView}>
-              <a href="/moduloProyectos/proyectos"><button>Cancelar</button></a>
-              <button form = "form_id" onClick = {button_press}>Agregar</button>    
+            <div className={styles.proyectoView}>
+            <h1 className={styles.tituloEdit}>Editar proyecto {id}</h1>
+            <div className={styles.contenedorPadre}>
+                <div className={styles.infoProyecto}>
+                    <div className={styles.tituloInfo}>
+                      <div>Id</div>
+                      <div>Nombre</div>
+                      <div>Fecha de inicio real</div>
+                      <div>Fecha de fin real</div>
+                      <div>Estado</div>
+                    </div>
+                    <div className={styles.info}>
+                        <div>{id}</div>
+                        <div>
+                          <input type="text" id = "pmid" placeholder = "PM" size={50}></input>
+                        </div>
+                        <div>
+                          <input type="date" id= "fechainitid"></input>
+                        </div>
+                        <div>
+                          <input type="date" id= "fechafineid"></input>
+                        </div>
+                        <div>
+                          <select id = "estadoProyecto">
+                            <option disabled selected> {proyecto.estado}</option>
+                            <option value = "Desarrollo"> Desarrollo </option>
+                            <option value = "Produccion"> Producción</option>
+                            <option value = "PostProduccion">Post Producción </option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles.infoProyecto}>
+                    <div className={styles.tituloInfo}>
+                      <div>Prioridad</div>
+                      <div>Costo acumulado</div>
+                      <div>Horas estimadas</div>
+                      <div>Horas reales</div>
+                    </div>
+                    <div className={styles.info}>
+                        <div>
+                        <select id = "prioridadProyecto">
+                          <option disabled selected> {proyecto.estado}</option>
+                          <option value = "Baja">Baja</option>
+                          <option value = "Media">Media</option>
+                          <option value = "Alta">Alta</option>
+                        </select>
+                        </div>
+                        <div>
+                          <input type="text" id = "costo" placeholder = "Costo acumulado" size={50}></input>
+                        </div>
+                        <div>
+                          <input type="number" id= "horasEstimadas" min = "0"></input>
+                        </div>
+                        <div>
+                          <input type="number" id= "horasTotales" min = "0"></input>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </form>  
+        <div className={styles.botonesView}>
+          <a href="/moduloProyectos/proyectos"><button>Cancelar</button></a>
+          <button form = "form_id" onClick = {button_press}>Agregar</button>    
         </div>
-      </main> 
+        </div>
     </>
     )
 }

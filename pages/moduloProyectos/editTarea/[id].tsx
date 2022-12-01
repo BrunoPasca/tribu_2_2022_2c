@@ -29,64 +29,47 @@ export default function editTarea(){
         <Head_ nombre='Editar tarea'></Head_>
         <Header></Header>
         
-        <main className={styles.main}>
-            <div className={styles.container}>
-                <h1 className={styles.tituloEdit}>Editar tarea {id}</h1>
-                <form id = "a_form_id">
-                    <div className = {styles.camposForm}>
-                        <div>
-                            <label>Descripcion </label>
-                        </div>
-                        <input type="text" placeholder = {tarea.Descripcion} size={50}></input>
-                        <div>
-                            <label> Nuevo estado</label>
-                        </div>
-                        <select>
-                            <option disabled selected> Previo: {tarea.Estado}</option>
-                            <option value = "optionAbierto"> Abierto </option>
-                            <option value = "optionEnAnalisis"> En análisis</option>
-                            <option value = "optionDerivado">Derivado </option>
-                            <option value = "optionResuelto">Resuelto </option>
-                            <option value = "optionCerrado">Cerrado </option>
-                        </select>
-                        <div>
-                            <label>Duracion estimada</label>
-                        </div>
-                        <input type="text" placeholder = {tarea.Duracion_estimada} size={50}></input>
-                        <div>
-                            <label>Tiempo invertido</label>
-                        </div>
-                        <input type = "number" min = "0" placeholder = {tarea.tiempo_invertido}></input>
-                        <div>
-                            <label>Fecha estimada de fin</label>
-                        </div>
-                        <input type = "date" placeholder = {tarea.Fecha_estimada_de_fin}></input>
-                        <div>
-                            <label>Fecha real de fin</label>
-                        </div>
-                        <input type = "date" placeholder = {tarea.Fecha_real_de_fin}></input>
-                        <div>
-                            <label>Recursos asignados </label> 
-                        </div>
-                        <select id="optionDropDown" size={2} multiple> </select>
-                        <Script src = "../../dropdown.js"></Script>
-                        <div></div>
-                        <div>
-                            <label>Tareas precedentes</label> 
-                        </div>
-                        <select id="tareaOptionDropDown" size={2} multiple > </select>
-                        <Script src = "../../modulo_proyectos_dropdown_tareas.js"></Script>
-                        <div></div>
-
-                        <div className={styles.botonesView}>
-                            <a href="/moduloProyectos/tareas"><button>Cancelar</button></a>
-                            <button form = "form_id" onClick = {function_button}>Agregar</button>    
-                        </div>
-                        
+        <div className={styles.proyectoView}>
+            <h1 className={styles.tituloEdit}>EDITAR TAREA {id}</h1>   
+            <div className={styles.contenedorPadre}>
+                <div className={styles.infoProyecto}>
+                    <div className={styles.tituloInfo}>
+                        <div>Id</div>
+                        <div>Id del proyecto</div>
+                        <div>Estado</div>
+                        <div>Descripción</div>
+                        <div>Horas estimadas</div>
+                        <div>Horas totales</div>
                     </div>
-                </form>
+                    <div className={styles.info}>
+                        <div>{id}</div>
+                        <div>00-00</div>
+                        <div>
+                            <select>
+                                <option disabled selected> Previo: {tarea.Estado}</option>
+                                <option value = "optionBaja">Baja</option>
+                                <option value = "optionMedia">Media</option>
+                                <option value = "optionAlta">Alta</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" id = "nombrecl" placeholder = "Descripcion" size={50}></input>
+                        </div>
+                        <div>
+                            <input type="number" id= "horasEstimadas" min = "0"></input>
+                        </div>
+                        <div>
+                            <input type="number" id= "horasTotales" min = "0"></input>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </main>
+
+            <div className={styles.botonesView}>
+                <a href="/moduloProyectos/tareas"><button>Cancelar</button></a>
+                <button form = "form_id" onClick = {function_button}>Agregar</button>    
+            </div> 
+        </div>
         </>
     )
 }
