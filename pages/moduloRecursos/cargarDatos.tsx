@@ -151,7 +151,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
 
                 <div className={styles.containerBotones}>
                     <button type="button" title="Continuar" onClick={handleClickContinuar}>Continuar</button>
-                    <Link href='/'><button>Cancelar</button></Link>
+                    <Link href='./landingRecursos'><button>Cancelar</button></Link>
                 </div>
             </form>
 
