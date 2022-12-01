@@ -3,6 +3,7 @@ import Header from '../header';
 import Head_ from '../head';
 import Link from 'next/link';
 import { useRouter } from "next/router";
+import Reportes from './reportes';
 
 
 export default function LandingRecurso() {
@@ -38,6 +39,7 @@ export default function LandingRecurso() {
                     </select>
                 </div>
             </div>
+            <Reportes></Reportes>
         </div >
     );
 }
