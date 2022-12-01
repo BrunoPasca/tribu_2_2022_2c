@@ -12,13 +12,14 @@ import SearchBar from 'material-ui-search-bar';
 import Link from 'next/link';
 
 export default function TablaPersonas(props: any) {
-    const [empleados, setEmpleados] = React.useState([])
+    const [empleados, setEmpleados] = React.useState<any>([])
 
     React.useEffect(() => {
         fetch("https://aninfo2c222back-production.up.railway.app/api/employees/")
             .then((res) => res.json())
             .then((data) => {
                 setEmpleados(data)
+                setRows(data)
             })
     }, [])
 
@@ -27,29 +28,12 @@ export default function TablaPersonas(props: any) {
 
     }, [empleados])
 
-    interface empleado_test {
-        legajo: number;
-        nombre: string;
-        horas_totales: number;
-        guardia: number;
-        horas_extra: number;
-    }
-
-    /* HAY QUE USAR UN ENDPOINT */
-    const empleados_test: empleado_test[] = [
-        { legajo: 1, nombre: "Bruno", horas_totales: 3, guardia: 5, horas_extra: 4 },
-        { legajo: 2, nombre: "Julian", horas_totales: 8, guardia: 0, horas_extra: 0 },
-        { legajo: 3, nombre: "Enzo", horas_totales: 4, guardia: 2, horas_extra: 4 },
-        { legajo: 4, nombre: "Juan", horas_totales: 2, guardia: 1, horas_extra: 2 },
-        { legajo: 5, nombre: "Enzo H.", horas_totales: 3, guardia: 3, horas_extra: 3 },
-    ]
-
-    const [rows, setRows] = useState<empleado_test[]>(empleados_test);
+    const [rows, setRows] = useState<any>([]);
     const [searched, setSearched] = useState<string>("");
 
     const requestSearch = (searchedVal: string) => {
-        const filteredRows = empleados_test.filter((row) => {
-            return row.nombre.toLowerCase().includes(searchedVal.toLowerCase());
+        const filteredRows = empleados.filter((row: any) => {
+            return row["nombre"].toLowerCase().includes(searchedVal.toLowerCase());
         });
         setRows(filteredRows);
     };
@@ -122,7 +106,7 @@ export default function TablaPersonas(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {empleados.map((empleado) => {
+                    {rows.map((empleado: any) => {
                         let horas = getDataForEmployee(empleado['legajo'])
                         return (
                             <TableRow
