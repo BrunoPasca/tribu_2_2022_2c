@@ -15,7 +15,7 @@ export default function SearchBarSeveridad({placeholder, data}: {placeholder:str
         .then((res) => res.json())
         .then((data) => {
           setTickets(data)
-  
+
         })
     }, [])
 
@@ -28,7 +28,8 @@ export default function SearchBarSeveridad({placeholder, data}: {placeholder:str
           setEmpleados(data)
         })
     }, []) 
-    
+
+
     const[filteredData , setFilteredData] = useState([]);
     const[wordEntered , setWordEntered] = useState("");
 
@@ -36,7 +37,7 @@ export default function SearchBarSeveridad({placeholder, data}: {placeholder:str
         const searchWord = event.target.value;
         setWordEntered(searchWord);
         const newFilter = tickets.filter((value) => {
-            return value.severidad.toLowerCase().includes(searchWord.toLowerCase());  ///
+            return value.severidad.toString().toLowerCase().includes(searchWord.toLowerCase());  ///
         });
 
         if(searchWord === "") {
@@ -59,13 +60,14 @@ export default function SearchBarSeveridad({placeholder, data}: {placeholder:str
             </div> 
 
             <div className={styles.navbarDer}> 
-                
-            
+
+              <button onClick={clearInput}>Borrar
+              </button>
             </div>
 
             {filteredData.length != 0 && 
               <div className={styles.stackTop}> 
-                    {(tickets).filter(i => i.severidad.toLowerCase() == wordEntered.toLowerCase()).map((ticket) => ( 
+                    {(tickets).filter(i => i.severidad.toString().toLowerCase() == wordEntered.toLowerCase()).map((ticket) => ( 
                       <div key={ticket.id}>
                         <Link href={'/moduloSoporte/tickets/' + ticket.id}>
                           <TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard>
@@ -74,7 +76,7 @@ export default function SearchBarSeveridad({placeholder, data}: {placeholder:str
                     ))} 
               </div>
             }
-            
+
         </div>             
     );
 }
