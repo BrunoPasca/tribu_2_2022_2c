@@ -134,7 +134,9 @@ export default function TablaPersonas(props: any) {
                                 <TableCell align="center">{horas["horas_totales"]}</TableCell>
                                 <TableCell align="center">{horas["guardias"]}</TableCell>
                                 <TableCell align="center">{horas["horas_extra"]}</TableCell>
-                                <Link href={"./reportesPorEmpleado/horas/" + empleado['legajo']}> <button>Ampliar</button></Link> 
+                                <TableCell align="center">
+                                    <Link href={"./reportesPorEmpleado/horas/" + empleado['legajo']}> <button>Ampliar</button></Link>
+                                </TableCell>
                                 <TableCell padding='none'>
                                     <button>Generar Reporte</button>
                                 </TableCell>
