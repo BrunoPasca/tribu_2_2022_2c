@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
+import { useInterval } from '../moduloSoporte/utils';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -44,13 +45,22 @@ export default function MuiTable(props: any) {
     ]
 
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/faltas/")
+        fetch("https://aninfo2c222back-production.up.railway.app/api/faltas")
 
             .then((res) => res.json())
             .then((data) => {
                 setFaltas(data)
             })
     }, [])
+
+    
+    useInterval(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/faltas")
+          .then((res) => res.json())
+          .then((data) => {
+            setFaltas(data)
+          })
+      }, 1500)
 
 
     // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)

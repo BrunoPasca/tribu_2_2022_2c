@@ -4,7 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
 import SeleccionarActividad from "./seleccionarActividad";
-import { getProyectos, getTareasByProyecto } from "./services/ProyectoService";
 import MuiTable from "./tablaHoras";
 import Link from "next/link";
 

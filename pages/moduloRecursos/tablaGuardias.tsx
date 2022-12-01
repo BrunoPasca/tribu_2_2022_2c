@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 import BorrarGuardiaModal from './borrarGuardiaModal';
+import { useInterval } from '../moduloSoporte/utils';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -46,7 +47,7 @@ export default function MuiTable(props: any) {
     ]
 
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias/")
+        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias")
 
             .then((res) => res.json())
             .then((data) => {
@@ -54,6 +55,13 @@ export default function MuiTable(props: any) {
             })
     }, [])
 
+    useInterval(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias")
+          .then((res) => res.json())
+          .then((data) => {
+            setGuardias(data)
+          })
+      }, 1500)
 
 
     // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)

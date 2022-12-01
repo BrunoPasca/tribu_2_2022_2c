@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 import BorrarGuardiaModal from './borrarGuardiaModal';
+import { useInterval } from '../moduloSoporte/utils';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -51,12 +52,21 @@ export default function MuiTable(props: any) {
     const [licencias, setLicencias] = React.useState([])
 
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/licencia/")
+        fetch("https://aninfo2c222back-production.up.railway.app/api/licencia")
             .then((res) => res.json())
             .then((data) => {
                 setLicencias(data)
             })
     }, [])
+
+    
+  useInterval(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/licencia")
+      .then((res) => res.json())
+      .then((data) => {
+        setLicencias(data)
+      })
+  }, 1500)
 
 
 
