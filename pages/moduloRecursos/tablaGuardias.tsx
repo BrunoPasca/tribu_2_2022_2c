@@ -88,28 +88,30 @@ export default function MuiTable(props: any) {
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">ID</TableCell>
+                        <TableCell align="center">Legajo</TableCell>
                         <TableCell align="center">Desde</TableCell>
                         <TableCell align="center">Hasta</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {guardias_test
-                        .filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha_inicio) && DateBetweenTwoDates(inicio, fin, reporte.fecha_fin))
-                        .map((reporte) => (
+                    {guardias
+                        .filter(guardia => DateBetweenTwoDates(inicio, fin, guardia["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, guardia["fecha_fin"]))
+                        .map((guardia) => (
                             <TableRow
-                                key={reporte.id}
+                                key={guardia['id']}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">
-                                    {reporte.id}
+                                    {guardia['id']}
                                 </TableCell>
-                                <TableCell align="center">{reporte.fecha_inicio}</TableCell>
-                                <TableCell align="center">{reporte.fecha_fin}</TableCell>
+                                <TableCell align="center">{guardia["fecha_inicio"]}</TableCell>
+                                <TableCell align="center">{guardia["legajo_empleado"]}</TableCell>
+                                <TableCell align="center">{guardia["fecha_fin"]}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>
                                         <DeleteIcon />
                                     </IconButton>
-                                    <BorrarGuardiaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={reporte.id}></BorrarGuardiaModal>
+                                    <BorrarGuardiaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={guardia["id"]}></BorrarGuardiaModal>
                                 </TableCell>
                             </TableRow>
                         ))}

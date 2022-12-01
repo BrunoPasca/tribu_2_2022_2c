@@ -18,38 +18,26 @@ export default function TareaView() {
         <Header></Header>
         
         <div className={styles.proyectoView}>
-            <h1 className={styles.tituloProyecto}>TAREA XXXX</h1>   
+            <h1 className={styles.tituloEdit}>TAREA {id}</h1>   
             <div className={styles.contenedorPadre}>
                 <div className={styles.infoProyecto}>
                     <div className={styles.tituloInfo}>
                         <div>Id</div>
-                        <div>Descripción</div>
+                        <div>Id del proyecto</div>
                         <div>Estado</div>
-                        <div>Prioridad</div>
-                        <div>Responsable</div>
+                        <div>Descripción</div>
+                        <div>Horas estimadas</div>
+                        <div>Horas totales</div>
                     </div>
                     <div className={styles.info}>
+                        <div>{id}</div>
                         <div>00-00</div>
-                        <div>Una descripción</div>
                         <div>A</div>
-                        <div>Alta</div>
-                        <div>Juan</div>
+                        <div>Descripción</div>
+                        <div>XXXXX</div>
+                        <div>XXXXX</div>
                     </div>
-                </div>
-                <div className={styles.infoProyecto}>
-                    <div className={styles.tituloInfo}>
-                        <div>Fecha de inicio</div>
-                        <div>Fecha de fin estimada</div>
-                        <div>Fecha de fin real</div>
-                        <div>Horas insumidas</div>
-                    </div>
-                    <div className={styles.info}>
-                        <div>XX/XX/XXXX</div>
-                        <div>XX/XX/XXXX</div>
-                        <div>XX/XX/XXXX</div>
-                        <div>0</div>
-                    </div>
-                </div>
+                </div> 
             </div>
 
             <div className={styles.botonesView}>

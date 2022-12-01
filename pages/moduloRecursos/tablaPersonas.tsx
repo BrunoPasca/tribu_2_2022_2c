@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
 import SearchBar from 'material-ui-search-bar';
-
+import Link from 'next/link';
 
 export default function TablaPersonas(props: any) {
     const [empleados, setEmpleados] = React.useState([])
@@ -33,11 +33,11 @@ export default function TablaPersonas(props: any) {
 
     /* HAY QUE USAR UN ENDPOINT */
     const empleados_test: empleado_test[] = [
-        {legajo: 1, nombre: "Bruno", horas_totales: 3, guardia: 5, horas_extra: 4},
-        {legajo: 2, nombre: "Julian", horas_totales: 8, guardia: 0, horas_extra: 0},
-        {legajo: 3, nombre: "Enzo", horas_totales: 4, guardia: 2, horas_extra: 4},
-        {legajo: 4, nombre: "Juan", horas_totales: 2, guardia: 1, horas_extra: 2},
-        {legajo: 5, nombre: "Enzo H.", horas_totales: 3, guardia: 3, horas_extra: 3},
+        { legajo: 1, nombre: "Bruno", horas_totales: 3, guardia: 5, horas_extra: 4 },
+        { legajo: 2, nombre: "Julian", horas_totales: 8, guardia: 0, horas_extra: 0 },
+        { legajo: 3, nombre: "Enzo", horas_totales: 4, guardia: 2, horas_extra: 4 },
+        { legajo: 4, nombre: "Juan", horas_totales: 2, guardia: 1, horas_extra: 2 },
+        { legajo: 5, nombre: "Enzo H.", horas_totales: 3, guardia: 3, horas_extra: 3 },
     ]
 
     const [rows, setRows] = useState<empleado_test[]>(empleados_test);
@@ -86,16 +86,16 @@ export default function TablaPersonas(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((empleado) => (
+                    {empleados.map((empleado) => (
                         <TableRow
-                            key={empleado.legajo}
+                            key={empleado['legajo']}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell align="center">{empleado.legajo}</TableCell>
-                            <TableCell align="center">{empleado.nombre}</TableCell>
-                            <TableCell align="center">{empleado.horas_totales}</TableCell>
-                            <TableCell align="center">{empleado.guardia}</TableCell>
-                            <TableCell align="center">{empleado.horas_extra}</TableCell>
+                            <TableCell align="center">{empleado['legajo']}</TableCell>
+                            <TableCell align="center">{empleado["nombre"]}</TableCell>
+                            <TableCell align="center">{empleado["horas_totales"]}</TableCell>
+                            <TableCell align="center">{empleado["guardia"]}</TableCell>
+                            <TableCell align="center">{empleado["horas_extra"]}</TableCell>
                             <TableCell padding='none'>
                                 <button>Ampliar</button>
                             </TableCell>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -63,9 +63,8 @@ export default function MuiTable(props: any) {
 
     const [horas, setHoras] = React.useState([])
 
-    React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/horas/")
-
+    useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/horas")
             .then((res) => res.json())
             .then((data) => {
                 setHoras(data)
@@ -110,24 +109,24 @@ export default function MuiTable(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
+                    {horas.map((hora) => (
                         <TableRow
-                            key={reporte.id}
+                            key={hora["id"]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell component="th" scope="row">{reporte.id}</TableCell>
-                            <TableCell align="center">{reporte.id_tarea}</TableCell>
-                            <TableCell align="center">{reporte.tarea}</TableCell>
-                            <TableCell align="center">{reporte.fecha}</TableCell>
-                            <TableCell align="center">{reporte.cant_horas}</TableCell>
+                            <TableCell component="th" scope="row">{hora["id"]}</TableCell>
+                            <TableCell align="center">{hora["id_tarea"]}</TableCell>
+                            <TableCell align="center">{hora["tarea"]}</TableCell>
+                            <TableCell align="center">{hora["fecha"]}</TableCell>
+                            <TableCell align="center">{hora["cant_horas"]}</TableCell>
                             <TableCell padding="none" align="right">
                                 <IconButton onClick={handleOpenDelete}><DeleteIcon /></IconButton>
-                                <BorrarHoraModal isOpen={openDelete} setOpen={setOpenDelete} reporteId={reporte.id}></BorrarHoraModal>
+                                <BorrarHoraModal isOpen={openDelete} setOpen={setOpenDelete} reporteId={hora["id"]}></BorrarHoraModal>
                             </TableCell>
                             <TableCell padding="none">
                                 <IconButton onClick={handleOpenEdit}><EditIcon /></IconButton>
-                                <EditarHoraModal isOpen={openEdit} setOpen={setOpenEdit} reporteId={reporte.id}
-                                    tareaId={reporte.id_tarea} cantHoras={reporte.cant_horas} fecha={reporte.fecha}>
+                                <EditarHoraModal isOpen={openEdit} setOpen={setOpenEdit} reporteId={hora["id"]}
+                                    tareaId={hora["id_tarea"]} cantHoras={hora["cant_horas"]} fecha={hora["fecha"]}>
                                 </EditarHoraModal>
                             </TableCell>
                         </TableRow>

@@ -26,38 +26,30 @@ export default function Tarea() {
             <h1>Tareas del proyecto XXXX</h1>
           </div>
           <div className={styles.navbarDer}> 
-            <input placeholder='ingrese un nombre'></input>
-            <select>
-              <option>Creador</option>
-              <option>Resolutor</option>
-              <option>Responsable</option>
-              <option>Cliente</option>
-            </select>
-
-            <button>Filtrar</button>
-
+            <input placeholder='Buscar...'></input>
+            <button className={styles.botonBuscar}>Buscar</button>
           </div>
         </div>
         
         <div className={styles.grilla}>
             <div>
-              <h2 className={styles.grillaEncabezado}>A</h2>  
+              <h2 className={styles.grillaEncabezado}>Abierta</h2>  
               <ColumnaTarea estadoFiltro='A'></ColumnaTarea>  
             </div>
             <div>
-            <h2 className={styles.grillaEncabezado}>B</h2>  
+            <h2 className={styles.grillaEncabezado}>En análisis</h2>  
               <ColumnaTarea estadoFiltro='B'></ColumnaTarea>
             </div>
             <div>
-            <h2 className={styles.grillaEncabezado}>C</h2>  
+            <h2 className={styles.grillaEncabezado}>En progreso</h2>  
               <ColumnaTarea estadoFiltro='C'></ColumnaTarea>
             </div>
             <div>
-            <h2 className={styles.grillaEncabezado}>D</h2>  
+            <h2 className={styles.grillaEncabezado}>Suspendida</h2>  
               <ColumnaTarea estadoFiltro='D'></ColumnaTarea>
             </div>
             <div>
-            <h2 className={styles.grillaEncabezado}>E</h2>  
+            <h2 className={styles.grillaEncabezado}>Completada</h2>  
               <ColumnaTarea estadoFiltro='E'></ColumnaTarea>
             </div>
           </div>

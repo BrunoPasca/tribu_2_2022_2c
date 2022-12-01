@@ -19,47 +19,33 @@ export default function ProyectoView() {
         <Header></Header>
         
         <div className={styles.proyectoView}>
-            <h1 className={styles.tituloProyecto}>PROYECTO {id}</h1>
+            <h1 className={styles.tituloEdit}>PROYECTO {id}</h1>
             <div className={styles.contenedorPadre}>
                 <div className={styles.infoProyecto}>
                     <div className={styles.tituloInfo}>
                         <div>Id</div>
-                        <div>Estado</div>
+                        <div>Nombre</div>
                         <div>Fecha de inicio real</div>
-                        <div>Fecha de fin estimada</div>
                         <div>Fecha de fin real</div>
-                        <div>Horas insumidas</div>
-                        <div>Tipo de proyecto</div>
-                        <div>Proyect Manager (PM)</div>
+                        <div>Estado</div>
                     </div>
                     <div className={styles.info}>
-                        <div>00-00</div>
+                        <div>{id}</div>
                         <div>En desarrollo</div>
                         <div>XX/XX/XXXX</div>
                         <div>XX/XX/XXXX</div>
-                        <div>XX/XX/XXXX</div>
                         <div>0</div>
-                        <div>XXXXX</div>
-                        <div>XXXXX</div>
                     </div>
                 </div>
 
                 <div className={styles.infoProyecto}>
                     <div className={styles.tituloInfo}>
-                        <div>Nombre cliente</div>
-                        <div>CUIT cliente</div>
-                        <div>Tipo de CLIENTE</div>
-                        <div>Contacto</div><br />
-                        <div>Nombre SPONSOR</div>
-                        <div>CUIT SPONSOR</div>
-                        <div>Tipo de SPONSOR</div>
-                        <div>Contacto SPONSOR</div>
+                        <div>Prioridad</div>
+                        <div>Costo acumulado</div>
+                        <div>Horas estimadas</div>
+                        <div>Horas reales</div>
                     </div>
                     <div className={styles.info}>
-                        <div>XXXXXXXXX</div>
-                        <div>00-00000000-0</div>
-                        <div>XXXXXX</div>
-                        <div>XXXXXX@gmail.com</div><br />
                         <div>XXXXXXXXX</div>
                         <div>00-00000000-0</div>
                         <div>XXXXXX</div>

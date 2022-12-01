@@ -8,7 +8,6 @@ export default function tareaCard({nombre, id, desc, estado, fechaEstFin}: {nomb
             <div className={styles.tituloCard}>{id} - {nombre}</div>
             <div className={styles.textoCard}>{desc}</div>
             <div className={styles.textoCard}>{estado}</div>
-            <div className={styles.textoCard}>{fechaEstFin}</div>
         </div>
         </a>
     );

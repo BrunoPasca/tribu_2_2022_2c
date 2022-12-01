@@ -14,7 +14,7 @@ export default function LandingRecurso() {
         router.push("/moduloRecursos/" + event.currentTarget.value)
     }
     return (
-        <div className={styles.container}>
+        <div className={styles.container}   >
 
             <Head_ nombre='Recursos'></Head_>
 
@@ -25,6 +25,8 @@ export default function LandingRecurso() {
                     <h1>RRHH</h1>
                 </div>
             </div>
+
+            <Link href="./tablasAllReportes/tablaAllHoras"><button className={styles.select}>Cargar Horas</button></Link>
 
             <div className={styles.titulos} style={{ justifyContent: "center" }}>
                 <div style={{ justifyContent: "space-between" }}>
@@ -39,7 +41,6 @@ export default function LandingRecurso() {
                     </select>
                 </div>
             </div>
-            <Reportes></Reportes>
         </div >
     );
 }

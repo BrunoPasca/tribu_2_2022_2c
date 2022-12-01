@@ -60,6 +60,7 @@ export default function MuiTable(props: any) {
 
 
 
+
     // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
     function modificarFormatoFecha(date: string) {
         const [day, month, year] = date.split('/');
@@ -100,26 +101,26 @@ export default function MuiTable(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes
-                        .filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha_inicio) && DateBetweenTwoDates(inicio, fin, reporte.fecha_fin))
-                        .map((reporte) => (
+                    {licencias
+                        .filter(licencias => DateBetweenTwoDates(inicio, fin, licencias["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, licencias["fecha_fin"]))
+                        .map((licencias) => (
                             <TableRow
-                                key={reporte.id}
+                                key={licencias["id"]}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">
-                                    {reporte.id}
+                                    {licencias["id"]}
                                 </TableCell>
-                                <TableCell align="center">{reporte.tipo_licencia}</TableCell>
-                                <TableCell align="center">{reporte.descripcion}</TableCell>
-                                <TableCell align="center">{reporte.fecha_inicio}</TableCell>
-                                <TableCell align="center">{reporte.fecha_fin}</TableCell>
-                                <TableCell align="center">{reporte.goce_sueldo}</TableCell>
+                                <TableCell align="center">{licencias["tipo_licencia"]}</TableCell>
+                                <TableCell align="center">{licencias["descripcion"]}</TableCell>
+                                <TableCell align="center">{licencias["fecha_inicio"]}</TableCell>
+                                <TableCell align="center">{licencias["fecha_fin"]}</TableCell>
+                                <TableCell align="center">{licencias["goce_sueldo"]}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>
                                         <DeleteIcon />
                                     </IconButton>
-                                    <BorrarGuardiaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={reporte.id}></BorrarGuardiaModal>
+                                    <BorrarGuardiaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={licencias["id"]}></BorrarGuardiaModal>
                                 </TableCell>
                             </TableRow>
                         ))}
