@@ -113,7 +113,7 @@ export default function TicketCreate() {
             <br></br>
 
             <label htmlFor="dato_contacto">Dato de contacto</label>
-            <input type="text" {...register("dato_contacto")} placeholder='pepe@gmail.com'/>
+            <input type="text" {...register("dato_contacto")} placeholder='ingrese datos de contacto'/>
             <br></br>
 
             <label htmlFor="id_producto">Producto</label>
@@ -129,7 +129,7 @@ export default function TicketCreate() {
             <input type="date" {...register("fecha_emision")} required/>
             <br></br>
 
-            <label htmlFor="fechaResolucion">Fecha de resolucion</label>
+            <label htmlFor="fechaResolucion">Fecha de resolucion estimada</label>
             <input type="date" {...register("fecha_resolucion")}/>
             <br></br>
 
