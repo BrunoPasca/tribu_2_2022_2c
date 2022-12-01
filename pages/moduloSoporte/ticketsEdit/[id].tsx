@@ -64,9 +64,11 @@ export default function TicketEdit() {
                   'Content-Type': 'application/json'
                 }
               })
+              alert("El ticket se edito correctamente")
+
     })
 
-    
+
 
     return (
       <form className={styles.form} onSubmit={onSubmit}>
@@ -120,9 +122,11 @@ export default function TicketEdit() {
             <br></br>
             
 
-            
-            <label htmlFor="medioContacto">Medio de contacto</label>
-            <input type="text" {...register("medio_contacto")} value={ticket?.medioContacto}/>
+            <label htmlFor="medio_contacto">Medio de contacto</label>
+            <select {...register("medio_contacto")}>
+                  <option id="id_producto" value={"Email"}>Email</option>
+                  <option id="id_producto" value={"Telefono"}>Telefono</option>
+            </select>
             <br></br>
 
             <label htmlFor="datoContacto">Dato de contacto</label>
