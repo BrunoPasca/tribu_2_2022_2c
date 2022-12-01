@@ -27,16 +27,8 @@ export default function Soporte() {
             <h1>Proyectos</h1>
           </div>
           <div className={styles.navbarDer}> 
-            <input placeholder='ingrese un nombre'></input>
-            <select>
-              <option>Creador</option>
-              <option>Resolutor</option>
-              <option>Responsable</option>
-              <option>Cliente</option>
-            </select>
-
-            <button>Filtrar</button>
-
+            <input placeholder='Buscar...'></input>
+            <button className={styles.botonBuscar}>Buscar</button>
           </div>
         </div>
 

@@ -119,6 +119,20 @@
   background-color: #134074; 
 }
 
+.botonBuscar{
+  border-radius: 30px;
+  width: 100px;
+  height: 30px;
+  background-color: #0B2545;
+  border: none;
+  color: white;
+}
+
+.botonBuscar:hover{  
+  box-shadow: 0px 0px 10px rgb(82, 82, 82);
+  background-color: #134074; 
+}
+
 /*------*/
 
 .proyectoCard{
@@ -247,6 +261,7 @@
 
 .navbarDer input{
   margin-right: 40px;
+  background-color: #EEF4ED;
 }
 
 .navbarDer select{
@@ -309,13 +324,13 @@
   font-weight: 1000;
 }
 
-.camposForm input, .camposForm select{
+.camposForm input, .camposForm select, .info input, .info select{
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: #EEF4ED;
   color: black;
   border: black;
-  height: 30px;
+  height: 20px;
 }
 
 .confirmacion{
