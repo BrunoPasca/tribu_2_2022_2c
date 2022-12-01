@@ -59,11 +59,7 @@ export default function SearchBar({placeholder, data, filtro}: {placeholder:stri
             </div> 
 
             <div className={styles.navbarDer}> 
-                <select>
-                  <option>Creador</option>
-                  <option>Responsable</option>
-                  <option>Cliente</option>
-                </select>
+
 
               <button onClick={clearInput}>Borrar
               </button>

@@ -23,7 +23,7 @@ export default function Soporte() {
           </div>
           <div className={styles.navbarDer}> 
           
-            <SearchBar filtro="titulo" placeholder="Ingrese un nombre" data={TicketData}/>
+            <SearchBar filtro="titulo" placeholder="Ingrese una severidad" data={TicketData}/>
 
             <SearchBarResponsable placeholder='Ingrese id de resposable'data={TicketData} ></SearchBarResponsable>
 
