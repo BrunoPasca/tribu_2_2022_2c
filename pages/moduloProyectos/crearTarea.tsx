@@ -16,17 +16,11 @@ export default function crearTarea(){
         <form>
             <div className = {styles.camposForm}>
                 <h1 className={styles.tituloForm}>Nueva tarea</h1>
-                <div>
-                    <label id = "tareaID" >ID Tarea </label>
-                </div>
-                <input type="text"  id="tareaID" name="tareaid" placeholder="ID nueva tarea"  >
-                </input>
-                <div></div>
                 <br />
                 <div>
                     <label id = "descripcionID" >Descripcion </label>
                 </div>
-                <input type="text"  id="descripcionID" name="tareaid" placeholder="Una descripcion"></input>
+                <input type="text"  id="descripcionID" name="tareaid" placeholder="Una descripcion" size={50}></input>
                 <div></div>
                 <br />
                 <div>
@@ -45,13 +39,13 @@ export default function crearTarea(){
                 <div>
                     <label id = "duracionEstID" >Duración estimada </label>
                 </div>
-                <input type="text"  id="duracionID" name="duracionid" placeholder="Estimación"></input>
+                <input type="text"  id="duracionID" name="duracionid" placeholder="Estimación" size={50}></input>
                 <div></div>
                 <br />
                 <div>
                     <label id = "tiempoInvertidoID" >Tiempo invertido </label>
                 </div>
-                <input type="text"  id="tiempoInvertidoID" name="tiempoinvertidoid" placeholder="Invertido"></input>
+                <input type="text"  id="tiempoInvertidoID" name="tiempoinvertidoid" placeholder="Invertido" size={50}></input>
                 <div></div>
                 <br />
                 <div>

@@ -84,68 +84,68 @@ export default function proyectoEdit(this: any){
             </Head_>
             <Header></Header>
         
-
-        <div className={styles.container}>
-
-        <div className = {sup_styles.navbar}>
-            <div className={sup_styles.navbarIzq}> 
-                <h1>Editar proyecto   : {id}</h1>
-            </div>
-            <div className = {sup_styles.navbarDer}>
-                <a href="/moduloProyectos/proyectos">
-                    <button className = {styles.negative_button_style}>Regresar</button>
-                </a>
-            <div >
-            <br>
-            </br>
-                <button form = "form_id" onClick = {button_press} className = {styles.positive_button_style}>
-                    Editar proyecto
-                </button>
-            </div>
-            </div>
-        </div>
-    
-
-        <form action  = "" id="form_id" >       
-            <div className = {styles.four_column_grid}>
+      <main className={styles.main}>
+        <div className={styles.container}>    
+          <h1 className={styles.tituloEdit}>Editar proyecto {id}</h1>
+          <form action= "" id="form_id">   
+            <div className={styles.camposForm}>
+              <div>
                 <label id="estadoId">Estado del proyecto</label>
+              </div>
                 <select id = "estadoProyecto">
                     <option disabled selected> {proyecto.estado}</option>
                     <option value = "Desarrollo"> Desarrollo </option>
                     <option value = "Produccion"> Producción</option>
                     <option value = "PostProduccion">Post Producción </option>
                 </select>
-                <label >Nombre del cliente</label>
-                <input type="text" id = "nombreid" placeholder = "Nuevo nombre"></input>
+                <div>
+                  <label >Nombre del cliente</label>
+                </div>
+                  <input type="text" id = "nombreid" placeholder = "Nuevo nombre" size={50}></input>
+                <div>
+                  <label >PM</label>
+                </div>
+                  <input type="text" id = "pmid" placeholder = "PM" size={50}></input>
+                <div>
+                  <label >CUIT</label>
+                </div>
+                  <input type="text" id = "cuit" placeholder = "CUIT" size={50}></input>
+                <div>
+                  <label > Fecha de inicio real</label>
+                </div>
+                  <input type="date" id= "fechainitid" ></input>
+                <div>
+                  <label >Contacto</label>
+                </div>
+                  <input type="text" id="contactoid" placeholder = "contacto@mail.com" size={50}></input>
+                <div>
+                  <label >Fecha de fin estimada</label>
+                </div>
+                  <input type="date" id= "fechafinid" ></input>
+                <div>
+                  <label >Tipo de cliente</label>
+                </div>
+                  <input type = "text" id = "tipocliente" placeholder = "Tipo" size={50}></input>
+                <div>
+                  <label >Horas insumidas</label>
+                </div>
+                  <input type="number" id= "horasinsumidas" min = "0"></input>
+                <div>
+                  <label id="proyectoSoporteId">Proyecto de soporte</label>
+                </div>
+                  <select>
+                      <option value = "No">No</option>
+                      <option value = "Si">Si</option>
+                  </select>
+            </div>    
 
-
-                <label >PM</label>
-                <input type="text" id = "pmid" placeholder = "PM"></input>
-                <label >CUIT</label>
-                <input type="text" id = "cuit" placeholder = "CUIT"></input>
-
-                <label > Fecha de inicio real</label>
-                <input type="date" id= "fechainitid" ></input>
-                <label >Contacto</label>
-                <input type="text" id="contactoid" placeholder = "contacto@mail.com"></input>
-
-                <label >Fecha de fin estimada</label>
-                <input type="date" id= "fechafinid" ></input>
-                <label >Tipo de cliente</label>
-                <input type = "text" id = "tipocliente" placeholder = "Tipo"></input>
-
-                <label >Horas insumidas</label>
-                <input type="number" id= "horasinsumidas" min = "0"></input>
-                <label id="proyectoSoporteId">Proyecto de soporte</label>
-                <select>
-                    <option value = "No">No</option>
-                    <option value = "Si">Si</option>
-                </select>
+            <div className={styles.botonesView}>
+              <a href="/moduloProyectos/proyectos"><button>Cancelar</button></a>
+              <button form = "form_id" onClick = {button_press}>Agregar</button>    
             </div>
-            
-            
-        </form>  
-        </div> 
+          </form>  
+        </div>
+      </main> 
     </>
     )
 }
@@ -155,7 +155,7 @@ export default function proyectoEdit(this: any){
 
 
 function button_press(){
-    alert("Back end tiene que hacer algo "); 
+  alert("Back end tiene que hacer algo "); 
     var estado_proyecto = document.getElementById('estadoProyecto').value; 
     var nombre_ciente = document.getElementById('nombreid').value;
     var pm = document.getElementById('pmid').value;

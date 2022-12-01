@@ -247,6 +247,13 @@
   margin-right: 10px;
 }
 
+.tituloEdit{
+  text-align: center;
+  font-size: 50px;
+  margin-top: 20px;
+  color: black;
+}
+
 /* ----- FORM ------*/
 .tituloForm{
   text-align: center;
@@ -284,10 +291,16 @@
   color: black;
   width: 500px;
   background-color: #8DA9C4;
-  padding: 30px;
+  padding: 40px;
   border-radius: 20px;
   font-family: 'Roboto', sans-serif;
   border: #0B2545 1px solid;
   box-shadow: 0px 0px 5px rgb(82, 82, 82);
+  font-weight: 1000;
+}
+
+.camposForm input, .camposForm select{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
