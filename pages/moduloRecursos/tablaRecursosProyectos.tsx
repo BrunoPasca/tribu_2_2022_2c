@@ -51,7 +51,7 @@ export default function TablaPersonas(props: any) {
     }, [])
 
     function obtenerDesvio(proyecto: any) {
-        const desvio = proyecto.horas_esperadas - proyecto.horas_totales;
+        const desvio = proyecto["horas_esperadas"] - proyecto["horas_totales"];
         if (desvio < 0) {
             return (
                 <h3 style={{ color: 'red' }}>{desvio}</h3>
