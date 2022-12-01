@@ -4,6 +4,7 @@ import TicketCard from './ticketCard';
 import Head_ from '../head';
 import ColumnaTicket from './columnaTickets';
 import SearchBar from './searchBar';
+import SearchBarResponsable from './searchBarResponsable';
 import TicketData from './TicketsData.json'
 
 
@@ -23,7 +24,8 @@ export default function Soporte() {
           <div className={styles.navbarDer}> 
           
             <SearchBar filtro="titulo" placeholder="Ingrese un nombre" data={TicketData}/>
-          
+
+            <SearchBarResponsable placeholder='Ingrese id de resposable'data={TicketData} ></SearchBarResponsable>
 
           </div>
         </div>
