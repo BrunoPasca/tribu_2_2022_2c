@@ -14,7 +14,7 @@ export default function LandingRecurso() {
         router.push("/moduloRecursos/" + event.currentTarget.value)
     }
     return (
-        <div className={styles.container}>
+        <div className={styles.container}   >
 
             <Head_ nombre='Recursos'></Head_>
 
@@ -39,7 +39,6 @@ export default function LandingRecurso() {
                     </select>
                 </div>
             </div>
-            <Reportes></Reportes>
         </div >
     );
 }
