@@ -118,7 +118,7 @@ export default function MuiTable(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {horas.map((hora) => (
+                    {horas.filter(hora=> DateBetweenTwoDates(props.fechaInicio, props.fechaFin, hora["fecha"])).map((hora) => (
                         <TableRow
                             key={hora["id"]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

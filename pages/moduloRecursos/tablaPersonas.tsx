@@ -23,6 +23,9 @@ export default function TablaPersonas(props: any) {
     }, [])
 
 
+    React.useEffect(() => {
+
+    }, [empleados])
 
     interface empleado_test {
         legajo: number;
@@ -131,8 +134,8 @@ export default function TablaPersonas(props: any) {
                                 <TableCell align="center">{horas["horas_totales"]}</TableCell>
                                 <TableCell align="center">{horas["guardias"]}</TableCell>
                                 <TableCell align="center">{horas["horas_extra"]}</TableCell>
-                                <TableCell padding='none'>
-                                    <button>Ampliar</button>
+                                <TableCell align="center">
+                                    <Link href={"./reportesPorEmpleado/horas/" + empleado['legajo']}> <button>Ampliar</button></Link>
                                 </TableCell>
                                 <TableCell padding='none'>
                                     <button>Generar Reporte</button>
