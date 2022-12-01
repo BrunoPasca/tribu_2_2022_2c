@@ -26,8 +26,10 @@ export default function eliminarProyecto(){
                 </div>
 
                 <div className={styles.botonesView}>
-                    <button onClick={function_button}>Confirmar</button>
-                    <a href="/moduloProyectos/proyectoView"><button type = "submit">Cancelar</button></a>
+                <a href="/moduloProyectos/proyectoView">
+                <button type = "submit">Confirmar</button>
+                </a> 
+                <a href="/moduloProyectos/proyectoView"><button >Cancelar</button></a>
                 </div>
             </div>
         </form>
