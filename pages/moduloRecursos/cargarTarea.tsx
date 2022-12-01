@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export default function CargarTarea({ period, screenSetter }: { period: string, screenSetter: any }) {
     const [cantHoras, setCantHoras] = React.useState("")
-    const [extra, setExtra] = React.useState("")
+    const [extra, setExtra] = React.useState(false)
     const [fecha, setFecha] = React.useState(new Date())
 
     const handleChangeExtra = () => {
