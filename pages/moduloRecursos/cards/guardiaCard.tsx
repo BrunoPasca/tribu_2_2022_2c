@@ -5,7 +5,8 @@ export default function GuardiaCard(props : any) {
     return(
         <div className={styles.reporteCard}>
             <div className={styles.tituloCard}>{props.legajo_empleado}</div>
-            <div className={styles.severidadCard}>{props.fecha_inicio} a {props.fecha_fin}</div>
+            <div className={styles.severidadCard}>Inicio: {props.fecha_inicio}</div>
+            <div className={styles.severidadCard}>Fin: {props.fecha_fin}</div>
         </div>
     );
   }
