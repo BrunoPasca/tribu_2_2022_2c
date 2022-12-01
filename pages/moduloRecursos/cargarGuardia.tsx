@@ -73,6 +73,7 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
                             selectsRange
                             minDate={fechaInicio}
                             maxDate={fechaFin}
+                            dateFormat="dd/MM/yyyy"
                         />
                     </div>
 

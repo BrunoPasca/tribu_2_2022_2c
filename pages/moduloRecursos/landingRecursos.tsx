@@ -23,10 +23,6 @@ export default function LandingRecurso() {
                 <div className={styles.navbarIzq}>
                     <h1>RRHH</h1>
                 </div>
-                <div className={styles.navbarDer}>
-                    <input placeholder='Empleado o proyecto'></input>
-                    <Link href="./cargarDatos"><button>Cargar Horas</button></Link>
-                </div>
             </div>
 
             <div className={styles.titulos} style={{ justifyContent: "center" }}>

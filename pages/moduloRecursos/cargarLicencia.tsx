@@ -82,6 +82,7 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
                             selectsRange
                             minDate={fechaInicio}
                             maxDate={fechaFin}
+                            dateFormat="dd/MM/yyyy"
                         />
                     </div>
                     <br></br>

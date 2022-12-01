@@ -13,6 +13,7 @@ export default function TablaPersonas(props: any) {
 
     /* HAY QUE USAR UN ENDPOINT */
     const proyectos = [
+        // Formato fecha dd/MM/yyyy
         {
             id: "1",
             nombre: "Proyecto 1",

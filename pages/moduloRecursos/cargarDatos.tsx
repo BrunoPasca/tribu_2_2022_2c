@@ -142,7 +142,8 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
 
                 <div className={styles.calendarInput}>
                     <label className={styles.inputLabel}>Inicio</label>
-                    <DatePicker className={styles.calendar} selected={inicio} onChange={(date: any) => setInicio(date)}
+                    <DatePicker className={styles.calendar} selected={inicio} dateFormat="dd/MM/yyyy"
+                                onChange={(date: any) => setInicio(date)}
                         filterDate={filterDate}
                     />
                 </div>
