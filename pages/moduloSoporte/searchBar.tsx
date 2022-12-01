@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { EmpleadoProperties, TicketProperties } from './types';
 
 
-export default function SearchBar({placeholder, data}: {placeholder:string, data:{}}) {
+export default function SearchBar({placeholder, data, filtro}: {placeholder:string, data:{}, filtro: string}) {
 
     const [tickets, setTickets]: [Array<TicketProperties> ,any] = useState([])
 
@@ -36,7 +36,7 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
         const searchWord = event.target.value;
         setWordEntered(searchWord);
         const newFilter = tickets.filter((value) => {
-            return value.titulo.toLowerCase().includes(searchWord.toLowerCase());  ///
+            return value.severidad.toLowerCase().includes(searchWord.toLowerCase());  ///
         });
 
         if(searchWord === "") {
@@ -61,12 +61,9 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
             <div className={styles.navbarDer}> 
                 <select>
                   <option>Creador</option>
-                  <option>Resolutor</option>
                   <option>Responsable</option>
                   <option>Cliente</option>
                 </select>
-
-              <BotonFiltro searchedWord={wordEntered}/>
 
               <button onClick={clearInput}>Borrar
               </button>
@@ -74,7 +71,7 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
 
             {filteredData.length != 0 && 
               <div className={styles.stackTop}> 
-                    {(tickets).filter(i => i.titulo.toLowerCase() == wordEntered.toLowerCase()).map((ticket) => ( 
+                    {(tickets).filter(i => i.severidad.toLowerCase() == wordEntered.toLowerCase()).map((ticket) => ( 
                       <div key={ticket.id}>
                         <Link href={'/moduloSoporte/tickets/' + ticket.id}>
                           <TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard>
