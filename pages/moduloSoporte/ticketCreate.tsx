@@ -2,8 +2,7 @@ import Head from 'next/head'
 import styles from '../../styles/ticket.module.css'
 import Head_ from '../head'
 import Header from '../header'
-import ClienteSelect from './clienteSelect';
-import { ClientesProperties } from './types';
+import { ClientesProperties, EmpleadoProperties } from './types';
 import { useEffect, useState } from "react";
 
 
@@ -33,7 +32,7 @@ export default function TicketCreate() {
       
       return (
 
-      <form className={styles.form} action="https://aninfo2c222back-production.up.railway.app/api/tickets" method="post">
+      <form className={styles.form} action="https://aninfo2c222back-production.up.railway.app/api/tickets" method="post" encType="mult">
 
       <Head_ nombre='Crear Ticket'></Head_>
       
@@ -52,15 +51,15 @@ export default function TicketCreate() {
             <br></br>
             <label htmlFor="id_responsable">Responsable</label>
            
-            <select>
+            <select id="id_responsable" name='id_responsable'>
             {empleados.map((empleado) => ( 
-                  <option id="id_cliente"  key={empleado.legajo}>{empleado.nombre} {empleado.apellido} - Legajo: {empleado.legajo}</option>
+                  <option  value={empleado.legajo}  key={empleado.legajo}>{empleado.nombre} {empleado.apellido} - Legajo: {empleado.legajo}</option>
             ))}
             </select>
             <br></br>
 
             <label htmlFor="estado">Estado</label>
-            <select>
+            <select name='estado'>
                   <option id="estado" value="abierto">Abierto</option>
                   <option id="estado" value="analisis">En Analisis</option>
                   <option id="estado" value="devariado">Derivado</option>
@@ -68,7 +67,7 @@ export default function TicketCreate() {
                   <option id="estado" value="cancelado">Cancelado</option>
             </select>
             <label htmlFor="severidad">Severidad</label>
-            <select>
+            <select name='severidad'>
                   <option id="severidad" value="critica">Critica</option>
                   <option id="severidad" value="alta">Alta</option>
                   <option id="severidad" value="media">Media</option>
@@ -78,9 +77,9 @@ export default function TicketCreate() {
 
             <label htmlFor="id_cliente">Cliente</label>
                  
-            <select>
+            <select name = "id_cliente">
             {clientes.map((cliente) => ( 
-                  <option id="id_cliente"  key={cliente.legajo}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
+                  <option id="id_cliente" value={cliente.legajo} key={cliente.legajo}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
             ))}
             </select>
 
@@ -95,11 +94,11 @@ export default function TicketCreate() {
             <br></br>
 
             <label htmlFor="id_producto">Producto</label>
-            <select>
-                  <option id="id_producto" value="critica">Critica</option>
-                  <option id="id_producto" value="alta">Alta</option>
-                  <option id="id_producto" value="media">Media</option>
-                  <option id="id_producto" value="baja">Baja</option>
+            <select name='id_producto'>
+                  <option id="id_producto" value="1">Critica</option>
+                  <option id="id_producto" value="2">Alta</option>
+                  <option id="id_producto" value="3">Media</option>
+                  <option id="id_producto" value="4">Baja</option>
             </select>
             <br></br>
 

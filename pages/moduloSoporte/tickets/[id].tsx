@@ -20,8 +20,7 @@ export default function TicketView() {
 
         .then((res) => res.json())
         .then((data) => {
-          setTickets(data)
-        
+          setTickets(data)        
         })
     }, [])
 

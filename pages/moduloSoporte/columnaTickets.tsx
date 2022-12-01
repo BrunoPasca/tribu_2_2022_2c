@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import TicketCard from './ticketCard';
-import { TicketProperties, TicketProperties_2 } from './types';
+import { TicketProperties } from './types';
 
 //probando con un array 
 
@@ -20,6 +20,8 @@ export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
       .then((res) => res.json())
       .then((data) => {
         setTickets(data)
+        console.log(data)
+
       })
   }, [])
 
