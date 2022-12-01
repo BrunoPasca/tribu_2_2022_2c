@@ -10,36 +10,6 @@ import { Typography } from '@mui/material';
 
 
 export default function TablaPersonas(props: any) {
-
-    /* HAY QUE USAR UN ENDPOINT */
-    const proyectos_test = [
-        // Formato fecha dd/MM/yyyy
-        {
-            id: "1",
-            nombre: "Proyecto 1",
-            fecha_inicio: "11/07/2022",
-            fecha_fin: "11/09/2022",
-            horas_esperadas: "80",
-            horas_totales: "93",
-        },
-        {
-            id: "2",
-            nombre: "Proyecto 2",
-            fecha_inicio: "23/07/2022",
-            fecha_fin: "29/09/2022",
-            horas_esperadas: "90",
-            horas_totales: "87",
-        },
-        {
-            id: "3",
-            nombre: "Proyecto 3",
-            fecha_inicio: "11/07/2022",
-            fecha_fin: "11/10/2022",
-            horas_esperadas: "60",
-            horas_totales: "63",
-        },
-    ]
-
     const [proyectos, setProyectos] = React.useState([])
 
     React.useEffect(() => {
@@ -51,14 +21,14 @@ export default function TablaPersonas(props: any) {
     }, [])
 
     function obtenerDesvio(proyecto: any) {
-        const desvio = proyecto.horas_esperadas - proyecto.horas_totales;
+        const desvio = proyecto["horas_estimadas"] - proyecto["horas_reales"];
         if (desvio < 0) {
             return (
-                <h3 style={{ color: 'red' }}>{desvio}</h3>
+                <p style={{ color: 'red' }}>{desvio}</p>
             );
         } else {
             return (
-                <h3 style={{color: 'green'}}>{desvio}</h3>
+                <p style={{ color: 'green' }}>{desvio}</p>
             );
         }
     }
@@ -91,16 +61,16 @@ export default function TablaPersonas(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {proyectos_test.map((proyecto) => (
+                    {proyectos.map((proyecto) => (
                         <TableRow
-                            key={proyecto.id}
+                            key={proyecto["id"]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell align="center">{proyecto.nombre}</TableCell>
-                            <TableCell align="center">{proyecto.fecha_inicio}</TableCell>
-                            <TableCell align="center">{proyecto.fecha_fin}</TableCell>
-                            <TableCell align="center">{proyecto.horas_esperadas}</TableCell>
-                            <TableCell align="center">{proyecto.horas_totales}</TableCell>
+                            <TableCell align="center">{proyecto["nombre"]}</TableCell>
+                            <TableCell align="center">{proyecto["fecha_inicio"]}</TableCell>
+                            <TableCell align="center">{proyecto["fecha_fin"]}</TableCell>
+                            <TableCell align="center">{proyecto["horas_estimadas"]}</TableCell>
+                            <TableCell align="center">{proyecto["horas_reales"]}</TableCell>
                             <TableCell align="center">{obtenerDesvio(proyecto)}</TableCell>
                             <TableCell padding='none'>
                                 <button>Ampliar</button>

@@ -67,9 +67,7 @@ export default function MuiTable(props: any) {
         fetch("https://aninfo2c222back-production.up.railway.app/api/horas")
             .then((res) => res.json())
             .then((data) => {
-                console.log(data[0]['id_tarea'])
                 setHoras(data)
-
             })
     }, [])
 
