@@ -4,126 +4,24 @@ import Head_ from '../../head'
 import Header from '../../header'
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import ClienteSelect from '../clienteSelect';
+import { ClientesProperties } from '../types';
+import { useEffect, useState } from "react";
 
 
 export default function TicketEdit() {
 
     const router = useRouter();
     const {id} = router.query;
-    const tickets = [
-        {   
-        titulo: "Arreglar front",
-        id: 1,
-        severidad: "Critico",
-        estado: "Abierto",
-        descripcion:"tengo que arreglar el front porque sino desaprobaremos la materia. Juan ceo quiere que se vea lindo" ,
-        datosCliente: "Dasdasdas",
-        idCliente: 3,
-        medioContacto: "email",
-        datoContacto: "julian@gmail",
-        nombreProducto: "fasfaf",
-        versionProducto: "fasfsafsa",
-        fechaEmision: new Date('Jul 12 2011').toDateString(),
-        fechaResolucion:new Date('Jul 12 2011').toDateString(),
-      
-        },
-        {   
-          titulo: "Hacer sistema de tickets",
-          id: 2,
-          severidad: "Critico",
-          estado: "En analisis",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-        },
-        {   
-        titulo: "Vacaciones",
-        id: 3,
-        severidad: "Critico",
-        estado: "Abierto",
-        descripcion:"lorem ipsum" ,
-        datosCliente: "Dasdasdas",
-        idCliente: 3,
-        medioContacto: "email",
-        datoContacto: "julian@gmail",
-        nombreProducto: "fasfaf",
-        versionProducto: "fasfsafsa",
-        fechaEmision: "fecha efassa",
-        fechaResolucion:"fdafasfsa",
-        },
-        {   
-          titulo: "Contar hasta 43",
-          id: 4,
-          severidad: "Critico",
-          estado: "Resuelto",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-      
-        },
-      
-        {   
-          titulo: "me gusta mucho escribir un titulo largo asi no entra y rompe todo",
-          id: 5,
-          severidad: "Critico",
-          estado: "Cancelado",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-      
-        },
-        {   
-          titulo: "Aprender next",
-          id: 6,
-          severidad: "Critico",
-          estado: "Derivado",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-      
-        },
-        {   
-          titulo: "Vamos river",
-          id: 7,
-          severidad: "Critico",
-          estado: "En analisis",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-      
-        },
-      ]
+    
+    const [clientes, setClientes]: [Array<ClientesProperties> ,any] = useState([])
+
+      useEffect(() => {
+            fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+            .then((res) => res.json())
+            .then((data) => {
+            setClientes(data)
+            })
+      }, [])   
     
     // ya tengo el id ahora solo tendria que hacer get ticket by id
     //const ticket = getTicketById(id);
@@ -171,7 +69,11 @@ export default function TicketEdit() {
 
             <label htmlFor="last">Cliente</label>
             
-            <ClienteSelect></ClienteSelect>
+            <select>
+            {clientes.map((cliente) => ( 
+                  <option id="id_cliente"  key={cliente.legajo}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
+            ))}
+            </select>
             
             <br></br>
             

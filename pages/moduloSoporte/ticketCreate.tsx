@@ -2,16 +2,37 @@ import Head from 'next/head'
 import styles from '../../styles/ticket.module.css'
 import Head_ from '../head'
 import Header from '../header'
-import ClienteSelect from './clienteSelect';
-import { ClientesProperties } from './types';
+import { ClientesProperties, EmpleadoProperties } from './types';
+import { useEffect, useState } from "react";
+
 
 
 export default function TicketCreate() {
 
-  
+      const [empleados, setEmpleados]: [Array<EmpleadoProperties> ,any] = useState([])
+
+      const [clientes, setClientes]: [Array<ClientesProperties> ,any] = useState([])
+   
+      useEffect(() => {
+        fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+          .then((res) => res.json())
+          .then((data) => {
+            setClientes(data)
+          })
+      }, [])
+
+      useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/employees")
+          .then((res) => res.json())
+          .then((data) => {
+            setEmpleados(data)
+            console.log("LOS EMPLEADOS: ", data);
+          })
+      }, [])    
+      
       return (
 
-      <form className={styles.form} action="https://aninfo2c222back-production.up.railway.app/api/tickets" method="post">
+      <form className={styles.form} action="https://aninfo2c222back-production.up.railway.app/api/tickets" method="post" encType="mult">
 
       <Head_ nombre='Crear Ticket'></Head_>
       
@@ -21,71 +42,72 @@ export default function TicketCreate() {
       <div className={styles.camposForm}>
             <h1>Nuevo Ticket</h1>
 
-            <label htmlFor="first">Titulo</label>
-            <input type="text" id="first" name="first" required />
+            <label htmlFor="titulo">Titulo</label>
+            <input type="text" id="titulo" name="titulo" required />
             <br></br>
             
-            <label htmlFor="last">Descripcion</label>
-            <input type="text" id="last" name="last" required />
+            <label htmlFor="descripcion">Descripcion</label>
+            <input type="text" id="descripcion" name="descripcion" required />
             <br></br>
-            <label htmlFor="last">Responsable</label>
-            <select>
-                  <option value="juan1">juan1</option>
-                  <option value="juan2">juan2</option>
-                  <option value="juan3">juan3</option>
+            <label htmlFor="id_responsable">Responsable</label>
+           
+            <select id="id_responsable" name='id_responsable'>
+            {empleados.map((empleado) => ( 
+                  <option  value={empleado.legajo}  key={empleado.legajo}>{empleado.nombre} {empleado.apellido} - Legajo: {empleado.legajo}</option>
+            ))}
             </select>
             <br></br>
 
-            <label htmlFor="last">Estado</label>
-            <select>
-                  <option value="abierto">Abierto</option>
-                  <option value="analisis">En Analisis</option>
-                  <option value="devariado">Derivado</option>
-                  <option value="resuelto">Resuelto</option>
-                  <option value="cancelado">Cancelado</option>
+            <label htmlFor="estado">Estado</label>
+            <select name='estado'>
+                  <option id="estado" value="abierto">Abierto</option>
+                  <option id="estado" value="analisis">En Analisis</option>
+                  <option id="estado" value="devariado">Derivado</option>
+                  <option id="estado" value="resuelto">Resuelto</option>
+                  <option id="estado" value="cancelado">Cancelado</option>
             </select>
-            <label htmlFor="last">Severidad</label>
-            <select>
-                  <option value="critica">Critica</option>
-                  <option value="alta">Alta</option>
-                  <option value="media">Media</option>
-                  <option value="baja">Baja</option>
+            <label htmlFor="severidad">Severidad</label>
+            <select name='severidad'>
+                  <option id="severidad" value="critica">Critica</option>
+                  <option id="severidad" value="alta">Alta</option>
+                  <option id="severidad" value="media">Media</option>
+                  <option id="severidad" value="baja">Baja</option>
             </select>
             <br></br>
 
-            <label htmlFor="last">Cliente</label>
-            
-            <ClienteSelect></ClienteSelect>
-            
+            <label htmlFor="id_cliente">Cliente</label>
+                 
+            <select name = "id_cliente">
+            {clientes.map((cliente) => ( 
+                  <option id="id_cliente" value={cliente.legajo} key={cliente.legajo}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
+            ))}
+            </select>
+
             <br></br>
-            
-            <label htmlFor="datosCliente">Datos del cliente</label>
-            <input type="text" id="datosCliente" name="datosCliente" />
-            <br></br>
-            
-            <label htmlFor="medioContacto">Medio de contacto</label>
-            <input type="text" id="medioContacto" name="medioContacto" placeholder='email, telefono, paloma'/>
+             
+            <label htmlFor="medio_contacto">Medio de contacto</label>
+            <input type="text" id="medio_contacto" name="medio_contacto" placeholder='email, telefono, paloma'/>
             <br></br>
 
-            <label htmlFor="datoContacto">Dato de contacto</label>
-            <input type="text" id="datoContacto" name="datoContacto" placeholder='pepe@gmail.com'/>
+            <label htmlFor="dato_contacto">Dato de contacto</label>
+            <input type="text" id="dato_contacto" name="dato_contacto" placeholder='pepe@gmail.com'/>
             <br></br>
 
-            <label htmlFor="last">Producto</label>
-            <select>
-                  <option value="critica">Critica</option>
-                  <option value="alta">Alta</option>
-                  <option value="media">Media</option>
-                  <option value="baja">Baja</option>
+            <label htmlFor="id_producto">Producto</label>
+            <select name='id_producto'>
+                  <option id="id_producto" value="1">Critica</option>
+                  <option id="id_producto" value="2">Alta</option>
+                  <option id="id_producto" value="3">Media</option>
+                  <option id="id_producto" value="4">Baja</option>
             </select>
             <br></br>
 
             <label htmlFor="fechaEmision">Fecha de emision</label>
-            <input type="date" id="fechaEmision" name="fechaEmsion" required/>
+            <input type="date" id="fecha_emision" name="fecha_emision" required/>
             <br></br>
 
             <label htmlFor="fechaResolucion">Fecha de resolucion</label>
-            <input type="date" id="fechaResolcion" name="fechaResolcion"/>
+            <input type="date" id="fecha_resolcion" name="fecha_resolcion"/>
             <br></br>
 
             <div className={styles.botonesView}>
@@ -96,17 +118,3 @@ export default function TicketCreate() {
     </form>
   )
 }
-/*
-titulo: "Vamos river",
-id: 7,
-severidad: "Critico",
-estado: "En analisis",
-descripcion:"lorem ipsum" ,
-datosCliente: "Dasdasdas",
-idCliente: 3,
-medioContacto: "email",
-datoContacto: "julian@gmail",
-nombreProducto: "fasfaf",
-versionProducto: "fasfsafsa",
-fechaEmision: "fecha efassa",
-fechaResolucion:"fdafasfsa",*/

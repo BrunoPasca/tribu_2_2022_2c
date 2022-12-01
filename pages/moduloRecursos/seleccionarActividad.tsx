@@ -27,7 +27,7 @@ export default function SeleccionarActividad(props : any) {
                 <option value="Tarea">Tarea</option>
                 <option value="Guardia">Guardia</option>
                 <option value="Falta">Falta</option>
-                <option disabled value="Licencia">Licencia</option>
+                <option value="Licencia">Licencia</option>
             </select> 
             <br></br>
             <br></br>
