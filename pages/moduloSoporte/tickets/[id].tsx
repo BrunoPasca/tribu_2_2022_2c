@@ -2,10 +2,8 @@ import Head_ from "../../head";
 import Header from "../../header";
 import { useRouter } from 'next/router'
 import styles from '../../../styles/ticket.module.css'
-import path from "path";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { TicketProperties } from "../types";
 
 export default function TicketView() {
     
@@ -13,8 +11,6 @@ export default function TicketView() {
     const {id} = router.query;
 
 
-    // ya tengo el id ahora solo tendria que hacer get ticket by id
-    //const ticket = getTicketById(id);
 
     const [ticket, setTickets]: [any ,any] = useState(0)
 
@@ -28,6 +24,15 @@ export default function TicketView() {
         
         })
     }, [])
+
+
+    function deleteById(){
+         fetch('https://aninfo2c222back-production.up.railway.app/api/tickets/' + id, {
+            method: 'DELETE',
+          })
+    }
+    
+    
   
 
     return (
@@ -69,7 +74,10 @@ export default function TicketView() {
                 <div>Identificacion del responsable: {ticket?.id_responsable}</div>
 
                 <div className={styles.botonesView}>
-                    <button>Eliminar</button>
+
+                    <Link href={"/moduloSoporte/soporte"}><button onClick={deleteById}>Eliminar</button></Link>
+                  
+                  
                     <Link href={'/moduloSoporte/ticketsEdit/' + id}><button>Editar</button></Link>
                     <button>Crear tarea</button>
                 </div>
