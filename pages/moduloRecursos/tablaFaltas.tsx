@@ -99,7 +99,7 @@ export default function MuiTable(props: any) {
                             <TableCell component="th" scope="row">
                                 {falta["legajo"]}
                             </TableCell>
-                            <TableCell align="center">{falta["fecha"]a}</TableCell>
+                            <TableCell align="center">{falta["fecha"]}</TableCell>
                             <TableCell align="center">{falta["justificante"]}</TableCell>
                             <TableCell padding='none'>
                                 <IconButton onClick={handleOpenDelete}>
