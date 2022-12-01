@@ -16,12 +16,13 @@ export default function TablaPersonas(props: any) {
 
     React.useEffect(() => {
         fetch("https://aninfo2c222back-production.up.railway.app/api/employees/")
-
             .then((res) => res.json())
             .then((data) => {
                 setEmpleados(data)
             })
     }, [])
+
+
 
     interface empleado_test {
         legajo: number;
@@ -55,6 +56,38 @@ export default function TablaPersonas(props: any) {
         requestSearch(searched);
     };
 
+    function getDataForEmployee(legajo: number) {
+        let horas_totales = 0;
+        let horas_extra = 0;
+        let guardias = 0;
+
+        fetch("https://aninfo2c222back-production.up.railway.app/api/horas/totales/empleado/" + legajo)
+            .then((res) => res.json())
+            .then((data) => {
+                horas_totales = data[0]["horas_totales"]
+            })
+
+        fetch("https://aninfo2c222back-production.up.railway.app/api/horas/extra/totales/empleado/" + legajo)
+            .then((res) => res.json())
+            .then((data) => {
+                horas_extra = data[0]["horas_extra"]
+            })
+
+        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias/cant/empleado/" + legajo)
+            .then((res) => res.json())
+            .then((data) => {
+                guardias = data[0]["guardias_totales"]
+            })
+        console.log(horas_totales)
+        console.log(horas_extra)
+        let salida = {
+            "horas_totales": horas_totales,
+            "horas_extra": horas_extra,
+            "guardias": guardias
+        }
+        return salida
+    }
+
     return (
         <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
             <Typography
@@ -86,24 +119,27 @@ export default function TablaPersonas(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {empleados.map((empleado) => (
-                        <TableRow
-                            key={empleado['legajo']}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell align="center">{empleado['legajo']}</TableCell>
-                            <TableCell align="center">{empleado["nombre"]}</TableCell>
-                            <TableCell align="center">{empleado["horas_totales"]}</TableCell>
-                            <TableCell align="center">{empleado["guardia"]}</TableCell>
-                            <TableCell align="center">{empleado["horas_extra"]}</TableCell>
-                            <TableCell padding='none'>
-                                <a href={"./reportesPorEmpleado/horas/" + empleado['legajo']}><button>Ampliar</button></a>
-                            </TableCell>
-                            <TableCell padding='none'>
-                                <button>Generar Reporte</button>
-                            </TableCell>
-                        </TableRow>
-                    ))}
+                    {empleados.map((empleado) => {
+                        let horas = getDataForEmployee(empleado['legajo'])
+                        return (
+                            <TableRow
+                                key={empleado['legajo']}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell align="center">{empleado['legajo']}</TableCell>
+                                <TableCell align="center">{empleado["nombre"]}</TableCell>
+                                <TableCell align="center">{horas["horas_totales"]}</TableCell>
+                                <TableCell align="center">{horas["guardias"]}</TableCell>
+                                <TableCell align="center">{horas["horas_extra"]}</TableCell>
+                                <TableCell padding='none'>
+                                    <button>Ampliar</button>
+                                </TableCell>
+                                <TableCell padding='none'>
+                                    <button>Generar Reporte</button>
+                                </TableCell>
+                            </TableRow>
+                        )
+                    })}
                 </TableBody>
             </Table>
         </TableContainer>

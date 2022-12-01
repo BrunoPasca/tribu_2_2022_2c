@@ -92,7 +92,6 @@ export default function MuiTable(props: any) {
             </Typography>
 
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
-
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">ID</TableCell>
