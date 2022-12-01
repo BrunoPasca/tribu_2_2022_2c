@@ -1,6 +1,8 @@
 import Head from 'next/head'
-import Header from '../header'
 import styles from '../../styles/ticket.module.css'
+import Head_ from '../head'
+import Header from '../header'
+import ClienteSelect from './clienteSelect';
 import { ClientesProperties } from './types';
 import { useEffect, useState } from "react";
 
