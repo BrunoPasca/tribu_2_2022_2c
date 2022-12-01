@@ -6,6 +6,8 @@ import ColumnaTicket from './columnaTickets';
 import SearchBar from './searchBar';
 import SearchBarResponsable from './searchBarResponsable';
 import TicketData from './TicketsData.json'
+import SearchBarSeveridad from './searchBar';
+import SearchBarLegajoCliente from './searchBarLegajoCliente';
 
 
 
@@ -25,8 +27,12 @@ export default function Soporte() {
           
             
             <SearchBarSeveridad placeholder="Ingrese una Severidad" data={TicketData}/>
+
             <SearchBarResponsable placeholder='Ingrese id de resposable'data={TicketData} ></SearchBarResponsable>
+
             <SearchBar placeholder="Ingrese un Titulo" data={TicketData}/>
+            
+            <SearchBarLegajoCliente placeholder="Ingrese un id de cliente" data={TicketData}/>
 
           </div>
         </div>
