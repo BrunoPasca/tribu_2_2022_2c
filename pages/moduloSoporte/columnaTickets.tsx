@@ -20,7 +20,6 @@ export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
       .then((res) => res.json())
       .then((data) => {
         setTickets(data)
-        console.log(data)
 
       })
   }, [])

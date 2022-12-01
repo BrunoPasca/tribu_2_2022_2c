@@ -27,7 +27,6 @@ export default function TicketCreate() {
           .then((res) => res.json())
           .then((data) => {
             setEmpleados(data)
-            console.log("LOS EMPLEADOS: ", data);
           })
       }, [])    
       
@@ -78,8 +77,8 @@ export default function TicketCreate() {
             <label htmlFor="estado">Estado</label>
             <select {...register("estado")}>
                   <option id="estado" value="abierto">Abierto</option>
-                  <option id="estado" value="analisis">En Analisis</option>
-                  <option id="estado" value="devariado">Derivado</option>
+                  <option id="estado" value="en analisis">En Analisis</option>
+                  <option id="estado" value="derivado">Derivado</option>
                   <option id="estado" value="resuelto">Resuelto</option>
                   <option id="estado" value="cancelado">Cancelado</option>
             </select>
