@@ -3,19 +3,27 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import SeleccionarActividad from "./seleccionarActividad";
-import Muitable from "./tablaGuardias"
+import Muitable from "./tablaLicencias"
 import Link from "next/link";
 import Header from "../header";
 
-export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
+export default function CargarLicencia({ screenSetter }: { screenSetter: any }) {
     const [fecha, setFecha] = React.useState(new Date())
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
     const [fechaFin, setFechaFin] = React.useState(new Date())
     const [legajo, setLegajo] = React.useState("")
+    const [tipo, setTipo] = React.useState("")
+    const [descripcion, setDescripcion] = React.useState("")
 
-    // Rango de su guardia
+    const [goceSueldo, setGoceSueldo] = React.useState(false)
+    const handleChangeSueldo = () => {
+        console.log("El goce es : ", goceSueldo)
+        setGoceSueldo(!goceSueldo)
+    }
+
+    // Rango de su licencia
     const [startDate, setStartDate] = React.useState(new Date());
-    const [endDate, setEndDate] = React.useState(new Date());
+    const [endDate, setEndDate] = React.useState(null);
     const onChange = (dates : any) => {
       const [start, end] = dates;
       setStartDate(start);
@@ -36,11 +44,10 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
 
 
     async function handleClickCargar(){
-        const _fecha_inicio = startDate.toISOString().slice(0, 19).replace('T', ' ');
-        const _fecha_fin = endDate.toISOString().slice(0, 19).replace('T', ' ');
-        const guardiaDatos = {legajo_empleado: legajo, fecha_inicio : _fecha_inicio, fecha_fin : _fecha_fin}
+        const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
+        const licenciaDatos = {legajo: legajo, fecha_inicio : startDate, fecha_fin : endDate, tipo_licencia:tipo, goce_sueldo:goceSueldo}
 
-        const areNotEmpty = Object.values(guardiaDatos).every(
+        const areNotEmpty = Object.values(licenciaDatos).every(
             value => value != ""
         );
         if (!areNotEmpty) {
@@ -48,9 +55,11 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
             return
         }
 
-        await fetch("https://aninfo2c222back-production.up.railway.app/api/guardias", {
+        console.log(JSON.stringify(licenciaDatos))
+
+        await fetch("https://aninfo2c222back-production.up.railway.app/api/licencias", {
           method: "POST",
-          body: JSON.stringify(guardiaDatos),
+          body: JSON.stringify(licenciaDatos),
         })
     }
 
@@ -59,7 +68,7 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
             <Header></Header>
             <div className={styles.cargarTarea } >
                 <div className={styles.ingresarInfoTarea}>
-                    <SeleccionarActividad actividad="Guardia"/>
+                    <SeleccionarActividad actividad="Licencia"/>
 
                     <div className={styles.calendarInput} >
                         <label className={styles.inputLabel}>Periodo</label>
@@ -73,9 +82,38 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
                             maxDate={fechaFin}
                         />
                     </div>
+                    <br></br>
+
+                    <label className={styles.inputLabel}>Tipo</label>
+                    <select
+                        id="tipo"
+                        className={styles.selectInput}
+                        value={tipo}
+                        onChange={(e) => {
+                            setTipo(e.currentTarget.value)
+                        }}
+                        name="tipo"
+                    >
+                    <option value="Médica">Médica</option>
+                    <option value="Exámen">Exámen</option>
+                    <option value="Casamiento">Casamiento</option>
+                    <option value="Fallecimiento">Fallecimiento</option>
+                    </select>
+                    <br></br>
+                    <br></br>
+
+                    <div className={styles.flexContainer}>
+                        <label className={styles.inputLabel}>Descripción</label>
+                        <textarea id="descripcion" placeholder="Descripción" name="descripcion" value={descripcion} onChange={(text: any) => setDescripcion(text.target.value)}></textarea>
+                    </div>
+
+                    <div className={styles.flexContainer}>
+                        <label className={styles.inputLabel} style={{textAlign:"left"}}>Goce de sueldo</label>
+                        <input type="checkbox" onChange={handleChangeSueldo}></input>
+                    </div>
 
                     <div className={styles.containerBotones} style={{alignItems:"center"}}>
-                        <button onClick={handleClickCargar}>Cargar Guardia</button>
+                        <button onClick={handleClickCargar}>Cargar Licencia</button>
                         <Link href="./cargarDatos"><button>Atrás</button></Link>
                     </div>
 

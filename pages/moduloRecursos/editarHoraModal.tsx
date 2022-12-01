@@ -56,7 +56,9 @@ export default function EditarHoraModal(props: any) {
         >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2" style={{textAlign:"center"}}>
-            TareaId: {tareaId}
+            ID Tarea: {tareaId}
+            <br></br>
+            Fecha: {props.fecha}
           </Typography>
           <div style={{display:"flex", justifyContent:"center", padding:"2rem"}}>
             <label style={{marginRight:"1rem"}}>Horas:</label>

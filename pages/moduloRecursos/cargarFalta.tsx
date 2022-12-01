@@ -31,11 +31,8 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
         const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
         const faltaDatos = {legajo: legajo, fecha :  _fecha, justificante : justificante}
 
-        const areNotEmpty = Object.values(faltaDatos).every(
-            value => value != ""
-        );
-        if (!areNotEmpty) {
-            alert("Complete todos los campos antes de cargar.")
+        if (!justificante) {
+            alert("Ingrese su justificante antes de cargar.")
             return
         }
 
@@ -62,7 +59,7 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
 
                     <div className={styles.flexContainer}>
                         <label className={styles.inputLabel}>Justificante</label>
-                        <textarea id="justificante" name="justificante" value={justificante} onChange={(text: any) => setJustificante(text.target.value)}></textarea>
+                        <textarea id="justificante" placeholder="Justificante" name="justificante" value={justificante} onChange={(text: any) => setJustificante(text.target.value)}></textarea>
                     </div>
                     <div className={styles.containerBotones}>
                         <button onClick={handleClickCargar}>Cargar Falta</button>

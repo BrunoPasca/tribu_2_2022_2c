@@ -102,7 +102,7 @@ export default function MuiTable(props : any) {
                             <TableCell padding="none">
                                 <IconButton onClick={handleOpenEdit}><EditIcon/></IconButton>
                                 <EditarHoraModal isOpen = {openEdit} setOpen={setOpenEdit} reporteId={reporte.id}
-                                                 tareaId={reporte.id_tarea} cantHoras={reporte.cant_horas}>
+                                                 tareaId={reporte.id_tarea} cantHoras={reporte.cant_horas} fecha={reporte.fecha}>
                                 </EditarHoraModal>
                             </TableCell>
                         </TableRow>
