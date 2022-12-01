@@ -35,7 +35,7 @@ export default function LandingRecurso() {
                             Consultar Recursos
                         </option>
                         <option value={"/cargarPorPersonas"}>Por Persona</option>
-                        <option value={"/cargarPorRecursos"}>Por Recurso</option>
+                        <option value={"/cargarPorRecursos"}>Por Proyecto</option>
                     </select>
                 </div>
             </div>
