@@ -12,7 +12,7 @@ import { TicketProperties, TicketProperties_2 } from './types';
   
 export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
 
-  const [tickets, setTickets]: [Array<TicketProperties_2> ,any] = useState([])
+  const [tickets, setTickets]: [Array<TicketProperties> ,any] = useState([])
 
 
   useEffect(() => {
@@ -25,9 +25,9 @@ export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
 
     return (
         <div>
-          {(tickets).filter(i => i.estado == "lo mismo, maestro de estados").map((ticket) => ( 
+          {(tickets).filter(i => i.estado == estadoFiltro).map((ticket) => ( 
             <div key={ticket.id}>
-              <Link href={'/moduloSoporte/tickets/' + ticket.id}><TicketCard titulo={ticket.nombre} id={ticket.id} severidad={ticket.severidad}></TicketCard></Link>
+              <Link href={'/moduloSoporte/tickets/' + ticket.id}><TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard></Link>
             </div>
           ))}
         </div>

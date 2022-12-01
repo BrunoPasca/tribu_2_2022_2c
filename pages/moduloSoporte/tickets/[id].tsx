@@ -4,131 +4,31 @@ import { useRouter } from 'next/router'
 import styles from '../../../styles/ticket.module.css'
 import path from "path";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { TicketProperties } from "../types";
 
 export default function TicketView() {
     
     const router = useRouter();
     const {id} = router.query;
 
-    const tickets = [
-        {   
-        titulo: "Arreglar front",
-        id: 1,
-        responsable: "juan",
-        severidad: "Critico",
-        estado: "Abierto",
-        descripcion:"tengo que arreglar el front porque sino desaprobaremos la materia. Juan ceo quiere que se vea lindo" ,
-        datosCliente: "Dasdasdas",
-        idCliente: 3,
-        medioContacto: "email",
-        datoContacto: "julian@gmail",
-        nombreProducto: "fasfaf",
-        versionProducto: "fasfsafsa",
-        fechaEmision: new Date('Jul 12 2011').toDateString(),
-        fechaResolucion:new Date('Jul 12 2011').toDateString(),
-      
-        },
-        {   
-          titulo: "Hacer sistema de tickets",
-          id: 2,
-          severidad: "Critico",
-          estado: "En analisis",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-        },
-        {   
-        titulo: "Vacaciones",
-        id: 3,
-        severidad: "Critico",
-        estado: "Abierto",
-        descripcion:"lorem ipsum" ,
-        datosCliente: "Dasdasdas",
-        idCliente: 3,
-        medioContacto: "email",
-        datoContacto: "julian@gmail",
-        nombreProducto: "fasfaf",
-        versionProducto: "fasfsafsa",
-        fechaEmision: "fecha efassa",
-        fechaResolucion:"fdafasfsa",
-        },
-        {   
-          titulo: "Contar hasta 43",
-          id: 4,
-          severidad: "Critico",
-          estado: "Resuelto",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-      
-        },
-      
-        {   
-          titulo: "me gusta mucho escribir un titulo largo asi no entra y rompe todo",
-          id: 5,
-          severidad: "Critico",
-          estado: "Cancelado",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-      
-        },
-        {   
-          titulo: "Aprender next",
-          id: 6,
-          severidad: "Critico",
-          estado: "Derivado",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-      
-        },
-        {   
-          titulo: "Vamos river",
-          id: 7,
-          severidad: "Critico",
-          estado: "En analisis",
-          descripcion:"lorem ipsum" ,
-          datosCliente: "Dasdasdas",
-          idCliente: 3,
-          medioContacto: "email",
-          datoContacto: "julian@gmail",
-          nombreProducto: "fasfaf",
-          versionProducto: "fasfsafsa",
-          fechaEmision: "fecha efassa",
-          fechaResolucion:"fdafasfsa",
-      
-        },
-      ]
-    
+
     // ya tengo el id ahora solo tendria que hacer get ticket by id
     //const ticket = getTicketById(id);
 
-    const ticket = tickets.find(t => t.id == Number(id)) 
+    const [ticket, setTickets]: [any ,any] = useState(0)
+
+
+    useEffect(() => {
+      fetch("https://aninfo2c222back-production.up.railway.app/api/tickets/" + id )
+
+        .then((res) => res.json())
+        .then((data) => {
+          setTickets(data)
+        
+        })
+    }, [])
+  
 
     return (
 
@@ -149,26 +49,24 @@ export default function TicketView() {
 
                 <br></br>
 
-                <div>Datos del cliente: {ticket?.datosCliente}</div>
-                <div>ID del cliente: {ticket?.idCliente}</div>
+                <div>ID del cliente: {ticket?.id_cliente}</div>
 
-                <div>Medio de contacto: {ticket?.medioContacto}</div>
-                <div>Datos de contacto: {ticket?.datoContacto}</div>
+                <div>Medio de contacto: {ticket?.medio_contacto}</div>
+                <div>Datos de contacto: {ticket?.dato_contacto}</div>
 
-
-                <br></br>
-
-                <div>Nombre del producto: {ticket?.nombreProducto}</div>
-                <div>Version del producto: {ticket?.versionProducto}</div>
 
                 <br></br>
 
-                <div>Fecha de emision: {ticket?.fechaEmision}</div>
-                <div>Fecha de resolucion: {ticket?.fechaResolucion}</div>
+                <div>Identificacion del producto: {ticket?.id_producto}</div>
+                <br></br>
+
+                <div>Fecha de emision: {ticket?.fecha_emision}</div>
+
+                <div>Fecha de resolucion: {ticket?.fecha_resolucion}</div>
 
                 <br></br>
 
-                <div>Responsable: {ticket?.responsable}</div>
+                <div>Identificacion del responsable: {ticket?.id_responsable}</div>
 
                 <div className={styles.botonesView}>
                     <button>Eliminar</button>

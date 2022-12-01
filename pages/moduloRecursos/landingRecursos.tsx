@@ -2,10 +2,16 @@ import styles from '../../styles/recursos.module.css'
 import Header from '../header';
 import Head_ from '../head';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
 
 export default function LandingRecurso() {
 
+    const router = useRouter()
+
+    function handleChange(event: any) {
+        router.push("/moduloRecursos/" + event.currentTarget.value)
+    }
     return (
         <div className={styles.container}>
 
@@ -25,21 +31,14 @@ export default function LandingRecurso() {
 
             <div className={styles.titulos} style={{ justifyContent: "center" }}>
                 <div style={{ justifyContent: "space-between" }}>
-                    <select className={styles.select}>
-                        <option disabled={true} value="">
-                            Cargar Horas
-                        </option>
-                        <option>Horas</option>
-                        <option>Licencia</option>
-                        <option>Faltas</option>
-                    </select>
+                    <Link href="./cargarDatos"><button className={styles.select}>Cargar Horas</button></Link>
 
-                    <select className={styles.select}>
+                    <select onChange={handleChange} className={styles.select}>
                         <option disabled={true} value="">
                             Consultar Recursos
                         </option>
-                        <option>Por Persona</option>
-                        <option>Por Recurso</option>
+                        <option value={"/cargarPorPersonas"}>Por Persona</option>
+                        <option value={"/cargarPorRecursos"}>Por Recurso</option>
                     </select>
                 </div>
             </div>

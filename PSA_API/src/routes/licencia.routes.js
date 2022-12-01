@@ -1,20 +1,22 @@
 import { Router } from "express";
-import { createHora } from "../controllers/horas.controller.js";
 import {
 	getLicencias,
 	getLicencia,
 	deleteLicencia,
 	createLicencia,
+	getLicenciaEmpleado,
 } from "../controllers/licencia.controller.js";
 
 const router = Router();
 
-router.get("/horas", getLicencias);
+router.get("/licencia", getLicencias);
 
-router.get("/horas/:id", getLicencia);
+router.get("/licencia/:id", getLicencia);
 
-router.post("/horas", createLicencia);
+router.post("/licencia", createLicencia);
 
-router.delete("/horas/:id", deleteLicencia);
+router.delete("/licencia/:id", deleteLicencia);
+
+router.get("/licencia/empleado/:legajo", getLicenciaEmpleado);
 
 export default router;

@@ -11,7 +11,7 @@ export default function TicketCreate() {
   
       return (
 
-      <form className={styles.form} action="/moduloSoporte/soporte" method="post">
+      <form className={styles.form} action="https://aninfo2c222back-production.up.railway.app/api/tickets" method="post">
 
       <Head_ nombre='Crear Ticket'></Head_>
       
