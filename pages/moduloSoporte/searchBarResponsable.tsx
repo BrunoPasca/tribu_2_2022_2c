@@ -61,8 +61,7 @@ export default function SearchBarResponsable({placeholder, data}: {placeholder:s
 
             <div className={styles.navbarDer}> 
 
-              <button onClick={clearInput}>Borrar
-              </button>
+              
             </div>
 
             {filteredData.length != 0 && 
