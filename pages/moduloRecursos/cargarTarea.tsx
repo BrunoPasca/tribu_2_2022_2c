@@ -72,7 +72,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     async function handleClickCargar() {
 
         const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
-        const horaDatos = { "legajo_empleado": 1, "id_tarea": 1, "cant_horas": 1, "fecha": "2022-11-10", "estado": "", "extra": 1 }
+        const horaDatos = { "legajo_empleado": legajo, "id_tarea": 1, "cant_horas": cantHoras, "fecha": _fecha, "extra": extra }
         const hora = {
             "legajo_empleado": 1,
             "id_tarea": 3,
