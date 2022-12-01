@@ -102,7 +102,10 @@ export default function TicketCreate() {
             <br></br>
              
             <label htmlFor="medio_contacto">Medio de contacto</label>
-            <input type="text" {...register("medio_contacto")} placeholder='email, telefono, paloma'/>
+            <select {...register("medio_contacto")}>
+                  <option id="id_producto" value={"Email"}>Email</option>
+                  <option id="id_producto" value={"Telefono"}>Telefono</option>
+            </select>
             <br></br>
 
             <label htmlFor="dato_contacto">Dato de contacto</label>
