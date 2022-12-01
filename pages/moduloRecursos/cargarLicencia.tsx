@@ -23,7 +23,7 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
 
     // Rango de su licencia
     const [startDate, setStartDate] = React.useState(new Date());
-    const [endDate, setEndDate] = React.useState(null);
+    const [endDate, setEndDate] = React.useState(new Date());
     const onChange = (dates : any) => {
       const [start, end] = dates;
       setStartDate(start);
@@ -37,6 +37,8 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
             datos = JSON.parse(window.sessionStorage.getItem("datos") || "{}");
             setFechaInicio(new Date(datos.inicio));
             setFechaFin(new Date(datos.fin));
+            setStartDate(new Date(datos.inicio));
+            setEndDate(new Date(datos.inicio));
             setLegajo(datos.legajo)
             setFecha(new Date(datos.inicio))
         }

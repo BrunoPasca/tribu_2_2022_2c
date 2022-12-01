@@ -29,6 +29,8 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
             datos = JSON.parse(window.sessionStorage.getItem("datos") || "{}");
             setFechaInicio(new Date(datos.inicio));
             setFechaFin(new Date(datos.fin));
+            setStartDate(new Date(datos.inicio));
+            setEndDate(new Date(datos.inicio));
             setLegajo(datos.legajo)
             setFecha(new Date(datos.inicio))
         }
