@@ -30,6 +30,9 @@
   width: 300px;
 }
 
+.search{
+  display: flex;
+}
 
 .dataResult {
   margin-top: 5px;

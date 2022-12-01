@@ -6,7 +6,6 @@ import ColumnaTicket from './columnaTickets';
 import SearchBar from './searchBar';
 import SearchBarResponsable from './searchBarResponsable';
 import TicketData from './TicketsData.json'
-import SearchBarSeveridad from './searchBarSeveridad';
 
 
 

@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 import { EmpleadoProperties, TicketProperties } from './types';
 
 
+<<<<<<< HEAD
 export default function SearchBarSeveridad({placeholder, data}: {placeholder:string, data:{}}) {
+=======
+export default function SearchBar({placeholder, data, filtro}: {placeholder:string, data:{}, filtro: string}) {
+>>>>>>> 8e984ac84d24304ac043077700c27eaf142dd628
 
     const [tickets, setTickets]: [Array<TicketProperties> ,any] = useState([])
 
@@ -64,7 +68,7 @@ export default function SearchBarSeveridad({placeholder, data}: {placeholder:str
 
             {filteredData.length != 0 && 
               <div className={styles.stackTop}> 
-                    {(tickets).filter(i => i.titulo.toLowerCase() == wordEntered.toLowerCase()).map((ticket) => ( 
+                    {(tickets).filter(i => i.severidad.toLowerCase() == wordEntered.toLowerCase()).map((ticket) => ( 
                       <div key={ticket.id}>
                         <Link href={'/moduloSoporte/tickets/' + ticket.id}>
                           <TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard>
