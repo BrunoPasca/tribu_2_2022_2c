@@ -91,21 +91,21 @@ export default function MuiTable(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {faltas_test.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
+                    {faltas.filter(falta => DateBetweenTwoDates(inicio, fin, falta["fecha"])).map((falta) => (
                         <TableRow
-                            key={reporte.id}
+                            key={falta["legajo"]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                {reporte.id}
+                                {falta["legajo"]}
                             </TableCell>
-                            <TableCell align="center">{reporte.fecha}</TableCell>
-                            <TableCell align="center">{reporte.justificante}</TableCell>
+                            <TableCell align="center">{falta["fecha"]a}</TableCell>
+                            <TableCell align="center">{falta["justificante"]}</TableCell>
                             <TableCell padding='none'>
                                 <IconButton onClick={handleOpenDelete}>
                                     <DeleteIcon />
                                 </IconButton>
-                                <BorrarFaltaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={reporte.id}></BorrarFaltaModal>
+                                <BorrarFaltaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={falta['id']}></BorrarFaltaModal>
                             </TableCell>
                         </TableRow>
                     ))}
