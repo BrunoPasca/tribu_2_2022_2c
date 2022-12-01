@@ -26,8 +26,6 @@ export default function LandingRecurso() {
                 </div>
             </div>
 
-            <Link href="./tablasAllReportes/tablaAllHoras"><button className={styles.select}>Cargar Horas</button></Link>
-
             <div className={styles.titulos} style={{ justifyContent: "center" }}>
                 <div style={{ justifyContent: "space-between" }}>
                     <Link href="./cargarDatos"><button className={styles.select}>Cargar Horas</button></Link>

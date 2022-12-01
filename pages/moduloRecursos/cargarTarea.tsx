@@ -40,12 +40,11 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
             setLegajo(datos.legajo)
         }
 
-        getProyectos().then((data) => {
-            setProyectos(data);
-        })
-            .catch(function (ex) {
-                console.log('Response parsing failed. Error: ', ex);
-            });
+        fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
+            .then((res) => res.json())
+            .then((data) => {
+                setProyectos(data);
+            })
 
         if (!proyectos[0]) return;
         setProyectoId(proyectos[0].id)
@@ -55,7 +54,6 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     // Cuando selecciona otro proyecto obtengo las tareas asociadas
     useEffect(() => {
         if (!proyectoId) return;
-        console.log(proyectoId)
         fetch("https://aninfo2c222back-production.up.railway.app/api/tareas")
             .then((res) => res.json())
             .then((data) => {

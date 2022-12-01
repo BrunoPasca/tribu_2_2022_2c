@@ -20,8 +20,6 @@ export default function TablaAllGuardias(props: any) {
     const router = useRouter();
     const {id} = router.query;
 
-
-
     const [guardias, setGuardias] = React.useState([])
     React.useEffect(() => {
         fetch("https://aninfo2c222back-production.up.railway.app/api/guardias/" + id)
@@ -56,7 +54,7 @@ export default function TablaAllGuardias(props: any) {
 
     const requestSearch = (searchedVal: string) => {
         const filteredRows = reportes.filter((row : any) => {
-            return row.legajo.includes(searchedVal.toLowerCase());
+            return row.fecha_inicio.includes(searchedVal.toLowerCase());
         });
         setRows(filteredRows);
     };
@@ -81,7 +79,7 @@ export default function TablaAllGuardias(props: any) {
                 Faltas
             </Typography>
             <SearchBar
-                placeholder="Buscar por nombre"
+                placeholder="Buscar por inicio"
                 value={searched}
                 onChange={(searchVal) => requestSearch(searchVal)}
                 onCancelSearch={() => cancelSearch()}

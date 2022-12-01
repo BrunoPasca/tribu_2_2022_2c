@@ -55,7 +55,7 @@ export default function TablaAllFaltas(props: any) {
 
     const requestSearch = (searchedVal: string) => {
         const filteredRows = faltas_test.filter((row : any) => {
-            return (row.legajo_empleado).includes(searchedVal.toLowerCase());
+            return (row.fecha).includes(searchedVal.toLowerCase());
         });
         setRows(filteredRows);
     };
@@ -80,7 +80,7 @@ export default function TablaAllFaltas(props: any) {
                 Faltas
             </Typography>
             <SearchBar
-                placeholder="Buscar por nombre"
+                placeholder="Buscar por fecha"
                 value={searched}
                 onChange={(searchVal) => requestSearch(searchVal)}
                 onCancelSearch={() => cancelSearch()}
