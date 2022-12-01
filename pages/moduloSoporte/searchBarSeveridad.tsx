@@ -37,11 +37,7 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
         const searchWord = event.target.value;
         setWordEntered(searchWord);
         const newFilter = tickets.filter((value) => {
-<<<<<<< HEAD
-            return value.severidad.toString().toLowerCase().includes(searchWord.toLowerCase());  ///
-=======
             return value.severidad.toLowerCase().includes(searchWord.toLowerCase()); 
->>>>>>> 39abda4782d91168581f6c5868a72da2674309d6
         });
 
         if(searchWord === "") {
@@ -64,13 +60,7 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
             </div> 
 
             <div className={styles.navbarDer}> 
-<<<<<<< HEAD
-
-              <button onClick={clearInput}>Borrar
-              </button>
-=======
               
->>>>>>> 39abda4782d91168581f6c5868a72da2674309d6
             </div>
 
             {filteredData.length != 0 && 
