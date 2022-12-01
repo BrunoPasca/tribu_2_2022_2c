@@ -129,10 +129,10 @@ export default function TicketEdit() {
 
             <label htmlFor="last">Producto</label>
             <select {...register("id_producto")}>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
+                  <option id="id_producto" value={1}>Producto 1</option>
+                  <option id="id_producto" value={2}>Producto 2</option>
+                  <option id="id_producto" value={3}>Producto 3</option>
+                  <option id="id_producto" value={4}>Producto 4</option>
             </select>
             <br></br>
 
