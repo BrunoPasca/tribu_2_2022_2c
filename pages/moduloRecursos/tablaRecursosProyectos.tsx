@@ -12,7 +12,7 @@ import { Typography } from '@mui/material';
 export default function TablaPersonas(props: any) {
 
     /* HAY QUE USAR UN ENDPOINT */
-    const proyectos = [
+    const proyectos_test = [
         // Formato fecha dd/MM/yyyy
         {
             id: "1",
@@ -39,6 +39,16 @@ export default function TablaPersonas(props: any) {
             horas_totales: "63",
         },
     ]
+
+    const [proyectos, setProyectos] = React.useState([])
+
+    React.useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos/")
+            .then((res) => res.json())
+            .then((data) => {
+                setProyectos(data)
+            })
+    }, [])
 
 
     return (
@@ -68,7 +78,7 @@ export default function TablaPersonas(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {proyectos.map((proyecto) => (
+                    {proyectos_test.map((proyecto) => (
                         <TableRow
                             key={proyecto.id}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

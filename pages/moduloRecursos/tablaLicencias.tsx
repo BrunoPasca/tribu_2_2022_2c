@@ -11,7 +11,7 @@ import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 import BorrarGuardiaModal from './borrarGuardiaModal';
 
-export default function MuiTable(props : any) {
+export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
     const [openDelete, setOpenDelete] = React.useState(false);
     const handleOpenDelete = () => setOpenDelete(true);
@@ -27,44 +27,56 @@ export default function MuiTable(props : any) {
     const fin = props.fechaFin
 
     /* HAY QUE USAR UN ENDPOINT */
-    const reportes =         [
+    const reportes = [
         {
             id: "1",
             legajo_empleado: "2",
             tipo_licencia: "examen",
-            descripcion:"tuve un examen de MemoI",
+            descripcion: "tuve un examen de MemoI",
             fecha_inicio: "8/12/2022",
             fecha_fin: "10/12/2022",
-            goce_sueldo : "0"
+            goce_sueldo: "0"
         },
         {
             id: "2",
             legajo_empleado: "5",
             tipo_licencia: "medica",
-            descripcion:"accidente de auto",
+            descripcion: "accidente de auto",
             fecha_inicio: "11/12/2022",
             fecha_fin: "11/12/2022",
-            goce_sueldo : "1"
+            goce_sueldo: "1"
         }
     ]
 
+    const [licencias, setLicencias] = React.useState([])
+
+    React.useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/licencia/")
+            .then((res) => res.json())
+            .then((data) => {
+                setLicencias(data)
+            })
+    }, [])
+
+
+
     // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
-    function modificarFormatoFecha(date : string) {
+    function modificarFormatoFecha(date: string) {
         const [day, month, year] = date.split('/');
         // @ts-ignore
         return new Date(+year, month - 1, +day);
     }
 
-    function DateBetweenTwoDates(fromDate : string, toDate : string, givenDate : string) {
+    function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
         const date = modificarFormatoFecha(givenDate);
 
         return (start <= date && date <= end);
     }
-    
+
     return (
-        <TableContainer component={Paper} sx={{borderRadius:"2rem", width:"600px"}}>
+        <TableContainer component={Paper} sx={{ borderRadius: "2rem", width: "600px" }}>
             <Typography
                 sx={{ flex: '1 1 100%' }}
                 variant="h6"
@@ -105,12 +117,12 @@ export default function MuiTable(props : any) {
                                 <TableCell align="center">{reporte.goce_sueldo}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>
-                                        <DeleteIcon/>
+                                        <DeleteIcon />
                                     </IconButton>
-                                    <BorrarGuardiaModal isOpen = {openDelete} setOpen={setOpenDelete} idReporte={reporte.id}></BorrarGuardiaModal>
+                                    <BorrarGuardiaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={reporte.id}></BorrarGuardiaModal>
                                 </TableCell>
                             </TableRow>
-                    ))}
+                        ))}
                 </TableBody>
             </Table>
         </TableContainer>
