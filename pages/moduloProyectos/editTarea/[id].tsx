@@ -37,7 +37,7 @@ export default function editTarea(){
                         <div>
                             <label>Descripcion </label>
                         </div>
-                        <input type="text" placeholder = {tarea.Descripcion}></input>
+                        <input type="text" placeholder = {tarea.Descripcion} size={50}></input>
                         <div>
                             <label> Nuevo estado</label>
                         </div>
@@ -52,11 +52,11 @@ export default function editTarea(){
                         <div>
                             <label>Duracion estimada</label>
                         </div>
-                        <input type="text" placeholder = {tarea.Duracion_estimada}></input>
+                        <input type="text" placeholder = {tarea.Duracion_estimada} size={50}></input>
                         <div>
                             <label>Tiempo invertido</label>
                         </div>
-                        <input type = "number" min = "0" placeholder = {tarea.tiempo_invertido} ></input>
+                        <input type = "number" min = "0" placeholder = {tarea.tiempo_invertido}></input>
                         <div>
                             <label>Fecha estimada de fin</label>
                         </div>
@@ -68,13 +68,13 @@ export default function editTarea(){
                         <div>
                             <label>Recursos asignados </label> 
                         </div>
-                        <select id="optionDropDown" size="2" multiple> </select>
+                        <select id="optionDropDown" size={2} multiple> </select>
                         <Script src = "../../dropdown.js"></Script>
                         <div></div>
                         <div>
                             <label>Tareas precedentes</label> 
                         </div>
-                        <select id="tareaOptionDropDown" size="2" multiple > </select>
+                        <select id="tareaOptionDropDown" size={2} multiple > </select>
                         <Script src = "../../modulo_proyectos_dropdown_tareas.js"></Script>
                         <div></div>
 

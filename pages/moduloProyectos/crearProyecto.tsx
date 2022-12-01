@@ -10,7 +10,7 @@ export default function crearProyecto() {
     <Head_ nombre='Nuevo proyecto'></Head_>
     <Header></Header>
     <main className={styles.main}>
-      <div className={styles.container}>
+      <div className={styles.containerEspecial}>
           <form action = "">
           <div className = {styles.camposForm}>
             <h1 className={styles.tituloForm}>Nuevo proyecto</h1>

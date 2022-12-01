@@ -17,27 +17,21 @@ export default function eliminarProyecto(){
         <Head_ nombre='Eliminar tarea'></Head_>
         <Header></Header>
 
-        <div className={styles.new_project_window}>
-        <div>
-                    Confirmacion. Desea eliminar la tarea: {id}?
-        </div>
-        <a href= "/moduloProyectos/proyectoView">
-        <button onClick = {function_button}className = {styles.positive_button_style}>
-                        Confirmar
-        </button>
-        </a>
-        
-        <a href="/moduloProyectos/proyectoView">
-        <button className = {styles.negative_button_style}>
-                        Cancelar
-        </button>
-        </a>
-     
-        </div>
+        <main className={styles.main}>
+            <div className={styles.container}>
+                <div className={styles.confirmacion}>
+                    <h1 className={styles.tituloForm}>¡Atención!</h1>
+                    <h3>Está a punto de eliminar la siguiente tarea: {id}</h3>
+                    <h3>¿Desea continuar?</h3>
+                </div>
+
+                <div className={styles.botonesView}>
+                    <button onClick={function_button}>Confirmar</button>
+                    <a href="/moduloProyectos/proyectoView"><button>Cancelar</button></a>
+                </div>
+            </div>
+        </main>
         </>
-
-        
-
     )
 }
 
@@ -46,4 +40,5 @@ function button_press(){
     alert("back end eliminame la tarea");
     return true;
 }
+
 var function_button = button_press;

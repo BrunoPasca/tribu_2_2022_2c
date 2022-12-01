@@ -6,6 +6,10 @@
   height: 100vh;
 }
 
+.containerEspecial{
+  background-color: #EEF4ED;
+}
+
 .new_project_window{
   border-radius: 1px;
   background-color: #EEF4ED;
@@ -184,21 +188,27 @@
 }
 
 .tituloInfo{
-  text-align: left;
   font-weight: bolder;
   margin-top: 20px;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
 }
 
 .info{
   text-align: right;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .botonesView{
   margin-top: 50px;
   text-align: center;
 }
+
 .botonesView button{
   margin: 20px 10px;
   padding: 10px;
@@ -302,5 +312,23 @@
 .camposForm input, .camposForm select{
   margin-top: 10px;
   margin-bottom: 10px;
+  background-color: #EEF4ED;
+  color: black;
+  border: black;
+  height: 30px;
+}
+
+.confirmacion{
+  margin: 20px;
+  color: black;
+  width: 500px;
+  background-color: #8DA9C4;
+  padding: 40px;
+  border-radius: 20px;
+  font-family: 'Roboto', sans-serif;
+  border: #0B2545 1px solid;
+  box-shadow: 0px 0px 5px rgb(82, 82, 82);
+  font-weight: 1000;
+  text-align: center;
 }
 
