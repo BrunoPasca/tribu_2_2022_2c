@@ -71,7 +71,7 @@ export default function TablaAllHoras(props: any) {
 
     const requestSearch = (searchedVal: string) => {
         const filteredRows = reportes.filter((row : any) => {
-            return row.legajo_empleado.includes(searchedVal.toLowerCase());
+            return row.id_tarea.includes(searchedVal.toLowerCase());
         });
         setRows(filteredRows);
     };
@@ -96,7 +96,7 @@ export default function TablaAllHoras(props: any) {
                 Tareas
             </Typography>
             <SearchBar
-                placeholder="Buscar por nombre"
+                placeholder="Buscar por tarea"
                 value={searched}
                 onChange={(searchVal) => requestSearch(searchVal)}
                 onCancelSearch={() => cancelSearch()}
@@ -122,7 +122,7 @@ export default function TablaAllHoras(props: any) {
                             <TableCell align="center">{reporte.id_tarea}</TableCell>
                             <TableCell align="center">{reporte.fecha}</TableCell>
                             <TableCell align="center">{reporte.cant_horas}</TableCell>
-                            <TableCell align="center">{reporte.extra? "Sí" : "No"}</TableCell>
+                            <TableCell align="center">{Number(reporte.extra) == 1? "Sí" : "No"}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

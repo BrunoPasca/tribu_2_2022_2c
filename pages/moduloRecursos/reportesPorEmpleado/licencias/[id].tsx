@@ -60,7 +60,7 @@ export default function TablaAllLicencias(props: any) {
 
     const requestSearch = (searchedVal: string) => {
         const filteredRows = reportes.filter((row : any) => {
-            return row.legajo_empleado.includes(searchedVal.toLowerCase());
+            return row.tipo_licencia.includes(searchedVal.toLowerCase());
         });
         setRows(filteredRows);
     };
@@ -85,7 +85,7 @@ export default function TablaAllLicencias(props: any) {
                 Faltas
             </Typography>
             <SearchBar
-                placeholder="Buscar por nombre"
+                placeholder="Buscar por tipo"
                 value={searched}
                 onChange={(searchVal) => requestSearch(searchVal)}
                 onCancelSearch={() => cancelSearch()}
@@ -112,7 +112,7 @@ export default function TablaAllLicencias(props: any) {
                             <TableCell align="center">{reporte.descripcion}</TableCell>
                             <TableCell align="center">{reporte.fecha_inicio}</TableCell>
                             <TableCell align="center">{reporte.fecha_fin}</TableCell>
-                            <TableCell align="center">{reporte.goce_sueldo ? "Sí" : "No"}</TableCell>
+                            <TableCell align="center">{Number(reporte.goce_sueldo) == 1? "Sí" : "No"}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
