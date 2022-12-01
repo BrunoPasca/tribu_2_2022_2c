@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { EmpleadoProperties, TicketProperties } from './types';
 
 
-export default function SearchBar({placeholder, data}: {placeholder:string, data:{}}) {
+export default function SearchBarSeveridad({placeholder, data}: {placeholder:string, data:{}}) {
 
     const [tickets, setTickets]: [Array<TicketProperties> ,any] = useState([])
 
@@ -36,7 +36,7 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
         const searchWord = event.target.value;
         setWordEntered(searchWord);
         const newFilter = tickets.filter((value) => {
-            return value.titulo.toLowerCase().includes(searchWord.toLowerCase());  ///
+            return value.titulo.toLowerCase().includes(searchWord.toLowerCase()); 
         });
 
         if(searchWord === "") {
@@ -59,9 +59,7 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
             </div> 
 
             <div className={styles.navbarDer}> 
-                
-              <button onClick={clearInput}>Borrar
-              </button>
+              
             </div>
 
             {filteredData.length != 0 && 

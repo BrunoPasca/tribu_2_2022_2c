@@ -60,8 +60,7 @@ export default function SearchBarSeveridad({placeholder, data}: {placeholder:str
 
             <div className={styles.navbarDer}> 
                 
-              <button onClick={clearInput}>Borrar
-              </button>
+            
             </div>
 
             {filteredData.length != 0 && 
