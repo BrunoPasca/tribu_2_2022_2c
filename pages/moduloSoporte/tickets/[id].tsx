@@ -32,9 +32,6 @@ export default function TicketView() {
           })
     }
     
-    function sayHello() {
-      alert('Hello!');
-    }
     
   
 
