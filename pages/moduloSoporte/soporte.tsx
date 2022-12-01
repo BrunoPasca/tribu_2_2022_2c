@@ -32,25 +32,25 @@ export default function Soporte() {
 
                 <p>Abierto</p>
                 
-                <ColumnaTicket estadoFiltro='Abierto'></ColumnaTicket>
+                <ColumnaTicket estadoFiltro='abierto'></ColumnaTicket>
                
               </div>
 
               <div>
               <p>En analisis</p>
-              <ColumnaTicket estadoFiltro='En analisis'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='en analisis'></ColumnaTicket>
               </div>
               <div>
               <p>Derivado</p>
-              <ColumnaTicket estadoFiltro='Derivado'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='derivado'></ColumnaTicket>
               </div>
               <div>
               <p>Resuelto</p>
-              <ColumnaTicket estadoFiltro='Resuelto'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='resuelto'></ColumnaTicket>
               </div>
               <div>
               <p>Cancelado</p>
-              <ColumnaTicket estadoFiltro='Cancelado'></ColumnaTicket>
+              <ColumnaTicket estadoFiltro='cancelado'></ColumnaTicket>
 
 
               
