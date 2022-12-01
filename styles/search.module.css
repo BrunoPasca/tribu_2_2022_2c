@@ -12,10 +12,11 @@
   margin: 15px;
   display: flex;
 }
-.searchInputs {
-  margin-top: 105px;
-  display: flex;
+.searchInput input{
+  color: black;
+
 }
+
 
 .search input {
   background-color: white;
