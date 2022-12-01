@@ -1,18 +1,18 @@
 export interface TicketProperties {
     titulo: string,
     id: number,
-    responsable: string,
+    id_responsable: number,
+    id_cliente: number,
+    id_producto: number,
+
     severidad: string,
     estado: string,
     descripcion:string,
-    datosCliente: string,
-    idCliente: number,
-    medioContacto: string,
-    datoContacto: string,
-    nombreProducto: string,
-    versionProducto: string,
-    fechaEmision: Date,
-    fechaResolucion:Date,
+    medio_contacto: string,
+    dato_contacto: string,
+    
+    fecha_emision: string, //Date
+    fecha_resolucion:string, //Date
 }
 
 export interface ClientesProperties {
