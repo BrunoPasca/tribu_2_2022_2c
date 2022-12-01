@@ -1,0 +1,29 @@
+.titulos{
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    font-size: 30px;
+ }
+
+ .reporteCard{
+    background-color: #8DA9C4;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 20px;
+    width: fit-content;
+    max-width: 250px;
+    border: #0B2545 0.4px solid;
+  }
+
+  .tituloCard{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+
+  }
+
+  .severidadCard{
+    font-size: 20px;
+  }

@@ -4,7 +4,10 @@ import TicketCard from './ticketCard';
 import Head_ from '../head';
 import ColumnaTicket from './columnaTickets';
 import SearchBar from './searchBar';
+import SearchBarResponsable from './searchBarResponsable';
 import TicketData from './TicketsData.json'
+import SearchBarSeveridad from './searchBarSeveridad';
+import SearchBarLegajoCliente from './searchBarLegajoCliente';
 
 
 
@@ -22,7 +25,14 @@ export default function Soporte() {
           </div>
           <div className={styles.navbarDer}> 
           
-            <SearchBar placeholder="Ingrese un nombre" data={TicketData}/>
+            <SearchBarResponsable placeholder='Ingrese id de resposable'data={TicketData} ></SearchBarResponsable>
+
+            <SearchBar placeholder="Ingrese un Titulo" data={TicketData}/>
+            
+            <SearchBarLegajoCliente placeholder="Ingrese un id de cliente" data={TicketData}/>
+
+            <SearchBarSeveridad placeholder='Ingrese una severidad' data={TicketData}></SearchBarSeveridad>
+
 
           </div>
         </div>

@@ -12,9 +12,13 @@
   margin: 15px;
   display: flex;
 }
-.searchInputs {
-  margin-top: 105px;
-  display: flex;
+.searchInput input{
+  color: black;
+
+}
+
+.searchInput{
+  margin-bottom: 10px;
 }
 
 .search input {
@@ -29,6 +33,9 @@
   width: 300px;
 }
 
+.search{
+  display: flex;
+}
 
 .dataResult {
   margin-top: 5px;

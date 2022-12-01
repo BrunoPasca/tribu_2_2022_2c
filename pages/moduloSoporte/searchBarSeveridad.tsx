@@ -36,7 +36,7 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
         const searchWord = event.target.value;
         setWordEntered(searchWord);
         const newFilter = tickets.filter((value) => {
-            return value.titulo.toLowerCase().includes(searchWord.toLowerCase()); 
+            return value.severidad.toLowerCase().includes(searchWord.toLowerCase()); 
         });
 
         if(searchWord === "") {
@@ -64,7 +64,7 @@ export default function SearchBar({placeholder, data}: {placeholder:string, data
 
             {filteredData.length != 0 && 
               <div className={styles.stackTop}> 
-                    {(tickets).filter(i => i.titulo.toLowerCase() == wordEntered.toLowerCase()).map((ticket) => ( 
+                    {(tickets).filter(i => i.severidad.toLowerCase() == wordEntered.toLowerCase()).map((ticket) => ( 
                       <div key={ticket.id}>
                         <Link href={'/moduloSoporte/tickets/' + ticket.id}>
                           <TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard>

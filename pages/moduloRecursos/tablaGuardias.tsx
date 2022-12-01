@@ -11,7 +11,7 @@ import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 import BorrarGuardiaModal from './borrarGuardiaModal';
 
-export default function MuiTable(props : any) {
+export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
     const [openDelete, setOpenDelete] = React.useState(false);
     const handleOpenDelete = () => setOpenDelete(true);
@@ -26,8 +26,10 @@ export default function MuiTable(props : any) {
     const inicio = props.fechaInicio
     const fin = props.fechaFin
 
+    const [guardias, setGuardias] = React.useState([]);
+
     /* HAY QUE USAR UN ENDPOINT */
-    const reportes =         [
+    const guardias_test = [
         // Formato fecha dd/MM/yyyy
         {
             id: "1",
@@ -41,26 +43,36 @@ export default function MuiTable(props : any) {
             fecha_inicio: "15/11/2022",
             fecha_fin: "20/11/2022"
         }
-        
     ]
 
+    React.useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias/")
+
+            .then((res) => res.json())
+            .then((data) => {
+                setGuardias(data)
+            })
+    }, [])
+
+
+
     // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
-    function modificarFormatoFecha(date : string) {
+    function modificarFormatoFecha(date: string) {
         const [day, month, year] = date.split('/');
         // @ts-ignore
         return new Date(+year, month - 1, +day);
     }
 
-    function DateBetweenTwoDates(fromDate : string, toDate : string, givenDate : string) {
+    function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
         const date = modificarFormatoFecha(givenDate);
 
         return (start <= date && date <= end);
     }
-    
+
     return (
-        <TableContainer component={Paper} sx={{borderRadius:"2rem"}}>
+        <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
             <Typography
                 sx={{ flex: '1 1 100%' }}
                 variant="h6"
@@ -76,31 +88,33 @@ export default function MuiTable(props : any) {
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">ID</TableCell>
+                        <TableCell align="center">Legajo</TableCell>
                         <TableCell align="center">Desde</TableCell>
                         <TableCell align="center">Hasta</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes
-                        .filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha_inicio) && DateBetweenTwoDates(inicio, fin, reporte.fecha_fin))
-                        .map((reporte) => (
+                    {guardias
+                        .filter(guardia => DateBetweenTwoDates(inicio, fin, guardia["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, guardia["fecha_fin"]))
+                        .map((guardia) => (
                             <TableRow
-                                key={reporte.id}
+                                key={guardia['id']}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell component="th" scope="row">
-                                    {reporte.id}
+                                    {guardia['id']}
                                 </TableCell>
-                                <TableCell align="center">{reporte.fecha_inicio}</TableCell>
-                                <TableCell align="center">{reporte.fecha_fin}</TableCell>
+                                <TableCell align="center">{guardia["fecha_inicio"]}</TableCell>
+                                <TableCell align="center">{guardia["legajo_empleado"]}</TableCell>
+                                <TableCell align="center">{guardia["fecha_fin"]}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>
-                                        <DeleteIcon/>
+                                        <DeleteIcon />
                                     </IconButton>
-                                    <BorrarGuardiaModal isOpen = {openDelete} setOpen={setOpenDelete} idReporte={reporte.id}></BorrarGuardiaModal>
+                                    <BorrarGuardiaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={guardia["id"]}></BorrarGuardiaModal>
                                 </TableCell>
                             </TableRow>
-                    ))}
+                        ))}
                 </TableBody>
             </Table>
         </TableContainer>

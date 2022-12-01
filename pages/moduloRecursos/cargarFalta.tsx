@@ -28,8 +28,8 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
 
 
     async function handleClickCargar(){
-        const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
-        const faltaDatos = {legajo: legajo, fecha :  _fecha, justificante : justificante}
+        //const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
+        const faltaDatos = {legajo_empleado: Number(legajo), fecha :  fecha, justificante : justificante}
 
         if (!justificante) {
             alert("Ingrese su justificante antes de cargar.")

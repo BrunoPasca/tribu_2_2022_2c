@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import styles from '../../styles/ticket.module.css'
 import Head_ from '../head'
 import Header from '../header'
@@ -6,6 +5,8 @@ import { ClientesProperties, EmpleadoProperties, TicketProperties } from './type
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export default function TicketCreate() {
@@ -27,12 +28,9 @@ export default function TicketCreate() {
           .then((res) => res.json())
           .then((data) => {
             setEmpleados(data)
-            console.log("LOS EMPLEADOS: ", data);
           })
       }, [])    
       
-
- 
 
       const {register, handleSubmit} = useForm<TicketProperties>()
 
@@ -45,7 +43,12 @@ export default function TicketCreate() {
                     'Content-Type': 'application/json'
                   }
                 })
+            alert("El ticket se creo correctamente")
       })
+
+
+
+     
 
       return (
 
@@ -78,8 +81,8 @@ export default function TicketCreate() {
             <label htmlFor="estado">Estado</label>
             <select {...register("estado")}>
                   <option id="estado" value="abierto">Abierto</option>
-                  <option id="estado" value="analisis">En Analisis</option>
-                  <option id="estado" value="devariado">Derivado</option>
+                  <option id="estado" value="en analisis">En Analisis</option>
+                  <option id="estado" value="derivado">Derivado</option>
                   <option id="estado" value="resuelto">Resuelto</option>
                   <option id="estado" value="cancelado">Cancelado</option>
             </select>
@@ -103,7 +106,10 @@ export default function TicketCreate() {
             <br></br>
              
             <label htmlFor="medio_contacto">Medio de contacto</label>
-            <input type="text" {...register("medio_contacto")} placeholder='email, telefono, paloma'/>
+            <select {...register("medio_contacto")}>
+                  <option id="id_producto" value={"Email"}>Email</option>
+                  <option id="id_producto" value={"Telefono"}>Telefono</option>
+            </select>
             <br></br>
 
             <label htmlFor="dato_contacto">Dato de contacto</label>
@@ -112,10 +118,10 @@ export default function TicketCreate() {
 
             <label htmlFor="id_producto">Producto</label>
             <select {...register("id_producto")}>
-                  <option id="id_producto" value={1}>Critica</option>
-                  <option id="id_producto" value={2}>Alta</option>
-                  <option id="id_producto" value={3}>Media</option>
-                  <option id="id_producto" value={4}>Baja</option>
+                  <option id="id_producto" value={1}>Producto 1</option>
+                  <option id="id_producto" value={2}>Producto 2</option>
+                  <option id="id_producto" value={3}>Producto 3</option>
+                  <option id="id_producto" value={4}>Producto 4</option>
             </select>
             <br></br>
 

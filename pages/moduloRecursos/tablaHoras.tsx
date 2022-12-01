@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,7 +14,7 @@ import Edit from '@mui/icons-material/Edit';
 import EditarHoraModal from './editarHoraModal';
 import styles from '../../styles/recursos.module.css'
 
-export default function MuiTable(props : any) {
+export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
     const [openDelete, setOpenDelete] = React.useState(false);
     const handleOpenDelete = () => setOpenDelete(true);
@@ -30,14 +30,14 @@ export default function MuiTable(props : any) {
     const fin = props.fechaFin
 
     /* HAY QUE USAR UN ENDPOINT */
-    const reportes =         [
+    const reportes = [
         // Formato fecha dd/MM/yyyy
         {
             id: "1",
             legajo_empleado: "1",
             id_tarea: "3",
             tarea: 'Fix',
-            cant_horas:"5",
+            cant_horas: "5",
             fecha: "7/12/2022",
             estado: "abierto",
         },
@@ -46,7 +46,7 @@ export default function MuiTable(props : any) {
             legajo_empleado: "3",
             id_tarea: "4",
             tarea: 'Testing',
-            cant_horas:"2",
+            cant_horas: "2",
             fecha: "10/10/2022",
             estado: "abierto",
         },
@@ -55,20 +55,31 @@ export default function MuiTable(props : any) {
             legajo_empleado: "22",
             id_tarea: "5",
             tarea: 'Prototipado',
-            cant_horas:"2",
+            cant_horas: "2",
             fecha: "9/12/2022",
             estado: "abierto",
         }
     ]
 
+    const [horas, setHoras] = React.useState([])
+
+    useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/horas")
+            .then((res) => res.json())
+            .then((data) => {
+                setHoras(data)
+            })
+    }, [])
+
+
     // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
-    function modificarFormatoFecha(date : string) {
+    function modificarFormatoFecha(date: string) {
         const [day, month, year] = date.split('/');
         // @ts-ignore
         return new Date(+year, month - 1, +day);
     }
 
-    function DateBetweenTwoDates(fromDate : string, toDate : string, givenDate : string) {
+    function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
         const date = modificarFormatoFecha(givenDate);
@@ -77,7 +88,7 @@ export default function MuiTable(props : any) {
     }
 
     return (
-        <TableContainer component={Paper} sx={{borderRadius:"2rem"}}>
+        <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
             <Typography
                 sx={{ flex: '1 1 100%' }}
                 variant="h6"
@@ -98,24 +109,24 @@ export default function MuiTable(props : any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {reportes.filter(reporte => DateBetweenTwoDates(inicio, fin, reporte.fecha)).map((reporte) => (
+                    {horas.map((hora) => (
                         <TableRow
-                            key={reporte.id}
+                            key={hora["id"]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell component="th" scope="row">{reporte.id}</TableCell>
-                            <TableCell align="center">{reporte.id_tarea}</TableCell>
-                            <TableCell align="center">{reporte.tarea}</TableCell>
-                            <TableCell align="center">{reporte.fecha}</TableCell>
-                            <TableCell align="center">{reporte.cant_horas}</TableCell>
+                            <TableCell component="th" scope="row">{hora["id"]}</TableCell>
+                            <TableCell align="center">{hora["id_tarea"]}</TableCell>
+                            <TableCell align="center">{hora["tarea"]}</TableCell>
+                            <TableCell align="center">{hora["fecha"]}</TableCell>
+                            <TableCell align="center">{hora["cant_horas"]}</TableCell>
                             <TableCell padding="none" align="right">
-                                <IconButton onClick={handleOpenDelete}><DeleteIcon/></IconButton>
-                                <BorrarHoraModal isOpen = {openDelete} setOpen={setOpenDelete} reporteId={reporte.id}></BorrarHoraModal>
+                                <IconButton onClick={handleOpenDelete}><DeleteIcon /></IconButton>
+                                <BorrarHoraModal isOpen={openDelete} setOpen={setOpenDelete} reporteId={hora["id"]}></BorrarHoraModal>
                             </TableCell>
                             <TableCell padding="none">
-                                <IconButton onClick={handleOpenEdit}><EditIcon/></IconButton>
-                                <EditarHoraModal isOpen = {openEdit} setOpen={setOpenEdit} reporteId={reporte.id}
-                                                 tareaId={reporte.id_tarea} cantHoras={reporte.cant_horas} fecha={reporte.fecha}>
+                                <IconButton onClick={handleOpenEdit}><EditIcon /></IconButton>
+                                <EditarHoraModal isOpen={openEdit} setOpen={setOpenEdit} reporteId={hora["id"]}
+                                    tareaId={hora["id_tarea"]} cantHoras={hora["cant_horas"]} fecha={hora["fecha"]}>
                                 </EditarHoraModal>
                             </TableCell>
                         </TableRow>

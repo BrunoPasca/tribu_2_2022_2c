@@ -4,8 +4,9 @@ import Head_ from '../../head'
 import Header from '../../header'
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { ClientesProperties } from '../types';
+import { ClientesProperties, EmpleadoProperties, TicketProperties } from '../types';
 import { useEffect, useState } from "react";
+import { useForm } from 'react-hook-form';
 
 
 export default function TicketEdit() {
@@ -23,14 +24,52 @@ export default function TicketEdit() {
             })
       }, [])   
     
-    // ya tengo el id ahora solo tendria que hacer get ticket by id
-    //const ticket = getTicketById(id);
 
-    const ticket = tickets.find(t => t.id == Number(id)) 
+    const [ticket, setTickets]: [any ,any] = useState(0)
 
+
+    useEffect(() => {
+      fetch("https://aninfo2c222back-production.up.railway.app/api/tickets/" + id )
+
+        .then((res) => res.json())
+        .then((data) => {
+          setTickets(data)        
+        })
+    }, [])
+
+    const [empleados, setEmpleados]: [Array<EmpleadoProperties> ,any] = useState([])
+ 
+
+    useEffect(() => {
+      fetch("https://aninfo2c222back-production.up.railway.app/api/employees")
+        .then((res) => res.json())
+        .then((data) => {
+          setEmpleados(data)
+          console.log("LOS EMPLEADOS: ", data);
+        })
+    }, [])    
+    
+
+    const {register, handleSubmit} = useForm<TicketProperties>()
+
+    const onSubmit = handleSubmit((data) =>{
+          data.titulo = ticket.titulo;
+          console.log("ESTA ES LA DATA QUE EDITE : ", JSON.stringify(data))
+          const url = "https://aninfo2c222back-production.up.railway.app/api/tickets/" + id
+          console.log("URL: ", url)
+          fetch(url, {
+                method: 'PUT', // or 'PUT'
+                body: JSON.stringify(data), // data can be `string` or {object}!
+                headers:{
+                  'Content-Type': 'application/json'
+                }
+              })
+    })
+
+    
 
     return (
-      <form className={styles.form} action="/moduloSoporte/soporte" method="post">
+      <form className={styles.form} onSubmit={onSubmit}>
       
       <Head_ nombre='Editar Ticket'></Head_>
 
@@ -40,26 +79,29 @@ export default function TicketEdit() {
             <h1>{ticket?.id} - {ticket?.titulo}</h1>
 
             <label htmlFor="last">Descripcion</label>
-            <input type="text" id="last" name="last" required value={ticket?.descripcion}/>
+            <input type="text" {...register("descripcion")} required placeholder='Escribe una nueva descripccion'/>
             <br></br>
+            
             <label htmlFor="last">Responsable</label>
-            <select>
-                  <option value="juan1">juan1</option>
-                  <option value="juan2">juan2</option>
-                  <option value="juan3">juan3</option>
+            
+            <select {...register("id_responsable")}>
+            {empleados.map((empleado) => ( 
+                  <option  value={Number(empleado.legajo)}  key={empleado.legajo}>{empleado.nombre} {empleado.apellido} - Legajo: {empleado.legajo}</option>
+            ))}
             </select>
+            
             <br></br>
 
             <label htmlFor="last">Estado</label>
-            <select>
+            <select {...register("estado")}>
                   <option value="abierto">Abierto</option>
-                  <option value="analisis">En Analisis</option>
-                  <option value="devariado">Derivado</option>
+                  <option value="en analisis">En Analisis</option>
+                  <option value="derivado">Derivado</option>
                   <option value="resuelto">Resuelto</option>
                   <option value="cancelado">Cancelado</option>
             </select>
             <label htmlFor="last">Severidad</label>
-            <select>
+            <select {...register("severidad")}>
                   <option value="critica">Critica</option>
                   <option value="alta">Alta</option>
                   <option value="media">Media</option>
@@ -69,41 +111,39 @@ export default function TicketEdit() {
 
             <label htmlFor="last">Cliente</label>
             
-            <select>
+            <select {...register("id_cliente")}>
             {clientes.map((cliente) => ( 
-                  <option id="id_cliente"  key={cliente.legajo}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
+                  <option value={Number(cliente.legajo)} key={Number(cliente.legajo)}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
             ))}
             </select>
             
             <br></br>
             
-            <label htmlFor="datosCliente">Datos del cliente</label>
-            <input type="text" id="datosCliente" name="datosCliente" value={ticket?.datosCliente}/>
-            <br></br>
+
             
             <label htmlFor="medioContacto">Medio de contacto</label>
-            <input type="text" id="medioContacto" name="medioContacto" value={ticket?.medioContacto}/>
+            <input type="text" {...register("medio_contacto")} value={ticket?.medioContacto}/>
             <br></br>
 
             <label htmlFor="datoContacto">Dato de contacto</label>
-            <input type="text" id="datoContacto" name="datoContacto" value={ticket?.datoContacto}/>
+            <input type="text" {...register("dato_contacto")} value={ticket?.datoContacto}/>
             <br></br>
 
             <label htmlFor="last">Producto</label>
-            <select>
-                  <option value="critica">Critica</option>
-                  <option value="alta">Alta</option>
-                  <option value="media">Media</option>
-                  <option value="baja">Baja</option>
+            <select {...register("id_producto")}>
+                  <option id="id_producto" value={1}>Producto 1</option>
+                  <option id="id_producto" value={2}>Producto 2</option>
+                  <option id="id_producto" value={3}>Producto 3</option>
+                  <option id="id_producto" value={4}>Producto 4</option>
             </select>
             <br></br>
 
             <label htmlFor="fechaEmision">Fecha de emision</label>
-            <input type="date" id="fechaEmision" name="fechaEmsion" required />
+            <input type="date" {...register("fecha_emision")} required />
             <br></br>
 
             <label htmlFor="fechaResolucion">Fecha de resolucion</label>
-            <input type="date" id="fechaResolcion" name="fechaResolcion"/>
+            <input type="date" {...register("fecha_resolucion")}/>
             <br></br>
 
             <div className={styles.botonesView}>
