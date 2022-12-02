@@ -1,12 +1,13 @@
 import styles from '../../styles/ticket.module.css'
 import Head_ from '../head'
 import Header from '../header'
-import { ClientesProperties, EmpleadoProperties, ProductProperties, TicketProperties, VersionProperties } from './types';
+import { ClientesProperties, EmpleadoProperties, FormProductVersionProperties, ProductProperties, TicketProperties, VersionProperties } from './types';
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useNavigate } from 'react-router-dom';
 import { versions } from 'process';
+import VersionForm from './versionForm';
 
 
 
@@ -23,15 +24,40 @@ export default function TicketCreate() {
             setVersiones(data)
           })
       }, [])    
+
       
 
-      const {register, handleSubmit} = useForm<ProductProperties>()
+      const {register, handleSubmit} = useForm<FormProductVersionProperties>()
 
       const onSubmit = handleSubmit((data) =>{
-            console.log(JSON.stringify(data))
+            const dataVersion = {
+              nombre:data.nombre_version,
+              fecha_lanzamiento:data.fecha_lanzamiento_version,
+            }
+          
+
+            fetch("https://aninfo2c222back-production.up.railway.app/api/versions", {
+                  method: 'POST', // or 'PUT'
+                  body: JSON.stringify(dataVersion), // data can be `string` or {object}!
+                  headers:{
+                    'Content-Type': 'application/json'
+                  }
+                })
+
+                
+        
+                
+              const nuevaVersion = versiones[versiones.length - 1].id + 1
+
+              const dataProducto = {
+                  nombre: data.nombre,
+                  fecha_lanzamiento: data.fecha_lanzamiento,
+                  id_version: nuevaVersion, 
+                }
+
             fetch("https://aninfo2c222back-production.up.railway.app/api/productos", {
                   method: 'POST', // or 'PUT'
-                  body: JSON.stringify(data), // data can be `string` or {object}!
+                  body: JSON.stringify(dataProducto), // data can be `string` or {object}!
                   headers:{
                     'Content-Type': 'application/json'
                   }
@@ -40,8 +66,6 @@ export default function TicketCreate() {
       })
 
 
-
-     
 
       return (
 
@@ -59,20 +83,27 @@ export default function TicketCreate() {
             <input type="text" {...register("nombre")} required />
             <br></br>
             
-            <label htmlFor="id_responsable">Version de producto</label>
-           
-            <select {...register("id_version")}>
-            {versiones.map((version) => ( 
-                  <option  value={Number(version.id)}  key={version.id}>{version.nombre} </option>
-            ))}
-            </select>
-            <br></br>
-
-
+            
             <label htmlFor="fechaEmision">Fecha de lanzamiento</label>
             <input type="date" {...register("fecha_lanzamiento")} required/>
             <br></br>
 
+
+            <h3>Nueva version</h3>
+
+            <label htmlFor="titulo">Nombre</label>
+            <input type="text" {...register("nombre_version")} required />
+            <br></br>
+
+
+            <label htmlFor="fechaEmision">Fecha de lanzamiento</label>
+            <input type="date" {...register("fecha_lanzamiento_version")} required/>
+            <br></br>
+
+
+
+
+      
 
 
             <div className={styles.botonesView}>
