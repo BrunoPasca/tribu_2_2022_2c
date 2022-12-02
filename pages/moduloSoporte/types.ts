@@ -28,3 +28,16 @@ export interface EmpleadoProperties {
     apellido: string,
     antiguedad: number,
 }
+
+export interface ProductProperties {
+    id: number,
+    id_version: number,
+    fecha_lanzamiento: string,
+    nombre:string,
+}
+
+export interface VersionProperties {
+    id:number,
+    fecha_lanzamiento: string,
+    nombre:string,
+}
