@@ -43,7 +43,7 @@ export default function SearchBarLegajoCliente({placeholder, data}: {placeholder
         if(searchWord === "") {
             setFilteredData([]);
         } else {
-            setFilteredData(newFilter);
+            //setFilteredData(newFilter);
         }
     };
 

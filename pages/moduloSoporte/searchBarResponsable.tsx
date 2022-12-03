@@ -43,7 +43,7 @@ export default function SearchBarResponsable({placeholder, data}: {placeholder:s
         if(searchWord === "") {
             setFilteredData([]);
         } else {
-            setFilteredData(newFilter);
+            //setFilteredData(newFilter);
         }
     };
 
