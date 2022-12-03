@@ -1,7 +1,9 @@
 import Head_ from '../../head'
 import Header from '../../header'
 import styles from '../../../styles/proyectos.module.css'
+import sup_styles from '../../../styles/soporte.module.css'
 import { useRouter } from 'next/router'
+import { createSemanticDiagnosticsBuilderProgram } from 'typescript'
 
 
 
@@ -61,8 +63,7 @@ export default function proyectoEdit(this: any) {
   if (target_proyecto == undefined) {
     return (
       <>
-        <Head_ nombre='Invalid page'>
-        </Head_>
+        <Head_ nombre='Invalid page'></Head_>
         <Header></Header>
         <div>
           La pagina a la que se quiere acceder no existe
@@ -77,8 +78,7 @@ export default function proyectoEdit(this: any) {
 
   return (
     <>
-      <Head_ nombre='Editar proyecto'>
-      </Head_>
+      <Head_ nombre='Editar proyecto'></Head_>
       <Header></Header>
 
 
