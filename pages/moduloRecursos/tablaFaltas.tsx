@@ -73,7 +73,7 @@ export default function MuiTable(props: any) {
     function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
-        const date = modificarFormatoFecha(givenDate);
+        const date = new Date(givenDate);
 
         return (start <= date && date <= end);
     }
@@ -100,15 +100,15 @@ export default function MuiTable(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {faltas.filter(falta => DateBetweenTwoDates(inicio, fin, falta["fecha"])).map((falta) => (
+                    {faltas.filter(falta => falta["legajo_empleado"] === legajo && DateBetweenTwoDates(inicio, fin, falta["fecha"])).map((falta) => (
                         <TableRow
-                            key={falta["legajo"]}
+                            key={falta["id"]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell component="th" scope="row">
-                                {falta["legajo"]}
+                            <TableCell align="center" component="th" scope="row">
+                                {falta["id"]}
                             </TableCell>
-                            <TableCell align="center">{falta["fecha"]}</TableCell>
+                            <TableCell align="center">{new Date(falta["fecha"]).toLocaleDateString()}</TableCell>
                             <TableCell align="center">{falta["justificante"]}</TableCell>
                             <TableCell padding='none'>
                                 <IconButton onClick={handleOpenDelete}>

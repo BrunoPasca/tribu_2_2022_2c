@@ -70,8 +70,6 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     }
 
     async function handleClickCargar() {
-
-        const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
         const horaDatos = { legajo_empleado: legajo, id_tarea: tareaId, cant_horas: cantHoras, fecha: _fecha, estado: "testeando el post"}
         const hora = {
             "legajo_empleado": 1,
@@ -137,7 +135,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                     >
                         {
                             tareas.map(tarea =>
-                                <option key={tarea.id} value={tarea.id}>{tarea.descripcion}</option>
+                                <option key={tarea.id} value={tarea.id}>{tarea.descripcion} - ID {tarea.id}</option>
                             )
                         }
                     </select>

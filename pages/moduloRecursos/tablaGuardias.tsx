@@ -74,7 +74,7 @@ export default function MuiTable(props: any) {
     function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
-        const date = modificarFormatoFecha(givenDate);
+        const date = new Date(givenDate);
 
         return (start <= date && date <= end);
     }
@@ -96,24 +96,22 @@ export default function MuiTable(props: any) {
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">ID</TableCell>
-                        <TableCell align="center">Legajo</TableCell>
                         <TableCell align="center">Desde</TableCell>
                         <TableCell align="center">Hasta</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {guardias
-                        .filter(guardia => DateBetweenTwoDates(inicio, fin, guardia["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, guardia["fecha_fin"]))
+                        .filter(guardia => guardia["legajo_empleado"] === legajo && DateBetweenTwoDates(inicio, fin, guardia["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, guardia["fecha_fin"]))
                         .map((guardia) => (
                             <TableRow
                                 key={guardia['id']}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">
+                                <TableCell align="center" component="th" scope="row">
                                     {guardia['id']}
                                 </TableCell>
                                 <TableCell align="center">{guardia["fecha_inicio"]}</TableCell>
-                                <TableCell align="center">{guardia["legajo_empleado"]}</TableCell>
                                 <TableCell align="center">{guardia["fecha_fin"]}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>

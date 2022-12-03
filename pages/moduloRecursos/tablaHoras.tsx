@@ -89,9 +89,10 @@ export default function MuiTable(props: any) {
     }
 
     function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
+        console.log(fromDate, toDate, givenDate)
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
-        const date = modificarFormatoFecha(givenDate);
+        const date = new Date(givenDate);
 
         return (start <= date && date <= end);
     }
@@ -112,22 +113,22 @@ export default function MuiTable(props: any) {
                     <TableRow>
                         <TableCell align="center">ID</TableCell>
                         <TableCell align="center">ID Tarea</TableCell>
-                        <TableCell align="center">Tarea</TableCell>
                         <TableCell align="center">Fecha</TableCell>
                         <TableCell align="center">Horas</TableCell>
+                        <TableCell align="center">Fuera de Horario</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {horas.filter(hora => DateBetweenTwoDates(props.fechaInicio, props.fechaFin, hora["fecha"])).map((hora) => (
+                    {horas.filter(hora => hora["legajo_empleado"] === legajo && DateBetweenTwoDates(props.fechaInicio, props.fechaFin, hora["fecha"])).map((hora) => (
                         <TableRow
                             key={hora["id"]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell component="th" scope="row">{hora["id"]}</TableCell>
+                            <TableCell align="center" component="th" scope="row">{hora["id"]}</TableCell>
                             <TableCell align="center">{hora["id_tarea"]}</TableCell>
-                            <TableCell align="center">{hora["tarea"]}</TableCell>
-                            <TableCell align="center">{hora["fecha"]}</TableCell>
+                            <TableCell align="center">{new Date(hora["fecha"]).toLocaleDateString()}</TableCell>
                             <TableCell align="center">{hora["cant_horas"]}</TableCell>
+                            <TableCell align="center">{hora["extra"] ? "Sí" : "No"}</TableCell>
                             <TableCell padding="none" align="right">
                                 <IconButton onClick={handleOpenDelete}><DeleteIcon /></IconButton>
                                 <BorrarHoraModal isOpen={openDelete} setOpen={setOpenDelete} reporteId={hora["id"]}></BorrarHoraModal>

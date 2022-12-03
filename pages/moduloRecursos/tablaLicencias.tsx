@@ -82,7 +82,7 @@ export default function MuiTable(props: any) {
     function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
-        const date = modificarFormatoFecha(givenDate);
+        const date = new Date(givenDate);
 
         return (start <= date && date <= end);
     }
@@ -108,25 +108,25 @@ export default function MuiTable(props: any) {
                         <TableCell align="center">Descripción</TableCell>
                         <TableCell align="center">Desde</TableCell>
                         <TableCell align="center">Hasta</TableCell>
-                        <TableCell align="center">Goce de Suelgo</TableCell>
+                        <TableCell align="center">Goce de Sueldo</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {licencias
-                        .filter(licencias => DateBetweenTwoDates(inicio, fin, licencias["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, licencias["fecha_fin"]))
+                        .filter(licencias => licencias["legajo_empleado"] == legajo && DateBetweenTwoDates(inicio, fin, licencias["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, licencias["fecha_fin"]))
                         .map((licencias) => (
                             <TableRow
                                 key={licencias["id"]}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">
+                                <TableCell align="center" component="th" scope="row">
                                     {licencias["id"]}
                                 </TableCell>
                                 <TableCell align="center">{licencias["tipo_licencia"]}</TableCell>
                                 <TableCell align="center">{licencias["descripcion"]}</TableCell>
-                                <TableCell align="center">{licencias["fecha_inicio"]}</TableCell>
-                                <TableCell align="center">{licencias["fecha_fin"]}</TableCell>
-                                <TableCell align="center">{licencias["goce_sueldo"]}</TableCell>
+                                <TableCell align="center">{new Date(licencias["fecha_inicio"]).toLocaleDateString()}</TableCell>
+                                <TableCell align="center">{new Date(licencias["fecha_fin"]).toLocaleDateString()}</TableCell>
+                                <TableCell align="center">{licencias["goce_sueldo"] ? "Sí" : "No"}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>
                                         <DeleteIcon />
