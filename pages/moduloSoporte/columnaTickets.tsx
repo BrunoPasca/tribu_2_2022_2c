@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import TicketCard from './ticketCard';
-import { TicketProperties } from './types';
+import { TicketProperties } from '../../components/soporte/types';
 
 
-  
-export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
 
-  const [tickets, setTickets]: [Array<TicketProperties> ,any] = useState([])
+export default function ColumnaTicket({ estadoFiltro }: { estadoFiltro: string }) {
+
+  const [tickets, setTickets]: [Array<TicketProperties>, any] = useState([])
 
 
   useEffect(() => {
@@ -20,13 +20,13 @@ export default function ColumnaTicket({estadoFiltro}: {estadoFiltro:string}) {
   }, [])
 
 
-    return (
-        <div>
-          {(tickets).filter(i => i.estado == estadoFiltro).map((ticket) => ( 
-            <div key={ticket.id}>
-              <Link href={'/moduloSoporte/tickets/' + ticket.id}><TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard></Link>
-            </div>
-          ))}
+  return (
+    <div>
+      {(tickets).filter(i => i.estado == estadoFiltro).map((ticket) => (
+        <div key={ticket.id}>
+          <Link href={'/moduloSoporte/tickets/' + ticket.id}><TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard></Link>
         </div>
-      )
-    }
+      ))}
+    </div>
+  )
+}

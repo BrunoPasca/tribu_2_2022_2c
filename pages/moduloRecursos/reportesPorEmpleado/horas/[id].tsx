@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
 import Link from 'next/link';
-import { Tarea } from '../../types';
+import { Tarea } from '../../../../components/recursos/types';
 import Header from '../../../header';
 import { useRouter } from 'next/router';
 

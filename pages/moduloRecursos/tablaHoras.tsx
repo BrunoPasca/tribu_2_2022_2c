@@ -13,7 +13,7 @@ import BorrarHoraModal from './borrarHoraModal';
 import Edit from '@mui/icons-material/Edit';
 import EditarHoraModal from './editarHoraModal';
 import styles from '../../styles/recursos.module.css'
-import { useInterval } from '../moduloSoporte/utils';
+import { useInterval } from '../../components/soporte/utils';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -74,11 +74,11 @@ export default function MuiTable(props: any) {
 
     useInterval(() => {
         fetch("https://aninfo2c222back-production.up.railway.app/api/horas")
-          .then((res) => res.json())
-          .then((data) => {
-            setHoras(data)
-          })
-      }, 1500)
+            .then((res) => res.json())
+            .then((data) => {
+                setHoras(data)
+            })
+    }, 1500)
 
 
     // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
@@ -118,7 +118,7 @@ export default function MuiTable(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {horas.filter(hora=> DateBetweenTwoDates(props.fechaInicio, props.fechaFin, hora["fecha"])).map((hora) => (
+                    {horas.filter(hora => DateBetweenTwoDates(props.fechaInicio, props.fechaFin, hora["fecha"])).map((hora) => (
                         <TableRow
                             key={hora["id"]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
