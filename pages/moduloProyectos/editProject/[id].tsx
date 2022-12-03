@@ -145,7 +145,7 @@ export default function proyectoEdit(this: any) {
         </div>
         <div className={styles.botonesView}>
           <a href="/moduloProyectos/proyectos"><button>Cancelar</button></a>
-          <button form="form_id" onClick={button_press}>Agregar</button>
+          <button form="form_id" onClick={() => { console.log("prueba") /*</div>button_press*/ }}>Agregar</button>
         </div>
       </div>
     </>
@@ -155,7 +155,7 @@ export default function proyectoEdit(this: any) {
 
 
 
-
+/*
 function button_press() {
   alert("Back end tiene que hacer algo ");
   var estado_proyecto = document.getElementById('estadoProyecto').value;
@@ -169,4 +169,4 @@ function button_press() {
   var proyectoSoporte = document.getElementById('proyectoSoporteId').value;
   return true;
 }
-var function_button = button_press;
+var function_button = button_press;*/
