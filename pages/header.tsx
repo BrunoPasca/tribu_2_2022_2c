@@ -11,7 +11,7 @@ export default function Header() {
                     <Link href="/">
                         <Image
                             priority
-                            src="/../public/logoPSA.png"
+                            src="/logoPSA.png"
                             height={74}
                             width={139}
                             alt={''}
