@@ -17,6 +17,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     const [fin, setFormFin] = useState(new Date())
 
     useEffect(()=>{
+        console.log("se cambia")
         fetch("https://aninfo2c222back-production.up.railway.app/api/employees")
         .then((res) => res.json())
         .then((data) => {
@@ -25,7 +26,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
                 setLegajo(data[0].legajo)
             }
         })
-    })
+    }, [])
 
     // Cuando se cambia la fecha de inicio seteo la fecha final del periodo
     useEffect(() => {
@@ -100,7 +101,6 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
         }
 
         const datos = { legajo : legajo, inicio: inicio, fin: fin, periodo: periodo };
-        console.log("el legajo es ", legajo)
         sessionStorage.setItem("datos", JSON.stringify(datos))
         router.push("./cargarTarea")
     }
@@ -116,6 +116,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
                     className={styles.selectInput}
                     value={legajo}
                     onChange={(e) => {
+                        console.log(e.currentTarget.value)
                         setLegajo(e.currentTarget.value)
                     }}
                     name="legajo"

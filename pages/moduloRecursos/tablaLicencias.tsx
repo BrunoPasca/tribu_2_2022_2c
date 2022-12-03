@@ -11,6 +11,7 @@ import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 import BorrarGuardiaModal from './borrarGuardiaModal';
 import { useInterval } from '../moduloSoporte/utils';
+import BorrarLicenciaModal from './borrarLicenciaModal';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -130,7 +131,7 @@ export default function MuiTable(props: any) {
                                     <IconButton onClick={handleOpenDelete}>
                                         <DeleteIcon />
                                     </IconButton>
-                                    <BorrarGuardiaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={licencias["id"]}></BorrarGuardiaModal>
+                                    <BorrarLicenciaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={licencias["id"]}></BorrarLicenciaModal>
                                 </TableCell>
                             </TableRow>
                         ))}

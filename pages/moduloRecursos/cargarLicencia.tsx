@@ -17,7 +17,6 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
 
     const [goceSueldo, setGoceSueldo] = React.useState(false)
     const handleChangeSueldo = () => {
-        console.log("El goce es : ", goceSueldo)
         setGoceSueldo(!goceSueldo)
     }
 
@@ -46,7 +45,6 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
 
 
     async function handleClickCargar(){
-        const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
         const licenciaDatos = {legajo: legajo, fecha_inicio : startDate, fecha_fin : endDate, tipo_licencia:tipo, goce_sueldo:goceSueldo}
 
         const areNotEmpty = Object.values(licenciaDatos).every(
@@ -62,7 +60,12 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
         await fetch("https://aninfo2c222back-production.up.railway.app/api/licencia", {
           method: "POST",
           body: JSON.stringify(licenciaDatos),
+          headers: {
+            'Content-Type': 'application/json'
+        },
         })
+        .then(response => alert("Se creó correctamente"))
+        .catch(error => alert(error))
     }
 
     return (

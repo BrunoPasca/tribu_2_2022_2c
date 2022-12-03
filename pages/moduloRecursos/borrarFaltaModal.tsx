@@ -27,6 +27,8 @@ export default function BorrarFaltaModal(props: any) {
     await fetch("https://aninfo2c222back-production.up.railway.app/api/faltas/" + props.reporteId, {
       method: "DELETE",
     })
+    .then(response => alert("Se eliminó correctamente"))
+    .catch(error => alert(error))
 
     setOpen(false)
   }

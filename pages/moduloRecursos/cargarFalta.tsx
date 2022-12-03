@@ -40,6 +40,8 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
           method: "POST",
           body: JSON.stringify(faltaDatos),
         })
+        .then(response => alert("Se creó correctamente"))
+        .catch(error => alert(error))
     }
 
     return (

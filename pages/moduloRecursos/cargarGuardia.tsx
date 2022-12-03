@@ -53,7 +53,12 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
         await fetch("https://aninfo2c222back-production.up.railway.app/api/guardias", {
           method: "POST",
           body: JSON.stringify(guardiaDatos),
+          headers: {
+            'Content-Type': 'application/json'
+        },
         })
+        .then(response => alert("Se creó correctamente"))
+        .catch(error => alert(error))
     }
 
     return (

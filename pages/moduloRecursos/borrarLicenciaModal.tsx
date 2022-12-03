@@ -17,17 +17,17 @@ const style = {
   p: 4,
 };
 
-export default function BorrarGuardiaModal(props: any) {
+export default function BorrarLicenciaModal(props: any) {
   var open = props.isOpen
   var setOpen = props.setOpen
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   async function handleBorrar() {
-    await fetch("https://aninfo2c222back-production.up.railway.app/api/guardias/" + props.reporteId, {
+    await fetch("https://aninfo2c222back-production.up.railway.app/api/licencia/" + props.reporteId, {
       method: "DELETE",
     })
-    .then(response => alert("Se eliminó correctamente"))
+    .then(response => alert("Se elimnó correctamente"))
     .catch(error => alert(error))
 
     setOpen(false)

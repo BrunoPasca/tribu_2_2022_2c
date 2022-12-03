@@ -20,7 +20,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     const [tareas, setTareas] = useState<any[]>([])
 
     const [proyectoId, setProyectoId] = useState("")
-    const [tareaId, setTareaId] = useState("")
+    const [tareaId, setTareaId] = useState("0")
 
     let datos; // datos que se cargan con sessionStorage en page cargarDatos
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
@@ -58,6 +58,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                 setTareas(tareas_asociadas)
                 if (tareas_asociadas.length > 0) {
                     setTareaId(tareas_asociadas[0].id)
+                }else{
+                    setTareaId("0")
                 }
             })  
     }, [proyectoId])
@@ -80,10 +82,12 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
             "extra": 0
         }
 
-        if (!tareaId || !cantHoras) {
+        if (tareaId == "0" || !cantHoras ) {
           alert("Complete todos los campos antes de cargar.")
           return
         }
+
+        console.log(horaDatos)
 
         fetch("https://aninfo2c222back-production.up.railway.app/api/horas", {
             method: 'POST', // or 'PUT'
@@ -92,6 +96,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                 'Content-Type': 'application/json'
             },
         })
+        .then(response => alert("Se creó correctamente"))
+        .catch(error => alert(error))
     }
 
     return (
