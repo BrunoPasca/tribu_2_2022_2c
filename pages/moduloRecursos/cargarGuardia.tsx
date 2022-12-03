@@ -38,7 +38,7 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
 
 
     async function handleClickCargar(){
-        const guardiaDatos = {legajo_empleado: legajo, fecha_inicio : _fecha_inicio, fecha_fin : _fecha_fin}
+        const guardiaDatos = {legajo_empleado: legajo, fecha_inicio : startDate, fecha_fin : endDate}
 
         const areNotEmpty = Object.values(guardiaDatos).every(
             value => value != ""

@@ -70,7 +70,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     }
 
     async function handleClickCargar() {
-        const horaDatos = { legajo_empleado: legajo, id_tarea: tareaId, cant_horas: cantHoras, fecha: _fecha, estado: "testeando el post"}
+        const horaDatos = { legajo_empleado: legajo, id_tarea: tareaId, cant_horas: cantHoras, fecha: fecha, estado: "testeando el post"}
         const hora = {
             "legajo_empleado": 1,
             "id_tarea": 3,
