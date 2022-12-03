@@ -95,7 +95,7 @@ export default function MuiTable(props: any) {
                 component="div"
                 align="center"
             >
-                Guardias Cargadas <br></br> {props.fechaInicio} - {props.fechaFin}
+                Licencias Cargadas <br></br> {props.fechaInicio} - {props.fechaFin}
             </Typography>
 
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">

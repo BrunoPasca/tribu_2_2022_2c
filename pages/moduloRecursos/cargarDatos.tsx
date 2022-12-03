@@ -7,13 +7,8 @@ import Header from '../header';
 import Router, { useRouter } from 'next/router';
 
 export default function CrearReporteTrabajo({ setter }: { setter: any }) {
-    const [formData, setFormData] = useState(
-        {
-            nombre: "",
-            apellido: "",
-            legajo: "",
-        }
-    )
+    const [recursos, setRecursos] = useState<any[]>([])
+    const [legajo, setLegajo] = useState("")
 
     const router = useRouter()
 
@@ -21,9 +16,16 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     const [periodo, setPeriodo] = useState("semanal")
     const [fin, setFormFin] = useState(new Date())
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData(prevFormData => ({ ...prevFormData, [event.target.name]: event.target.value }))
-    };
+    useEffect(()=>{
+        fetch("https://aninfo2c222back-production.up.railway.app/api/employees")
+        .then((res) => res.json())
+        .then((data) => {
+            setRecursos(data);
+            if (data.length > 0) {
+                setLegajo(data[0].legajo)
+            }
+        })
+    })
 
     // Cuando se cambia la fecha de inicio seteo la fecha final del periodo
     useEffect(() => {
@@ -87,9 +89,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     }
 
     function validateForm() {
-        return Object.values(formData).every(
-            value => value != ""
-        );
+        return (legajo || inicio || fin || periodo)
     }
 
     function handleClickContinuar() {
@@ -99,8 +99,8 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
             return;
         }
 
-        const datos = { ...formData, inicio: inicio, fin: fin, periodo: periodo };
-
+        const datos = { legajo : legajo, inicio: inicio, fin: fin, periodo: periodo };
+        console.log("el legajo es ", legajo)
         sessionStorage.setItem("datos", JSON.stringify(datos))
         router.push("./cargarTarea")
     }
@@ -110,18 +110,24 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
         <div className={styles.cargarDatos}>
             <Header></Header>
             <form>
-                <p>
-                    <label className={styles.inputLabel}>Nombre</label>
-                    <input id="nombre" type="text" placeholder="Nombre" name='nombre' onChange={handleChange} value={formData.nombre}></input>
-
-                    <label className={styles.inputLabel}>Apellido</label>
-                    <input type="text" placeholder="Apellido" name='apellido' onChange={handleChange} value={formData.apellido}></input>
-                </p>
-
-                <p>
-                    <label className={styles.inputLabel}>Legajo</label>
-                    <input type="number" placeholder="Legajo" name='legajo' onChange={handleChange} value={formData.legajo}></input>
-                </p>
+                <label className={styles.inputLabel}>Empleado</label>
+                <select
+                    id="legajo"
+                    className={styles.selectInput}
+                    value={legajo}
+                    onChange={(e) => {
+                        setLegajo(e.currentTarget.value)
+                    }}
+                    name="legajo"
+                >
+                    {
+                        recursos.map(recurso =>
+                            <option key={recurso.legajo} value={recurso.legajo}>{recurso.nombre} {recurso.apellido} - {recurso.legajo}</option>
+                        )
+                    }
+                </select>
+                <br></br>
+                <br></br>
 
                 <label className={styles.inputLabel}>Periodo</label>
                 <select

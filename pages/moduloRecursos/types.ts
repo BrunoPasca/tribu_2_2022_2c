@@ -15,7 +15,7 @@ export interface  Tarea {
     id_proyecto: number,
     horas_estimadas:number,
     estado: string,
-    descripcino: string
+    descripcion: string
 }
 
 export interface Guardia {

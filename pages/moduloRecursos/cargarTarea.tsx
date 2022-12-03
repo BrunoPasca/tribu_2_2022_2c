@@ -6,9 +6,6 @@ import Header from '../header';
 import SeleccionarActividad from "./seleccionarActividad";
 import MuiTable from "./tablaHoras";
 import Link from "next/link";
-import { useInterval } from "../moduloSoporte/utils";
-import { Tarea } from "./types";
-
 
 export default function CargarTarea({ period, screenSetter }: { period: string, screenSetter: any }) {
     const [cantHoras, setCantHoras] = React.useState("")
@@ -45,27 +42,25 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
             .then((res) => res.json())
             .then((data) => {
                 setProyectos(data);
+                if (data.length > 0){
+                    setProyectoId(data[0].id)
+                }
             })
-
-        if (!proyectos[0]) return;
-        setProyectoId(proyectos[0].id)
-
     }, [])
 
     // Cuando selecciona otro proyecto obtengo las tareas asociadas
     useEffect(() => {
         if (!proyectoId) return;
-        console.log("El nuevo proyecto es ", proyectoId)
         fetch("https://aninfo2c222back-production.up.railway.app/api/tareas")
             .then((res) => res.json())
             .then((data) => {
-                setTareas(data.filter((tarea: any) => tarea.id_proyecto === Number(proyectoId)))
+                const tareas_asociadas = data.filter((tarea: any) => tarea.id_proyecto === Number(proyectoId))
+                setTareas(tareas_asociadas)
+                if (tareas_asociadas.length > 0) {
+                    setTareaId(tareas_asociadas[0].id)
+                }
             })  
     }, [proyectoId])
-
-    //useInterval(()=>{
-    //    console.log(tareas)
-    //}, [500])
 
 
     function handleChangeHoras(e: any) {
