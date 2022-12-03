@@ -8,7 +8,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
-import SearchBar from 'material-ui-search-bar';
 import Link from 'next/link';
 
 export default function TablaPersonas(props: any) {
@@ -87,12 +86,13 @@ export default function TablaPersonas(props: any) {
             >
                 Empleados
             </Typography>
+            {/* 
             <SearchBar
                 placeholder="Buscar por nombre"
                 value={searched}
                 onChange={(searchVal) => requestSearch(searchVal)}
                 onCancelSearch={() => cancelSearch()}
-            />
+            />*/}
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
                 <TableHead>
                     <TableRow>

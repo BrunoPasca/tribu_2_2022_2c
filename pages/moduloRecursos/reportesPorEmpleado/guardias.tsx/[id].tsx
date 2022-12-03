@@ -8,7 +8,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
-import SearchBar from 'material-ui-search-bar';
 import Link from 'next/link';
 import { Guardia } from '../../types';
 import Header from '../../../header';
@@ -78,12 +77,13 @@ export default function TablaAllGuardias(props: any) {
             >
                 Faltas
             </Typography>
+            {/* 
             <SearchBar
-                placeholder="Buscar por inicio"
+                placeholder="Buscar por nombre"
                 value={searched}
                 onChange={(searchVal) => requestSearch(searchVal)}
                 onCancelSearch={() => cancelSearch()}
-            />
+            />*/}
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
                 <TableHead>
                     <TableRow>
