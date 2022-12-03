@@ -7,16 +7,16 @@ export interface TicketProperties {
 
     severidad: string,
     estado: string,
-    descripcion:string,
+    descripcion: string,
     medio_contacto: string,
     dato_contacto: string,
-    
+
     fecha_emision: string, //Date
-    fecha_resolucion:string, //Date
+    fecha_resolucion: string, //Date
 }
 
 export interface ClientesProperties {
-    legajo:number;
+    legajo: number;
     Nombre: string;
     Apellido: string;
 }
@@ -33,11 +33,19 @@ export interface ProductProperties {
     id: number,
     id_version: number,
     fecha_lanzamiento: string,
-    nombre:string,
+    nombre: string,
 }
 
 export interface VersionProperties {
-    id:number,
+    id: number,
     fecha_lanzamiento: string,
-    nombre:string,
+    nombre: string,
+}
+
+// Hecho para que compile el build puede estar mal
+export interface FormProductVersionProperties {
+    nombre_version: string,
+    fecha_lanzamiento_version: string,
+    nombre: string,
+    fecha_lanzamiento: string,
 }
