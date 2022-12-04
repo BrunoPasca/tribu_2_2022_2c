@@ -48,6 +48,13 @@ export interface ProductProperties {
     nombre: string,
 }
 
+export interface ProdVerProperties {
+    id: number,
+    producto_id:number,
+    version_id:number,
+}
+
+
 export interface VersionProperties {
     id: number,
     fecha_lanzamiento: string,

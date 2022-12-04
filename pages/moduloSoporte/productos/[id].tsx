@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import styles from '../../../styles/ticket.module.css'
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { ProductProperties, ProdVerProperties, VersionProperties } from "../../../components/soporte/types";
 
 export default function TicketView() {
     
@@ -24,8 +25,28 @@ export default function TicketView() {
         })
     }, [])
 
-    
 
+
+    const [prover, setProver]: [Array<ProdVerProperties>, any] = useState([])
+
+    useEffect(() => {
+      fetch("https://aninfo2c222back-production.up.railway.app/api/prodversions")
+        .then((res) => res.json())
+        .then((data) => {
+          setProver(data)
+        })
+    }, [])
+
+
+    const [versiones, setVersiones]: [Array<VersionProperties>, any] = useState([])
+
+    useEffect(() => {
+      fetch("https://aninfo2c222back-production.up.railway.app/api/versions")
+        .then((res) => res.json())
+        .then((data) => {
+          setVersiones(data)
+        })
+    }, [])
 
     
     
@@ -49,6 +70,13 @@ export default function TicketView() {
 
                 <p>Versiones</p>
 
+                <div>
+                    {(prover).filter(i => i.producto_id == Number(id)).map((a) => (
+                        <div key={a.id}>
+                            {versiones.find(element => element.id == a.version_id)?.nombre}
+                        </div>
+                    ))}
+                </div>
 
     
             </div>
