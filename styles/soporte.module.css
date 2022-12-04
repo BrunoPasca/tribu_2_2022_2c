@@ -1,9 +1,7 @@
 /*------------PAGINA DE SOPORTE----------------*/
 
-
 .container {
   background-color: #EEF4ED;
-  height: 100vh;
   font-family: 'Roboto', sans-serif;
 
   }
@@ -70,4 +68,9 @@
     box-shadow: 0px 0px 10px rgb(82, 82, 82);
     background-color: #134074;
 
+  }
+
+  .productos{
+    display: flex;
+    flex-direction: column;
   }

@@ -1,17 +1,28 @@
-import styles from '../../styles/ticket.module.css'
-import Head_ from '../head'
-import Header from '../header'
-import { ClientesProperties, EmpleadoProperties, ProductProperties, TicketProperties, VersionProperties } from '../../components/soporte/types';
+import styles from '../../../styles/ticket.module.css'
+import Head_ from '../../head'
+import Header from '../../header'
+import { ClientesProperties, EmpleadoProperties, ProductProperties, TicketProperties, VersionProperties } from '../../../components/soporte/types';
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
-import Link from 'next/link';
-import { useNavigate } from 'react-router-dom';
-import { versions } from 'process';
+import { useRouter } from 'next/router';
+
 
 
 
 export default function TicketCreate() {
 
+const router = useRouter();
+const {id} = router.query;
+
+  const [versiones, setVersiones]: [Array<VersionProperties>, any] = useState([])
+
+  useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/versions")
+      .then((res) => res.json())
+      .then((data) => {
+        setVersiones(data)
+      })
+  }, [])
 
 
   const { register, handleSubmit } = useForm<ProductProperties>()
@@ -25,7 +36,24 @@ export default function TicketCreate() {
         'Content-Type': 'application/json'
       }
     })
-    alert("El producto se creo correctamente")
+
+    const IdNuevaVersion = versiones[versiones.length - 1].id + 1
+
+    const dataProdVersions = {
+      producto_id: Number(id),
+      version_id: IdNuevaVersion,
+    }
+
+    fetch("https://aninfo2c222back-production.up.railway.app/api/prodversions", {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(dataProdVersions), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+
+    alert("La version se creo correctamente")
   })
 
 

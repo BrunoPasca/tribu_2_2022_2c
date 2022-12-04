@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import styles from '../../styles/search.module.css'
+import styles from "../../../styles/search.module.css"
 import BotonFiltro from './botonFiltro';
-import TicketCard from './ticketCard';
+import TicketCard from '../ticketCard';
 import { useEffect, useState } from "react";
-import { EmpleadoProperties, TicketProperties } from '../../components/soporte/types';
+import { EmpleadoProperties, TicketProperties } from '../../../components/soporte/types';
 
 
 export default function SearchBar({ placeholder, data }: { placeholder: string, data: {} }) {
