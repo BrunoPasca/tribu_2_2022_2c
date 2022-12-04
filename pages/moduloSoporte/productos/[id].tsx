@@ -68,7 +68,7 @@ export default function TicketView() {
                 <div>Fecha de lanzamiento: {producto?.fecha_lanzamiento}</div>
    
 
-                <p>Versiones</p>
+                <h3>Versiones</h3>
 
                 <div>
                     {(prover).filter(i => i.producto_id == Number(id)).map((a) => (
@@ -79,9 +79,20 @@ export default function TicketView() {
                 </div>
 
     
+
+            <div className={styles.botonesView}>
+
+                <Link href={"/moduloSoporte/versionCreate/" + id}><button>Agregar version</button></Link>
+
+                <Link href={"/moduloSoporte/soporte"}><button>Eliminar</button></Link>
+
+            </div>  
+
             </div>
 
-   
+
+                        
+        
 
         </div>
 

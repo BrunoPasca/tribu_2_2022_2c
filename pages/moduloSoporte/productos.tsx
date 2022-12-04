@@ -49,13 +49,12 @@ export default function Productos() {
                     </Link>
                 </div>
             ))}
+
+
         </div>
 
 
-            <div className={styles.contenedorBoton}>
-            <a href='/moduloSoporte/productoCreate'><button>CREAR PRODUCTO</button></a>
-            </div>
-  
+ 
   
       </div>
     );
