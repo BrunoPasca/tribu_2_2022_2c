@@ -15,10 +15,16 @@ export interface TicketProperties {
     fecha_resolucion: string, //Date
 }
 
-export interface ClientesProperties {
+export interface RecursosProperties {
     legajo: number;
     Nombre: string;
     Apellido: string;
+}
+
+export interface ClientesProperties {
+    id: number;
+    razon_social: string;
+    CUIT: string;
 }
 
 export interface EmpleadoProperties {
@@ -27,6 +33,12 @@ export interface EmpleadoProperties {
     nombre: string,
     apellido: string,
     antiguedad: number,
+}
+
+export interface RecursosProperties{
+    legajo:number,
+    Nombre:string,
+    Apellido:string
 }
 
 export interface ProductProperties {

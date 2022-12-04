@@ -4,7 +4,7 @@ import Head_ from '../../head'
 import Header from '../../header'
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { ClientesProperties, EmpleadoProperties, TicketProperties } from '../../../components/soporte/types';
+import { ClientesProperties, EmpleadoProperties, RecursosProperties, TicketProperties } from '../../../components/soporte/types';
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 
@@ -17,7 +17,7 @@ export default function TicketEdit() {
       const [clientes, setClientes]: [Array<ClientesProperties>, any] = useState([])
 
       useEffect(() => {
-            fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+            fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes")
                   .then((res) => res.json())
                   .then((data) => {
                         setClientes(data)
@@ -37,11 +37,11 @@ export default function TicketEdit() {
                   })
       }, [])
 
-      const [empleados, setEmpleados]: [Array<EmpleadoProperties>, any] = useState([])
+      const [empleados, setEmpleados]: [Array<RecursosProperties>, any] = useState([])
 
 
       useEffect(() => {
-            fetch("https://aninfo2c222back-production.up.railway.app/api/employees")
+            fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
                   .then((res) => res.json())
                   .then((data) => {
                         setEmpleados(data)
@@ -88,7 +88,7 @@ export default function TicketEdit() {
 
                         <select {...register("id_responsable")}>
                               {empleados.map((empleado) => (
-                                    <option value={Number(empleado.legajo)} key={empleado.legajo}>{empleado.nombre} {empleado.apellido} - Legajo: {empleado.legajo}</option>
+                                    <option value={Number(empleado.legajo)} key={empleado.legajo}>{empleado.Nombre} {empleado.Apellido} - Legajo: {empleado.legajo}</option>
                               ))}
                         </select>
 
@@ -115,7 +115,7 @@ export default function TicketEdit() {
 
                         <select {...register("id_cliente")}>
                               {clientes.map((cliente) => (
-                                    <option value={Number(cliente.legajo)} key={Number(cliente.legajo)}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
+                                    <option value={Number(cliente.id)} key={Number(cliente.id)}>{cliente.razon_social} {cliente.CUIT} - Legajo: {cliente.id}</option>
                               ))}
                         </select>
 

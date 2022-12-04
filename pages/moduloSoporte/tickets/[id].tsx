@@ -24,6 +24,8 @@ export default function TicketView() {
         })
     }, [])
 
+    
+
 
     function deleteById(){
          fetch('https://aninfo2c222back-production.up.railway.app/api/tickets/' + id, {
