@@ -6,15 +6,26 @@
     width: 90%;
     border: #0B2545 0.4px solid;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .tituloCard{
     font-size: 25px;
-    margin-bottom: 10px;
     font-weight: bold;
+    align-items: center;
+    margin-right: 30px;
 
   }
 
-  .severidadCard{
+  .fechaLanzamiento{
     font-size: 20px;
+  }
+
+  .productCard:hover,
+  .productCard:focus,
+  .productCard:active {
+    color: white;
+    border-color: #0B2545;
+    box-shadow: 0px 0px 10px rgb(82, 82, 82);
   }

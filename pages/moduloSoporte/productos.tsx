@@ -44,14 +44,16 @@ export default function Productos() {
         <div className={styles.productos}>
             {(productos).map((producto) => (
                 <div key={producto.id}>
-                <Link href={'/moduloSoporte/tickets/' + producto.id}><ProductCard titulo={producto.nombre} id={producto.id} fecha_lanzamiento={producto.fecha_lanzamiento}></ProductCard></Link>
+                    <Link href={'/moduloSoporte/productos/' + producto.id}>
+                    <ProductCard titulo={producto.nombre} id={producto.id} fecha_lanzamiento={producto.fecha_lanzamiento?.slice(0,10)}></ProductCard>
+                    </Link>
                 </div>
             ))}
         </div>
 
 
             <div className={styles.contenedorBoton}>
-            <a href='/moduloSoporte/ticketCreate'><button>CREAR TICKET</button></a>
+            <a href='/moduloSoporte/productoCreate'><button>CREAR PRODUCTO</button></a>
             </div>
   
   
