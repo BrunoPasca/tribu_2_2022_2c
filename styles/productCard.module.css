@@ -1,0 +1,20 @@
+.productCard{
+    background-color: #8DA9C4;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 20px;
+    width: 90%;
+    border: #0B2545 0.4px solid;
+    display: flex;
+}
+
+.tituloCard{
+    font-size: 25px;
+    margin-bottom: 10px;
+    font-weight: bold;
+
+  }
+
+  .severidadCard{
+    font-size: 20px;
+  }
