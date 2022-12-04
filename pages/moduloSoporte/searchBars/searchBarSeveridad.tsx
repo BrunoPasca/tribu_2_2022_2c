@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from "../../../styles/search.module.css"
-import BotonFiltro from '../botonFiltro';
+import BotonFiltro from './botonFiltro';
 import TicketCard from '../ticketCard';
 import { useEffect, useState } from "react";
 import { EmpleadoProperties, TicketProperties } from '../../../components/soporte/types';
