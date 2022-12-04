@@ -12,12 +12,10 @@ export interface Proyecto {
 
 export interface  Tarea {
     id: number,
-    legajo_empleado: number,
-    id_tarea: number,
-    cant_horas:number,
-    fecha: Date,
+    id_proyecto: number,
+    horas_estimadas:number,
     estado: string,
-    extra: number
+    descripcion: string
 }
 
 export interface Guardia {

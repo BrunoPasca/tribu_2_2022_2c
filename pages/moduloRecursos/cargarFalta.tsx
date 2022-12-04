@@ -28,7 +28,6 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
 
 
     async function handleClickCargar(){
-        //const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
         const faltaDatos = {legajo_empleado: Number(legajo), fecha :  fecha, justificante : justificante}
 
         if (!justificante) {
@@ -39,7 +38,12 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
         await fetch("https://aninfo2c222back-production.up.railway.app/api/faltas", {
           method: "POST",
           body: JSON.stringify(faltaDatos),
+          headers: {
+            'Content-Type': 'application/json',
+        },
         })
+        .then(response => alert("Se creó correctamente"))
+        .catch(error => alert(error))
     }
 
     return (

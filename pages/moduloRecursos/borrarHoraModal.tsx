@@ -27,11 +27,10 @@ export default function BorrarHoraModal(props: any) {
     await fetch("https://aninfo2c222back-production.up.railway.app/api/horas/" + props.reporteId, {
       method: "DELETE",
     })
+    .then(response => alert("Se eliminó correctamente"))
+    .catch(error => alert(error))
 
     setOpen(false)
-
-    // Hay que hacer reload para que se actualice la tabla, o useInterval para que se carguen los reportes cada x tiempo (?)
-    document.location.reload()
   }
   function handleCancelar() {
     setOpen(false)

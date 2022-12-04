@@ -29,13 +29,16 @@ export default function EditarHoraModal(props: any) {
 
   async function handleEditar() {
     await fetch("https://aninfo2c222back-production.up.railway.app/api/horas/" + props.reporteId, {
-      method: "DELETE",
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json',
+        body: JSON.stringify({id_tarea: reporteId, cant_horas : cantHoras})
+    },
     })
+    .then(response => alert("Se editó correctamente"))
+    .catch(error => alert(error))
     
     setOpen(false)
-
-    // Hay que hacer reload para que se actualice la tabla, o useInterval para que se carguen los reportes cada x tiempo (?)
-    document.location.reload()
   }
   function handleCancelar() {
     setOpen(false)

@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 import BorrarGuardiaModal from './borrarGuardiaModal';
+import { useInterval } from '../../components/soporte/utils';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -46,7 +47,7 @@ export default function MuiTable(props: any) {
     ]
 
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias/")
+        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias")
 
             .then((res) => res.json())
             .then((data) => {
@@ -54,6 +55,13 @@ export default function MuiTable(props: any) {
             })
     }, [])
 
+    useInterval(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias")
+            .then((res) => res.json())
+            .then((data) => {
+                setGuardias(data)
+            })
+    }, 1500)
 
 
     // Formatea 'dd/mm/yyyy' a 'yyyy-mm-dd' (formato reconocido por Date)
@@ -66,7 +74,7 @@ export default function MuiTable(props: any) {
     function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
-        const date = modificarFormatoFecha(givenDate);
+        const date = new Date(givenDate);
 
         return (start <= date && date <= end);
     }
@@ -88,24 +96,22 @@ export default function MuiTable(props: any) {
                 <TableHead>
                     <TableRow>
                         <TableCell align="center">ID</TableCell>
-                        <TableCell align="center">Legajo</TableCell>
                         <TableCell align="center">Desde</TableCell>
                         <TableCell align="center">Hasta</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {guardias
-                        .filter(guardia => DateBetweenTwoDates(inicio, fin, guardia["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, guardia["fecha_fin"]))
+                        .filter(guardia => guardia["legajo_empleado"] === legajo && DateBetweenTwoDates(inicio, fin, guardia["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, guardia["fecha_fin"]))
                         .map((guardia) => (
                             <TableRow
                                 key={guardia['id']}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">
+                                <TableCell align="center" component="th" scope="row">
                                     {guardia['id']}
                                 </TableCell>
                                 <TableCell align="center">{guardia["fecha_inicio"]}</TableCell>
-                                <TableCell align="center">{guardia["legajo_empleado"]}</TableCell>
                                 <TableCell align="center">{guardia["fecha_fin"]}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>

@@ -4,10 +4,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from '../../styles/recursos.module.css'
 import Header from '../header';
 import SeleccionarActividad from "./seleccionarActividad";
-import { getProyectos, getTareasByProyecto } from "./services/ProyectoService";
 import MuiTable from "./tablaHoras";
 import Link from "next/link";
-
 
 export default function CargarTarea({ period, screenSetter }: { period: string, screenSetter: any }) {
     const [cantHoras, setCantHoras] = React.useState("")
@@ -22,7 +20,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     const [tareas, setTareas] = useState<any[]>([])
 
     const [proyectoId, setProyectoId] = useState("")
-    const [tareaId, setTareaId] = useState("")
+    const [tareaId, setTareaId] = useState("0")
 
     let datos; // datos que se cargan con sessionStorage en page cargarDatos
     const [fechaInicio, setFechaInicio] = React.useState(new Date())
@@ -40,28 +38,30 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
             setLegajo(datos.legajo)
         }
 
-        getProyectos().then((data) => {
-            setProyectos(data);
-        })
-            .catch(function (ex) {
-                console.log('Response parsing failed. Error: ', ex);
-            });
-
-        if (!proyectos[0]) return;
-        setProyectoId(proyectos[0].id)
-
+        fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
+            .then((res) => res.json())
+            .then((data) => {
+                setProyectos(data);
+                if (data.length > 0){
+                    setProyectoId(data[0].id)
+                }
+            })
     }, [])
 
     // Cuando selecciona otro proyecto obtengo las tareas asociadas
     useEffect(() => {
         if (!proyectoId) return;
-        console.log(proyectoId)
         fetch("https://aninfo2c222back-production.up.railway.app/api/tareas")
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
-                setTareas(data);
-            })
+                const tareas_asociadas = data.filter((tarea: any) => tarea.id_proyecto === Number(proyectoId))
+                setTareas(tareas_asociadas)
+                if (tareas_asociadas.length > 0) {
+                    setTareaId(tareas_asociadas[0].id)
+                }else{
+                    setTareaId("0")
+                }
+            })  
     }, [proyectoId])
 
 
@@ -70,9 +70,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     }
 
     async function handleClickCargar() {
-
-        const _fecha = fecha.toISOString().slice(0, 19).replace('T', ' ');
-        const horaDatos = { "legajo_empleado": legajo, "id_tarea": 1, "cant_horas": cantHoras, "fecha": _fecha, "extra": extra }
+        const horaDatos = { legajo_empleado: legajo, id_tarea: tareaId, cant_horas: cantHoras, fecha: fecha, estado: "testeando el post"}
         const hora = {
             "legajo_empleado": 1,
             "id_tarea": 3,
@@ -82,23 +80,22 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
             "extra": 0
         }
 
-        const areNotEmpty = Object.values(horaDatos).every(
-            value => value != ""
-        );
-        /*if (!areNotEmpty) {
-            alert("Complete todos los campos antes de cargar.")
-            return
-        }*/
+        if (tareaId == "0" || !cantHoras ) {
+          alert("Complete todos los campos antes de cargar.")
+          return
+        }
 
-        console.log(JSON.stringify(hora))
+        console.log(horaDatos)
+
         fetch("https://aninfo2c222back-production.up.railway.app/api/horas", {
             method: 'POST', // or 'PUT'
-            body: JSON.stringify(hora), // data can be `string` or {object}!
+            body: JSON.stringify(horaDatos), // data can be `string` or {object}!
             headers: {
                 'Content-Type': 'application/json'
             },
-            mode: 'no-cors',
         })
+        .then(response => alert("Se creó correctamente"))
+        .catch(error => alert(error))
     }
 
     return (
@@ -137,8 +134,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                         name="actividad"
                     >
                         {
-                            (tareas).filter(tarea => tarea.proyecto_id == proyectoId).map(tarea =>
-                                <option key={tarea.id} value={tarea.id}>{tarea.descripcion}</option>
+                            tareas.map(tarea =>
+                                <option key={tarea.id} value={tarea.id}>{tarea.descripcion} - ID {tarea.id}</option>
                             )
                         }
                     </select>

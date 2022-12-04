@@ -38,9 +38,7 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
 
 
     async function handleClickCargar(){
-        const _fecha_inicio = startDate.toISOString().slice(0, 19).replace('T', ' ');
-        const _fecha_fin = endDate.toISOString().slice(0, 19).replace('T', ' ');
-        const guardiaDatos = {legajo_empleado: legajo, fecha_inicio : _fecha_inicio, fecha_fin : _fecha_fin}
+        const guardiaDatos = {legajo_empleado: legajo, fecha_inicio : startDate, fecha_fin : endDate}
 
         const areNotEmpty = Object.values(guardiaDatos).every(
             value => value != ""
@@ -53,7 +51,12 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
         await fetch("https://aninfo2c222back-production.up.railway.app/api/guardias", {
           method: "POST",
           body: JSON.stringify(guardiaDatos),
+          headers: {
+            'Content-Type': 'application/json'
+        },
         })
+        .then(response => alert("Se creó correctamente"))
+        .catch(error => alert(error))
     }
 
     return (

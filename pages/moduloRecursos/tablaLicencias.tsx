@@ -10,6 +10,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 import BorrarGuardiaModal from './borrarGuardiaModal';
+import { useInterval } from '../../components/soporte/utils';
+import BorrarLicenciaModal from './borrarLicenciaModal';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -51,12 +53,21 @@ export default function MuiTable(props: any) {
     const [licencias, setLicencias] = React.useState([])
 
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/licencia/")
+        fetch("https://aninfo2c222back-production.up.railway.app/api/licencia")
             .then((res) => res.json())
             .then((data) => {
                 setLicencias(data)
             })
     }, [])
+
+
+    useInterval(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/licencia")
+            .then((res) => res.json())
+            .then((data) => {
+                setLicencias(data)
+            })
+    }, 1500)
 
 
 
@@ -71,7 +82,7 @@ export default function MuiTable(props: any) {
     function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
-        const date = modificarFormatoFecha(givenDate);
+        const date = new Date(givenDate);
 
         return (start <= date && date <= end);
     }
@@ -85,7 +96,7 @@ export default function MuiTable(props: any) {
                 component="div"
                 align="center"
             >
-                Guardias Cargadas <br></br> {props.fechaInicio} - {props.fechaFin}
+                Licencias Cargadas <br></br> {props.fechaInicio} - {props.fechaFin}
             </Typography>
 
             <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
@@ -97,30 +108,30 @@ export default function MuiTable(props: any) {
                         <TableCell align="center">Descripción</TableCell>
                         <TableCell align="center">Desde</TableCell>
                         <TableCell align="center">Hasta</TableCell>
-                        <TableCell align="center">Goce de Suelgo</TableCell>
+                        <TableCell align="center">Goce de Sueldo</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {licencias
-                        .filter(licencias => DateBetweenTwoDates(inicio, fin, licencias["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, licencias["fecha_fin"]))
+                        .filter(licencias => licencias["legajo_empleado"] == legajo && DateBetweenTwoDates(inicio, fin, licencias["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, licencias["fecha_fin"]))
                         .map((licencias) => (
                             <TableRow
                                 key={licencias["id"]}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">
+                                <TableCell align="center" component="th" scope="row">
                                     {licencias["id"]}
                                 </TableCell>
                                 <TableCell align="center">{licencias["tipo_licencia"]}</TableCell>
                                 <TableCell align="center">{licencias["descripcion"]}</TableCell>
-                                <TableCell align="center">{licencias["fecha_inicio"]}</TableCell>
-                                <TableCell align="center">{licencias["fecha_fin"]}</TableCell>
-                                <TableCell align="center">{licencias["goce_sueldo"]}</TableCell>
+                                <TableCell align="center">{new Date(licencias["fecha_inicio"]).toLocaleDateString()}</TableCell>
+                                <TableCell align="center">{new Date(licencias["fecha_fin"]).toLocaleDateString()}</TableCell>
+                                <TableCell align="center">{licencias["goce_sueldo"] ? "Sí" : "No"}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>
                                         <DeleteIcon />
                                     </IconButton>
-                                    <BorrarGuardiaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={licencias["id"]}></BorrarGuardiaModal>
+                                    <BorrarLicenciaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={licencias["id"]}></BorrarLicenciaModal>
                                 </TableCell>
                             </TableRow>
                         ))}
