@@ -56,27 +56,6 @@ export default function TicketView() {
         })
     }, [])
 
-    function cambiarEstado(){
-
-        producto.activo = Math.abs(producto.activo - 1)
-
-        console.log(producto)
-
-        //if(producto?.activo == 0){
-          //  data.activo = 1
-        //}
-
-        fetch("https://aninfo2c222back-production.up.railway.app/api/productos/" + id, {
-            method: 'PUT', // or 'PUT'
-            body: JSON.stringify(producto), // data can be `string` or {object}!
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-
-          alert("Se cambio el estado del producto correctamente")
-   }
-
 
     
   
@@ -112,8 +91,6 @@ export default function TicketView() {
             <div className={styles.botonesView}>
 
                 <Link href={"/moduloSoporte/versionCreate/" + id}><button>Agregar version</button></Link>
-
-                <button onClick={cambiarEstado}> {cambioDeEstado}</button>
 
             </div>  
 

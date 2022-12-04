@@ -18,6 +18,21 @@
 
   }
 
+  .izquierda{
+      width: 30%;
+  }
+
+
+
+  .derecha{
+      display: flex;
+      width: 30%;
+      justify-content: space-between;
+  }
+  .derecha button{
+      margin-left: 10px;
+  }
+
   .fechaLanzamiento{
     font-size: 20px;
   }
