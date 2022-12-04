@@ -15,13 +15,21 @@ export default function TicketCreate() {
 
   const [versiones, setVersiones]: [Array<VersionProperties>, any] = useState([])
 
-
-
   useEffect(() => {
     fetch("https://aninfo2c222back-production.up.railway.app/api/versions")
       .then((res) => res.json())
       .then((data) => {
         setVersiones(data)
+      })
+  }, [])
+
+  const [productos, setProductos]: [Array<ProductProperties>, any] = useState([])
+
+  useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/productos")
+      .then((res) => res.json())
+      .then((data) => {
+        setProductos(data)
       })
   }, [])
 
@@ -44,15 +52,19 @@ export default function TicketCreate() {
       }
     })
 
+    //ACA SE GENERA UN ERROR SI NO TENGO NINGUN PRODUCTO pero bueno
 
 
+    const IdNuevaVersion = versiones[versiones.length - 1].id + 1
+    console.log("id de la version: ", IdNuevaVersion)
 
-    const nuevaVersion = versiones[versiones.length - 1].id + 1
+    
 
     const dataProducto = {
       nombre: data.nombre,
       fecha_lanzamiento: data.fecha_lanzamiento,
-      id_version: nuevaVersion,
+      id_version: IdNuevaVersion,
+      activo:1
     }
 
     fetch("https://aninfo2c222back-production.up.railway.app/api/productos", {
@@ -62,6 +74,25 @@ export default function TicketCreate() {
         'Content-Type': 'application/json'
       }
     })
+
+    const IdNuevoProducto = productos[productos.length-1].id + 1
+
+    console.log("id del producto: ", IdNuevoProducto)
+
+    const dataProdVersions = {
+      producto_id: IdNuevoProducto,
+      version_id: IdNuevaVersion,
+    }
+
+    fetch("https://aninfo2c222back-production.up.railway.app/api/prodversions", {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(dataProdVersions), // data can be `string` or {object}!
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+
     alert("El producto se creo correctamente")
   })
 
