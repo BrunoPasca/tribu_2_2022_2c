@@ -45,7 +45,8 @@ export default function Productos() {
             {(productos).map((producto) => (
                 <div key={producto.id}>
                     <Link href={'/moduloSoporte/productos/' + producto.id}>
-                    <ProductCard titulo={producto.nombre} id={producto.id} fecha_lanzamiento={producto.fecha_lanzamiento?.slice(0,10)}></ProductCard>
+                    <ProductCard titulo={producto.nombre} id={producto.id}
+                        fecha_lanzamiento={producto.fecha_lanzamiento?.slice(0, 10)} activo={producto.activo}></ProductCard>
                     </Link>
                 </div>
             ))}

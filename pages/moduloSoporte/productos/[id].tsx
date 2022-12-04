@@ -10,7 +10,7 @@ export default function TicketView() {
     
     const router = useRouter();
     const {id} = router.query;
-
+    var cambioDeEstado;
 
 
     const [producto, setProducto]: [any ,any] = useState(0)
@@ -21,9 +21,17 @@ export default function TicketView() {
 
         .then((res) => res.json())
         .then((data) => {
+        
           setProducto(data)        
         })
     }, [])
+
+    if(producto?.activo == 1){
+        cambioDeEstado = "Deprecar"
+    }
+    else{
+        cambioDeEstado = "Activar"
+    }
 
 
 
@@ -48,7 +56,28 @@ export default function TicketView() {
         })
     }, [])
 
-    
+    function cambiarEstado(){
+
+        producto.activo = Math.abs(producto.activo - 1)
+
+        console.log(producto)
+
+        //if(producto?.activo == 0){
+          //  data.activo = 1
+        //}
+
+        fetch("https://aninfo2c222back-production.up.railway.app/api/productos/" + id, {
+            method: 'PUT', // or 'PUT'
+            body: JSON.stringify(producto), // data can be `string` or {object}!
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+
+          alert("Se cambio el estado del producto correctamente")
+   }
+
+
     
   
 
@@ -84,7 +113,7 @@ export default function TicketView() {
 
                 <Link href={"/moduloSoporte/versionCreate/" + id}><button>Agregar version</button></Link>
 
-                <Link href={"/moduloSoporte/soporte"}><button>Eliminar</button></Link>
+                <button onClick={cambiarEstado}> {cambioDeEstado}</button>
 
             </div>  
 

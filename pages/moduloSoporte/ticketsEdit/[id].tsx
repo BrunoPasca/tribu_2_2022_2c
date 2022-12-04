@@ -54,9 +54,7 @@ export default function TicketEdit() {
 
       const onSubmit = handleSubmit((data) => {
             data.titulo = ticket.titulo;
-            console.log("ESTA ES LA DATA QUE EDITE : ", JSON.stringify(data))
             const url = "https://aninfo2c222back-production.up.railway.app/api/tickets/" + id
-            console.log("URL: ", url)
             fetch(url, {
                   method: 'PUT', // or 'PUT'
                   body: JSON.stringify(data), // data can be `string` or {object}!

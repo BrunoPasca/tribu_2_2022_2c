@@ -46,6 +46,7 @@ export interface ProductProperties {
     id_version: number,
     fecha_lanzamiento: string,
     nombre: string,
+    activo:number,
 }
 
 export interface ProdVerProperties {
