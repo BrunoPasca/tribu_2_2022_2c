@@ -35,11 +35,6 @@ export interface EmpleadoProperties {
     antiguedad: number,
 }
 
-export interface RecursosProperties{
-    legajo:number,
-    Nombre:string,
-    Apellido:string
-}
 
 export interface ProductProperties {
     id: number,

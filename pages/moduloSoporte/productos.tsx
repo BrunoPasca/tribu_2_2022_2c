@@ -52,6 +52,12 @@ export default function Productos() {
             ))}
 
 
+
+            <div className={styles.contenedorBoton}>
+            <a href='/moduloSoporte/productoCreate'><button>CREAR PRODUCTO</button></a>
+            </div>
+  
+
         </div>
 
 
