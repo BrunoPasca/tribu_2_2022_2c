@@ -1,7 +1,7 @@
 import styles from '../../styles/ticket.module.css'
 import Head_ from '../head'
 import Header from '../header'
-import { ClientesProperties, EmpleadoProperties, TicketProperties } from '../../components/soporte/types';
+import { ClientesProperties, EmpleadoProperties, RecursosProperties, TicketProperties } from '../../components/soporte/types';
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
@@ -11,12 +11,12 @@ import { useNavigate } from 'react-router-dom';
 
 export default function TicketCreate() {
 
-      const [empleados, setEmpleados]: [Array<EmpleadoProperties>, any] = useState([])
+      const [empleados, setEmpleados]: [Array<RecursosProperties>, any] = useState([])
 
       const [clientes, setClientes]: [Array<ClientesProperties>, any] = useState([])
 
       useEffect(() => {
-            fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+            fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes")
                   .then((res) => res.json())
                   .then((data) => {
                         setClientes(data)
@@ -24,7 +24,7 @@ export default function TicketCreate() {
       }, [])
 
       useEffect(() => {
-            fetch("https://aninfo2c222back-production.up.railway.app/api/employees")
+            fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
                   .then((res) => res.json())
                   .then((data) => {
                         setEmpleados(data)
@@ -35,7 +35,6 @@ export default function TicketCreate() {
       const { register, handleSubmit } = useForm<TicketProperties>()
 
       const onSubmit = handleSubmit((data) => {
-            console.log(JSON.stringify(data))
             fetch("https://aninfo2c222back-production.up.railway.app/api/tickets", {
                   method: 'POST', // or 'PUT'
                   body: JSON.stringify(data), // data can be `string` or {object}!
@@ -73,7 +72,7 @@ export default function TicketCreate() {
 
                         <select {...register("id_responsable")}>
                               {empleados.map((empleado) => (
-                                    <option value={Number(empleado.legajo)} key={empleado.legajo}>{empleado.nombre} {empleado.apellido} - Legajo: {empleado.legajo}</option>
+                                    <option value={Number(empleado.legajo)} key={empleado.legajo}>{empleado.Nombre} {empleado.Apellido} - Legajo: {empleado.legajo}</option>
                               ))}
                         </select>
                         <br></br>
@@ -99,7 +98,7 @@ export default function TicketCreate() {
 
                         <select {...register("id_cliente")}>
                               {clientes.map((cliente) => (
-                                    <option id="id_cliente" value={Number(cliente.legajo)} key={cliente.legajo}>{cliente.Nombre} {cliente.Apellido} - Legajo: {cliente.legajo}</option>
+                                    <option id="id_cliente" value={Number(cliente.id)} key={cliente.id}>{cliente['razon social']} - CUIT: {cliente.CUIT} - ID: {cliente.id}</option>
                               ))}
                         </select>
 

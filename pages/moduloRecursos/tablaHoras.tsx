@@ -89,7 +89,6 @@ export default function MuiTable(props: any) {
     }
 
     function DateBetweenTwoDates(fromDate: string, toDate: string, givenDate: string) {
-        console.log(fromDate, toDate, givenDate)
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
         const date = new Date(givenDate);

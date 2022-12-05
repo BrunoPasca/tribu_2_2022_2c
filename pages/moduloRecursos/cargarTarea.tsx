@@ -70,7 +70,7 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     }
 
     async function handleClickCargar() {
-        const horaDatos = { legajo_empleado: legajo, id_tarea: tareaId, cant_horas: cantHoras, fecha: fecha, estado: "testeando el post"}
+        const horaDatos = { legajo_empleado: legajo, id_tarea: tareaId, cant_horas: cantHoras, fecha: fecha, estado: "test post cors", extra:extra}
         const hora = {
             "legajo_empleado": 1,
             "id_tarea": 3,
@@ -84,8 +84,6 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
           alert("Complete todos los campos antes de cargar.")
           return
         }
-
-        console.log(horaDatos)
 
         fetch("https://aninfo2c222back-production.up.railway.app/api/horas", {
             method: 'POST', // or 'PUT'

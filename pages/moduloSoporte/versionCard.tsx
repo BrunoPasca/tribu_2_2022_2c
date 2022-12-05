@@ -35,7 +35,6 @@ export default function ProductCard({titulo, id,fecha_lanzamiento,activo,id_vers
           })
 
           alert("Se cambio el estado del producto correctamente")
-          location.reload()
    }
 
 
@@ -48,7 +47,6 @@ export default function ProductCard({titulo, id,fecha_lanzamiento,activo,id_vers
             </div>
 
             <div className={styles.medio}>  
-                <Link href={"productos/" + id}><button>Gestionar versiones</button></Link>
             </div>
             
             <div className={styles.derecha}>
