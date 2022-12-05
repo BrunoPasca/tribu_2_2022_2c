@@ -70,15 +70,9 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
     }
 
     async function handleClickCargar() {
-        const horaDatos = { legajo_empleado: legajo, id_tarea: tareaId, cant_horas: cantHoras, fecha: fecha, estado: "test post cors", extra:extra}
-        const hora = {
-            "legajo_empleado": 1,
-            "id_tarea": 3,
-            "cant_horas": 4,
-            "fecha": "2022-11-10",
-            "estado": "prueba",
-            "extra": 0
-        }
+        // formato aceptado por SQL
+        const _fecha = new Date(fecha).toISOString().slice(0, 19).replace('T', ' ');
+        const horaDatos = { legajo_empleado: legajo, id_tarea: tareaId, cant_horas: cantHoras, fecha: _fecha, estado: "", extra:extra}
 
         if (tareaId == "0" || !cantHoras ) {
           alert("Complete todos los campos antes de cargar.")
