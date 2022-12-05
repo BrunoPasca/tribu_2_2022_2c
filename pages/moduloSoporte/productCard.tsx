@@ -35,6 +35,7 @@ export default function ProductCard({titulo, id,fecha_lanzamiento,activo,id_vers
           })
 
           alert("Se cambio el estado del producto correctamente")
+          location.reload()
    }
 
 
