@@ -9,12 +9,12 @@ interface ProyectosProperties{
   id: number,
   nombre:string ,
   fecha_inicio:string,
-  fecha_fin:string,
+  fecha_fin_estimado:string,
   estado:string,
-  prioridad:string,
-  costo_acumulado:number,
-  horas_estimadas:number,
   horas_reales:number,
+  descripcion:string,
+  project_manager:string,
+  id_cliente:number,
 }
 
 export default function crearProyecto() {
@@ -35,10 +35,10 @@ export default function crearProyecto() {
 
   const onSubmit = handleSubmit((data) =>{
     console.log(JSON.stringify(data))
-    data.prioridad = "HOLA"
+    /*data.prioridad = "HOLA"
     data.costo_acumulado = 0;
     data.horas_reales = 0;
-    data.horas_estimadas= 40;
+    data.horas_estimadas= 40;*/
     fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos", {
           method: 'POST', // or 'PUT'
           body: JSON.stringify(data), // data can be `string` or {object}!
@@ -75,16 +75,31 @@ export default function crearProyecto() {
 
               <select {...register("estado")} >
                   <option disabled selected> Estado</option>
-                  <option value = "optionDesarrollo"> Desarrollo </option>
-                  <option value = "optionProduccion"> Producción</option>
-                  <option value = "optionPostProduccion">Post Producción </option>
+                  <option value = "Pendiente"> Pendiente </option>
+                  <option value = "En curso"> En curso</option>
+                  <option value = "Terminado">Terminado </option>
+                  <option value = "Cancelado">Cancelado </option>
               </select>
             </div>
             <br />
            
 
             <br />
-
+            <div>
+              <label htmlFor = "Descripcion"> Descripción</label>
+              <input type = "text" id = "Descripcion" {...register("descripcion")} size = {255}>
+              </input>
+            </div>
+            <div>
+              <label htmlFor = "ClientId">
+                Id cliente: 
+              </label>
+              <input type= "number" id = "ClientId" {...register("id_cliente")}></input>
+            </div>
+            <div>
+              <label htmlFor = "ProjectManager"> Project Manager id: </label> 
+              <input type = "number" id = "ProjectManager" {...register("project_manager")}></input> 
+            </div>
             <div>
               <label htmlFor = "FechaDeInicio"> Fecha de inicio </label>
               <br/>
@@ -95,7 +110,7 @@ export default function crearProyecto() {
             <div>
               <label htmlFor = "FechaDeFin"> Fecha estimada de fin </label>
               <br/>
-                <input type = "date" id = "FechaDeFin" {...register("fecha_fin")} >
+                <input type = "date" id = "FechaDeFin" {...register("fecha_fin_estimado")} >
                 </input>
             </div>
             <br />
@@ -112,11 +127,3 @@ export default function crearProyecto() {
   </>
   );
 }
-
-/*
-function button_create_project(){
-  alert("Back end creame un proyecto");
-  return true;
-}
-
-var button_function = button_create_project;*/
