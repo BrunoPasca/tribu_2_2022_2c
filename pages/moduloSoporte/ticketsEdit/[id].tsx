@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ClientesProperties, EmpleadoProperties, RecursosProperties, TicketProperties } from '../../../components/soporte/types';
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
+import HeaderSoporte from '../../headerSoporte';
 
 
 export default function TicketEdit() {
@@ -73,7 +74,7 @@ export default function TicketEdit() {
 
                   <Head_ nombre='Editar Ticket'></Head_>
 
-                  <Header></Header>
+                  <HeaderSoporte></HeaderSoporte>
 
                   <div className={styles.camposForm}>
                         <h1>{ticket?.id} - {ticket?.titulo}</h1>

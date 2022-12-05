@@ -28,7 +28,9 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
 
 
     async function handleClickCargar(){
-        const faltaDatos = {legajo_empleado: Number(legajo), fecha :  fecha, justificante : justificante}
+        // formato aceptado por SQL
+        const _fecha = new Date(fecha).toISOString().slice(0, 19).replace('T', ' ');
+        const faltaDatos = {legajo_empleado: Number(legajo), fecha :  _fecha, justificante : justificante}
 
         if (!justificante) {
             alert("Ingrese su justificante antes de cargar.")

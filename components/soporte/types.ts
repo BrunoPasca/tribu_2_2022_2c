@@ -65,3 +65,23 @@ export interface FormProductVersionProperties {
     nombre: string,
     fecha_lanzamiento: string,
 }
+
+export interface TareaPropeties{
+    id:number,
+    id_proyecto: number,
+    estado:string,
+    descripcion:string,
+    horas_estimadas:number
+}
+
+export interface ProyectoProperties{
+    id:number,
+    nombre: string,
+    fecha_inicio: string,
+    fecha_fin: string,
+    estado: string,
+    prioridad: string,
+    costo_acumulado: number,
+    horas_estimadas: number,
+    horas_reales: number
+}

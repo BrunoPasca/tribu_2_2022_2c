@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ProductProperties, ProdVerProperties, VersionProperties } from "../../../components/soporte/types";
 import VersionCard from "../versionCard";
+import HeaderSoporte from "../../headerSoporte";
 
 export default function TicketView() {
     
@@ -66,7 +67,7 @@ export default function TicketView() {
         <>
         <Head_ nombre='Detalle producto'></Head_>
 
-        <Header></Header>
+        <HeaderSoporte></HeaderSoporte>
 
         <div className={styles.ticketView}>
         
