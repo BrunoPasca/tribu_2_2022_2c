@@ -33,9 +33,8 @@ export default function VersionCard({titulo, id,fecha_lanzamiento,activo,id_vers
             }
           })
 
-          alert("Se cambio el estado del producto correctamente")
+          alert("Se cambio el estado de la version correctamente")
           location.reload()
-          location.href = "moduloSoporte/soporte"
    }
 
 

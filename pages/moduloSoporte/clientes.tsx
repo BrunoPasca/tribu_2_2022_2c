@@ -48,7 +48,7 @@ export default function Productos() {
             {(clientes).map((cliente) => (
                 <div key={cliente.id}>
                     
-                    <ClienteCard id={cliente.id} razon_social={cliente['razon social']} CUIT={cliente.CUIT} ></ClienteCard>
+                    <Link href={"clientes/" + cliente.id}><ClienteCard id={cliente.id} razon_social={cliente['razon social']} CUIT={cliente.CUIT} ></ClienteCard></Link>
                 
 
                 </div>
