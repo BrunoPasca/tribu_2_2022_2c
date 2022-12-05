@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import styles from '../../../styles/ticket.module.css'
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import HeaderSoporte from "../../headerSoporte";
 
 export default function TicketView() {
     
@@ -43,7 +44,7 @@ export default function TicketView() {
         <>
         <Head_ nombre='Ticket'></Head_>
 
-        <Header></Header>
+        <HeaderSoporte></HeaderSoporte>
 
         <div className={styles.ticketView}>
         

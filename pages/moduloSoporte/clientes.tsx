@@ -8,6 +8,7 @@ import productCard from './productCard';
 import { ClientesProperties, ProductProperties } from '../../components/soporte/types';
 import { useEffect, useState } from 'react';
 import ClienteCard from './clienteCard';
+import HeaderSoporte from '../headerSoporte';
 
 
 
@@ -30,13 +31,12 @@ export default function Productos() {
 
        <Head_ nombre='Productos y Versiones'></Head_>
       
-        <Header></Header>
+       <HeaderSoporte></HeaderSoporte>
 
         <div className={styles.navbar}>
           <div className={styles.navbarIzq}> 
             <h1>Soporte</h1>
-            <Link href={"soporte"}><button>Tickets</button></Link>
-            <Link href={"productos"}><button>Productos y Versiones</button></Link>
+
           </div>
           <div className={styles.navbarDer}> 
 

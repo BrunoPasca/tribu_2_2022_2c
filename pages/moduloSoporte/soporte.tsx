@@ -9,6 +9,7 @@ import TicketData from './TicketsData.json'
 import SearchBarSeveridad from './searchBars/searchBarSeveridad';
 import SearchBarLegajoCliente from './searchBars/searchBarLegajoCliente';
 import Link from 'next/link';
+import HeaderSoporte from '../headerSoporte';
 
 
 
@@ -18,13 +19,13 @@ export default function Soporte() {
 
        <Head_ nombre='Soporte'></Head_>
       
-        <Header></Header>
+        <HeaderSoporte></HeaderSoporte>
 
         <div className={styles.navbar}>
           <div className={styles.navbarIzq}> 
             <h1>Soporte</h1>
-            <Link href={"productos"}><button>Productos y Versiones</button></Link>
-            <Link href={"clientes"}><button>Clientes</button></Link>
+
+
           </div>
           <div className={styles.navbarDer}> 
           

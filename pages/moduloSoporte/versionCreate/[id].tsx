@@ -5,6 +5,7 @@ import { ClientesProperties, EmpleadoProperties, ProductProperties, TicketProper
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
+import HeaderSoporte from '../../headerSoporte';
 
 
 
@@ -69,7 +70,7 @@ const {id} = router.query;
       <Head_ nombre='Crear Version'></Head_>
 
 
-      <Header></Header>
+      <HeaderSoporte></HeaderSoporte>
 
       <div className={styles.camposForm}>
         <h1>Nueva version</h1>

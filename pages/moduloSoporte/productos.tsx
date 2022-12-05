@@ -7,6 +7,7 @@ import Link from 'next/link';
 import productCard from './productCard';
 import { ProductProperties } from '../../components/soporte/types';
 import { useEffect, useState } from 'react';
+import HeaderSoporte from '../headerSoporte';
 
 
 
@@ -28,13 +29,13 @@ export default function Productos() {
 
        <Head_ nombre='Productos y Versiones'></Head_>
       
-        <Header></Header>
+       <HeaderSoporte></HeaderSoporte>
 
         <div className={styles.navbar}>
           <div className={styles.navbarIzq}> 
             <h1>Soporte</h1>
-            <Link href={"soporte"}><button>Tickets</button></Link>
-            <Link href={"clientes"}><button>Clientes</button></Link>
+
+
           </div>
           <div className={styles.navbarDer}> 
 

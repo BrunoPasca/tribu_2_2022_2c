@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useNavigate } from 'react-router-dom';
 import { versions } from 'process';
+import HeaderSoporte from '../headerSoporte';
 
 
 
@@ -106,7 +107,7 @@ export default function TicketCreate() {
       <Head_ nombre='Crear Ticket'></Head_>
 
 
-      <Header></Header>
+      <HeaderSoporte></HeaderSoporte>
 
       <div className={styles.camposForm}>
         <h1>Nuevo Producto</h1>

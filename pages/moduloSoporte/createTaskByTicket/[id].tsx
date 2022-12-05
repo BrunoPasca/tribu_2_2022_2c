@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useNavigate } from 'react-router-dom';
 import { versions } from 'process';
 import { useRouter } from 'next/router';
+import HeaderSoporte from '../../headerSoporte';
 
 
 
@@ -53,7 +54,7 @@ useEffect(() => {
       <Head_ nombre='Crear Ticket'></Head_>
 
 
-      <Header></Header>
+      <HeaderSoporte></HeaderSoporte>
 
       <div className={styles.camposForm}>
         <h1>Nueva Tarea</h1>
