@@ -98,7 +98,7 @@ export default function crearProyecto() {
             </div>
             <div>
               <label htmlFor = "ProjectManager"> Project Manager id: </label> 
-              <input type = "number" id = "ProjectManager" {...register("project_manager")}></input> 
+              <input type = "text" id = "ProjectManager" {...register("project_manager")}></input> 
             </div>
             <div>
               <label htmlFor = "FechaDeInicio"> Fecha de inicio </label>
