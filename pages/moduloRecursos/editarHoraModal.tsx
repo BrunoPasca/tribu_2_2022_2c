@@ -30,9 +30,9 @@ export default function EditarHoraModal(props: any) {
   async function handleEditar() {
     await fetch("https://aninfo2c222back-production.up.railway.app/api/horas/" + props.reporteId, {
       method: "PUT",
+      body: JSON.stringify({id_tarea: reporteId, cant_horas : cantHoras}),
       headers: {
         'Content-Type': 'application/json',
-        body: JSON.stringify({id_tarea: reporteId, cant_horas : cantHoras})
     },
     })
     .then(response => alert("Se editó correctamente"))

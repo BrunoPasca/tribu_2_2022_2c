@@ -39,6 +39,12 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
         }
 
         fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
+            .then(response => {
+                if (response.status === 500) {
+                    throw new Error("Error al recuperar los proyectos")
+                }
+                return response
+            })
             .then((res) => res.json())
             .then((data) => {
                 setProyectos(data);
@@ -46,12 +52,19 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                     setProyectoId(data[0].id)
                 }
             })
+            .catch(error => console.log(error))
     }, [])
 
     // Cuando selecciona otro proyecto obtengo las tareas asociadas
     useEffect(() => {
         if (!proyectoId) return;
         fetch("https://aninfo2c222back-production.up.railway.app/api/tareas")
+            .then(response => {
+                if (response.status === 500) {
+                    throw new Error("Error al recuperar las tareas")
+                }
+                return response
+            })
             .then((res) => res.json())
             .then((data) => {
                 const tareas_asociadas = data.filter((tarea: any) => tarea.id_proyecto === Number(proyectoId))
@@ -61,7 +74,8 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                 }else{
                     setTareaId("0")
                 }
-            })  
+            })
+            .catch(error => console.log(error))  
     }, [proyectoId])
 
 
@@ -86,8 +100,12 @@ export default function CargarTarea({ period, screenSetter }: { period: string, 
                 'Content-Type': 'application/json'
             },
         })
+        .then(response => {
+            if (response.status === 500) throw new Error("Error al cargar tarea")
+            return response
+        })
         .then(response => alert("Se creó correctamente"))
-        .catch(error => alert(error))
+        .catch(error => console.log(error))
     }
 
     return (

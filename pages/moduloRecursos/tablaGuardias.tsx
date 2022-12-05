@@ -111,8 +111,8 @@ export default function MuiTable(props: any) {
                                 <TableCell align="center" component="th" scope="row">
                                     {guardia['id']}
                                 </TableCell>
-                                <TableCell align="center">{guardia["fecha_inicio"]}</TableCell>
-                                <TableCell align="center">{guardia["fecha_fin"]}</TableCell>
+                                <TableCell align="center">{new Date(guardia["fecha_inicio"]).toLocaleDateString()}</TableCell>
+                                <TableCell align="center">{new Date(guardia["fecha_fin"]).toLocaleDateString()}</TableCell>
                                 <TableCell padding="none">
                                     <IconButton onClick={handleOpenDelete}>
                                         <DeleteIcon />
