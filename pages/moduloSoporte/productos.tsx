@@ -35,8 +35,16 @@ export default function Productos() {
           <div className={styles.navbarIzq}> 
             <h1>Soporte</h1>
 
+          </div>
+
+          <div>
+
+          <div className={styles.contenedorBoton}>
+            <a href='/moduloSoporte/productoCreate'><button>CREAR PRODUCTO</button></a>
+          </div>
 
           </div>
+
           <div className={styles.navbarDer}> 
 
           </div>
@@ -55,9 +63,7 @@ export default function Productos() {
 
 
 
-            <div className={styles.contenedorBoton}>
-            <a href='/moduloSoporte/productoCreate'><button>CREAR PRODUCTO</button></a>
-            </div>
+
   
 
         </div>

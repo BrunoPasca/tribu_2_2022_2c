@@ -24,9 +24,14 @@ export default function Soporte() {
         <div className={styles.navbar}>
           <div className={styles.navbarIzq}> 
             <h1>Soporte</h1>
-
-
           </div>
+
+          <div>
+            <div className={styles.contenedorBoton}>
+              <a href='/moduloSoporte/ticketCreate'><button>CREAR TICKET</button></a>
+            </div>
+          </div>
+          
           <div className={styles.navbarDer}> 
           
             <SearchBarResponsable placeholder='Ingrese id de resposable'data={TicketData} ></SearchBarResponsable>
@@ -73,9 +78,7 @@ export default function Soporte() {
      
 
 
-            <div className={styles.contenedorBoton}>
-            <a href='/moduloSoporte/ticketCreate'><button>CREAR TICKET</button></a>
-            </div>
+
   
   
       </div>
