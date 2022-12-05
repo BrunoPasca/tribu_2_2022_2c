@@ -84,7 +84,7 @@ export default function TicketView() {
                     <Link href={'/moduloSoporte/ticketsEdit/' + id}><button>Editar</button></Link>
                     
                     
-                    <Link href={"/moduloProyectos/crearTarea"}><button>Crear tarea</button></Link>
+                    <Link href={"/moduloSoporte/createTaskByTicket/"+ id}><button>Crear tarea</button></Link>
                 </div>
             </div>
         </div>
