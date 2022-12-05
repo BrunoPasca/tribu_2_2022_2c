@@ -24,6 +24,7 @@ export default function Soporte() {
           <div className={styles.navbarIzq}> 
             <h1>Soporte</h1>
             <Link href={"productos"}><button>Productos y Versiones</button></Link>
+            <Link href={"clientes"}><button>Clientes</button></Link>
           </div>
           <div className={styles.navbarDer}> 
           

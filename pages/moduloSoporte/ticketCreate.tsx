@@ -98,7 +98,7 @@ export default function TicketCreate() {
 
                         <select {...register("id_cliente")}>
                               {clientes.map((cliente) => (
-                                    <option id="id_cliente" value={Number(cliente.id)} key={cliente.id}>CUIT: {cliente.CUIT} - ID: {cliente.id}</option>
+                                    <option id="id_cliente" value={Number(cliente.id)} key={cliente.id}>{cliente['razon social']} - CUIT: {cliente.CUIT} - ID: {cliente.id}</option>
                               ))}
                         </select>
 

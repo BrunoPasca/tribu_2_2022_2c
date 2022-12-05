@@ -1,10 +1,11 @@
 import Head_ from "../../head";
 import Header from "../../header";
 import { useRouter } from 'next/router'
-import styles from '../../../styles/ticket.module.css'
+import styles from '../../../styles/versiones.module.css'
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ProductProperties, ProdVerProperties, VersionProperties } from "../../../components/soporte/types";
+import VersionCard from "../versionCard";
 
 export default function TicketView() {
     
@@ -74,18 +75,6 @@ export default function TicketView() {
                 
                 
                 <div>Fecha de lanzamiento: {producto?.fecha_lanzamiento}</div>
-   
-
-                <h3>Versiones</h3>
-
-                <div>
-                    {(prover).filter(i => i.producto_id == Number(id)).map((a) => (
-                        <div key={a.id}>
-                            {versiones.find(element => element.id == a.version_id)?.nombre}
-                        </div>
-                    ))}
-                </div>
-
     
 
             <div className={styles.botonesView}>
@@ -97,7 +86,17 @@ export default function TicketView() {
             </div>
 
 
+            <div>
+                {(prover).filter(i => i.producto_id == Number(id)).map((a) => (
+                    <div key={a.id}>
+                        <VersionCard titulo={versiones.find(element => element.id == a.version_id)?.nombre}
+                        id={versiones.find(element => element.id == a.version_id)?.id}
+                        fecha_lanzamiento={versiones.find(element => element.id == a.version_id)?.fecha_lanzamiento.slice(0,10)}
+                        activo={0} id_version={0}></VersionCard>
                         
+                    </div>
+                ))}
+            </div>
         
 
         </div>

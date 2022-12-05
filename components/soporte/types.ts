@@ -23,7 +23,7 @@ export interface RecursosProperties {
 
 export interface ClientesProperties {
     id: number;
-    razon_social: string;
+    'razon social': string;
     CUIT: string;
 }
 

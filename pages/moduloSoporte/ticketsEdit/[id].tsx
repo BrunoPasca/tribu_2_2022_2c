@@ -113,7 +113,7 @@ export default function TicketEdit() {
 
                         <select {...register("id_cliente")}>
                               {clientes.map((cliente) => (
-                                    <option value={Number(cliente.id)} key={Number(cliente.id)}>{cliente.razon_social} {cliente.CUIT} - Legajo: {cliente.id}</option>
+                                    <option value={Number(cliente.id)} key={Number(cliente.id)}>{cliente['razon social']} {cliente.CUIT} - Legajo: {cliente.id}</option>
                               ))}
                         </select>
 
