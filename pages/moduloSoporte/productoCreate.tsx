@@ -40,6 +40,8 @@ export default function TicketCreate() {
     const dataVersion = {
       nombre: data.nombre_version,
       fecha_lanzamiento: data.fecha_lanzamiento_version,
+      activo: 1,
+
     }
 
 

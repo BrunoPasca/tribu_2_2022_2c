@@ -39,10 +39,14 @@ const {id} = router.query;
 
     const IdNuevaVersion = versiones[versiones.length - 1].id + 1
 
+
     const dataProdVersions = {
       producto_id: Number(id),
       version_id: IdNuevaVersion,
+      activo:1,
     }
+
+    console.log(dataProdVersions)
 
     fetch("https://aninfo2c222back-production.up.railway.app/api/prodversions", {
       method: 'POST', // or 'PUT'

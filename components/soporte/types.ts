@@ -55,6 +55,7 @@ export interface VersionProperties {
     id: number,
     fecha_lanzamiento: string,
     nombre: string,
+    activo:number,
 }
 
 // Hecho para que compile el build puede estar mal

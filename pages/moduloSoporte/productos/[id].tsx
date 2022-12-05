@@ -92,7 +92,8 @@ export default function TicketView() {
                         <VersionCard titulo={versiones.find(element => element.id == a.version_id)?.nombre}
                         id={versiones.find(element => element.id == a.version_id)?.id}
                         fecha_lanzamiento={versiones.find(element => element.id == a.version_id)?.fecha_lanzamiento.slice(0,10)}
-                        activo={0} id_version={0}></VersionCard>
+                        activo={versiones.find(element => element.id == a.version_id)?.activo} 
+                        id_version={0}></VersionCard>
                         
                     </div>
                 ))}

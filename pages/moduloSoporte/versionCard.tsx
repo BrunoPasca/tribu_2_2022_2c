@@ -2,13 +2,13 @@ import styles from '../../styles/productCard.module.css'
 import Link from 'next/link';
 
 
-export default function ProductCard({titulo, id,fecha_lanzamiento,activo,id_version}: {titulo:string | undefined , id: number | undefined, fecha_lanzamiento: string | undefined, activo:number, id_version:number}) {
+export default function ProductCard({titulo, id,fecha_lanzamiento,activo,id_version}: {titulo:string | undefined , id: number | undefined, fecha_lanzamiento: string | undefined, activo:number | undefined, id_version:number}) {
 
     var estado;
     var aux:number;
 
     if(activo == 1){
-        estado = "Activo   "
+        estado = "Activo"
         aux = 0
     }else{
         estado = "Deprecado"
