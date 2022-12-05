@@ -2,11 +2,39 @@ import styles from '../../../styles/proyectos.module.css'
 import Head_ from '../../head'
 import Header from '../../header'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react';
 
 /*puesto aca solo para tener bien las rutas. El proyecto deberia tener un id*/
 /*var id_proyecto = 1;*/
 
+
+interface ProyectosProperties{
+    id: number,
+    nombre:string ,
+    fecha_inicio:string,
+    fecha_fin:string,
+    estado:string,
+    prioridad:string,
+    costo_acumulado:number,
+    horas_estimadas:number,
+    horas_reales:number,
+  }
+  
+
+
 export default function ProyectoView() {
+
+    const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
+
+    useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
+          .then((res) => res.json())
+          .then((data) => {
+            setProyectos(data)
+    
+          })
+      }, [])
+
 
     const router = useRouter();
     const {id} = router.query;
