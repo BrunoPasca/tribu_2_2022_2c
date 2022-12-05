@@ -11,7 +11,8 @@ import { Typography } from '@mui/material';
 import Link from 'next/link';
 import { Tarea } from '../../../../components/recursos/types';
 import Header from '../../../header';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
+import styles from "../../../../styles/recursos.module.css";
 
 export default function TablaAllHoras(props: any) {
 
@@ -19,69 +20,25 @@ export default function TablaAllHoras(props: any) {
     const { id } = router.query;
 
 
-    const [horas, setHoras]: [Array<Tarea>, any] = useState([])
+    const [horas, setHoras]= useState<any[]>([])
 
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/horas/" + id)
-
+        fetch("https://aninfo2c222back-production.up.railway.app/api/horas/empleado")
+            .then(response => {
+                if (response.status === 404) {
+                    throw new Error("Error al recuperar las horas.")
+                }
+                return response
+            })
             .then((res) => res.json())
             .then((data) => {
                 setHoras(data)
             })
+            .catch(error => console.log(error))
     }, [])
 
-    /* HAY QUE USAR UN ENDPOINT */
-    const reportes = [
-        // Formato fecha dd/MM/yyyy
-        {
-            id: "1",
-            legajo_empleado: "1",
-            id_tarea: "3",
-            tarea: 'Fix',
-            cant_horas: "5",
-            fecha: "7/12/2022",
-            estado: "abierto",
-            extra: "0"
-        },
-        {
-            id: "2",
-            legajo_empleado: "3",
-            id_tarea: "4",
-            tarea: 'Testing',
-            cant_horas: "2",
-            fecha: "10/10/2022",
-            estado: "abierto",
-            extra: "1"
-        },
-        {
-            id: "4",
-            legajo_empleado: "22",
-            id_tarea: "5",
-            tarea: 'Prototipado',
-            cant_horas: "2",
-            fecha: "9/12/2022",
-            estado: "abierto",
-            extra: "0"
-        }
-    ]
-
-    const [rows, setRows] = useState(reportes);
-    const [searched, setSearched] = useState<string>("");
-
-    const requestSearch = (searchedVal: string) => {
-        const filteredRows = reportes.filter((row: any) => {
-            return row.id_tarea.includes(searchedVal.toLowerCase());
-        });
-        setRows(filteredRows);
-    };
-
-    const cancelSearch = () => {
-        setSearched("");
-        requestSearch(searched);
-    };
-
     return (
-        <div>
+        <div className={styles.container}>
             <Header></Header>
             <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
                 <Typography
@@ -92,7 +49,8 @@ export default function TablaAllHoras(props: any) {
                     align="center"
                     fontSize={30}
                 >
-                    Tareas
+                        Tareas 
+                        <Link href={"../faltas/" + id}><p>→</p></Link>
                 </Typography>
                 {/* 
             <SearchBar
@@ -113,14 +71,14 @@ export default function TablaAllHoras(props: any) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((reporte) => (
+                        {horas.filter((reporte) => {reporte.legajo_empleado === Number(id)}).map((reporte) => (
                             <TableRow
                                 key={reporte.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell align="center">{reporte.id}</TableCell>
                                 <TableCell align="center">{reporte.id_tarea}</TableCell>
-                                <TableCell align="center">{reporte.fecha}</TableCell>
+                                <TableCell align="center">{new Date(reporte.fecha).toLocaleDateString()}</TableCell>
                                 <TableCell align="center">{reporte.cant_horas}</TableCell>
                                 <TableCell align="center">{Number(reporte.extra) == 1 ? "Sí" : "No"}</TableCell>
                             </TableRow>

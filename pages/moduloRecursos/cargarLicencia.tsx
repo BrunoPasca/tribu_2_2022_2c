@@ -68,8 +68,12 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
             'Content-Type': 'application/json'
         },
         })
+        .then(response => {
+            if (response.status === 500) throw new Error("Error al cargar licencia")
+            return response
+        })
         .then(response => alert("Se creó correctamente"))
-        .catch(error => alert(error))
+        .catch(error => console.log(error))
     }
 
     return (

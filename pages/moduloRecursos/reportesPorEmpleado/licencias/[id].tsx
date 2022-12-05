@@ -12,65 +12,33 @@ import Link from 'next/link';
 import { Licencia } from '../../../../components/recursos/types';
 import Header from '../../../header';
 import { useRouter } from 'next/router';
+import styles from "../../../../styles/recursos.module.css"
 
 export default function TablaAllLicencias(props: any) {
 
     const router = useRouter();
-    const { id } = router.query;
+    const {id}  = router.query;
 
 
-    const [licencias, setLicencias] = React.useState([])
+    const [licencias, setLicencias] = React.useState<any[]>([])
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/licencias/" + id)
+        fetch("https://aninfo2c222back-production.up.railway.app/api/licencia")
 
+            .then(response => {
+                if (response.status === 404) {
+                    throw new Error("Error al recuperar las horas.")
+                }
+                return response
+            })
             .then((res) => res.json())
             .then((data) => {
                 setLicencias(data)
             })
+            .catch(error => console.log(error))
     }, [])
 
-
-    /* HAY QUE USAR UN ENDPOINT */
-    /* HAY QUE USAR UN ENDPOINT */
-    const reportes = [
-        {
-            id: "1",
-            legajo_empleado: "2",
-            tipo_licencia: "examen",
-            descripcion: "tuve un examen de MemoI",
-            fecha_inicio: "8/12/2022",
-            fecha_fin: "10/12/2022",
-            goce_sueldo: "0"
-        },
-        {
-            id: "2",
-            legajo_empleado: "5",
-            tipo_licencia: "medica",
-            descripcion: "accidente de auto",
-            fecha_inicio: "11/12/2022",
-            fecha_fin: "11/12/2022",
-            goce_sueldo: "1"
-        }
-    ]
-
-
-    const [rows, setRows] = useState(reportes);
-    const [searched, setSearched] = useState<string>("");
-
-    const requestSearch = (searchedVal: string) => {
-        const filteredRows = reportes.filter((row: any) => {
-            return row.tipo_licencia.includes(searchedVal.toLowerCase());
-        });
-        setRows(filteredRows);
-    };
-
-    const cancelSearch = () => {
-        setSearched("");
-        requestSearch(searched);
-    };
-
     return (
-        <div>
+        <div className={styles.container}>
             <Header></Header>
             <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
                 <Typography
@@ -81,7 +49,8 @@ export default function TablaAllLicencias(props: any) {
                     align="center"
                     fontSize={30}
                 >
-                    Faltas
+                    Licencias
+                    <Link href={"../horas/" + id}><p>→</p></Link>
                 </Typography>
                 {/* 
             <SearchBar
@@ -102,7 +71,7 @@ export default function TablaAllLicencias(props: any) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((reporte) => (
+                        {licencias.filter((reporte) => reporte.legajo_empleado === Number(id)).map((reporte) => (
                             <TableRow
                                 key={reporte.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -110,8 +79,8 @@ export default function TablaAllLicencias(props: any) {
                                 <TableCell align="center">{reporte.id}</TableCell>
                                 <TableCell align="center">{reporte.tipo_licencia}</TableCell>
                                 <TableCell align="center">{reporte.descripcion}</TableCell>
-                                <TableCell align="center">{reporte.fecha_inicio}</TableCell>
-                                <TableCell align="center">{reporte.fecha_fin}</TableCell>
+                                <TableCell align="center">{new Date(reporte.fecha_inicio).toLocaleDateString()}</TableCell>
+                                <TableCell align="center">{new Date(reporte.fecha_fin).toLocaleDateString()}</TableCell>
                                 <TableCell align="center">{Number(reporte.goce_sueldo) == 1 ? "Sí" : "No"}</TableCell>
                             </TableRow>
                         ))}

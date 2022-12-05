@@ -38,6 +38,7 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
 
 
     async function handleClickCargar(){
+        // formato aceptado por SQL
         const _fecha_inicio = new Date(startDate).toISOString().slice(0, 19).replace('T', ' ');
         const _fecha_fin = new Date(endDate).toISOString().slice(0, 19).replace('T', ' ');
 
@@ -58,8 +59,12 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
             'Content-Type': 'application/json'
         },
         })
+        .then(response => {
+            if (response.status === 500) throw new Error("Error al cargar guardia")
+            return response
+        })
         .then(response => alert("Se creó correctamente"))
-        .catch(error => alert(error))
+        .catch(error => console.log(error))
     }
 
     return (
