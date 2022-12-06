@@ -34,23 +34,23 @@ export default function Tarea() {
         <div className={styles.grilla}>
             <div>
               <h2 className={styles.grillaEncabezado}>Abierta</h2>  
-              <ColumnaTarea estadoFiltro='A'></ColumnaTarea>  
+              <ColumnaTarea estadoFiltro='Abierta' ></ColumnaTarea>  
             </div>
             <div>
             <h2 className={styles.grillaEncabezado}>En análisis</h2>  
-              <ColumnaTarea estadoFiltro='B'></ColumnaTarea>
+              <ColumnaTarea estadoFiltro='En análisis'></ColumnaTarea>
             </div>
             <div>
             <h2 className={styles.grillaEncabezado}>En progreso</h2>  
-              <ColumnaTarea estadoFiltro='C'></ColumnaTarea>
+              <ColumnaTarea estadoFiltro='En progreso'></ColumnaTarea>
             </div>
             <div>
             <h2 className={styles.grillaEncabezado}>Suspendida</h2>  
-              <ColumnaTarea estadoFiltro='D'></ColumnaTarea>
+              <ColumnaTarea estadoFiltro='Suspendida'></ColumnaTarea>
             </div>
             <div>
             <h2 className={styles.grillaEncabezado}>Completada</h2>  
-              <ColumnaTarea estadoFiltro='E'></ColumnaTarea>
+              <ColumnaTarea estadoFiltro='Completada'></ColumnaTarea>
             </div>
           </div>
         

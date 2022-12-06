@@ -9,7 +9,12 @@ export default function eliminarProyecto(){
     const router = useRouter();
     const {id} = router.query;
 
-/*chequeame que los proyectos existan llamando al backend y comparando con el id*/
+    function deleteById(){
+        fetch("https://aninfo2c222back-production.up.railway.app/api/tareas/"+id, {
+           method: 'DELETE',
+         })
+         alert("Tarea eliminada");
+   }
 
 
     return (
@@ -26,8 +31,10 @@ export default function eliminarProyecto(){
                 </div>
 
                 <div className={styles.botonesView}>
-                    <button onClick={function_button}>Confirmar</button>
-                    <a href="/moduloProyectos/proyectoView"><button>Cancelar</button></a>
+                <a href="/moduloProyectos/tareas">
+                    <button onClick={deleteById}>Confirmar</button>
+                </a>
+                    <a href="/moduloProyectos/tareas"><button>Cancelar</button></a>
                 </div>
             </div>
         </main>
@@ -35,10 +42,3 @@ export default function eliminarProyecto(){
     )
 }
 
-/*Aca el back tiene que editar los campos*/
-function button_press(){
-    alert("back end eliminame la tarea");
-    return true;
-}
-
-var function_button = button_press;

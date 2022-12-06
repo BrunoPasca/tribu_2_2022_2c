@@ -2,13 +2,44 @@ import styles from '../../../styles/proyectos.module.css'
 import Head_ from '../../head'
 import Header from '../../header'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from "react";
 
 /*hardocdeada nomas para mostrar. Tiene que tener un id dinamico la tarea*/
+
+
+
+interface TareasProperties{
+    id: Number,
+    id_proyecto: Number,
+    id_ticket: Number,
+    legajo_recurso: Number,
+    estado: string,
+    prioridad: string ,
+    descripcion: string,
+    horas_estimadas: Number,
+    horas_reales: Number,
+    fecha_inicio: string,
+    fecha_fin: string,
+  }
+
 const tarea_id = 1;
 
 export default function TareaView() {
     const router = useRouter();
     const {id} = router.query;
+
+    const [tareas, setTareas]: [Array<TareasProperties> ,any] = useState([])
+
+    useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/tareas")
+      .then((res) => res.json())
+      .then((data) => {
+        setTareas(data)
+      })
+  }, [])
+
+
+
     return (
 
         
@@ -18,36 +49,74 @@ export default function TareaView() {
         <Header></Header>
         
         <div className={styles.proyectoView}>
-            <h1 className={styles.tituloEdit}>TAREA 'NOMBRE'</h1>
-            <h3 className={styles.subtituloEdit}>{id}</h3>
-            <div className={styles.descripcionText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies vitae nisl eget aliquam. Suspendisse nibh lacus, ultricies ac felis ac, hendrerit sollicitudin massa. Ut eget molestie eros, dapibus condimentum leo. Suspendisse non lorem tortor.</div>
+        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+            <h1 className={styles.tituloEdit}>
+                Tarea {tarea?.id}
+            </h1>))}
+        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+            <h3 className={styles.subtituloEdit}>
+                Proyecto:  {tarea?.id_proyecto}
+            </h3>))}
+            <div>
+        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+            <h3 className={styles.descripcionText}>
+                {tarea?.descripcion}
+            </h3>))}
+            </div>
             <div className={styles.contenedorPadre}>
                 <div className={styles.contenedorTarea}>
                     <div>
-                        <h3 className={styles.tituloInfo}>ID proyecto</h3>
-                        <h2 className={styles.info}>00</h2>
+                    <h3 className={styles.tituloInfo}>ID proyecto</h3>
+                    {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.id_proyecto}
+                        </h2>))}
                         <h3 className={styles.tituloInfo}>ID ticket</h3>
-                        <h2 className={styles.info}>00</h2>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.id_ticket}
+                        </h2>))}
                         <h3 className={styles.tituloInfo}>Legajo recurso</h3>
-                        <h2 className={styles.info}>00</h2>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.legajo_recurso}
+                        </h2>))}
                         
                     </div>
                     <div>
                         <h3 className={styles.tituloInfo}>Fecha de inicio</h3>
-                        <h2 className={styles.info}>01/01/2022</h2>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.fecha_inicio}
+                        </h2>))}
                         <h3 className={styles.tituloInfo}>Fecha estimada de fin</h3>
-                        <h2 className={styles.info}>01/01/2022</h2>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.fecha_fin}
+                        </h2>))}
                         <h3 className={styles.tituloInfo}>Estado</h3>
-                        <h2 className={styles.info}>En desarrollo</h2>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.estado}
+                        </h2>))}
                          
                     </div>
                     <div>
                         <h3 className={styles.tituloInfo}>Prioridad</h3>
-                        <h2 className={styles.info}>Media</h2> 
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.prioridad}
+                        </h2>))}
                         <h3 className={styles.tituloInfo}>Horas estimadas</h3>
-                        <h2 className={styles.info}>1000</h2>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.horas_estimadas}
+                        </h2>))}
                         <h3 className={styles.tituloInfo}>Horas reales</h3>
-                        <h2 className={styles.info}>1000</h2>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.horas_reales}
+                        </h2>))}
                     </div>
                 </div>
             </div>
