@@ -68,6 +68,7 @@ export interface FormProductVersionProperties {
 
 export interface TareaPropeties{
     id:number,
+    id_ticket: number,
     id_proyecto: number,
     estado:string,
     descripcion:string,
