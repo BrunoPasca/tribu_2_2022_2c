@@ -17,6 +17,12 @@ interface ProyectosProperties{
   id_cliente:number,
 }
 
+interface RecursoProperties{
+  legajo: number,
+  nombre: string,
+  apellid: string,
+}
+
 export default function crearProyecto() {
 /*intento de conectar con el back*/
   const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
@@ -29,6 +35,15 @@ export default function crearProyecto() {
       })
   }, [])
   
+  const [recursos, setRecursos]: [Array<RecursoProperties> ,any] = useState([])
+
+  useEffect(() => {
+    fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+      .then((res) => res.json())
+      .then((data) => {
+        setRecursos(data)
+      })
+  }, [])
 
   const {register, handleSubmit} = useForm<ProyectosProperties>()
 
