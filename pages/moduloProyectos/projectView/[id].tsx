@@ -12,12 +12,12 @@ interface ProyectosProperties{
     id: number,
     nombre:string ,
     fecha_inicio:string,
-    fecha_fin:string,
+    fecha_fin_estimado:string,
     estado:string,
-    prioridad:string,
-    costo_acumulado:number,
-    horas_estimadas:number,
     horas_reales:number,
+    descripción:string,
+    project_manager:string,
+    id_cliente:number,
   }
   
 
@@ -39,6 +39,9 @@ export default function ProyectoView() {
     const router = useRouter();
     const {id} = router.query;
 
+    const target_proyect = proyectos.filter(proyect => {
+        return proyect.id === Number(id);
+    } );
     return (
 
         <>
@@ -54,30 +57,46 @@ export default function ProyectoView() {
                         <div>Id</div>
                         <div>Nombre</div>
                         <div>Fecha de inicio real</div>
-                        <div>Fecha de fin real</div>
+                        <div>Fecha de fin estimada</div>
                         <div>Estado</div>
                     </div>
                     <div className={styles.info}>
-                        <div>{id}</div>
-                        <div>En desarrollo</div>
-                        <div>XX/XX/XXXX</div>
-                        <div>XX/XX/XXXX</div>
-                        <div>0</div>
+                        <div>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.id} </div>))}</div>
+
+                        <div>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.nombre} </div>))}</div>
+
+                        <div>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.fecha_inicio} </div>))}</div>
+
+                        <div>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.fecha_fin_estimado} </div>))}</div>
+
+                        <div>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.estado} </div>))}</div> 
                     </div>
                 </div>
 
                 <div className={styles.infoProyecto}>
                     <div className={styles.tituloInfo}>
-                        <div>Prioridad</div>
-                        <div>Costo acumulado</div>
-                        <div>Horas estimadas</div>
                         <div>Horas reales</div>
+                        <div>Descripcion</div>
+                        <div>Project manager</div>
+                        <div>ID cliente</div>
                     </div>
                     <div className={styles.info}>
-                        <div>XXXXXXXXX</div>
-                        <div>00-00000000-0</div>
-                        <div>XXXXXX</div>
-                        <div>XXXXXX@gmail.com</div>
+                    <div>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.horas_reales} </div>))}</div>
+
+                        <div>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.descripción} </div>))}</div>
+
+                        <div>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.project_manager} </div>))}</div>
+
+                        <div>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.id_cliente} </div>))}</div>
                     </div>
                 </div>
             </div>
@@ -95,3 +114,9 @@ export default function ProyectoView() {
    
    )
   }
+/*
+  <div>{id}</div>
+  <div>En desarrollo</div>
+  <div>XX/XX/XXXX</div>
+  <div>XX/XX/XXXX</div>
+  <div>0</div>*/
