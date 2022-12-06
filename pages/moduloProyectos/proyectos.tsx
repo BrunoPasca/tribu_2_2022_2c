@@ -15,17 +15,17 @@ const proyecto = {
     }
 
     /*intento de conectar con el back*/
-interface ProyectosProperties{
-  id: number,
-  nombre:string ,
-  fecha_inicio:string,
-  fecha_fin:string,
-  estado:string,
-  prioridad:string,
-  costo_acumulado:number,
-  horas_estimadas:number,
-  horas_reales:number,
-}
+    interface ProyectosProperties{
+      id: number,
+      nombre:string ,
+      fecha_inicio:string,
+      fecha_fin:string,
+      estado:string,
+      prioridad:string,
+      costo_acumulado:number,
+      horas_estimadas:number,
+      horas_reales:number,
+    }
 
 
 
@@ -35,7 +35,7 @@ export default function Soporte() {
 
   const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
 
-/*
+
   useEffect(() => {
     fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
       .then((res) => res.json())
@@ -43,7 +43,7 @@ export default function Soporte() {
         setProyectos(data)
 
       })
-  }, [])*/
+  }, [])
 
     return(<div className={styles.container}>
 
@@ -62,8 +62,11 @@ export default function Soporte() {
         </div>
 
         <div className={styles.grilla}>
-          
-
+          {(proyectos).map((proyecto) => ( 
+            <div key={proyecto.id}>
+              <ProyectoCard nombre={proyecto.nombre} id={proyecto.id} cliente={""} estado={proyecto.estado} fechaInicio={proyecto.fecha_inicio} pm={""}></ProyectoCard>
+            </div>
+          ))}
         </div>
 
         <main className={styles.colorFondo}>
@@ -79,9 +82,3 @@ export default function Soporte() {
       </div>
     );
   }
-
-           /* {(proyectos).map((proyecto) => ( 
-            <div key={proyecto.id}>
-              <ProyectoCard nombre={proyecto.nombre} id={proyecto.id} cliente={""} estado={proyecto.estado} fechaInicio={proyecto.fecha_inicio} pm={""}></ProyectoCard>
-            </div>
-          ))}*/

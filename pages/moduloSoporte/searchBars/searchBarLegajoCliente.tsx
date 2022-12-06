@@ -57,24 +57,13 @@ export default function SearchBarLegajoCliente({ placeholder, data }: { placehol
 
       <div className={styles.searchInput}>
         <input type='text' placeholder={placeholder} value={wordEntered} onChange={handleFilter} />
-      </div>
-
-      <div className={styles.navbarDer}>
-
-
-      </div>
-
-      {filteredData.length != 0 &&
-        <div className={styles.stackTop}>
+ 
           {(tickets).filter(i => i.id_cliente.toString().toLowerCase() == wordEntered.toLowerCase()).map((ticket) => (
             <div key={ticket.id}>
-              <Link href={'/moduloSoporte/tickets/' + ticket.id}>
-                <TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard>
-              </Link>
+              <Link href={'/moduloSoporte/tickets/' + ticket.id}><TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard></Link>
             </div>
           ))}
-        </div>
-      }
+    </div>
 
     </div>
   );

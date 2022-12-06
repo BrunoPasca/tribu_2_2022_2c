@@ -12,7 +12,7 @@ interface ProyectosProperties{
   fecha_fin_estimado:string,
   estado:string,
   horas_reales:number,
-  descripcion:string,
+  descripción:string,
   project_manager:string,
   id_cliente:number,
 }
@@ -68,28 +68,23 @@ export default function crearProyecto() {
 
             <br />
             <div>
-              <label htmlFor = "projectState">
-                Estado 
-              </label>
-              <br/>
 
-              <select {...register("estado")} >
-                  <option disabled selected> Estado</option>
-                  <option value = "Pendiente"> Pendiente </option>
-                  <option value = "En curso"> En curso</option>
-                  <option value = "Terminado">Terminado </option>
-                  <option value = "Cancelado">Cancelado </option>
-              </select>
+            <div>
+              <label htmlFor = "Descripción"> Descripción</label>
+              <input type = "text" id = "Descripción" {...register("descripción")} size = {20}>
+              </input>
+            </div> 
+
+              <br/>
+              <input type = "hidden" id ="projectState" {...register("estado")} value = "Pendiente" >
+                
+              </input>
             </div>
             <br />
            
 
             <br />
-            <div>
-              <label htmlFor = "Descripcion"> Descripción</label>
-              <input type = "text" id = "Descripcion" {...register("descripcion")} size = {255}>
-              </input>
-            </div>
+
             <div>
               <label htmlFor = "ClientId">
                 Id cliente: 

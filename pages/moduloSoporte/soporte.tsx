@@ -33,15 +33,9 @@ export default function Soporte() {
           </div>
           
           <div className={styles.navbarDer}> 
-          
-            <SearchBarResponsable placeholder='Ingrese id de resposable'data={TicketData} ></SearchBarResponsable>
-
-            <SearchBar placeholder="Ingrese un Titulo" data={TicketData}/>
-            
-            <SearchBarLegajoCliente placeholder="Ingrese un id de cliente" data={TicketData}/>
-
-            <SearchBarSeveridad placeholder='Ingrese una severidad' data={TicketData}></SearchBarSeveridad>
-
+          <div className={styles.contenedorBoton}>
+            <Link href={"/moduloSoporte/searchTickets"}><button>Busqueda de Tickets</button></Link>
+            </div>
 
           </div>
         </div>

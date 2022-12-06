@@ -9,7 +9,15 @@ export default function eliminarProyecto(){
     const router = useRouter();
     const {id} = router.query;
 
-/*chequeame que los proyectos existan llamando al backend y comparando con el id*/
+
+    function deleteById(){
+        fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos/"+id, {
+           method: 'DELETE',
+         })
+         alert("Proyecto eliminado");
+   }
+
+
 
 
     return (
@@ -17,7 +25,7 @@ export default function eliminarProyecto(){
         <Head_ nombre='Eliminar proyecto'></Head_>
         <Header></Header>
         <main className={styles.main}>
-            <form method = "DELETE" action = {"https://aninfo2c222back-production.up.railway.app/api/proyectos/"+id}>
+            <form action ='' >
             <div className={styles.container}>
                 <div className={styles.confirmacion}>
                     <h1 className={styles.tituloForm}>¡Atención!</h1>
@@ -25,23 +33,18 @@ export default function eliminarProyecto(){
                     <h3>¿Desea continuar?</h3>
                 </div>
 
-                <div className={styles.botonesView}>
-                <a href="/moduloProyectos/proyectoView">
-                <button type = "submit">Confirmar</button>
-                </a> 
-                <a href="/moduloProyectos/proyectoView"><button >Cancelar</button></a>
-                </div>
+                
             </div>
         </form>
-
+        <div className={styles.botonesView}>
+                <a href="/moduloProyectos/proyectos">
+                    <button onClick = {deleteById}>Confirmar</button>
+                </a>
+                
+                <a href="/moduloProyectos/proyectos"><button >Cancelar</button></a>
+                </div>
+        
         </main>
         </>
     )
 }
-
-/*Aca el back tiene que editar los campos*/
-function button_press(){
-    alert("back end eliminame el proyecto");
-    return true;
-}
-var function_button = button_press;
