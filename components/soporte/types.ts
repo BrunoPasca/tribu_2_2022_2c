@@ -72,6 +72,13 @@ export interface TareaPropeties{
     estado:string,
     descripcion:string,
     horas_estimadas:number
+    horas_reales:number,
+    fecha_inicio: string,
+    fecha_fin: string,
+    prioridad: string,
+    id_ticket: number,
+    legajo_recurso: number
+
 }
 
 export interface ProyectoProperties{

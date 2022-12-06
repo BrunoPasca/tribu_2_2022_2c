@@ -17,6 +17,16 @@ export default function TicketCreate() {
 const router = useRouter();
 const {id} = router.query;
 
+const [ticket, setTicket]: [any, any] = useState([])
+
+useEffect(() => {
+      fetch("https://aninfo2c222back-production.up.railway.app/api/tickets/" + id)
+            .then((res) => res.json())
+            .then((data) => {
+                  setTicket(data)
+            })
+}, [])
+
 const [proyectos, setProyectos]: [Array<ProyectoProperties>, any] = useState([])
 
 useEffect(() => {
@@ -33,6 +43,14 @@ useEffect(() => {
 
     data.estado = "Activo"
     data.horas_estimadas = 0
+    data.horas_reales = 0
+    data.fecha_inicio =  ticket.fecha_emision.slice(0,10)
+
+
+    data.fecha_fin = ticket.fecha_resolucion.slice(0,10)
+    data.prioridad = ticket.severidad
+    data.id_ticket = Number(id)
+    data.legajo_recurso = ticket.id_responsable
 
     fetch("https://aninfo2c222back-production.up.railway.app/api/tareas", {
         method: 'POST', // or 'PUT'
@@ -63,9 +81,6 @@ useEffect(() => {
         <input type="text" {...register("descripcion")} required />
         <br></br>
 
-        <label htmlFor="titulo">Horas estimadas</label>
-        <input type="number" {...register("horas_estimadas")} required />
-        <br></br>
 
         <label htmlFor="id_cliente">Proyecto</label>
 
