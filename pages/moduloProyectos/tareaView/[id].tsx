@@ -11,9 +11,9 @@ import { useEffect, useState } from "react";
 interface TareasProperties{
     id: Number,
     id_proyecto: Number,
-    id_ticket: Number,
     legajo_recurso: Number,
     estado: string,
+    id_ticket: Number,
     prioridad: string ,
     descripcion: string,
     horas_estimadas: Number,
@@ -22,7 +22,6 @@ interface TareasProperties{
     fecha_fin: string,
   }
 
-const tarea_id = 1;
 
 export default function TareaView() {
     const router = useRouter();
@@ -71,15 +70,15 @@ export default function TareaView() {
                         <h2 className={styles.info}>
                             {tarea?.id_proyecto}
                         </h2>))}
-                        <h3 className={styles.tituloInfo}>ID ticket</h3>
-                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
-                        <h2 className={styles.info}>
-                            {tarea?.id_ticket}
-                        </h2>))}
                         <h3 className={styles.tituloInfo}>Legajo recurso</h3>
                         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
                         <h2 className={styles.info}>
                             {tarea?.legajo_recurso}
+                        </h2>))}
+                        <h3 className={styles.tituloInfo}>Ticket Id</h3>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            {tarea?.id_ticket}
                         </h2>))}
                         
                     </div>

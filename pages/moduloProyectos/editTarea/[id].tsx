@@ -4,24 +4,75 @@ import styles from '../../../styles/proyectos.module.css'
 import sup_styles from '../../../styles/soporte.module.css'
 import Script from 'next/script'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from "react";
+import { useForm } from 'react-hook-form';
+
+interface TareasProperties{
+    id: Number,
+    id_proyecto: Number,
+    legajo_recurso: Number,
+    estado: string,
+    id_ticket: number,
+    prioridad: string ,
+    descripcion: string,
+    horas_estimadas: Number,
+    horas_reales: Number,
+    fecha_inicio: string,
+    fecha_fin: string,
+  }
+
+  interface ProyectosProperties{
+    id: number,
+    nombre:string ,
+    fecha_inicio:string,
+    fecha_fin_estimado:string,
+    estado:string,
+    horas_reales:number,
+    descripción:string,
+    project_manager:string,
+    id_cliente:number,
+  }
 
 export default function editTarea() {
     const router = useRouter();
-    const { id } = router.query;
+    const {id} = router.query;
 
-    const tarea = {
-        id: 1,
-        Descripcion: "ipse bene nose cuanto mas",
-        Estado: "Estado viejo",
-        Duracion_estimada: "duracion vieja",
-        tiempo_invertido: "tiempo viejo",
-        Fecha_estimada_de_fin: "29-09-1995",
-        Fecha_real_de_fin: "xx-xx-xxxx",
-        recursos_asignados: ["recurso 1", "recurso 2"],
-        tareas_condicionales: ["tarea1", "tarea2"]
-    }
+    const [tareas, setTareas]: [Array<TareasProperties> ,any] = useState([])
 
-    /*aca la idea seria sacar las tareas del backend y comparar con el id que se saco de router*/
+    const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
+
+    useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/tareas")
+      .then((res) => res.json())
+      .then((data) => {
+        setTareas(data)
+      })
+  }, [])
+
+
+  useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
+      .then((res) => res.json())
+      .then((data) => {
+        setProyectos(data)
+      })
+  }, [])
+
+  const {register, handleSubmit} = useForm<TareasProperties>();
+
+  const onSubmit = handleSubmit((data) =>{
+    console.log(JSON.stringify(data))
+    fetch("https://aninfo2c222back-production.up.railway.app/api/tareas/" +id , {
+          method: 'PUT', // or 'PUT'
+          body: JSON.stringify(data), // data can be `string` or {object}!
+          headers:{
+            'Content-Type': 'application/json'
+          }
+        })
+    alert("La tarea se edito correctamente")
+})
+
+    
 
     return (
         <>
@@ -33,50 +84,56 @@ export default function editTarea() {
                 <div className={styles.contenedorPadre}>
                     <div className={styles.infoProyecto}>
                         <div className={styles.tituloInfo}>
-                            <div>Id</div>
                             <div>Id del proyecto</div>
                             <div>Estado</div>
                             <div>Descripción</div>
                             <div>Horas estimadas</div>
                             <div>Horas totales</div>
+                            <div>Prioridad</div>
+                            <div>Fecha inicio</div>
+                            <div>Fecha estimada de fin</div>
                         </div>
-                        <div className={styles.info}>
-                            <div>{id}</div>
-                            <div>00-00</div>
+                        <div className={styles.info} >
+                            <form onSubmit = {onSubmit} id = "form_id">
+                            <select id = "id proyecto" {...register("id_proyecto")}>
+                            {(proyectos.map( (proyecto) =>
+                                <option value = {proyecto?.id}> {proyecto?.id} </option>))}
+                            </select>
                             <div>
-                                <select>
-                                    <option disabled selected> Previo: {tarea.Estado}</option>
-                                    <option value="optionBaja">Baja</option>
-                                    <option value="optionMedia">Media</option>
-                                    <option value="optionAlta">Alta</option>
+                            <select id = "estado_tarea" {...register("estado")}>
+                                <option value="Abierta">Abierta</option>
+                                <option value="En análisis">En análisis</option>
+                                <option value="En progreso">En progreso</option>
+                                <option value="Suspendida">Suspendida</option>
+                                <option value="Completada">Completada</option>
+                            </select>
+                            </div>
+                                <input type="text" id="descripcion" {...register("descripcion")} placeholder="Descripcion" size={50}></input>
+                                <input type="number" id="horasEstimadas" {...register("horas_estimadas")} min="0"></input>
+                            <div>
+                                <input type="number" id="horasReales" {...register("horas_reales")} min="0"></input>
+                            </div>
+                                <select id="prioridad_tarea" {...register("prioridad")}>
+                                    <option  value = "Baja"> Baja</option>
+                                    <option  value = "Media"> Media</option>
+                                    <option  value = "Alta">Alta</option>
                                 </select>
-                            </div>
                             <div>
-                                <input type="text" id="nombrecl" placeholder="Descripcion" size={50}></input>
+                                <input type = "date" id="fecha_inicio" {...register("fecha_inicio")}></input>
                             </div>
-                            <div>
-                                <input type="number" id="horasEstimadas" min="0"></input>
-                            </div>
-                            <div>
-                                <input type="number" id="horasTotales" min="0"></input>
-                            </div>
+                                <input type = "date" id="fecha_fin" {...register("fecha_fin")}></input>
+                            </form>
                         </div>
                     </div>
                 </div>
 
                 <div className={styles.botonesView}>
                     <a href="/moduloProyectos/tareas"><button>Cancelar</button></a>
-                    <button form="form_id" onClick={function_button}>Agregar</button>
+                    <a href = "/moduloProyectos/tareas">
+                    <button type="submit" form="form_id" >Editar</button>
+                    </a>
                 </div>
             </div>
         </>
     )
 }
-
-
-/*Aca el back tiene que editar los campos*/
-function button_press() {
-    alert("back end editame la tarea");
-    return true;
-}
-var function_button = button_press;

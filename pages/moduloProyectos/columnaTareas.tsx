@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 interface TareasProperties{
   id: Number,
   id_proyecto: Number,
-  id_ticket: Number,
   legajo_recurso: Number,
   estado: string,
   prioridad: string ,
