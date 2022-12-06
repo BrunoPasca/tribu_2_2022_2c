@@ -53,7 +53,7 @@ export default function Productos() {
                 
         <div className={styles.productos}>
             {(productos).map((producto) => (
-                <div key={producto.id}>
+                <div key={producto.id} className={styles.filas}>
                     
                     <ProductCard titulo={producto.nombre} id={producto.id}
                         fecha_lanzamiento={producto.fecha_lanzamiento?.slice(0, 10)} 

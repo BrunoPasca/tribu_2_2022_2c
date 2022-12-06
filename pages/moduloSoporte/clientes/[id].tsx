@@ -110,7 +110,7 @@ export default function TicketView() {
 
             <div>
                 {(clientesYProductos).filter(i => i.id_cliente == Number(id)).map((a) => (
-                    <div key={a.id_producto}>
+                    <div key={a.id_producto} className={styles.filas}>
                         <ClienteProductoCard 
                         titulo= {productos.find(element => element.id == a.id_producto)?.nombre}
                         id={productos.find(element => element.id == a.id_producto)?.id} 

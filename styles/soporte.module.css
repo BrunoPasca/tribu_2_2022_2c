@@ -5,7 +5,6 @@
   height: 100vh;
   background-color: #EEF4ED;
   font-family: 'Roboto', sans-serif;
-
   }
 
 
@@ -15,8 +14,10 @@
     justify-content: space-between;
     margin: 30px;
     font-size: 30px;
+  }
 
-    
+  .columna{
+    background-color: #EEF4ED;
   }
 
   .titulos div p{
@@ -75,4 +76,8 @@
   .productos{
     display: flex;
     flex-direction: column;
+  }
+
+  .filas{
+    background-color: #EEF4ED;
   }

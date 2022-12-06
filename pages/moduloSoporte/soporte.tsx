@@ -15,7 +15,8 @@ import HeaderSoporte from '../headerSoporte';
 
 export default function Soporte() {
 
-    return(<div className={styles.container}>
+    return(
+    <div className={styles.container}>
 
        <Head_ nombre='Soporte'></Head_>
       
@@ -41,7 +42,7 @@ export default function Soporte() {
         </div>
 
         <div className={styles.titulos}>
-              <div>
+              <div className={styles.columna}>
 
                 <p>Abierto</p>
                 
@@ -49,19 +50,19 @@ export default function Soporte() {
                
               </div>
 
-              <div>
+              <div className={styles.columna}>
               <p>En analisis</p>
               <ColumnaTicket estadoFiltro='en analisis'></ColumnaTicket>
               </div>
-              <div>
+              <div className={styles.columna}>
               <p>Derivado</p>
               <ColumnaTicket estadoFiltro='derivado'></ColumnaTicket>
               </div>
-              <div>
+              <div className={styles.columna}>
               <p>Resuelto</p>
               <ColumnaTicket estadoFiltro='resuelto'></ColumnaTicket>
               </div>
-              <div>
+              <div className={styles.columna}>
               <p>Cancelado</p>
               <ColumnaTicket estadoFiltro='cancelado'></ColumnaTicket>
 
