@@ -207,7 +207,22 @@
   margin: 20px;
   color: black;
   width: 75%;
-  height: 340px;
+  height: 320px;
+  background-color: rgb(206, 206, 206);
+  padding: 30px;
+  border-radius:0px;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px; 
+}
+
+.contenedorTarea{
+  border-top: thick solid black;
+  margin: 20px;
+  color: black;
+  width: 75%;
+  height: 400px;
   background-color: rgb(206, 206, 206);
   padding: 30px;
   border-radius:0px;
@@ -221,7 +236,7 @@
   font-weight: bolder;
   color: #134074;
   margin-bottom: 0;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .info{
