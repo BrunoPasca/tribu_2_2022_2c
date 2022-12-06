@@ -26,10 +26,10 @@ const {id} = router.query;
   }, [])
 
 
-  const { register, handleSubmit } = useForm<ProductProperties>()
+  const { register, handleSubmit } = useForm<VersionProperties>()
 
   const onSubmit = handleSubmit((data) => {
-    console.log(JSON.stringify(data))
+    data.activo = 1
     fetch("https://aninfo2c222back-production.up.railway.app/api/versions", {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!

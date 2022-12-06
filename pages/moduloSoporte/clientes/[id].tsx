@@ -114,7 +114,8 @@ export default function TicketView() {
                         <ClienteProductoCard 
                         titulo= {productos.find(element => element.id == a.id_producto)?.nombre}
                         id={productos.find(element => element.id == a.id_producto)?.id} 
-                        fecha_lanzamiento={productos.find(element => element.id == a.id_producto)?.fecha_lanzamiento.slice(0,10)}  activo={0} 
+                        fecha_lanzamiento={productos.find(element => element.id == a.id_producto)?.fecha_lanzamiento.slice(0,10)}  
+                        activo={0} 
                         id_version={productos.find(element => element.id == a.id_producto)?.id_version}></ClienteProductoCard>
                         
                        
