@@ -14,6 +14,7 @@ export default function eliminarProyecto(){
         fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos/"+id, {
            method: 'DELETE',
          })
+         alert("Proyecto eliminado");
    }
 
 
@@ -32,16 +33,17 @@ export default function eliminarProyecto(){
                     <h3>¿Desea continuar?</h3>
                 </div>
 
-                <div className={styles.botonesView}>
                 
-                
-                </div>
             </div>
         </form>
-        <a href="/moduloProyectos/proyectos">
-                <button onClick = {deleteById}>Confirmar</button>
-        </a> 
-        <a href="/moduloProyectos/proyectos"><button >Cancelar</button></a>
+        <div className={styles.botonesView}>
+                <a href="/moduloProyectos/proyectos">
+                    <button onClick = {deleteById}>Confirmar</button>
+                </a>
+                
+                <a href="/moduloProyectos/proyectos"><button >Cancelar</button></a>
+                </div>
+        
         </main>
         </>
     )
