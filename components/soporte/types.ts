@@ -85,3 +85,11 @@ export interface ProyectoProperties{
     horas_estimadas: number,
     horas_reales: number
 }
+
+export interface ClientesYProductosProperties{
+    id:number,
+    id_cliente: number,
+    id_version: number,
+    id_producto:number,
+
+}
