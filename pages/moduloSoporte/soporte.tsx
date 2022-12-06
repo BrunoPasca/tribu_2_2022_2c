@@ -24,9 +24,6 @@ export default function Soporte() {
         <div className={styles.navbar}>
           <div className={styles.navbarIzq}> 
             <h1>Soporte</h1>
-            <div className={styles.contenedorBoton}>
-            <Link href={"/moduloSoporte/searchTickets"}><button>Busqueda de Tickets</button></Link>
-            </div>
           </div>
 
           <div>
@@ -36,7 +33,9 @@ export default function Soporte() {
           </div>
           
           <div className={styles.navbarDer}> 
-          
+          <div className={styles.contenedorBoton}>
+            <Link href={"/moduloSoporte/searchTickets"}><button>Busqueda de Tickets</button></Link>
+            </div>
 
           </div>
         </div>
