@@ -17,7 +17,6 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     const [fin, setFormFin] = useState(new Date())
 
     useEffect(()=>{
-        console.log("se cambia")
         fetch("https://aninfo2c222back-production.up.railway.app/api/employees")
         .then((res) => res.json())
         .then((data) => {
