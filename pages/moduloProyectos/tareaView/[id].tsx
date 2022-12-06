@@ -18,26 +18,38 @@ export default function TareaView() {
         <Header></Header>
         
         <div className={styles.proyectoView}>
-            <h1 className={styles.tituloEdit}>TAREA {id}</h1>   
+            <h1 className={styles.tituloEdit}>TAREA 'NOMBRE'</h1>
+            <h3 className={styles.subtituloEdit}>{id}</h3>
+            <div className={styles.descripcionText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies vitae nisl eget aliquam. Suspendisse nibh lacus, ultricies ac felis ac, hendrerit sollicitudin massa. Ut eget molestie eros, dapibus condimentum leo. Suspendisse non lorem tortor.</div>
             <div className={styles.contenedorPadre}>
-                <div className={styles.infoProyecto}>
-                    <div className={styles.tituloInfo}>
-                        <div>Id</div>
-                        <div>Id del proyecto</div>
-                        <div>Estado</div>
-                        <div>Descripción</div>
-                        <div>Horas estimadas</div>
-                        <div>Horas totales</div>
+                <div className={styles.contenedorTarea}>
+                    <div>
+                        <h3 className={styles.tituloInfo}>ID proyecto</h3>
+                        <h2 className={styles.info}>00</h2>
+                        <h3 className={styles.tituloInfo}>ID ticket</h3>
+                        <h2 className={styles.info}>00</h2>
+                        <h3 className={styles.tituloInfo}>Legajo recurso</h3>
+                        <h2 className={styles.info}>00</h2>
+                        
                     </div>
-                    <div className={styles.info}>
-                        <div>{id}</div>
-                        <div>00-00</div>
-                        <div>A</div>
-                        <div>Descripción</div>
-                        <div>XXXXX</div>
-                        <div>XXXXX</div>
+                    <div>
+                        <h3 className={styles.tituloInfo}>Fecha de inicio</h3>
+                        <h2 className={styles.info}>01/01/2022</h2>
+                        <h3 className={styles.tituloInfo}>Fecha estimada de fin</h3>
+                        <h2 className={styles.info}>01/01/2022</h2>
+                        <h3 className={styles.tituloInfo}>Estado</h3>
+                        <h2 className={styles.info}>En desarrollo</h2>
+                         
                     </div>
-                </div> 
+                    <div>
+                        <h3 className={styles.tituloInfo}>Prioridad</h3>
+                        <h2 className={styles.info}>Media</h2> 
+                        <h3 className={styles.tituloInfo}>Horas estimadas</h3>
+                        <h2 className={styles.info}>1000</h2>
+                        <h3 className={styles.tituloInfo}>Horas reales</h3>
+                        <h2 className={styles.info}>1000</h2>
+                    </div>
+                </div>
             </div>
 
             <div className={styles.botonesView}>
