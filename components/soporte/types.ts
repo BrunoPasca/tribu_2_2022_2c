@@ -76,7 +76,6 @@ export interface TareaPropeties{
     fecha_inicio: string,
     fecha_fin: string,
     prioridad: string,
-    id_ticket: number,
     legajo_recurso: number
 
 }
