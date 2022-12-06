@@ -24,6 +24,8 @@ export default function BorrarGuardiaModal(props: any) {
   const handleClose = () => setOpen(false);
 
   async function handleBorrar() {
+    console.log(props.reporteId)
+
     await fetch("https://aninfo2c222back-production.up.railway.app/api/guardias/" + props.reporteId, {
       method: "DELETE",
     })
