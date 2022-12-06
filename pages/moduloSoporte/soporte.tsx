@@ -25,19 +25,9 @@ export default function Soporte() {
             <h1>Soporte</h1>
             <Link href={"productos"}><button>Productos y Versiones</button></Link>
             <Link href={"clientes"}><button>Clientes</button></Link>
+            <Link href={"/moduloSoporte/searchTickets"}><button>Busqueda de Tickets</button></Link>
           </div>
-          <div className={styles.navbarDer}> 
-          
-            <SearchBarResponsable placeholder='Ingrese id de resposable'data={TicketData} ></SearchBarResponsable>
 
-            <SearchBar placeholder="Ingrese un Titulo" data={TicketData}/>
-            
-            <SearchBarLegajoCliente placeholder="Ingrese un id de cliente" data={TicketData}/>
-
-            <SearchBarSeveridad placeholder='Ingrese una severidad' data={TicketData}></SearchBarSeveridad>
-
-
-          </div>
         </div>
 
         <div className={styles.titulos}>
