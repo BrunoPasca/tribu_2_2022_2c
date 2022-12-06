@@ -10,6 +10,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 export default function FilaHora(props: any){
 
+    if (!props.hora) return(<div></div>);
     let hora = props.hora
 
     const [openDelete, setOpenDelete] = React.useState(false);

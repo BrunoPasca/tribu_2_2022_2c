@@ -7,6 +7,7 @@ import BorrarGuardiaModal from '../borrarGuardiaModal';
 
 export default function FilaGuardia(props: any){
 
+    if (!props.guardia) return(<div></div>);
     let guardia = props.guardia
     const [openDelete, setOpenDelete] = React.useState(false);
     const handleOpenDelete = () => setOpenDelete(true);

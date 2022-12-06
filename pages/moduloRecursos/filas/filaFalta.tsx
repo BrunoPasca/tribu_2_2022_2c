@@ -7,6 +7,7 @@ import BorrarFaltaModal from '../borrarFaltaModal';
 
 export default function FilaFalta(props: any){
 
+    if (!props.falta) return(<div></div>);
     let falta = props.falta
     const [openDelete, setOpenDelete] = React.useState(false);
     const handleOpenDelete = () => setOpenDelete(true);

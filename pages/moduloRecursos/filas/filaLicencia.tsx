@@ -7,6 +7,7 @@ import BorrarLicenciaModal from '../borrarLicenciaModal';
 
 export default function FilaLicencia(props: any){
 
+    if (!props.licencias) return(<div></div>);
     let licencias = props.licencia
     const [openDelete, setOpenDelete] = React.useState(false);
     const handleOpenDelete = () => setOpenDelete(true);
