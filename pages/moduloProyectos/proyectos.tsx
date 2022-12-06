@@ -15,17 +15,17 @@ const proyecto = {
     }
 
     /*intento de conectar con el back*/
-interface ProyectosProperties{
-  id: number,
-  nombre:string ,
-  fecha_inicio:string,
-  fecha_fin:string,
-  estado:string,
-  prioridad:string,
-  costo_acumulado:number,
-  horas_estimadas:number,
-  horas_reales:number,
-}
+    interface ProyectosProperties{
+      id: number,
+      nombre:string ,
+      fecha_inicio:string,
+      fecha_fin:string,
+      estado:string,
+      prioridad:string,
+      costo_acumulado:number,
+      horas_estimadas:number,
+      horas_reales:number,
+    }
 
 
 

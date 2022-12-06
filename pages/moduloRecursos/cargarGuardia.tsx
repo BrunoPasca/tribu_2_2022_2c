@@ -38,7 +38,11 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
 
 
     async function handleClickCargar(){
-        const guardiaDatos = {legajo_empleado: legajo, fecha_inicio : startDate, fecha_fin : endDate}
+        // formato aceptado por SQL
+        const _fecha_inicio = new Date(startDate).toISOString().slice(0, 19).replace('T', ' ');
+        const _fecha_fin = new Date(endDate).toISOString().slice(0, 19).replace('T', ' ');
+
+        const guardiaDatos = {legajo_empleado: legajo, fecha_inicio : _fecha_inicio, fecha_fin : _fecha_fin}
 
         const areNotEmpty = Object.values(guardiaDatos).every(
             value => value != ""
@@ -55,8 +59,12 @@ export default function CargarGuardia({ screenSetter }: { screenSetter: any }) {
             'Content-Type': 'application/json'
         },
         })
+        .then(response => {
+            if (response.status === 500) throw new Error("Error al cargar guardia")
+            return response
+        })
         .then(response => alert("Se creó correctamente"))
-        .catch(error => alert(error))
+        .catch(error => console.log(error))
     }
 
     return (

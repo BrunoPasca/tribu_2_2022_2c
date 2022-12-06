@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import styles from '../../../styles/versiones.module.css'
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ProductProperties, ProdVerProperties, VersionProperties } from "../../../components/soporte/types";
+import { ClientesProperties, ProductProperties, ProdVerProperties, VersionProperties } from "../../../components/soporte/types";
 import VersionCard from "../versionCard";
 import HeaderSoporte from "../../headerSoporte";
 
@@ -37,13 +37,25 @@ export default function TicketView() {
 
 
 
-    const [prover, setProver]: [Array<ProdVerProperties>, any] = useState([])
+    const [clientes, setClientes]: [Array<ClientesProperties>, any] = useState([])
 
     useEffect(() => {
-      fetch("https://aninfo2c222back-production.up.railway.app/api/prodversions")
+      fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes")
         .then((res) => res.json())
         .then((data) => {
-          setProver(data)
+          setClientes(data)
+        })
+    }, [])
+
+    const cliente = clientes.find(c => c.id == Number(id))
+
+    const [productos, setPorductos]: [Array<ClientesProperties>, any] = useState([])
+
+    useEffect(() => {
+      fetch("https://aninfo2c222back-production.up.railway.app/api/productos")
+        .then((res) => res.json())
+        .then((data) => {
+          setClientes(data)
         })
     }, [])
 
@@ -72,32 +84,20 @@ export default function TicketView() {
         <div className={styles.ticketView}>
         
             <div className={styles.camposView}>
-                <h1>{producto?.id} - {producto?.nombre}</h1>
+                <h1>ID: {cliente?.id} - CUIT: {cliente?.CUIT}</h1>
                 
-                
-                <div>Fecha de lanzamiento: {producto?.fecha_lanzamiento}</div>
-    
+                    
 
             <div className={styles.botonesView}>
 
-                <Link href={"/moduloSoporte/versionCreate/" + id}><button>Agregar version</button></Link>
+                <Link href={"/moduloSoporte/agregarProductoACliente/" + id}><button>Agregar Producto</button></Link>
 
             </div>  
 
-            </div>
+                </div>
 
-
-            <div>
-                {(prover).filter(i => i.producto_id == Number(id)).map((a) => (
-                    <div key={a.id}>
-                        <VersionCard titulo={versiones.find(element => element.id == a.version_id)?.nombre}
-                        id={versiones.find(element => element.id == a.version_id)?.id}
-                        fecha_lanzamiento={versiones.find(element => element.id == a.version_id)?.fecha_lanzamiento.slice(0,10)}
-                        activo={versiones.find(element => element.id == a.version_id)?.activo} 
-                        id_version={0}></VersionCard>
-                        
-                    </div>
-                ))}
+               <div>
+                   
             </div>
         
 

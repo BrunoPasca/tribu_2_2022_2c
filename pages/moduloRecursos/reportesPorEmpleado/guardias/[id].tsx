@@ -9,62 +9,34 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
 import Link from 'next/link';
-import { Guardia } from '../../../../components/recursos/types';
 import Header from '../../../header';
 import { useRouter } from 'next/router';
-
+import styles from "../../../../styles/recursos.module.css"
 
 export default function TablaAllGuardias(props: any) {
 
     const router = useRouter();
     const { id } = router.query;
 
-    const [guardias, setGuardias] = React.useState([])
+    const [guardias, setGuardias] = React.useState<any[]>([])
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias/" + id)
+        fetch("https://aninfo2c222back-production.up.railway.app/api/guardias/empleado/" + id)
 
+            .then(response => {
+                if (response.status === 404) {
+                    throw new Error("Error al recuperar las horas.")
+                }
+                return response
+            })
             .then((res) => res.json())
             .then((data) => {
                 setGuardias(data)
             })
+            .catch(error => console.log(error))
     }, [])
 
-
-    /* HAY QUE USAR UN ENDPOINT */
-    const reportes = [
-        // Formato fecha dd/MM/yyyy
-        {
-            id: "1",
-            legajo_empleado: "2",
-            fecha_inicio: "7/12/2022",
-            fecha_fin: "9/12/2022"
-        },
-        {
-            id: "2",
-            legajo_empleado: "4",
-            fecha_inicio: "15/11/2022",
-            fecha_fin: "20/11/2022"
-        }
-    ]
-
-
-    const [rows, setRows] = useState(reportes);
-    const [searched, setSearched] = useState<string>("");
-
-    const requestSearch = (searchedVal: string) => {
-        const filteredRows = reportes.filter((row: any) => {
-            return row.fecha_inicio.includes(searchedVal.toLowerCase());
-        });
-        setRows(filteredRows);
-    };
-
-    const cancelSearch = () => {
-        setSearched("");
-        requestSearch(searched);
-    };
-
     return (
-        <div>
+        <div className={styles.container}>
             <Header></Header>
             <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
                 <Typography
@@ -75,7 +47,8 @@ export default function TablaAllGuardias(props: any) {
                     align="center"
                     fontSize={30}
                 >
-                    Faltas
+                    Guardias
+                    <Link href={"../licencias/" + id}><p>→</p></Link>
                 </Typography>
                 {/* 
             <SearchBar
@@ -93,14 +66,14 @@ export default function TablaAllGuardias(props: any) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((reporte) => (
+                        {guardias.map((reporte) => (
                             <TableRow
                                 key={reporte.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell align="center">{reporte.id}</TableCell>
-                                <TableCell align="center">{reporte.fecha_inicio}</TableCell>
-                                <TableCell align="center">{reporte.fecha_fin}</TableCell>
+                                <TableCell align="center">{new Date(reporte.fecha_inicio).toLocaleDateString()}</TableCell>
+                                <TableCell align="center">{new Date(reporte.fecha_fin).toLocaleDateString()}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

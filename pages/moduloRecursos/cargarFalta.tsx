@@ -28,7 +28,9 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
 
 
     async function handleClickCargar(){
-        const faltaDatos = {legajo_empleado: Number(legajo), fecha :  fecha, justificante : justificante}
+        // formato aceptado por SQL
+        const _fecha = new Date(fecha).toISOString().slice(0, 19).replace('T', ' ');
+        const faltaDatos = {legajo_empleado: Number(legajo), fecha :  _fecha, justificante : justificante}
 
         if (!justificante) {
             alert("Ingrese su justificante antes de cargar.")
@@ -42,8 +44,12 @@ export default function CargarFalta({ screenSetter }: { screenSetter: any }) {
             'Content-Type': 'application/json',
         },
         })
+        .then(response => {
+            if (response.status === 500) throw new Error("Error al cargar falta")
+            return response
+        })
         .then(response => alert("Se creó correctamente"))
-        .catch(error => alert(error))
+        .catch(error => console.log(error))
     }
 
     return (

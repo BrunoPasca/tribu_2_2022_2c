@@ -2,13 +2,13 @@ import styles from '../../styles/productCard.module.css'
 import Link from 'next/link';
 
 
-export default function ProductCard({titulo, id,fecha_lanzamiento,activo,id_version}: {titulo:string | undefined , id: number | undefined, fecha_lanzamiento: string | undefined, activo:number, id_version:number}) {
+export default function VersionCard({titulo, id,fecha_lanzamiento,activo,id_version}: {titulo:string | undefined , id: number | undefined, fecha_lanzamiento: string | undefined, activo:number | undefined, id_version:number| undefined}) {
 
     var estado;
     var aux:number;
 
     if(activo == 1){
-        estado = "Activo   "
+        estado = "Activo"
         aux = 0
     }else{
         estado = "Deprecado"
@@ -18,7 +18,6 @@ export default function ProductCard({titulo, id,fecha_lanzamiento,activo,id_vers
     function cambiarEstado(){
 
         let data = {
-            id_version: id_version,
             fecha_lanzamiento: fecha_lanzamiento,
             nombre: titulo,
             activo: aux,
@@ -26,7 +25,7 @@ export default function ProductCard({titulo, id,fecha_lanzamiento,activo,id_vers
 
         console.log(data)
 
-        fetch("https://aninfo2c222back-production.up.railway.app/api/productos/" + id, {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/versions/" + id, {
             method: 'PUT', // or 'PUT'
             body: JSON.stringify(data), // data can be `string` or {object}!
             headers: {
@@ -34,7 +33,8 @@ export default function ProductCard({titulo, id,fecha_lanzamiento,activo,id_vers
             }
           })
 
-          alert("Se cambio el estado del producto correctamente")
+          alert("Se cambio el estado de la version correctamente")
+          location.reload()
    }
 
 
