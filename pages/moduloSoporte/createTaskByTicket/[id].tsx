@@ -49,7 +49,6 @@ useEffect(() => {
 
     data.fecha_fin = ticket.fecha_resolucion.slice(0,10)
     data.prioridad = ticket.severidad
-    data.id_ticket = Number(id)
     data.legajo_recurso = ticket.id_responsable
 
     fetch("https://aninfo2c222back-production.up.railway.app/api/tareas", {

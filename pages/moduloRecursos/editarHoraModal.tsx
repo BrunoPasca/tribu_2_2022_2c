@@ -26,11 +26,12 @@ export default function EditarHoraModal(props: any) {
     const tareaId = props.tareaId
     const reporteId = props.reporteId
     const [cantHoras, setCantHoras] = React.useState(props.cantHoras)
+    
 
   async function handleEditar() {
     await fetch("https://aninfo2c222back-production.up.railway.app/api/horas/" + props.reporteId, {
       method: "PUT",
-      body: JSON.stringify({id_tarea: reporteId, cant_horas : cantHoras}),
+      body: JSON.stringify({id_tarea: tareaId, cant_horas : cantHoras}),
       headers: {
         'Content-Type': 'application/json',
     },
@@ -63,6 +64,7 @@ export default function EditarHoraModal(props: any) {
             <br></br>
             Fecha: {props.fecha}
           </Typography>
+          
           <div style={{display:"flex", justifyContent:"center", padding:"2rem"}}>
             <label style={{marginRight:"1rem"}}>Horas:</label>
             <input value={cantHoras} onChange={(e) => setCantHoras(e.target.value)}></input>
