@@ -62,13 +62,13 @@ export default function MuiTable(props: any) {
     }, [])
 
 
-    useInterval(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/licencia")
-            .then((res) => res.json())
-            .then((data) => {
-                setLicencias(data)
-            })
-    }, 1500)
+    //useInterval(() => {
+    //    fetch("https://aninfo2c222back-production.up.railway.app/api/licencia")
+    //        .then((res) => res.json())
+    //        .then((data) => {
+    //            setLicencias(data)
+    //        })
+    //}, 1500)
 
 
 
@@ -84,6 +84,8 @@ export default function MuiTable(props: any) {
         const start = modificarFormatoFecha(fromDate);
         const end = modificarFormatoFecha(toDate);
         const date = new Date(givenDate);
+
+        (start <= date && date <= end) ? console.log("TRUE") : console.log("FALSE")
 
         return (start <= date && date <= end);
     }
