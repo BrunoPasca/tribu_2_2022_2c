@@ -7,15 +7,15 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form';
 
 interface TareasProperties{
-    id: Number,
-    id_proyecto: Number,
-    legajo_recurso: Number,
+    id: number,
+    id_proyecto: number,
+    legajo_recurso: number,
     estado: string,
     id_ticket: number,
     prioridad: string ,
     descripcion: string,
-    horas_estimadas: Number,
-    horas_reales: Number,
+    horas_estimadas: number,
+    horas_reales: number,
     fecha_inicio: string,
     fecha_fin: string,
   }
@@ -30,6 +30,12 @@ interface TareasProperties{
     descripción:string,
     project_manager:string,
     id_cliente:number,
+  }
+
+  interface RecursoProperties{
+    legajo: number,
+    nombre: string,
+    apellido: string,
   }
 
 
@@ -57,6 +63,20 @@ export default function crearTarea(){
         setProyectos(data)
       })
   }, [])
+
+
+  const [recursos, setRecursos]: [Array<RecursoProperties> ,any] = useState([])
+
+  useEffect(() => {
+    fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+      .then((res) => res.json())
+      .then((data) => {
+        setRecursos(data)
+      })
+  }, [])
+
+
+
 
   const {register, handleSubmit} = useForm<TareasProperties>();
 
@@ -118,7 +138,9 @@ export default function crearTarea(){
                             <div>
                                 <input type = "date" id="fecha_inicio" {...register("fecha_inicio")}></input>
                             </div>
-                            <input type = "number" min = "0"></input>
+                            {(recursos.map( (recurso) =>
+                                <option value = {recurso?.legajo}> {recurso?.nombre} - {recurso?.apellido} </option>))}
+
                             </form>
                         </div>
                     </div>
