@@ -14,6 +14,7 @@ import Edit from '@mui/icons-material/Edit';
 import EditarHoraModal from './editarHoraModal';
 import styles from '../../styles/recursos.module.css'
 import { useInterval } from '../../components/soporte/utils';
+import FilaHora from './filas/filaHora';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -119,26 +120,7 @@ export default function MuiTable(props: any) {
                 </TableHead>
                 <TableBody>
                     {horas.filter(hora => hora["legajo_empleado"] === legajo && DateBetweenTwoDates(props.fechaInicio, props.fechaFin, hora["fecha"])).map((hora) => (
-                        <TableRow
-                            key={hora["id"]}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell align="center" component="th" scope="row">{hora["id"]}</TableCell>
-                            <TableCell align="center">{hora["id_tarea"]}</TableCell>
-                            <TableCell align="center">{new Date(hora["fecha"]).toLocaleDateString()}</TableCell>
-                            <TableCell align="center">{hora["cant_horas"]}</TableCell>
-                            <TableCell align="center">{hora["extra"] ? "Sí" : "No"}</TableCell>
-                            <TableCell padding="none" align="right">
-                                <IconButton onClick={handleOpenDelete}><DeleteIcon /></IconButton>
-                                <BorrarHoraModal isOpen={openDelete} setOpen={setOpenDelete} reporteId={hora["id"]}></BorrarHoraModal>
-                            </TableCell>
-                            <TableCell padding="none">
-                                <IconButton onClick={handleOpenEdit}><EditIcon /></IconButton>
-                                <EditarHoraModal isOpen={openEdit} setOpen={setOpenEdit} reporteId={hora["id"]}
-                                    tareaId={hora["id_tarea"]} cantHoras={hora["cant_horas"]} fecha={hora["fecha"]}>
-                                </EditarHoraModal>
-                            </TableCell>
-                        </TableRow>
+                        <FilaHora key={hora["id"]} hora={hora}></FilaHora>
                     ))}
                 </TableBody>
             </Table>

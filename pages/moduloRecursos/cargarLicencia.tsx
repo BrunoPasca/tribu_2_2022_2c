@@ -49,7 +49,7 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
         const _fecha_inicio = new Date(startDate).toISOString().slice(0, 19).replace('T', ' ');
         const _fecha_fin = new Date(endDate).toISOString().slice(0, 19).replace('T', ' ');
 
-        const licenciaDatos = {legajo: legajo, fecha_inicio : _fecha_inicio, fecha_fin : _fecha_fin, tipo_licencia:tipo, goce_sueldo:goceSueldo}
+        const licenciaDatos = {legajo: legajo, fecha_inicio : _fecha_inicio, fecha_fin : _fecha_fin, tipo_licencia:tipo, goce_sueldo:goceSueldo, descripcion:descripcion}
 
         const areNotEmpty = Object.values(licenciaDatos).every(
             value => value != ""

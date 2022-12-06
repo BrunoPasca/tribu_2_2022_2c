@@ -11,6 +11,7 @@ import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 import BorrarGuardiaModal from './borrarGuardiaModal';
 import { useInterval } from '../../components/soporte/utils';
+import FilaGuardia from './filas/filaGuardia';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -104,22 +105,7 @@ export default function MuiTable(props: any) {
                     {guardias
                         .filter(guardia => guardia["legajo_empleado"] === legajo && DateBetweenTwoDates(inicio, fin, guardia["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, guardia["fecha_fin"]))
                         .map((guardia) => (
-                            <TableRow
-                                key={guardia['id']}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell align="center" component="th" scope="row">
-                                    {guardia['id']}
-                                </TableCell>
-                                <TableCell align="center">{new Date(guardia["fecha_inicio"]).toLocaleDateString()}</TableCell>
-                                <TableCell align="center">{new Date(guardia["fecha_fin"]).toLocaleDateString()}</TableCell>
-                                <TableCell padding="none">
-                                    <IconButton onClick={handleOpenDelete}>
-                                        <DeleteIcon />
-                                    </IconButton>
-                                    <BorrarGuardiaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={guardia["id"]}></BorrarGuardiaModal>
-                                </TableCell>
-                            </TableRow>
+                            <FilaGuardia key={guardia["id"]} guardia={guardia}></FilaGuardia>
                         ))}
                 </TableBody>
             </Table>

@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, Typography } from '@mui/material';
 import BorrarFaltaModal from './borrarFaltaModal';
 import { useInterval } from '../../components/soporte/utils';
+import FilaFalta from './filas/filaFalta';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -101,22 +102,7 @@ export default function MuiTable(props: any) {
                 </TableHead>
                 <TableBody>
                     {faltas.filter(falta => falta["legajo_empleado"] === legajo && DateBetweenTwoDates(inicio, fin, falta["fecha"])).map((falta) => (
-                        <TableRow
-                            key={falta["id"]}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell align="center" component="th" scope="row">
-                                {falta["id"]}
-                            </TableCell>
-                            <TableCell align="center">{new Date(falta["fecha"]).toLocaleDateString()}</TableCell>
-                            <TableCell align="center">{falta["justificante"]}</TableCell>
-                            <TableCell padding='none'>
-                                <IconButton onClick={handleOpenDelete}>
-                                    <DeleteIcon />
-                                </IconButton>
-                                <BorrarFaltaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={falta['id']}></BorrarFaltaModal>
-                            </TableCell>
-                        </TableRow>
+                        <FilaFalta key={falta["id"]} falta={falta}></FilaFalta>
                     ))}
                 </TableBody>
             </Table>

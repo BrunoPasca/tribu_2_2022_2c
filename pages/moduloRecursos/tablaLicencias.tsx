@@ -12,6 +12,7 @@ import BorrarFaltaModal from './borrarFaltaModal';
 import BorrarGuardiaModal from './borrarGuardiaModal';
 import { useInterval } from '../../components/soporte/utils';
 import BorrarLicenciaModal from './borrarLicenciaModal';
+import FilaLicencia from './filas/filaLicencia';
 
 export default function MuiTable(props: any) {
     // Pop up para editar las horas de una tarea
@@ -115,25 +116,7 @@ export default function MuiTable(props: any) {
                     {licencias
                         .filter(licencias => licencias["legajo_empleado"] == legajo && DateBetweenTwoDates(inicio, fin, licencias["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, licencias["fecha_fin"]))
                         .map((licencias) => (
-                            <TableRow
-                                key={licencias["id"]}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell align="center" component="th" scope="row">
-                                    {licencias["id"]}
-                                </TableCell>
-                                <TableCell align="center">{licencias["tipo_licencia"]}</TableCell>
-                                <TableCell align="center">{licencias["descripcion"]}</TableCell>
-                                <TableCell align="center">{new Date(licencias["fecha_inicio"]).toLocaleDateString()}</TableCell>
-                                <TableCell align="center">{new Date(licencias["fecha_fin"]).toLocaleDateString()}</TableCell>
-                                <TableCell align="center">{licencias["goce_sueldo"] ? "Sí" : "No"}</TableCell>
-                                <TableCell padding="none">
-                                    <IconButton onClick={handleOpenDelete}>
-                                        <DeleteIcon />
-                                    </IconButton>
-                                    <BorrarLicenciaModal isOpen={openDelete} setOpen={setOpenDelete} idReporte={licencias["id"]}></BorrarLicenciaModal>
-                                </TableCell>
-                            </TableRow>
+                            <FilaLicencia key={licencias["id"]} licencia={licencias}></FilaLicencia>
                         ))}
                 </TableBody>
             </Table>
