@@ -87,9 +87,8 @@ export default function ProyectoView() {
             </div>
 
             <div className={styles.botonesView}>
-                <a href = {"/moduloProyectos/eliminarProyecto/"+ id} ><button>Eliminar</button> </a>
+                <a href = {"/moduloProyectos/eliminarProyecto/"+ id}><button>Eliminar</button> </a>
                 <a href={'/moduloProyectos/editProject/' + id}><button>Editar</button></a>
-                <a href="/moduloProyectos/tareas"><button>Ver tareas</button></a>
             </div>
 
         </div>

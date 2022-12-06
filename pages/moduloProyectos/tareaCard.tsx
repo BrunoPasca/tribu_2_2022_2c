@@ -5,7 +5,7 @@ export default function tareaCard({id_proyecto,id_tarea, desc, estado, fechaEstF
     return(
         <a href={"/moduloProyectos/tareaView/"+id_tarea}>
         <div className={styles.proyectoCard}>
-            <div className={styles.tituloCard}>Id tarea:{id_tarea} - Proyecto:{id_proyecto}</div>
+            <div className={styles.tituloCard}>{id_tarea} - {id_proyecto}</div>
             <div className={styles.textoCard}>{desc}</div>
             <div className={styles.textoCard}>{estado}</div>
         </div>
