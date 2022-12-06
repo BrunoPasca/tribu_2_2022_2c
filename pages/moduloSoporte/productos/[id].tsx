@@ -1,16 +1,18 @@
 import Head_ from "../../head";
 import Header from "../../header";
 import { useRouter } from 'next/router'
-import styles from '../../../styles/ticket.module.css'
+import styles from '../../../styles/versiones.module.css'
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ProductProperties, ProdVerProperties, VersionProperties } from "../../../components/soporte/types";
+import VersionCard from "../versionCard";
+import HeaderSoporte from "../../headerSoporte";
 
 export default function TicketView() {
     
     const router = useRouter();
     const {id} = router.query;
-
+    var cambioDeEstado;
 
 
     const [producto, setProducto]: [any ,any] = useState(0)
@@ -21,9 +23,17 @@ export default function TicketView() {
 
         .then((res) => res.json())
         .then((data) => {
+        
           setProducto(data)        
         })
     }, [])
+
+    if(producto?.activo == 1){
+        cambioDeEstado = "Deprecar"
+    }
+    else{
+        cambioDeEstado = "Activar"
+    }
 
 
 
@@ -48,7 +58,7 @@ export default function TicketView() {
         })
     }, [])
 
-    
+
     
   
 
@@ -57,7 +67,7 @@ export default function TicketView() {
         <>
         <Head_ nombre='Detalle producto'></Head_>
 
-        <Header></Header>
+        <HeaderSoporte></HeaderSoporte>
 
         <div className={styles.ticketView}>
         
@@ -66,32 +76,29 @@ export default function TicketView() {
                 
                 
                 <div>Fecha de lanzamiento: {producto?.fecha_lanzamiento}</div>
-   
-
-                <h3>Versiones</h3>
-
-                <div>
-                    {(prover).filter(i => i.producto_id == Number(id)).map((a) => (
-                        <div key={a.id}>
-                            {versiones.find(element => element.id == a.version_id)?.nombre}
-                        </div>
-                    ))}
-                </div>
-
     
 
             <div className={styles.botonesView}>
 
                 <Link href={"/moduloSoporte/versionCreate/" + id}><button>Agregar version</button></Link>
 
-                <Link href={"/moduloSoporte/soporte"}><button>Eliminar</button></Link>
-
             </div>  
 
             </div>
 
 
+            <div>
+                {(prover).filter(i => i.producto_id == Number(id)).map((a) => (
+                    <div key={a.id}>
+                        <VersionCard titulo={versiones.find(element => element.id == a.version_id)?.nombre}
+                        id={versiones.find(element => element.id == a.version_id)?.id}
+                        fecha_lanzamiento={versiones.find(element => element.id == a.version_id)?.fecha_lanzamiento.slice(0,10)}
+                        activo={versiones.find(element => element.id == a.version_id)?.activo} 
+                        id_version={0}></VersionCard>
                         
+                    </div>
+                ))}
+            </div>
         
 
         </div>

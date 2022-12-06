@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { Falta } from '../../../../components/recursos/types';
 import Header from '../../../header';
 import { useRouter } from 'next/router';
+import styles from "../../../../styles/recursos.module.css"
 
 
 export default function TablaAllFaltas(props: any) {
@@ -19,53 +20,25 @@ export default function TablaAllFaltas(props: any) {
     const router = useRouter();
     const { id } = router.query;
 
-
-
-    const [faltas, setFaltas] = React.useState([])
+    const [faltas, setFaltas] = React.useState<any[]>([])
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/faltas/" + id)
+        fetch("https://aninfo2c222back-production.up.railway.app/api/faltas/empleado/" + id)
 
+            .then(response => {
+                if (response.status === 404) {
+                    throw new Error("Error al recuperar las horas.")
+                }
+                return response
+            })
             .then((res) => res.json())
             .then((data) => {
                 setFaltas(data)
             })
+            .catch(error => console.log(error))
     }, [])
 
-
-    /* HAY QUE USAR UN ENDPOINT */
-    const faltas_test = [
-        // Formato fecha dd/MM/yyyy
-        {
-            id: "1",
-            legajo_empleado: "2",
-            fecha: "6/12/2022",
-            justificante: "tenia covid"
-        },
-        {
-            id: "2",
-            legajo_empleado: "3",
-            fecha: "9/12/2022",
-            justificante: "habia un piquete"
-        }
-    ]
-
-    const [rows, setRows] = useState(faltas_test);
-    const [searched, setSearched] = useState<string>("");
-
-    const requestSearch = (searchedVal: string) => {
-        const filteredRows = faltas_test.filter((row: any) => {
-            return (row.fecha).includes(searchedVal.toLowerCase());
-        });
-        setRows(filteredRows);
-    };
-
-    const cancelSearch = () => {
-        setSearched("");
-        requestSearch(searched);
-    };
-
     return (
-        <div>
+        <div className={styles.container}>
             <Header></Header>
             <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
                 <Typography
@@ -77,6 +50,7 @@ export default function TablaAllFaltas(props: any) {
                     fontSize={30}
                 >
                     Faltas
+                    <Link href={"../guardias/" + id}><p>→</p></Link>
                 </Typography>
                 {/* 
             <SearchBar
@@ -91,18 +65,16 @@ export default function TablaAllFaltas(props: any) {
                             <TableCell align="center">ID</TableCell>
                             <TableCell align="center">Fecha</TableCell>
                             <TableCell align="center">Justificante</TableCell>
-                            <TableCell align="center"></TableCell>
-                            <TableCell align="center"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((reporte) => (
+                        {faltas.map(reporte => (
                             <TableRow
                                 key={reporte.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell align="center">{reporte.id}</TableCell>
-                                <TableCell align="center">{reporte.fecha}</TableCell>
+                                <TableCell align="center">{new Date(reporte.fecha).toLocaleDateString()}</TableCell>
                                 <TableCell align="center">{reporte.justificante}</TableCell>
                             </TableRow>
                         ))}

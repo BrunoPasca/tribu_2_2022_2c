@@ -5,8 +5,9 @@ import Head_ from '../head';
 
 import Link from 'next/link';
 import productCard from './productCard';
-import { ProductProperties } from '../../components/soporte/types';
+import { ClientesProperties, ProductProperties } from '../../components/soporte/types';
 import { useEffect, useState } from 'react';
+import ClienteCard from './clienteCard';
 import HeaderSoporte from '../headerSoporte';
 
 
@@ -14,13 +15,14 @@ import HeaderSoporte from '../headerSoporte';
 export default function Productos() {
 
 
-    const [productos, setProductos]: [Array<ProductProperties>, any] = useState([])
+    const [clientes, setClientes]: [Array<ClientesProperties>, any] = useState([])
 
     useEffect(() => {
-      fetch("https://aninfo2c222back-production.up.railway.app/api/productos")
+      fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/clientes-psa/1.0.0/m/api/clientes")
         .then((res) => res.json())
         .then((data) => {
-          setProductos(data)
+          setClientes(data)
+          console.log(data)
         })
     }, [])
   
@@ -36,15 +38,6 @@ export default function Productos() {
             <h1>Soporte</h1>
 
           </div>
-
-          <div>
-
-          <div className={styles.contenedorBoton}>
-            <a href='/moduloSoporte/productoCreate'><button>CREAR PRODUCTO</button></a>
-          </div>
-
-          </div>
-
           <div className={styles.navbarDer}> 
 
           </div>
@@ -52,16 +45,14 @@ export default function Productos() {
 
                 
         <div className={styles.productos}>
-            {(productos).map((producto) => (
-                <div key={producto.id}>
+            {(clientes).map((cliente) => (
+                <div key={cliente.id}>
                     
-                    <ProductCard titulo={producto.nombre} id={producto.id}
-                        fecha_lanzamiento={producto.fecha_lanzamiento?.slice(0, 10)} 
-                        activo={producto.activo} id_version={producto.id_version}></ProductCard>
+                    <Link href={"clientes/" + cliente.id}><ClienteCard id={cliente.id} razon_social={cliente['razon social']} CUIT={cliente.CUIT} ></ClienteCard></Link>
+                
+
                 </div>
             ))}
-
-
 
 
   

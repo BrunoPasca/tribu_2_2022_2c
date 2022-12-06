@@ -2,58 +2,105 @@ import styles from '../../../styles/proyectos.module.css'
 import Head_ from '../../head'
 import Header from '../../header'
 import { useRouter } from 'next/router'
-import ColumnaTarea from '../columnaTareas';
+import { useEffect, useState } from 'react';
 
 /*puesto aca solo para tener bien las rutas. El proyecto deberia tener un id*/
 /*var id_proyecto = 1;*/
 
+
+interface ProyectosProperties{
+    id: number,
+    nombre:string ,
+    fecha_inicio:string,
+    fecha_fin_estimado:string,
+    estado:string,
+    horas_reales:number,
+    descripción:string,
+    project_manager:string,
+    id_cliente:number,
+  }
+  
+
+
 export default function ProyectoView() {
+
+    const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
+
+    useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
+          .then((res) => res.json())
+          .then((data) => {
+            setProyectos(data)
+    
+          })
+      }, [])
+
 
     const router = useRouter();
     const {id} = router.query;
 
+    const target_proyect = proyectos.filter(proyect => {
+        return proyect.id === Number(id);
+    } );
     return (
 
     <>
     <Head_ nombre='Proyecto'></Head_>
 
-    <Header></Header>
-      
-    <div className={styles.proyectoView}>
-        <h1 className={styles.tituloEdit}>PROYECTO 'NOMBRE'</h1>
-        <h3 className={styles.subtituloEdit}>{id}</h3>
-        <div className={styles.descripcionText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies vitae nisl eget aliquam. Suspendisse nibh lacus, ultricies ac felis ac, hendrerit sollicitudin massa. Ut eget molestie eros, dapibus condimentum leo. Suspendisse non lorem tortor.</div>
-        <div className={styles.contenedorPadre}>
-            <div className={styles.contenedorInfo}>
+        <Header></Header>
+        
+        <div className={styles.proyectoView}>
+            <h1 className={styles.tituloEdit}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.nombre} </div>))}</h1>
+            <div className={styles.subtituloEdit}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.id} </div>))}</div>
+            <div className={styles.descripcionText}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.descripción} </div>))}</div>
+            <div className={styles.contenedorPadre}>
+                <div className={styles.contenedorInfo}>
 
-                <div>
-                    <h3 className={styles.tituloInfo}>Fecha de inicio</h3>
-                    <h2 className={styles.info}>01/01/2022</h2>
-                    <h3 className={styles.tituloInfo}>Fecha estimada de fin</h3>
-                    <h2 className={styles.info}>01/01/2022</h2>
-                </div>
-                <div>
-                    <h3 className={styles.tituloInfo}>Estado</h3>
-                    <h2 className={styles.info}>Pendiente</h2>
-                    <h3 className={styles.tituloInfo}>Horas reales</h3>
-                    <h2 className={styles.info}>1000</h2>  
-                </div>
-                <div>
-                    <h3 className={styles.tituloInfo}>Project Manager (PM)</h3>
-                    <h2 className={styles.info}>Juan Perez</h2>
-                    <h3 className={styles.tituloInfo}>ID cliente</h3>
-                    <h2 className={styles.info}>57</h2>
+                    <div>
+                        <h3 className={styles.tituloInfo}>Fecha de inicio</h3>
+                        <h2 className={styles.info}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.fecha_inicio} </div>))}</h2>
+                        <h3 className={styles.tituloInfo}>Fecha estimada de fin</h3>
+                        <h2 className={styles.info}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.fecha_fin_estimado} </div>))}</h2>
+                    </div>
+                    <div>
+                        <h3 className={styles.tituloInfo}>Estado</h3>
+                        <h2 className={styles.info}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.estado} </div>))}</h2>
+                        <h3 className={styles.tituloInfo}>Horas reales</h3>
+                        <h2 className={styles.info}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.horas_reales} </div>))}</h2>  
+                    </div>
+                    <div>
+                        <h3 className={styles.tituloInfo}>Project Manager (PM)</h3>
+                        <h2 className={styles.info}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.project_manager} </div>))}</h2>
+                        <h3 className={styles.tituloInfo}>ID cliente</h3>
+                        <h2 className={styles.info}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.id_cliente} </div>))}</h2>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div className={styles.botonesView}>
-            <a href = {"/moduloProyectos/eliminarProyecto/"+ id} ><button>Eliminar</button> </a>
-            <a href={'/moduloProyectos/editProject/' + id}><button>Editar</button></a>
-            <a href="/moduloProyectos/tareas"><button>Ver tareas</button></a>
-        </div>
+            <div className={styles.botonesView}>
+                <a href = {"/moduloProyectos/eliminarProyecto/"+ id} ><button>Eliminar</button> </a>
+                <a href={'/moduloProyectos/editProject/' + id}><button>Editar</button></a>
+                <a href="/moduloProyectos/tareas"><button>Ver tareas</button></a>
+            </div>
 
-    </div>
-    </>
-)
+        </div>
+        </>
+   
+   
+   )
   }
+/*
+  <div>{id}</div>
+  <div>En desarrollo</div>
+  <div>XX/XX/XXXX</div>
+  <div>XX/XX/XXXX</div>
+  <div>0</div>*/

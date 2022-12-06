@@ -1,11 +1,12 @@
 import styles from '../../styles/ticket.module.css'
 import Head_ from '../head'
 import Header from '../header'
-import { ClientesProperties, EmpleadoProperties, RecursosProperties, TicketProperties } from '../../components/soporte/types';
+import { ClientesProperties, ClientesYProductosProperties, EmpleadoProperties, ProductProperties, RecursosProperties, TicketProperties } from '../../components/soporte/types';
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useNavigate } from 'react-router-dom';
+import HeaderSoporte from '../headerSoporte';
 
 
 
@@ -29,6 +30,29 @@ export default function TicketCreate() {
                   .then((data) => {
                         setEmpleados(data)
                   })
+      }, [])
+
+
+      const [cliente, setCliente]: [any, any]= useState()
+
+      const [clientesYProductos, setClientesYProductos]: [Array<ClientesYProductosProperties>, any] = useState([])
+
+      useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/cliente_prod")
+          .then((res) => res.json())
+          .then((data) => {
+            setClientesYProductos(data)
+          })
+      }, [])
+
+      const [productos, setProductos]: [Array<ProductProperties>, any] = useState([])
+
+      useEffect(() => {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/productos")
+          .then((res) => res.json())
+          .then((data) => {
+            setProductos(data)
+          })
       }, [])
 
 
@@ -56,7 +80,7 @@ export default function TicketCreate() {
                   <Head_ nombre='Crear Ticket'></Head_>
 
 
-                  <Header></Header>
+                  <HeaderSoporte></HeaderSoporte>
 
                   <div className={styles.camposForm}>
                         <h1>Nuevo Ticket</h1>
@@ -96,9 +120,9 @@ export default function TicketCreate() {
 
                         <label htmlFor="id_cliente">Cliente</label>
 
-                        <select {...register("id_cliente")}>
+                        <select {...register("id_cliente")} onChange={e => setCliente(e.target.value)}>
                               {clientes.map((cliente) => (
-                                    <option id="id_cliente" value={Number(cliente.id)} key={cliente.id}>CUIT: {cliente.CUIT} - ID: {cliente.id}</option>
+                                    <option id="id_cliente" value={Number(cliente.id)} key={cliente.id}>{cliente['razon social']} - CUIT: {cliente.CUIT} - ID: {cliente.id}</option>
                               ))}
                         </select>
 
@@ -117,10 +141,12 @@ export default function TicketCreate() {
 
                         <label htmlFor="id_producto">Producto</label>
                         <select {...register("id_producto")}>
-                              <option id="id_producto" value={1}>Producto 1</option>
-                              <option id="id_producto" value={2}>Producto 2</option>
-                              <option id="id_producto" value={3}>Producto 3</option>
-                              <option id="id_producto" value={4}>Producto 4</option>
+                              {(clientesYProductos).filter(i => i.id_cliente == cliente).map((a) => (
+                                    <option key={a.id_producto} value={a.id_producto}>
+                                          {productos.find(element => element.id == a.id_producto)?.nombre} - Version: {productos.find(element => element.id == a.id_producto)?.id_version}
+                                                
+                                    </option>
+                              ))}
                         </select>
                         <br></br>
 

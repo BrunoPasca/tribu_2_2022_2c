@@ -45,7 +45,11 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
 
 
     async function handleClickCargar(){
-        const licenciaDatos = {legajo: legajo, fecha_inicio : startDate, fecha_fin : endDate, tipo_licencia:tipo, goce_sueldo:goceSueldo}
+        // formato aceptado por SQL
+        const _fecha_inicio = new Date(startDate).toISOString().slice(0, 19).replace('T', ' ');
+        const _fecha_fin = new Date(endDate).toISOString().slice(0, 19).replace('T', ' ');
+
+        const licenciaDatos = {legajo_empleado: legajo, fecha_inicio : _fecha_inicio, fecha_fin : _fecha_fin, tipo_licencia:tipo, goce_sueldo:1, descripcion:descripcion}
 
         const areNotEmpty = Object.values(licenciaDatos).every(
             value => value != ""
@@ -64,8 +68,12 @@ export default function CargarLicencia({ screenSetter }: { screenSetter: any }) 
             'Content-Type': 'application/json'
         },
         })
+        .then(response => {
+            if (response.status === 500) throw new Error("Error al cargar licencia")
+            return response
+        })
         .then(response => alert("Se creó correctamente"))
-        .catch(error => alert(error))
+        .catch(error => console.log(error))
     }
 
     return (

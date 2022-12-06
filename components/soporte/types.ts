@@ -23,7 +23,7 @@ export interface RecursosProperties {
 
 export interface ClientesProperties {
     id: number;
-    razon_social: string;
+    'razon social': string;
     CUIT: string;
 }
 
@@ -35,17 +35,13 @@ export interface EmpleadoProperties {
     antiguedad: number,
 }
 
-export interface RecursosProperties{
-    legajo:number,
-    Nombre:string,
-    Apellido:string
-}
 
 export interface ProductProperties {
     id: number,
     id_version: number,
     fecha_lanzamiento: string,
     nombre: string,
+    activo:number,
 }
 
 export interface ProdVerProperties {
@@ -59,6 +55,7 @@ export interface VersionProperties {
     id: number,
     fecha_lanzamiento: string,
     nombre: string,
+    activo:number,
 }
 
 // Hecho para que compile el build puede estar mal
@@ -67,4 +64,39 @@ export interface FormProductVersionProperties {
     fecha_lanzamiento_version: string,
     nombre: string,
     fecha_lanzamiento: string,
+}
+
+export interface TareaPropeties{
+    id:number,
+    id_proyecto: number,
+    estado:string,
+    descripcion:string,
+    horas_estimadas:number
+    horas_reales:number,
+    fecha_inicio: string,
+    fecha_fin: string,
+    prioridad: string,
+    id_ticket: number,
+    legajo_recurso: number
+
+}
+
+export interface ProyectoProperties{
+    id:number,
+    nombre: string,
+    fecha_inicio: string,
+    fecha_fin: string,
+    estado: string,
+    prioridad: string,
+    costo_acumulado: number,
+    horas_estimadas: number,
+    horas_reales: number
+}
+
+export interface ClientesYProductosProperties{
+    id:number,
+    id_cliente: number,
+    id_version: number,
+    id_producto:number,
+
 }

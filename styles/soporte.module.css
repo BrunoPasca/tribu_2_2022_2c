@@ -1,6 +1,8 @@
 /*------------PAGINA DE SOPORTE----------------*/
 
 .container {
+
+  height: 100vh;
   background-color: #EEF4ED;
   font-family: 'Roboto', sans-serif;
 

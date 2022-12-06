@@ -5,6 +5,7 @@ import { ClientesProperties, EmpleadoProperties, ProductProperties, TicketProper
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
+import HeaderSoporte from '../../headerSoporte';
 
 
 
@@ -25,10 +26,10 @@ const {id} = router.query;
   }, [])
 
 
-  const { register, handleSubmit } = useForm<ProductProperties>()
+  const { register, handleSubmit } = useForm<VersionProperties>()
 
   const onSubmit = handleSubmit((data) => {
-    console.log(JSON.stringify(data))
+    data.activo = 1
     fetch("https://aninfo2c222back-production.up.railway.app/api/versions", {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
@@ -39,10 +40,14 @@ const {id} = router.query;
 
     const IdNuevaVersion = versiones[versiones.length - 1].id + 1
 
+
     const dataProdVersions = {
       producto_id: Number(id),
       version_id: IdNuevaVersion,
+      activo:1,
     }
+
+    console.log(dataProdVersions)
 
     fetch("https://aninfo2c222back-production.up.railway.app/api/prodversions", {
       method: 'POST', // or 'PUT'
@@ -65,7 +70,7 @@ const {id} = router.query;
       <Head_ nombre='Crear Version'></Head_>
 
 
-      <Header></Header>
+      <HeaderSoporte></HeaderSoporte>
 
       <div className={styles.camposForm}>
         <h1>Nueva version</h1>

@@ -1,6 +1,6 @@
 import styles from '../../styles/proyectos.module.css'
 
-export default function proyectoCard({nombre, id, cliente, estado, fechaInicio, pm}: {nombre:string, id: number, cliente: string, estado: string, fechaInicio: string, pm: string}) {
+export default function proyectoCard({nombre, id, id_cliente, estado, fechaInicio, pm}: {nombre:string, id: number, id_cliente: number, estado: string, fechaInicio: string, pm: string}) {
 
     return(
         <a href={"/moduloProyectos/projectView/" + id}>

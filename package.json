@@ -28,6 +28,7 @@
     "react-floating-button": "^1.1.1",
     "react-hook-form": "^7.40.0",
     "react-router-dom": "^6.4.4",
+    "react-select": "^5.7.0",
     "typescript": "4.9.3"
   },
   "devDependencies": {

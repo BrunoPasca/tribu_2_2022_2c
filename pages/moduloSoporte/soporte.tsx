@@ -9,6 +9,7 @@ import TicketData from './TicketsData.json'
 import SearchBarSeveridad from './searchBars/searchBarSeveridad';
 import SearchBarLegajoCliente from './searchBars/searchBarLegajoCliente';
 import Link from 'next/link';
+import HeaderSoporte from '../headerSoporte';
 
 
 
@@ -18,23 +19,23 @@ export default function Soporte() {
 
        <Head_ nombre='Soporte'></Head_>
       
-        <Header></Header>
+        <HeaderSoporte></HeaderSoporte>
 
         <div className={styles.navbar}>
           <div className={styles.navbarIzq}> 
             <h1>Soporte</h1>
-            <Link href={"productos"}><button>Productos y Versiones</button></Link>
           </div>
-          <div className={styles.navbarDer}> 
+
+          <div>
+            <div className={styles.contenedorBoton}>
+              <a href='/moduloSoporte/ticketCreate'><button>CREAR TICKET</button></a>
+            </div>
+          </div>
           
-            <SearchBarResponsable placeholder='Ingrese id de resposable'data={TicketData} ></SearchBarResponsable>
-
-            <SearchBar placeholder="Ingrese un Titulo" data={TicketData}/>
-            
-            <SearchBarLegajoCliente placeholder="Ingrese un id de cliente" data={TicketData}/>
-
-            <SearchBarSeveridad placeholder='Ingrese una severidad' data={TicketData}></SearchBarSeveridad>
-
+          <div className={styles.navbarDer}> 
+          <div className={styles.contenedorBoton}>
+            <Link href={"/moduloSoporte/searchTickets"}><button>Busqueda de Tickets</button></Link>
+            </div>
 
           </div>
         </div>
@@ -71,9 +72,7 @@ export default function Soporte() {
      
 
 
-            <div className={styles.contenedorBoton}>
-            <a href='/moduloSoporte/ticketCreate'><button>CREAR TICKET</button></a>
-            </div>
+
   
   
       </div>
