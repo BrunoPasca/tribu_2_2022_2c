@@ -35,10 +35,6 @@ export default function crearProyecto() {
 
   const onSubmit = handleSubmit((data) =>{
     console.log(JSON.stringify(data))
-    /*data.prioridad = "HOLA"
-    data.costo_acumulado = 0;
-    data.horas_reales = 0;
-    data.horas_estimadas= 40;*/
     fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos", {
           method: 'POST', // or 'PUT'
           body: JSON.stringify(data), // data can be `string` or {object}!
@@ -48,7 +44,10 @@ export default function crearProyecto() {
         })
     alert("El proyecto se creo correctamente")
 })
-/*hasta aca el intento de conectar con el back, despues sigue en el form*/
+
+
+
+
   return(
     
     <>

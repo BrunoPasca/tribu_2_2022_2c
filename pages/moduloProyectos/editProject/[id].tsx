@@ -4,6 +4,22 @@ import styles from '../../../styles/proyectos.module.css'
 import sup_styles from '../../../styles/soporte.module.css'
 import { useRouter } from 'next/router'
 import { createSemanticDiagnosticsBuilderProgram } from 'typescript'
+import { useEffect, useState } from "react";
+import { useForm } from 'react-hook-form';
+
+
+
+interface ProyectosProperties{
+  id: number,
+  nombre:string ,
+  fecha_inicio:string,
+  fecha_fin_estimado:string,
+  estado:string,
+  horas_reales:number,
+  descripción:string,
+  project_manager:string,
+  id_cliente:number,
+}
 
 
 
@@ -12,69 +28,33 @@ export default function proyectoEdit(this: any) {
   const router = useRouter();
   const { id } = router.query;
 
-  const array_proyectos = [
-    {
-      nombre: "unNombre",
-      id: 1,
-      estado: "unEstado",
-      cliente: "nombreCliente",
-      tipoCliente: "tipoCliente",
-      fechaInicio: "dd-mm-yyyy",
-      fechaEstimadaFin: "dd-mm-yyyy",
-      pm: "Pm"
-    }
-    ,
-    {
-      nombre: "unNombre",
-      id: 2,
-      estado: "unEstado",
-      cliente: "nombreCliente",
-      tipoCliente: "tipoCliente",
-      fechaInicio: "dd-mm-yyyy",
-      fechaEstimadaFin: "dd-mm-yyyy",
-      pm: "Pm"
-    }
-    ,
-    {
-      nombre: "unNombre",
-      id: 3,
-      estado: "unEstado",
-      cliente: "nombreCliente",
-      tipoCliente: "tipoCliente",
-      fechaInicio: "dd-mm-yyyy",
-      fechaEstimadaFin: "dd-mm-yyyy",
-      pm: "Pm"
-    }
-  ]
 
-  const proyecto = {
-    nombre: "unNombre",
-    id: 1,
-    estado: "unEstado",
-    cliente: "nombreCliente",
-    tipoCliente: "tipoCliente",
-    fechaInicio: "dd-mm-yyyy",
-    fechaEstimadaFin: "dd-mm-yyyy",
-    pm: "Pm"
-  }
+  const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
 
-  const target_proyecto = array_proyectos.find(t => t.id == Number(id));
-  /*proteccion por si llegan a tratar de acceder a un proyecto indefinido*/
-  if (target_proyecto == undefined) {
-    return (
-      <>
-        <Head_ nombre='Invalid page'></Head_>
-        <Header></Header>
-        <div>
-          La pagina a la que se quiere acceder no existe
-        </div>
-        <a href="/moduloProyectos/proyectos">
-          <button>Regresar a proyectos </button>
-        </a>
-      </>
+  useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
+      .then((res) => res.json())
+      .then((data) => {
+        setProyectos(data)
+      })
+  }, [])
 
-    )
-  }
+  
+
+  const {register, handleSubmit} = useForm<ProyectosProperties>()
+
+
+  const onSubmit = handleSubmit((data) =>{
+    console.log(JSON.stringify(data))
+    fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos/" +id , {
+          method: 'PUT', // or 'PUT'
+          body: JSON.stringify(data), // data can be `string` or {object}!
+          headers:{
+            'Content-Type': 'application/json'
+          }
+        })
+    alert("El proyecto se edito correctamente")
+})
 
   return (
     <>
@@ -85,68 +65,75 @@ export default function proyectoEdit(this: any) {
       <div className={styles.proyectoView}>
         <h1 className={styles.tituloEdit}>Editar proyecto {id}</h1>
         <div className={styles.contenedorPadre}>
-          <div className={styles.infoProyecto}>
-            <div className={styles.tituloInfo}>
-              <div>Id</div>
-              <div>Nombre</div>
-              <div>Fecha de inicio real</div>
-              <div>Fecha de fin real</div>
-              <div>Estado</div>
+        <form onSubmit = {onSubmit}>
+          <div className = {styles.camposForm}>
+            <div>
+              <label htmlFor="fname">Nombre proyecto </label>
+              <br/>
+              <input type="text"  {...register("nombre")} placeholder="Nombre de proyecto" size={50} >
+              </input>
             </div>
-            <div className={styles.info}>
-              <div>{id}</div>
-              <div>
-                <input type="text" id="pmid" placeholder="PM" size={50}></input>
-              </div>
-              <div>
-                <input type="date" id="fechainitid"></input>
-              </div>
-              <div>
-                <input type="date" id="fechafineid"></input>
-              </div>
-              <div>
-                <select id="estadoProyecto">
-                  <option disabled selected> {proyecto.estado}</option>
-                  <option value="Desarrollo"> Desarrollo </option>
-                  <option value="Produccion"> Producción</option>
-                  <option value="PostProduccion">Post Producción </option>
-                </select>
-              </div>
-            </div>
-          </div>
 
-          <div className={styles.infoProyecto}>
-            <div className={styles.tituloInfo}>
-              <div>Prioridad</div>
-              <div>Costo acumulado</div>
-              <div>Horas estimadas</div>
-              <div>Horas reales</div>
+            <br />
+            <div>
+
+            <div>
+              <label htmlFor = "Descripción"> Descripción</label>
+              <input type = "text" id = "Descripción" {...register("descripción")} size = {20}>
+              </input>
+            </div> 
+
+              <br/>
+              <label htmlFor = "EstadoProyecto">Estado: </label>
+              <select id = "EstadoProyecto" {...register("estado")}>
+                  <option value = "Estado" disabled>Estado</option>
+                  <option value = "Pendiente">Pendiente</option>
+                  <option value = "En curso">En curso</option>
+                  <option value = "Finalizado">Finalizado</option>
+                  <option value = "Cancelado">Cancelado</option>
+              </select>
+              
             </div>
-            <div className={styles.info}>
-              <div>
-                <select id="prioridadProyecto">
-                  <option disabled selected> {proyecto.estado}</option>
-                  <option value="Baja">Baja</option>
-                  <option value="Media">Media</option>
-                  <option value="Alta">Alta</option>
-                </select>
-              </div>
-              <div>
-                <input type="text" id="costo" placeholder="Costo acumulado" size={50}></input>
-              </div>
-              <div>
-                <input type="number" id="horasEstimadas" min="0"></input>
-              </div>
-              <div>
-                <input type="number" id="horasTotales" min="0"></input>
-              </div>
+            <br />
+           
+
+            <br />
+
+            <div>
+              <label htmlFor = "ClientId">
+                Id cliente: 
+              </label>
+              <input type= "number" id = "ClientId" {...register("id_cliente")}></input>
+            </div>
+            <div>
+              <label htmlFor = "ProjectManager"> Project Manager id: </label> 
+              <input type = "text" id = "ProjectManager" {...register("project_manager")}></input> 
+            </div>
+            <div>
+              <label htmlFor = "FechaDeInicio"> Fecha de inicio </label>
+              <br/>
+              <input type = "date" id = "FechaDeInicio" {...register("fecha_inicio")}  size={50}>
+              </input>
+            </div>
+            <br />
+            <div>
+              <label htmlFor = "FechaDeFin"> Fecha estimada de fin </label>
+              <br/>
+                <input type = "date" id = "FechaDeFin" {...register("fecha_fin_estimado")} >
+                </input>
+            </div>
+            <br />
+            
+            <div className={styles.botonesView}>
+              <button type="reset">Cancelar</button>
+              <button type = "submit">Guardar</button>
             </div>
           </div>
+              
+          </form>
+          
         </div>
-        <div className={styles.botonesView}>
-          <a href="/moduloProyectos/proyectos"><button>Cancelar</button></a>
-          <button form="form_id" onClick={() => { console.log("prueba") /*</div>button_press*/ }}>Agregar</button>
-        </div>
+
       </div>
     </>
   )
@@ -154,19 +141,3 @@ export default function proyectoEdit(this: any) {
 
 
 
-
-/*
-function button_press() {
-  alert("Back end tiene que hacer algo ");
-  var estado_proyecto = document.getElementById('estadoProyecto').value;
-  var nombre_ciente = document.getElementById('nombreid').value;
-  var pm = document.getElementById('pmid').value;
-  var cuit = document.getElementById('cuit').value;
-  var fecha_inicio_real = document.getElementById('fechainitid').value;
-  var fecha_fin_estimada = document.getElementById('fechafinid').value;
-  var tipo_cliente = document.getElementById('tipocliente').value;
-  var horas_insumidas = document.getElementById('horasinsumidas').value;
-  var proyectoSoporte = document.getElementById('proyectoSoporteId').value;
-  return true;
-}
-var function_button = button_press;*/
