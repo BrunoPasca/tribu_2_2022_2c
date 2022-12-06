@@ -102,7 +102,7 @@ export default function TicketEdit() {
                         <h1>{ticket?.id} - {ticket?.titulo}</h1>
 
                         <label htmlFor="last">Descripcion</label>
-                        <input type="text" {...register("descripcion")} required placeholder='Escribe una nueva descripccion' />
+                        <input type="text" {...register("descripcion")} required placeholder='Escribe una nueva descripccion'/>
                         <br></br>
 
                         <label htmlFor="last">Responsable</label>

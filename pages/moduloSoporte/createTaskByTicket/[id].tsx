@@ -41,11 +41,11 @@ useEffect(() => {
 
   const onSubmit = handleSubmit((data) => {
 
-    data.estado = "Activo"
+    data.estado = "Abierta"
     data.horas_estimadas = 0
     data.horas_reales = 0
     data.fecha_inicio =  ticket.fecha_emision.slice(0,10)
-
+    data.id_ticket = Number(id)
 
     data.fecha_fin = ticket.fecha_resolucion.slice(0,10)
     data.prioridad = ticket.severidad

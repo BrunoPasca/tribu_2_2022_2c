@@ -54,7 +54,7 @@ export default function TareaView() {
             </h1>))}
         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
             <h3 className={styles.subtituloEdit}>
-                Proyecto:  {tarea?.id_proyecto}
+                Proyecto  {tarea?.id_proyecto}
             </h3>))}
             <div>
         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
