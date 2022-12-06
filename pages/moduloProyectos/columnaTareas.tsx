@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 
 interface TareasProperties{
-  id: number,
-  id_proyecto: number,
-  legajo_recurso: number,
+  id: Number,
+  id_proyecto: Number,
+  legajo_recurso: Number,
   estado: string,
   prioridad: string ,
   descripcion: string,
-  horas_estimadas: number,
-  horas_reales: number,
+  horas_estimadas: Number,
+  horas_reales: Number,
   fecha_inicio: string,
   fecha_fin: string,
 }
