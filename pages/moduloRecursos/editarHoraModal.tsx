@@ -64,10 +64,7 @@ export default function EditarHoraModal(props: any) {
             <br></br>
             Fecha: {props.fecha}
           </Typography>
-          <div style={{display:"flex", justifyContent:"center", padding:"2rem"}}>
-            <label style={{marginRight:"1rem"}}>ID Tarea:</label>
-            <input value={cantHoras} onChange={(e) => setCantHoras(e.target.value)}></input>
-          </div>
+          
           <div style={{display:"flex", justifyContent:"center", padding:"2rem"}}>
             <label style={{marginRight:"1rem"}}>Horas:</label>
             <input value={cantHoras} onChange={(e) => setCantHoras(e.target.value)}></input>
