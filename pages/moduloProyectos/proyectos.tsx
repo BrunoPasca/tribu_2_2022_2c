@@ -32,7 +32,7 @@ interface ProyectosProperties{
 
 
 export default function Soporte() {
-
+{/*
   const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
 
 
@@ -44,6 +44,9 @@ export default function Soporte() {
 
       })
   }, [])
+*/}
+
+
 
     return(<div className={styles.container}>
 
@@ -62,11 +65,11 @@ export default function Soporte() {
         </div>
 
         <div className={styles.grilla}>
-          {(proyectos).map((proyecto) => ( 
             <div key={proyecto.id}>
-              <ProyectoCard nombre={proyecto.nombre} id={proyecto.id} cliente={""} estado={proyecto.estado} fechaInicio={proyecto.fecha_inicio} pm={""}></ProyectoCard>
+              <ProyectoCard nombre={proyecto.nombre} id={proyecto.id} cliente={""} estado={proyecto.estado} fechaInicio={proyecto.fechaInicio} pm={""}></ProyectoCard>
             </div>
-          ))}
+         {/*} {(proyectos).map((proyecto) => ( 
+          ))}   */}
         </div>
 
         <main className={styles.colorFondo}>
