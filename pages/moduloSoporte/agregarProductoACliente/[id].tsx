@@ -1,7 +1,7 @@
 import styles from '../../../styles/ticket.module.css'
 import Head_ from '../../head'
 import Header from '../../header'
-import { ClientesProperties, EmpleadoProperties, ProductProperties, ProdVerProperties, TicketProperties, VersionProperties } from '../../../components/soporte/types';
+import { ClientesProperties, ClientesYProductosProperties, EmpleadoProperties, ProductProperties, ProdVerProperties, TicketProperties, VersionProperties } from '../../../components/soporte/types';
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
@@ -37,6 +37,7 @@ useEffect(() => {
       })
   }, [])
 
+
   const [productos, setProductos]: [Array<ProductProperties>, any] = useState([])
 
   useEffect(() => {
@@ -48,26 +49,33 @@ useEffect(() => {
   }, [])
 
 
-  function actualizarVersiones(idDelProducto: number){
-
-      alert(idDelProducto)
-  }
+  const [producto, setProducto]: [any, any]= useState()
 
 
 
 
 
-  const { register, handleSubmit } = useForm<ProductProperties>()
+
+
+  const { register, handleSubmit } = useForm<ClientesYProductosProperties>()
 
   const onSubmit = handleSubmit((data) => {
     
-    //crear la relacion en la tabla de clientes y productos
+    data.id_cliente = Number(id)
+
+    fetch("https://aninfo2c222back-production.up.railway.app/api/cliente_prod", {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
 
 
-    alert("La version se creo correctamente")
+    alert("Se agrego el producto correctamente")
   })
 
-
+    // HAY UN BUG QUE TE DEJA SELECCIONAR LAS VERSIONES DEPRECADAS
 
   return (
 
@@ -83,7 +91,7 @@ useEffect(() => {
         
         <label>PRODUCTOS</label>
         <br/>
-        <select onChange={e => actualizarVersiones(Number(e.target))}>
+        <select {...register("id_producto")} onChange={e => setProducto(e.target.value)}>
             {(productos).filter(elemento => elemento.activo == 1).map((producto) => (
                     <option value={producto.id} key={producto.id}>
                         {producto?.nombre}
@@ -91,16 +99,19 @@ useEffect(() => {
                 ))}
         </select>
 
+
         
 
         <br></br>
 
+    
+
         <label>VERSIONES</label>
         <br/>
-        <select>
-            {(prover).filter(i => i.producto_id == Number(id)).map((version) => (
+        <select {...register("id_version")}>
+            {(prover).filter(i => i.producto_id == producto).map((version) => (
                     <option value={version.id} key={version.id}>
-                        {versiones.find(element => element.id == version.version_id)?.nombre}
+                        {versiones.filter(e => e.activo == 1).find(element => element.id == version.version_id)?.nombre}
                     </option>
                 ))}
         </select>
