@@ -28,8 +28,8 @@ export default function Tarea() {
         <Header></Header>
 
         <div className={styles.navbar}>
-          <div className={styles.navbarIzq}> 
-            <h1>Tareas del proyecto {id}</h1>
+          <div className={styles.navbarIzqT}> 
+            <h1>TAREAS DEL PROYECTO {id}</h1>
           </div>
           <div className={styles.navbarDer}> 
             <input placeholder='Buscar...'></input>

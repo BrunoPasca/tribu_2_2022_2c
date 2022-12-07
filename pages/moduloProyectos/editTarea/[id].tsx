@@ -200,67 +200,6 @@ useEffect(() => {
             </div>
 
         </div>
-
-            {/*<div className={styles.proyectoView}>
-                <h1 className={styles.tituloEdit}>EDITAR TAREA {id}</h1>
-                <div className={styles.contenedorPadre}>
-                    <div className={styles.infoProyecto}>
-                        <div className={styles.tituloInfo}>
-                            <div>Id del proyecto</div>
-                            <div>Estado</div>
-                            <div>Descripción</div>
-                            <div>Horas estimadas</div>
-                            <div>Horas totales</div>
-                            <div>Prioridad</div>
-                            <div>Fecha inicio</div>
-                            <div>Fecha estimada de fin</div>
-                            <div>Recurso asignado</div>
-                        </div>
-                        <div className={styles.info} >
-                            <form onSubmit = {onSubmit} id = "form_id">
-                            <select id = "id proyecto" {...register("id_proyecto")}>
-                            {(proyectos.map( (proyecto) =>
-                                <option value = {proyecto?.id}> {proyecto?.id} </option>))}
-                            </select>
-                            <div>
-                            <select id = "estado_tarea" {...register("estado")}>
-                                <option value="Abierta">Abierta</option>
-                                <option value="En análisis">En análisis</option>
-                                <option value="En progreso">En progreso</option>
-                                <option value="Suspendida">Suspendida</option>
-                                <option value="Completada">Completada</option>
-                            </select>
-                            </div>
-                                <input type="text" id="descripcion" {...register("descripcion")} placeholder="Descripcion" size={50}></input>
-                                <input type="number" id="horasEstimadas" {...register("horas_estimadas")} min="0"></input>
-                            <div>
-                                <input type="number" id="horasReales" {...register("horas_reales")} min="0"></input>
-                            </div>
-                                <select id="prioridad_tarea" {...register("prioridad")}>
-                                    <option  value = "Baja"> Baja</option>
-                                    <option  value = "Media"> Media</option>
-                                    <option  value = "Alta">Alta</option>
-                                </select>
-                            <div>
-                                <input type = "date" id="fecha_inicio" {...register("fecha_inicio")}></input>
-                            </div>
-                                <input type = "date" id="fecha_fin" {...register("fecha_fin")}></input>
-                                <select id = "legajo_id" {...register("legajo_recurso")}>
-                                {(recursos.map( (recurso) =>
-                                <option value = {recurso?.legajo}> {recurso?.nombre} - {recurso?.apellido} </option>))}
-                            </select>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div className={styles.botonesView}>
-                    <a href="/moduloProyectos/tareas"><button>Cancelar</button></a>
-                    <a href = "/moduloProyectos/tareas">
-                    <button type="submit" form="form_id" >Editar</button>
-                    </a>
-                </div>
-                                </div>*/}
         </>
     )
 }

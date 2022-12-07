@@ -44,8 +44,8 @@ export default function Soporte() {
        <Header></Header>
  
        <div className={styles.navbar}>
-         <div className={styles.navbarIzq}>
-           <h1>Proyectos</h1>
+         <div className={styles.navbarIzqP}>
+           <h1>PROYECTOS</h1>
          </div>
          <div className={styles.navbarDer}>
            <input placeholder='Buscar...'></input>
@@ -64,7 +64,6 @@ export default function Soporte() {
        <main className={styles.colorFondo}>
          <div className={styles.contenedorBoton}>
            <a href='/moduloProyectos/crearProyecto'><button>Agregar nuevo proyecto</button></a>
-           <a href="/moduloProyectos/tareas"><button>Ver tareas</button></a>
          </div>
  
        </main>

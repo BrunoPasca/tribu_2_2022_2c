@@ -93,7 +93,7 @@ export default function crearProyecto() {
   return(
     
     <>
-    <Head_ nombre='Nuevo proyecto'></Head_>
+    <Head_ nombre='Creación proyecto'></Head_>
     <Header></Header>
     <main className={styles.main}>
       <div className={styles.containerEspecial}>
@@ -107,7 +107,7 @@ export default function crearProyecto() {
               </input>
             </div>
 
-            <br />
+            
             <div>
 
             <div>
@@ -154,8 +154,7 @@ export default function crearProyecto() {
               <button type = "submit">Guardar</button>
             </div>
           </div>
-              
-          </form>
+          </form>        
       </div>
     </main>
   </>

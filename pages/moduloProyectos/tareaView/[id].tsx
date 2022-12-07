@@ -124,7 +124,7 @@ export default function TareaView() {
             <div className={styles.botonesView}>
                 <a href={'/moduloProyectos/eliminarTarea/' + id} ><button>Eliminar</button> </a>
                 <a href={'/moduloProyectos/editTarea/'+ id}><button>Editar</button></a>
-                <a href={'/moduloProyectos/agregarSubtarea/'+ id}><button>Add subtarea</button> </a>
+                <a href={'/moduloProyectos/agregarSubtarea/'+ id}><button>Crear subtarea</button> </a>
             </div>
 
         </div>

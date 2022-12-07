@@ -99,7 +99,7 @@ export default function ProyectoView() {
                 <a href = {"/moduloProyectos/eliminarProyecto/"+ id}><button>Eliminar</button> </a>
                 <a href={'/moduloProyectos/editProject/' + id}><button>Editar</button></a>
                 <a href={'/moduloProyectos/proyectTareaView/' + id}><button>Ver tareas</button></a>
-                <a href={'/moduloProyectos/proyectTareaView/' + id}> <button form="Id escondida" >¿Finalizar?</button></a>
+                <a href={'/moduloProyectos/proyectTareaView/' + id}> <button form="Id escondida" >Marcar como completado</button></a>
             </div>
 
         </div>
