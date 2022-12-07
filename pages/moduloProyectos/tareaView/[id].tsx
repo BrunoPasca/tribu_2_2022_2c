@@ -20,6 +20,7 @@ interface TareasProperties{
     horas_reales: Number,
     fecha_inicio: string,
     fecha_fin: string,
+    children?: React.ReactNode
   }
 
 
