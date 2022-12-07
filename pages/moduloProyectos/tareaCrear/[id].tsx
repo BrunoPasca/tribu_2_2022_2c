@@ -101,7 +101,7 @@ export default function crearTarea(){
         <div className={styles.containerEspecial}>
           <form  id = "form_id" onSubmit = {onSubmit}>
             <div className={styles.camposForm}>
-                <h1 className={styles.tituloForm}>Nueva tarea en proyecto {id}</h1>
+                <h1 className={styles.tituloForm}>Nueva tarea de proyecto {id}</h1>
                 <div >
                         <label htmlFor="fname">Proyecto</label><br />
                         <select id = "id proyecto" {...register("id_proyecto")}>
@@ -146,11 +146,12 @@ export default function crearTarea(){
               
 
               <div className={styles.botonesView}>
-                <a href={"/moduloProyectos/proyectTareaView/"+id}><button>Cancelar</button></a>
+                <a href={"/moduloProyectos/proyectTareaView/"+id}><button type="reset">Cancelar</button></a>
                 <a href = {"/moduloProyectos/proyectTareaView/"+id}>
                 <button type="submit" form="form_id" >Crear</button>
                 </a>
               </div>
+              
               </div>
             </form>
           </div>

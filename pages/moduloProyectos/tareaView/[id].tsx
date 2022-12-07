@@ -4,8 +4,6 @@ import Header from '../../header'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from "react";
 
-/*hardocdeada nomas para mostrar. Tiene que tener un id dinamico la tarea*/
-
 
 interface TareasProperties{
     id: number,
@@ -19,6 +17,7 @@ interface TareasProperties{
     horas_reales: number,
     fecha_inicio: string,
     fecha_fin: string,
+    id_padre: number,
     children?: React.ReactNode
   }
 
@@ -28,6 +27,7 @@ export default function TareaView() {
     const {id} = router.query;
 
     const [tareas, setTareas]: [Array<TareasProperties> ,any] = useState([])
+ 
 
     useEffect(() => {
     fetch("https://aninfo2c222back-production.up.railway.app/api/tareas")
@@ -120,7 +120,7 @@ export default function TareaView() {
                     </div>
                 </div>
             </div>
-
+    
             <div className={styles.botonesView}>
                 <a href={'/moduloProyectos/eliminarTarea/' + id} ><button>Eliminar</button> </a>
                 <a href={'/moduloProyectos/editTarea/'+ id}><button>Editar</button></a>
