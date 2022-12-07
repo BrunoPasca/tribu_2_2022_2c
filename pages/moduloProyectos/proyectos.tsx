@@ -72,7 +72,6 @@ export default function Soporte() {
        <main className={styles.colorFondo}>
          <div className={styles.contenedorBoton}>
            <a href='/moduloProyectos/crearProyecto'><button>Agregar nuevo proyecto</button></a>
-           <a href="/moduloProyectos/tareas"><button>Ver tareas</button></a>
          </div>
  
        </main>

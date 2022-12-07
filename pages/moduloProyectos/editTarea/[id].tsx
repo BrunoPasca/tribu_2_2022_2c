@@ -146,7 +146,7 @@ useEffect(() => {
                             </div>
                                 <input type = "date" id="fecha_fin" {...register("fecha_fin")}></input>
                                 <select id = "legajo_id" {...register("legajo_recurso")}>
-                                    {(recursos.map( (recurso) =>
+                                {(recursos.map( (recurso) =>
                                 <option value = {recurso?.legajo}> {recurso?.nombre} - {recurso?.apellido} </option>))}
                             </select>
                             </form>
