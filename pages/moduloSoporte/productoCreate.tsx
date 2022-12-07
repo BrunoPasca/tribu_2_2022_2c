@@ -104,7 +104,7 @@ export default function TicketCreate() {
 
     <form className={styles.form} onSubmit={onSubmit}>
 
-      <Head_ nombre='Crear Ticket'></Head_>
+      <Head_ nombre='Crear Producto'></Head_>
 
 
       <HeaderSoporte></HeaderSoporte>
