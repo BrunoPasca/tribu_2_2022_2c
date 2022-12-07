@@ -56,7 +56,7 @@ export default function Soporte() {
        <div className={styles.grilla}>
          {(proyectos).map((proyecto) => (
            <div key={proyecto.id}>
-             <ProyectoCard nombre={proyecto.nombre} id={proyecto.id} estado={proyecto.estado} fechaInicio={proyecto.fecha_inicio}></ProyectoCard>
+             <ProyectoCard nombre={proyecto.nombre} id={proyecto.id} estado={proyecto.estado} fechaInicio={proyecto.fecha_inicio} fechaFinEstimado={proyecto.fecha_fin_estimado}></ProyectoCard>
            </div>
          ))}
        </div>
