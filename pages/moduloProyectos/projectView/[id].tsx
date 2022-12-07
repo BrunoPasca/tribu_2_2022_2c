@@ -3,6 +3,7 @@ import Head_ from '../../head'
 import Header from '../../header'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 interface ProyectosProperties{
     id: number,
@@ -23,6 +24,7 @@ interface ProyectosProperties{
 export default function ProyectoView() {
 
     const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
+    const {register, handleSubmit} = useForm<ProyectosProperties>()
 
     useEffect(() => {
         fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
@@ -37,9 +39,17 @@ export default function ProyectoView() {
     const router = useRouter();
     const {id} = router.query;
 
-    const target_proyect = proyectos.filter(proyect => {
-        return proyect.id === Number(id);
-    } );
+    const onSubmit = handleSubmit((data) =>{
+        console.log(JSON.stringify(data))
+        fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos", {
+              method: 'PUT', // or 'PUT'
+              body: JSON.stringify(data), // data can be `string` or {object}!
+              headers:{
+                'Content-Type': 'application/json'
+              }
+            })
+        alert("El proyecto se finalizo")
+    })
     return (
 
     <>
@@ -83,12 +93,14 @@ export default function ProyectoView() {
                     </div>
                 </div>
             </div>
-
+            <form onSubmit = {onSubmit} id="Id escondida">
+            <input type="hidden" id="estado_fin" {...register("estado")} value="Finalizado"></input>
+            </form>
             <div className={styles.botonesView}>
                 <a href = {"/moduloProyectos/eliminarProyecto/"+ id}><button>Eliminar</button> </a>
                 <a href={'/moduloProyectos/editProject/' + id}><button>Editar</button></a>
                 <a href={'/moduloProyectos/proyectTareaView/' + id}><button>Ver tareas</button></a>
-                <a href={''}> <button>¿Finalizar?</button></a>
+                <a href={'/moduloProyectos/proyectTareaView/' + id}> <button form="Id escondida" >¿Finalizar?</button></a>
             </div>
 
         </div>
