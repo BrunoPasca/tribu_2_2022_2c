@@ -34,8 +34,8 @@ interface TareasProperties{
 
   interface RecursoProperties{
     legajo: number,
-    nombre: string,
-    apellido: string,
+    Nombre: string,
+    Apellido: string,
   }
 
 
@@ -68,7 +68,7 @@ export default function crearTarea(){
   const [recursos, setRecursos]: [Array<RecursoProperties> ,any] = useState([])
 
   useEffect(() => {
-    fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+    fetch("https://aninfo2c222back-production.up.railway.app/api/recursos_ext")
       .then((res) => res.json())
       .then((data) => {
         setRecursos(data)
@@ -103,7 +103,7 @@ export default function crearTarea(){
                 <div className={styles.contenedorPadre}>
                     <div className={styles.infoProyecto}>
                         <div className={styles.tituloInfo}>
-                            <div>Id del proyecto</div>
+                            <div>Proyecto</div>
                             <div>Estado</div>
                             <div>Descripción</div>
                             <div>Horas estimadas</div>
@@ -127,6 +127,7 @@ export default function crearTarea(){
                             </select>
                             </div>
                                 <input type="text" id="descripcion" {...register("descripcion")} placeholder="Descripcion" size={50}></input>
+
                                 <input type="number" id="horasEstimadas" {...register("horas_estimadas")} min="0"></input>
                                 <div>
                                     <select id="prioridad_tarea" {...register("prioridad")}>
@@ -141,9 +142,8 @@ export default function crearTarea(){
 
                             <select id = "legajo_id" {...register("legajo_recurso")}>
                             {(recursos.map( (recurso) =>
-                                <option value = {recurso?.legajo}> {recurso?.nombre} - {recurso?.apellido} </option>))}
+                                <option value = {recurso?.legajo}> {recurso?.Nombre}  {recurso?.Apellido} </option>))}
                             </select>
-                            
 
                             </form>
                         </div>
