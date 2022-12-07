@@ -23,7 +23,7 @@ export default function TablaAllHoras(props: any) {
     const [horas, setHoras]= useState<any[]>([])
 
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/horas/empleado")
+        fetch("https://aninfo2c222back-production.up.railway.app/api/horas/empleado/" + id)
             .then(response => {
                 if (response.status === 404) {
                     throw new Error("Error al recuperar las horas.")
@@ -73,7 +73,7 @@ export default function TablaAllHoras(props: any) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {horas.filter((reporte) => {reporte.legajo_empleado === Number(id)}).map((reporte) => (
+                        {horas.map((reporte) => (
                             <TableRow
                                 key={reporte.id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
