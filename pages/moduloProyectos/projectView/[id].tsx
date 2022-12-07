@@ -4,10 +4,6 @@ import Header from '../../header'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 
-/*puesto aca solo para tener bien las rutas. El proyecto deberia tener un id*/
-/*var id_proyecto = 1;*/
-
-
 interface ProyectosProperties{
     id: number,
     nombre:string ,
@@ -18,7 +14,9 @@ interface ProyectosProperties{
     descripción:string,
     project_manager:string,
     id_cliente:number,
-  }
+}
+
+
   
 
 
@@ -90,6 +88,7 @@ export default function ProyectoView() {
                 <a href = {"/moduloProyectos/eliminarProyecto/"+ id}><button>Eliminar</button> </a>
                 <a href={'/moduloProyectos/editProject/' + id}><button>Editar</button></a>
                 <a href={'/moduloProyectos/proyectTareaView/' + id}><button>Ver tareas</button></a>
+                <a href={''}> <button>¿Finalizar?</button></a>
             </div>
 
         </div>

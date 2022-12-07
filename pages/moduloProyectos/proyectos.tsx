@@ -3,16 +3,8 @@ import Header from '../header';
 import ProyectoCard from './proyectoCard';
 import Head_ from '../head';
 import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-//proyecto de prueba
-const proyecto = {
-        nombre: "Gama",
-        id: 1,
-        cliente: "Microsoft",
-        estado: "Completado", 
-        fechaInicio: "01/01/2022", 
-        pm: "Juan"
-    }
 
     /*intento de conectar con el back*/
     interface ProyectosProperties{
@@ -34,7 +26,8 @@ const proyecto = {
 export default function Soporte() {
 
   const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
- 
+  
+
  
  useEffect(() => {
    fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
@@ -44,6 +37,8 @@ export default function Soporte() {
  
      })
  }, [])
+
+ 
  
    return(<div className={styles.container}>
  

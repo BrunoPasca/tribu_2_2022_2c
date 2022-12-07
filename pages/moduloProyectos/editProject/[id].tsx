@@ -113,8 +113,8 @@ export default function proyectoEdit(this: any) {
               </input>
             </div> 
 
-
-              <label htmlFor = "EstadoProyecto">Estado: </label><br/>
+              <br/>
+              <label htmlFor = "EstadoProyecto">Estado: </label>
               <select id = "EstadoProyecto" {...register("estado")}>
                   <option value = "Estado" disabled>Estado</option>
                   <option value = "Pendiente">Pendiente</option>
@@ -124,9 +124,10 @@ export default function proyectoEdit(this: any) {
               </select>
               
             </div>
+            <br />
            
 
-          
+            <br />
 
             <div>
             <label >Cliente</label><br/>
