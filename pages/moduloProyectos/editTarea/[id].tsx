@@ -72,7 +72,7 @@ export default function editTarea() {
 const [recursos, setRecursos]: [Array<RecursoProperties> ,any] = useState([])
 
 useEffect(() => {
-  fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+  fetch("https://aninfo2c222back-production.up.railway.app/api/recursos_ext")
     .then((res) => res.json())
     .then((data) => {
       setRecursos(data)
