@@ -34,7 +34,7 @@ export default function eliminarProyecto(){
                 <a href="/moduloProyectos/tareas">
                     <button onClick={deleteById}>Confirmar</button>
                 </a>
-                    <a href="/moduloProyectos/tareas"><button>Cancelar</button></a>
+                <a href="/moduloProyectos/tareas"><button>Cancelar</button></a>
                 </div>
             </div>
         </main>

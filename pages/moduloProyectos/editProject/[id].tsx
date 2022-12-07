@@ -88,87 +88,70 @@ export default function proyectoEdit(this: any) {
 })
 
   return (
-    <>
+    <><></>
       <Head_ nombre='Editar proyecto'></Head_>
       <Header></Header>
 
-
       <div className={styles.proyectoView}>
-        <h1 className={styles.tituloEdit}>Editar proyecto {id}</h1>
-        <div className={styles.contenedorPadre}>
         <form onSubmit = {onSubmit}>
-          <div className = {styles.camposForm}>
-            <div>
-              <label htmlFor="fname">Nombre proyecto </label>
-              <br/>
+            <div className={styles.tituloEdit}>
               <input type="text"  {...register("nombre")} placeholder="Nombre de proyecto" size={20} >
-              </input>
-            </div>
+              </input></div>
+            <div className={styles.subtituloEdit}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.id} </div>))}</div>
+            <div className={styles.descripcionText}><input type = "text" placeholder="Descripción" id = "Descripción" {...register("descripción")} size = {20}>
+              </input></div>
+            <div className={styles.contenedorPadre}>
+                <div className={styles.contenedorInfo}>
 
-            <div>
-
-            <div>
-              <label htmlFor = "Descripción"> Descripción</label> <br/>
-              <input type = "text" id = "Descripción" {...register("descripción")} size = {20}>
-              </input>
-            </div> 
-
-              <br/>
-              <label htmlFor = "EstadoProyecto">Estado: </label>
-              <select id = "EstadoProyecto" {...register("estado")}>
-                  <option value = "Estado" disabled>Estado</option>
-                  <option value = "Pendiente">Pendiente</option>
-                  <option value = "En curso">En curso</option>
-                  <option value = "Finalizado">Finalizado</option>
-                  <option value = "Cancelado">Cancelado</option>
-              </select>
-              
-            </div>
-            <br />
-           
-
-            <br />
-
-            <div>
-            <label >Cliente</label><br/>
-            <select id = "cliente_id" {...register("id_cliente")}>
-                            {(clientes.map( (cliente) =>
-                                <option value = {cliente?.id}> {cliente?.['razon social']}</option>))}
-                            </select>
-            </div>
-            <div>
-              <label htmlFor = "ProjectManager"> Project Manager </label> <br/>
-              <select id = "projectManager" {...register("project_manager")}>
+                    <div>
+                        <h3 className={styles.tituloInfo}>Fecha de inicio</h3>
+                        <h2 className={styles.info}><input type = "date" id = "FechaDeInicio" {...register("fecha_inicio")}  size={50}>
+              </input></h2>
+                        <h3 className={styles.tituloInfo}>Fecha estimada de fin</h3>
+                        <h2 className={styles.info}><input type = "date" id = "FechaDeFin" {...register("fecha_fin_estimado")} >
+                </input></h2>
+                    </div>
+                    <div>
+                        <h3 className={styles.tituloInfo}>Estado</h3>
+                        <h2 className={styles.info}>
+                          <select id = "EstadoProyecto" {...register("estado")}>
+                            <option value = "Estado" disabled>Estado</option>
+                            <option value = "Pendiente">Pendiente</option>
+                            <option value = "En curso">En curso</option>
+                            <option value = "Finalizado">Finalizado</option>
+                            <option value = "Cancelado">Cancelado</option>
+                          </select>
+                        </h2>
+                        <h3 className={styles.tituloInfo}>Horas reales</h3>
+                        <h2 className={styles.info}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.horas_reales} </div>))}</h2>  
+                    </div>
+                    <div>
+                        <h3 className={styles.tituloInfo}>Project Manager (PM)</h3>
+                        <h2 className={styles.info}>
+                          <select id = "projectManager" {...register("project_manager")}>
                             {(empleados.map( (empleado) =>
                                 <option value = {empleado?.Nombre}> {empleado?.Nombre} {empleado?.Apellido} </option>))}
-                            </select>
+                          </select>
+                        </h2>
+                        <h3 className={styles.tituloInfo}>ID cliente</h3>
+                        <h2 className={styles.info}>
+                          <select id = "cliente_id" {...register("id_cliente")}>
+                            {(clientes.map( (cliente) =>
+                                <option value = {cliente?.id}> {cliente?.['razon social']}</option>))}
+                          </select>
+                        </h2>
+                    </div>
+                </div>
             </div>
-            <div>
-              <label htmlFor = "FechaDeInicio"> Fecha de inicio </label>
-              <br/>
-              <input type = "date" id = "FechaDeInicio" {...register("fecha_inicio")}  size={50}>
-              </input>
-            </div>
-            <br />
-            <div>
-              <label htmlFor = "FechaDeFin"> Fecha estimada de fin </label>
-              <br/>
-                <input type = "date" id = "FechaDeFin" {...register("fecha_fin_estimado")} >
-                </input>
-            </div>
-            <br />
-            
+
+          </form>
             <div className={styles.botonesView}>
-              <button type="reset">Cancelar</button>
+              <a href="/moduloProyectos/proyectos"><button>Cancelar</button></a>
               <button type = "submit">Guardar</button>
             </div>
-          </div>
-              
-          </form>
-          
         </div>
-
-      </div>
     </>
   )
 }
