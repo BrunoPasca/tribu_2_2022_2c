@@ -38,7 +38,12 @@ export default function Soporte() {
  
      })
  }, [])
- 
+ /*
+ <div className={styles.navbarDer}>
+           <input placeholder='Buscar...'></input>
+           <button className={styles.botonBuscar}>Buscar</button>
+         </div>
+ */
    return(<div className={styles.container}>
  
       <Head_ nombre='Proyectos'></Head_>
@@ -49,10 +54,7 @@ export default function Soporte() {
          <div className={styles.navbarIzqP}>
            <h1>PROYECTOS</h1>
          </div>
-         <div className={styles.navbarDer}>
-           <input placeholder='Buscar...'></input>
-           <button className={styles.botonBuscar}>Buscar</button>
-         </div>
+         
        </div>
  
        <div className={styles.grilla}>

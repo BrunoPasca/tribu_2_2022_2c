@@ -20,7 +20,12 @@ export default function Tarea() {
 	if (!initialRenderComplete) {
 		return null;
 	} else {
-
+/*
+<div className={styles.navbarDer}> 
+            <input placeholder='Buscar...'></input>
+            <button className={styles.botonBuscar}>Buscar</button>
+          </div>
+*/ 
     return(<div className={styles.container}>
 
        <Head_ nombre='Tareas'></Head_>
@@ -31,10 +36,7 @@ export default function Tarea() {
           <div className={styles.navbarIzqT}> 
             <h1>TAREAS DEL PROYECTO {id}</h1>
           </div>
-          <div className={styles.navbarDer}> 
-            <input placeholder='Buscar...'></input>
-            <button className={styles.botonBuscar}>Buscar</button>
-          </div>
+          
         </div>
         
         <div className={styles.grilla}>
