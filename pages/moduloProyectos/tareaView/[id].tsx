@@ -125,6 +125,7 @@ export default function TareaView() {
                 <a href={'/moduloProyectos/eliminarTarea/' + id} ><button>Eliminar</button> </a>
                 <a href={'/moduloProyectos/editTarea/'+ id}><button>Editar</button></a>
                 <a href={'/moduloProyectos/agregarSubtarea/'+ id}><button>Crear subtarea</button> </a>
+                <a href={'/moduloProyectos/tareaSubtareaView/'+ id}><button>Ver subtareas</button> </a>
             </div>
 
         </div>

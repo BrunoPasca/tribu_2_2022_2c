@@ -15,6 +15,7 @@ interface ProyectosProperties{
     descripción:string,
     project_manager:string,
     id_cliente:number,
+    tipo: string,
 }
 
 
@@ -61,6 +62,8 @@ export default function ProyectoView() {
                         <div>{proyecto?.nombre} </div>))}</h1>
             <div className={styles.subtituloEdit}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
                         <div>{proyecto?.id} </div>))}</div>
+            <div className={styles.subtituloEdit}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
+                        <div>{proyecto?.tipo} </div>))}</div>
             <div className={styles.descripcionText}>{(proyectos.filter(elemento => elemento.id === Number(id)).map( (proyecto) =>
                         <div>{proyecto?.descripción} </div>))}</div>
             <div className={styles.contenedorPadre}>

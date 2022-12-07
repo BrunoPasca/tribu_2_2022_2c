@@ -18,7 +18,7 @@ interface TareasProperties{
 }
 
 
-export default function ColumnaTarea({estadoFiltro, id_proyecto}: {estadoFiltro:string, id_proyecto:number}) {
+export default function ColumnaSubtarea({estadoFiltro, id_padre}: {estadoFiltro:string, id_padre:number}) {
   const [tareas, setTareas]: [Array<TareasProperties> ,any] = useState([])
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function ColumnaTarea({estadoFiltro, id_proyecto}: {estadoFiltro:
 
     return (
         <div>
-          {(tareas).filter(i => i.estado == estadoFiltro && i.id_proyecto == id_proyecto ).map((tarea) => ( 
+          {(tareas).filter(i => i.estado == estadoFiltro && i.id_padre == id_padre ).map((tarea) => ( 
             <div key = {tarea.estado}>
               <Link href={'/moduloProyectos/tareaView/'+tarea.id}><TareaCard id_tarea={tarea.id} id_proyecto={tarea.id_proyecto} estado={tarea.estado} desc={tarea.descripcion}></TareaCard></Link>
             </div>
