@@ -101,7 +101,7 @@ export default function MuiTable(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {faltas.filter(falta => falta["legajo_empleado"] === legajo && DateBetweenTwoDates(inicio, fin, falta["fecha"])).map((falta) => (
+                    {faltas.filter(falta => falta["legajo_empleado"] === Number(legajo) && DateBetweenTwoDates(inicio, fin, falta["fecha"])).map((falta) => (
                         <FilaFalta key={falta["id"]} falta={falta}></FilaFalta>
                     ))}
                 </TableBody>

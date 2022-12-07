@@ -48,6 +48,8 @@ export default function TablaAllGuardias(props: any) {
                     fontSize={30}
                 >
                     Guardias
+                    <br></br>
+                    <p style={{fontSize:"15px"}}>Legajo: {id}</p>
                     <Link href={"../licencias/" + id}><p>→</p></Link>
                 </Typography>
                 {/* 
@@ -79,6 +81,9 @@ export default function TablaAllGuardias(props: any) {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <div className={styles.containerBotones}>
+                <Link href={"/moduloRecursos/cargarPorPersonas"}> <button style={{backgroundColor:"#134074", color:"white"}}>Ver Recursos</button></Link>      
+            </div>
         </div>
 
     );

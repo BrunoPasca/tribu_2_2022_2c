@@ -3,7 +3,7 @@ import Header from '../header';
 import ProyectoCard from './proyectoCard';
 import Head_ from '../head';
 import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+
 
 
     /*intento de conectar con el back*/
@@ -26,8 +26,7 @@ import { useForm } from 'react-hook-form';
 export default function Soporte() {
 
   const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
-  
-
+ 
  
  useEffect(() => {
    fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
@@ -37,8 +36,6 @@ export default function Soporte() {
  
      })
  }, [])
-
- 
  
    return(<div className={styles.container}>
  
@@ -67,6 +64,7 @@ export default function Soporte() {
        <main className={styles.colorFondo}>
          <div className={styles.contenedorBoton}>
            <a href='/moduloProyectos/crearProyecto'><button>Agregar nuevo proyecto</button></a>
+           <a href="/moduloProyectos/tareas"><button>Ver tareas</button></a>
          </div>
  
        </main>

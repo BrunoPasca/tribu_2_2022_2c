@@ -85,8 +85,6 @@ export default function MuiTable(props: any) {
         const end = modificarFormatoFecha(toDate);
         const date = new Date(givenDate);
 
-        (start <= date && date <= end) ? console.log("TRUE") : console.log("FALSE")
-
         return (start <= date && date <= end);
     }
 
@@ -116,7 +114,7 @@ export default function MuiTable(props: any) {
                 </TableHead>
                 <TableBody>
                     {licencias
-                        .filter(licencias => licencias["legajo_empleado"] == legajo && DateBetweenTwoDates(inicio, fin, licencias["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, licencias["fecha_fin"]))
+                        .filter(licencias => licencias["legajo_empleado"] == Number(legajo) && DateBetweenTwoDates(inicio, fin, licencias["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, licencias["fecha_fin"]))
                         .map((licencias) => (
                             <FilaLicencia key={licencias["id"]} licencia={licencias}></FilaLicencia>
                         ))}

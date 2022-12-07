@@ -119,7 +119,7 @@ export default function MuiTable(props: any) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {horas.filter(hora => hora["legajo_empleado"] === legajo && DateBetweenTwoDates(props.fechaInicio, props.fechaFin, hora["fecha"])).map((hora) => (
+                    {horas.filter(hora => hora["legajo_empleado"] === Number(legajo) && DateBetweenTwoDates(props.fechaInicio, props.fechaFin, hora["fecha"])).map((hora) => (
                         <FilaHora key={hora["id"]} hora={hora}></FilaHora>
                     ))}
                 </TableBody>
