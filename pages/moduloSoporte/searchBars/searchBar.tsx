@@ -64,7 +64,7 @@ export default function SearchBar({ placeholder, data }: { placeholder: string, 
 
 
   return (
-    <div className={styles.searchContainer}>
+    <div className={styles.search}>
 
       <div className={styles.searchInput}>
         <input type='text' placeholder={placeholder} value={value} onChange={onChange} />
@@ -76,9 +76,7 @@ export default function SearchBar({ placeholder, data }: { placeholder: string, 
                 <Link href={'/moduloSoporte/tickets/' + ticket.id}><TicketCard titulo={ticket.titulo} id={ticket.id} severidad={ticket.severidad}></TicketCard></Link>
               </div>
             ))}
-      </div>
-
-      <div className={styles.dropdown}>
+              <div className={styles.dropdown}>
           {tickets.filter((item: { titulo: string; }) => {
               const searchTerm = value.toLowerCase();
               const fullName = item.titulo.toLowerCase();
@@ -100,6 +98,11 @@ export default function SearchBar({ placeholder, data }: { placeholder: string, 
               </div>
             ))}
         </div>
+
+
+      </div>
+
+
 
     </div>
   );
