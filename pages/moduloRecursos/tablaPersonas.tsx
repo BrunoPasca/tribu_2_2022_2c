@@ -9,12 +9,15 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
 import Link from 'next/link';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 export default function TablaPersonas(props: any) {
     const [empleados, setEmpleados] = React.useState<any>([])
     const [horas_totales, setHorasTotales] = React.useState<any>({})
     const [horas_extra, setHorasExtra] = React.useState<any>({})
     const [guardias_totales, setGuardias] = React.useState<any>({})
+    const [isLoadgin, setIsLoading] = React.useState(true)
     React.useEffect(() => {
         fetch("https://aninfo2c222back-production.up.railway.app/api/recursos_ext")
             .then((res) => res.json())
@@ -61,6 +64,7 @@ export default function TablaPersonas(props: any) {
                     }
                     guardias_totales[empleado['legajo']] = guardias_totales[empleado['legajo']] + parseInt(guardias)
                 })
+            setTimeout(() => { setIsLoading(false) }, 1000)
         });
 
     }, [empleados])
@@ -115,60 +119,63 @@ export default function TablaPersonas(props: any) {
 
     return (
         <>
-            <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
-                <Typography
-                    sx={{ flex: '1 1 100%' }}
-                    variant="h6"
-                    id="tableTitle"
-                    component="div"
-                    align="center"
-                    fontSize={30}
-                >
-                    Recursos
-                </Typography>
-                {/* 
-            <SearchBar
-                placeholder="Buscar por nombre"
-                value={searched}
-                onChange={(searchVal) => requestSearch(searchVal)}
-                onCancelSearch={() => cancelSearch()}
-            />*/}
-                <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="center">Legajo</TableCell>
-                            <TableCell align="center">Nombre</TableCell>
-                            <TableCell align="center">Horas Totales</TableCell>
-                            <TableCell align="center">Tiempo Guardia</TableCell>
-                            <TableCell align="center">Horas Extra</TableCell>
-                            <TableCell align="center"></TableCell>
-                            <TableCell align="center"></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.map((empleado: any) => {
-                            return (
-                                <TableRow
-                                    key={empleado['legajo']}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell align="center">{empleado['legajo']}</TableCell>
-                                    <TableCell align="center">{empleado["Nombre"]} {empleado["Apellido"]}</TableCell>
-                                    <TableCell align="center">{horas_totales[empleado['legajo']]}</TableCell>
-                                    <TableCell align="center">{guardias_totales[empleado['legajo']]}</TableCell>
-                                    <TableCell align="center">{horas_extra[empleado['legajo']]}</TableCell>
-                                    <TableCell align="center">
-                                        <Link href={"./reportesPorEmpleado/horas/" + empleado['legajo']}> <button>Ampliar</button></Link>
-                                    </TableCell>
-                                    <TableCell padding='none'>
-                                        <button>Generar Reporte</button>
-                                    </TableCell>
-                                </TableRow>
-                            )
-                        })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            {isLoadgin ? <CircularProgress /> :
+                <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
+                    <Typography
+                        sx={{ flex: '1 1 100%' }}
+                        variant="h6"
+                        id="tableTitle"
+                        component="div"
+                        align="center"
+                        fontSize={30}
+                    >
+                        Recursos
+                    </Typography>
+                    {/* 
+        <SearchBar
+            placeholder="Buscar por nombre"
+            value={searched}
+            onChange={(searchVal) => requestSearch(searchVal)}
+            onCancelSearch={() => cancelSearch()}
+        />*/}
+                    <Table sx={{ minWidth: 300 }} aria-label="simple table" size="small">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center">Legajo</TableCell>
+                                <TableCell align="center">Nombre</TableCell>
+                                <TableCell align="center">Horas Totales</TableCell>
+                                <TableCell align="center">Tiempo Guardia</TableCell>
+                                <TableCell align="center">Horas Extra</TableCell>
+                                <TableCell align="center"></TableCell>
+                                <TableCell align="center"></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {rows.map((empleado: any) => {
+                                return (
+                                    <TableRow
+                                        key={empleado['legajo']}
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    >
+                                        <TableCell align="center">{empleado['legajo']}</TableCell>
+                                        <TableCell align="center">{empleado["Nombre"]} {empleado["Apellido"]}</TableCell>
+                                        <TableCell align="center">{horas_totales[empleado['legajo']]}</TableCell>
+                                        <TableCell align="center">{guardias_totales[empleado['legajo']]}</TableCell>
+                                        <TableCell align="center">{horas_extra[empleado['legajo']]}</TableCell>
+                                        <TableCell align="center">
+                                            <Link href={"./reportesPorEmpleado/horas/" + empleado['legajo']}> <button>Ampliar</button></Link>
+                                        </TableCell>
+                                        <TableCell padding='none'>
+                                            <button>Generar Reporte</button>
+                                        </TableCell>
+                                    </TableRow>
+                                )
+                            })}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            }
+
         </>
     );
 }
