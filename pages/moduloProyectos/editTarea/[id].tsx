@@ -101,7 +101,107 @@ useEffect(() => {
             <Head_ nombre='Editar tarea'></Head_>
             <Header></Header>
 
+
             <div className={styles.proyectoView}>
+              <form onSubmit = {onSubmit} id = "form_id">
+              {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+            <h1 className={styles.tituloEdit}><>
+                Tarea {tarea?.id}</>
+            </h1>))}
+        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+            <h3 className={styles.subtituloEdit}><>
+                Proyecto  {tarea?.id_proyecto}</>
+            </h3>))}
+            <div>
+        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+            <h3 className={styles.descripcionText}>
+                <input type="text" id="descripcion" {...register("descripcion")} placeholder="Descripcion" size={50}></input>
+            </h3>))}
+            </div>
+            <div className={styles.contenedorPadre}>
+                <div className={styles.contenedorTarea}>
+                    <div>
+                    <h3 className={styles.tituloInfo}>ID proyecto</h3>
+                    {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}><>
+                            <select id = "id proyecto" {...register("id_proyecto")}>
+                            {(proyectos.map( (proyecto) =>
+                                <option value = {proyecto?.id}> {proyecto?.id} </option>))}
+                            </select></>
+                        </h2>))}
+                        <h3 className={styles.tituloInfo}>Legajo recurso</h3>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}><>
+                            <select id = "legajo_id" {...register("legajo_recurso")}>
+                                {(recursos.map( (recurso) =>
+                                <option value = {recurso?.legajo}> {recurso?.nombre} - {recurso?.apellido} </option>))}
+                            </select></>
+                        </h2>))}
+                        <h3 className={styles.tituloInfo}>Ticket Id</h3>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}><>
+                            {tarea?.id_ticket}</>
+                        </h2>))}
+                        
+                    </div>
+                    <div>
+                        <h3 className={styles.tituloInfo}>Fecha de inicio</h3>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            <input type = "date" id="fecha_inicio" {...register("fecha_inicio")}></input>
+                        </h2>))}
+                        <h3 className={styles.tituloInfo}>Fecha estimada de fin</h3>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            <input type = "date" id="fecha_fin" {...register("fecha_fin")}></input>
+                        </h2>))}
+                        <h3 className={styles.tituloInfo}>Estado</h3>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            <select id = "estado_tarea" {...register("estado")}>
+                                <option value="Abierta">Abierta</option>
+                                <option value="En análisis">En análisis</option>
+                                <option value="En progreso">En progreso</option>
+                                <option value="Suspendida">Suspendida</option>
+                                <option value="Completada">Completada</option>
+                            </select>
+                        </h2>))}
+                         
+                    </div>
+                    <div>
+                        <h3 className={styles.tituloInfo}>Prioridad</h3>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}>
+                            <select id="prioridad_tarea" {...register("prioridad")}>
+                                    <option  value = "Baja"> Baja</option>
+                                    <option  value = "Media"> Media</option>
+                                    <option  value = "Alta">Alta</option>
+                            </select>
+                        </h2>))}
+                        <h3 className={styles.tituloInfo}>Horas estimadas</h3>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}><>
+                            <input type="number" id="horasEstimadas" {...register("horas_estimadas")} min="0"></input></>
+                        </h2>))}
+                        <h3 className={styles.tituloInfo}>Horas reales</h3>
+                        {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
+                        <h2 className={styles.info}><>
+                            {tarea?.horas_reales}</>
+                        </h2>))}
+                    </div>
+                </div>
+            </div>
+            </form>
+
+            <div className={styles.botonesView}>
+              <a href={'/moduloProyectos/tareaView/'+id}><button>Cancelar</button></a>
+              <a href = "/moduloProyectos/tareas">
+              <button type="submit" form="form_id" >Editar</button></a>
+            </div>
+
+        </div>
+
+            {/*<div className={styles.proyectoView}>
                 <h1 className={styles.tituloEdit}>EDITAR TAREA {id}</h1>
                 <div className={styles.contenedorPadre}>
                     <div className={styles.infoProyecto}>
@@ -160,7 +260,7 @@ useEffect(() => {
                     <button type="submit" form="form_id" >Editar</button>
                     </a>
                 </div>
-            </div>
+                                </div>*/}
         </>
     )
 }

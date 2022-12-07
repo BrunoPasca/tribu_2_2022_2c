@@ -375,13 +375,15 @@
   font-weight: 1000;
 }
 
-.camposForm input, .camposForm select, .info input, .info select{
+.camposForm input, .camposForm select, .info input, .info select, .tituloEdit input, .descripcionText input{
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: #EEF4ED;
   color: black;
   border: black;
-  height: 20px;
+  width: 300px;
+  height: 30px;
+  box-shadow: 0 0 3px #000000;
 }
 
 .confirmacion{
