@@ -17,7 +17,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
     const [fin, setFormFin] = useState(new Date())
 
     useEffect(()=>{
-        fetch("https://aninfo2c222back-production.up.railway.app/api/employees")
+        fetch("https://aninfo2c222back-production.up.railway.app/api/recursos_ext")
         .then((res) => res.json())
         .then((data) => {
             setRecursos(data);
@@ -122,7 +122,7 @@ export default function CrearReporteTrabajo({ setter }: { setter: any }) {
                 >
                     {
                         recursos.map(recurso =>
-                            <option key={recurso.legajo} value={recurso.legajo}>{recurso.nombre} {recurso.apellido} - {recurso.legajo}</option>
+                            <option key={recurso.legajo} value={recurso.legajo}>{recurso.Nombre} {recurso.Apellido} - {recurso.legajo}</option>
                         )
                     }
                 </select>

@@ -25,24 +25,22 @@ export default function eliminarProyecto(){
         <Head_ nombre='Eliminar proyecto'></Head_>
         <Header></Header>
         <main className={styles.main}>
+                <div className={styles.container}>
             <form action ='' >
-            <div className={styles.container}>
-                <div className={styles.confirmacion}>
-                    <h1 className={styles.tituloForm}>¡Atención!</h1>
-                    <h3>Está a punto de eliminar el siguiente proyecto: {id}</h3>
-                    <h3>¿Desea continuar?</h3>
-                </div>
-
-                
-            </div>
-        </form>
-        <div className={styles.botonesView}>
+                    <div className={styles.confirmacion}>
+                        <h1 className={styles.tituloForm}>¡Atención!</h1>
+                        <h3>Está a punto de eliminar el siguiente proyecto: {id}</h3>
+                        <h3>¿Desea continuar?</h3>
+                    </div>  
+            </form>
+            <div className={styles.botonesView}>
                 <a href="/moduloProyectos/proyectos">
                     <button onClick = {deleteById}>Confirmar</button>
                 </a>
                 
                 <a href="/moduloProyectos/proyectos"><button >Cancelar</button></a>
-                </div>
+            </div>
+            </div>
         
         </main>
         </>
