@@ -86,11 +86,16 @@ export interface ProyectoProperties{
     nombre: string,
     fecha_inicio: string,
     fecha_fin: string,
+    fecha_fin_estimado: string,
     estado: string,
     prioridad: string,
     costo_acumulado: number,
     horas_estimadas: number,
-    horas_reales: number
+    horas_reales: number,
+    descripcion: string,
+    project_manager: string,
+    id_cliente: number,
+    tipo: string,
 }
 
 export interface ClientesYProductosProperties{
