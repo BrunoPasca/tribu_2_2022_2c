@@ -31,10 +31,10 @@ export default function eliminarProyecto(){
                 </div>
 
                 <div className={styles.botonesView}>
-                <a href="/moduloProyectos/tareas">
-                    <button onClick={deleteById}>Confirmar</button>
-                </a>
-                <a href="/moduloProyectos/tareas"><button>Cancelar</button></a>
+                    <a href="/moduloProyectos/proyectos">
+                        <button onClick={deleteById}>Confirmar</button>
+                    </a>
+                    <a href={'/moduloProyectos/tareaView/'+id}><button>Cancelar</button></a>
                 </div>
             </div>
         </main>

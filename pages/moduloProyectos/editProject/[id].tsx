@@ -148,7 +148,7 @@ export default function proyectoEdit(this: any) {
 
           </form>
             <div className={styles.botonesView}>
-              <a href="/moduloProyectos/proyectos"><button>Cancelar</button></a>
+              <a href={'/moduloProyectos/projectView/'+id}><button>Cancelar</button></a>
               <button type = "submit">Guardar</button>
             </div>
         </div>
