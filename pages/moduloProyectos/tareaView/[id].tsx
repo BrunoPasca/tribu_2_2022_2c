@@ -88,7 +88,7 @@ export default function TareaView() {
                         <h2 className={styles.info}>
                             {tarea?.fecha_inicio}
                         </h2>))}
-                        <h3 className={styles.tituloInfo}>Fecha estimada de fin</h3>
+                        <h3 className={styles.tituloInfo}>Fecha de finalización</h3>
                         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
                         <h2 className={styles.info}>
                             {tarea?.fecha_fin}
