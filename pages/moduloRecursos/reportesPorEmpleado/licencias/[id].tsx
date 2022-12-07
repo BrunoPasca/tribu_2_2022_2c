@@ -50,6 +50,8 @@ export default function TablaAllLicencias(props: any) {
                     fontSize={30}
                 >
                     Licencias
+                    <br></br>
+                    <p style={{fontSize:"15px"}}>Legajo: {id}</p>
                     <Link href={"../horas/" + id}><p>→</p></Link>
                 </Typography>
                 {/* 
@@ -87,6 +89,9 @@ export default function TablaAllLicencias(props: any) {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <div className={styles.containerBotones}>
+                <Link href={"/moduloRecursos/cargarPorPersonas"}> <button style={{backgroundColor:"#134074", color:"white"}}>Ver Recursos</button></Link>      
+            </div>
         </div>
 
     );

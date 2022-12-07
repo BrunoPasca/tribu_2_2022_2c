@@ -14,7 +14,7 @@ export default function TablaPersonas(props: any) {
     const [empleados, setEmpleados] = React.useState<any>([])
 
     React.useEffect(() => {
-        fetch("https://aninfo2c222back-production.up.railway.app/api/employees/")
+        fetch("https://aninfo2c222back-production.up.railway.app/api/recursos_ext")
             .then((res) => res.json())
             .then((data) => {
                 setEmpleados(data)
@@ -75,6 +75,7 @@ export default function TablaPersonas(props: any) {
     }
 
     return (
+        <>
         <TableContainer component={Paper} sx={{ borderRadius: "2rem" }}>
             <Typography
                 sx={{ flex: '1 1 100%' }}
@@ -84,7 +85,7 @@ export default function TablaPersonas(props: any) {
                 align="center"
                 fontSize={30}
             >
-                Empleados
+                Recursos
             </Typography>
             {/* 
             <SearchBar
@@ -114,7 +115,7 @@ export default function TablaPersonas(props: any) {
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
                                 <TableCell align="center">{empleado['legajo']}</TableCell>
-                                <TableCell align="center">{empleado["nombre"]}</TableCell>
+                                <TableCell align="center">{empleado["Nombre"]} {empleado["Apellido"]}</TableCell>
                                 <TableCell align="center">{horas["horas_totales"]}</TableCell>
                                 <TableCell align="center">{horas["guardias"]}</TableCell>
                                 <TableCell align="center">{horas["horas_extra"]}</TableCell>
@@ -130,5 +131,6 @@ export default function TablaPersonas(props: any) {
                 </TableBody>
             </Table>
         </TableContainer>
+        </>
     );
 }

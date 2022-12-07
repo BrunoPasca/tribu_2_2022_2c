@@ -50,6 +50,8 @@ export default function TablaAllFaltas(props: any) {
                     fontSize={30}
                 >
                     Faltas
+                    <br></br>
+                    <p style={{fontSize:"15px"}}>Legajo: {id}</p>
                     <Link href={"../guardias/" + id}><p>→</p></Link>
                 </Typography>
                 {/* 
@@ -81,6 +83,9 @@ export default function TablaAllFaltas(props: any) {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <div className={styles.containerBotones}>
+                <Link href={"/moduloRecursos/cargarPorPersonas"}> <button style={{backgroundColor:"#134074", color:"white"}}>Ver Recursos</button></Link>      
+            </div>
         </div>
 
     );
