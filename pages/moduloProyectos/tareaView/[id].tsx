@@ -20,6 +20,7 @@ interface TareasProperties{
     horas_reales: Number,
     fecha_inicio: string,
     fecha_fin: string,
+    children?: React.ReactNode
   }
 
 
@@ -49,12 +50,12 @@ export default function TareaView() {
         
         <div className={styles.proyectoView}>
         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
-            <h1 className={styles.tituloEdit}>
-                Tarea {tarea?.id}
+            <h1 className={styles.tituloEdit}><>
+                Tarea {tarea?.id}</>
             </h1>))}
         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
-            <h3 className={styles.subtituloEdit}>
-                Proyecto  {tarea?.id_proyecto}
+            <h3 className={styles.subtituloEdit}><>
+                Proyecto  {tarea?.id_proyecto}</>
             </h3>))}
             <div>
         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
@@ -67,18 +68,18 @@ export default function TareaView() {
                     <div>
                     <h3 className={styles.tituloInfo}>ID proyecto</h3>
                     {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
-                        <h2 className={styles.info}>
-                            {tarea?.id_proyecto}
+                        <h2 className={styles.info}><>
+                            {tarea?.id_proyecto}</>
                         </h2>))}
                         <h3 className={styles.tituloInfo}>Legajo recurso</h3>
                         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
-                        <h2 className={styles.info}>
-                            {tarea?.legajo_recurso}
+                        <h2 className={styles.info}><>
+                            {tarea?.legajo_recurso}</>
                         </h2>))}
                         <h3 className={styles.tituloInfo}>Ticket Id</h3>
                         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
-                        <h2 className={styles.info}>
-                            {tarea?.id_ticket}
+                        <h2 className={styles.info}><>
+                            {tarea?.id_ticket}</>
                         </h2>))}
                         
                     </div>
@@ -108,13 +109,13 @@ export default function TareaView() {
                         </h2>))}
                         <h3 className={styles.tituloInfo}>Horas estimadas</h3>
                         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
-                        <h2 className={styles.info}>
-                            {tarea?.horas_estimadas}
+                        <h2 className={styles.info}><>
+                            {tarea?.horas_estimadas}</>
                         </h2>))}
                         <h3 className={styles.tituloInfo}>Horas reales</h3>
                         {(tareas.filter(elemento => elemento.id === Number(id)).map( (tarea) =>
-                        <h2 className={styles.info}>
-                            {tarea?.horas_reales}
+                        <h2 className={styles.info}><>
+                            {tarea?.horas_reales}</>
                         </h2>))}
                     </div>
                 </div>
