@@ -25,7 +25,6 @@ export default function ProyectoView() {
 
     const [proyectos, setProyectos]: [Array<ProyectosProperties> ,any] = useState([])
     const {register, handleSubmit} = useForm<ProyectosProperties>()
-
     useEffect(() => {
         fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
           .then((res) => res.json())
@@ -41,7 +40,7 @@ export default function ProyectoView() {
 
     const onSubmit = handleSubmit((data) =>{
         console.log(JSON.stringify(data))
-        fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos", {
+        fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos/"+id, {
               method: 'PUT', // or 'PUT'
               body: JSON.stringify(data), // data can be `string` or {object}!
               headers:{
@@ -109,9 +108,3 @@ export default function ProyectoView() {
    
    )
   }
-/*
-  <div>{id}</div>
-  <div>En desarrollo</div>
-  <div>XX/XX/XXXX</div>
-  <div>XX/XX/XXXX</div>
-  <div>0</div>*/

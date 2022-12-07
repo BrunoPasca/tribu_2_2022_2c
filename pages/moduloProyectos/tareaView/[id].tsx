@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 /*hardocdeada nomas para mostrar. Tiene que tener un id dinamico la tarea*/
 
 
-
 interface TareasProperties{
     id: number,
     id_proyecto: number,
@@ -117,6 +116,7 @@ export default function TareaView() {
                         <h2 className={styles.info}><>
                             {tarea?.horas_reales}</>
                         </h2>))}
+                        
                     </div>
                 </div>
             </div>
@@ -124,6 +124,7 @@ export default function TareaView() {
             <div className={styles.botonesView}>
                 <a href={'/moduloProyectos/eliminarTarea/' + id} ><button>Eliminar</button> </a>
                 <a href={'/moduloProyectos/editTarea/'+ id}><button>Editar</button></a>
+                <a href={'/moduloProyectos/agregarSubtarea/'+ id}><button>Add subtarea</button> </a>
             </div>
 
         </div>

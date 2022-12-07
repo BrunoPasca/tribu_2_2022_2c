@@ -62,7 +62,7 @@ export default function Tarea() {
         
         <main className={styles.colorFondo}>
           <div className={styles.contenedorBoton}>
-            <a href='/moduloProyectos/crearTarea'><button>Agregar nueva tarea</button></a>
+            <a href={'/moduloProyectos/tareaCrear/'+id}><button>Agregar nueva tarea</button></a>
           </div>
 
         </main>
