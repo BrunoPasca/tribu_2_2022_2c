@@ -103,7 +103,7 @@ export default function MuiTable(props: any) {
                 </TableHead>
                 <TableBody>
                     {guardias
-                        .filter(guardia => guardia["legajo_empleado"] === legajo && DateBetweenTwoDates(inicio, fin, guardia["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, guardia["fecha_fin"]))
+                        .filter(guardia => guardia["legajo_empleado"] === Number(legajo) && DateBetweenTwoDates(inicio, fin, guardia["fecha_inicio"]) && DateBetweenTwoDates(inicio, fin, guardia["fecha_fin"]))
                         .map((guardia) => (
                             <FilaGuardia key={guardia["id"]} guardia={guardia}></FilaGuardia>
                         ))}
