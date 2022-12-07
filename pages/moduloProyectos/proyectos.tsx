@@ -12,11 +12,13 @@ import { useEffect, useState } from 'react';
       nombre:string ,
       fecha_inicio:string,
       fecha_fin:string,
+      fecha_fin_estimado: string,
       estado:string,
       prioridad:string,
       costo_acumulado:number,
       horas_estimadas:number,
       horas_reales:number,
+      tipo: string,
     }
 
 
