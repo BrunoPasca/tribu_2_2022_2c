@@ -15,6 +15,7 @@ interface ProyectosProperties{
     descripción:string,
     project_manager:string,
     id_cliente:number,
+    tipo: string,
 }
 
 
