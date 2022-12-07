@@ -17,11 +17,17 @@ interface ProyectosProperties{
   id_cliente:number,
 }
 
-interface RecursoProperties{
-  legajo: number,
-  nombre: string,
-  apellid: string,
+interface ClientesProperties {
+  id: number;
+  'razon social': string;
+  CUIT: string;
 }
+interface EmpleadoProperties {
+  legajo: number,
+  Nombre: string,
+  Apellido: string,
+}
+
 
 export default function crearProyecto() {
 /*intento de conectar con el back*/
@@ -35,17 +41,38 @@ export default function crearProyecto() {
       })
   }, [])
   
-  const [recursos, setRecursos]: [Array<RecursoProperties> ,any] = useState([])
+ 
+  const {register, handleSubmit} = useForm<ProyectosProperties>()
 
+  const [clientes, setClientes]: [Array<ClientesProperties> ,any] = useState([])
+
+  const [empleados, setEmpleados]: [Array<EmpleadoProperties> ,any] = useState([])
+  
   useEffect(() => {
-    fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+    fetch("https://aninfo2c222back-production.up.railway.app/api/proyectos")
       .then((res) => res.json())
       .then((data) => {
-        setRecursos(data)
+        setProyectos(data)
       })
   }, [])
 
-  const {register, handleSubmit} = useForm<ProyectosProperties>()
+
+  useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/clients_ext")
+      .then((res) => res.json())
+      .then((data) => {
+        setClientes(data)
+      })
+  }, [])
+
+  useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/recursos_ext")
+      .then((res) => res.json())
+      .then((data) => {
+        setEmpleados(data)
+      })
+  }, [])
+
 
 
   const onSubmit = handleSubmit((data) =>{
@@ -76,7 +103,7 @@ export default function crearProyecto() {
             <div>
               <label htmlFor="fname">Nombre proyecto </label>
               <br/>
-              <input type="text"  {...register("nombre")} placeholder="Nombre de proyecto" size={50} >
+              <input type="text"  {...register("nombre")} placeholder="Nombre de proyecto" size={20} >
               </input>
             </div>
 
@@ -85,37 +112,35 @@ export default function crearProyecto() {
 
             <div>
               <label htmlFor = "Descripción"> Descripción</label>
+              <br/>
               <input type = "text" id = "Descripción" {...register("descripción")} size = {20}>
               </input>
-            </div> 
-
               <br/>
-              <input type = "hidden" id ="projectState" {...register("estado")} value = "Pendiente" >
-                
+            </div> 
+              <input type = "hidden" id ="projectState" {...register("estado")} value = "Pendiente" > 
               </input>
             </div>
-            <br />
-           
 
-            <br />
 
             <div>
-              <label htmlFor = "ClientId">
-                Id cliente: 
-              </label>
-              <input type= "number" id = "ClientId" {...register("id_cliente")}></input>
+            <label >Cliente</label><br/>
+            <select id = "cliente_id" {...register("id_cliente")}>
+                            {(clientes.map( (cliente) =>
+                                <option value = {cliente?.id}> {cliente?.['razon social']}</option>))}
+                            </select>
             </div>
             <div>
-              <label htmlFor = "ProjectManager"> Project Manager id: </label> 
-              <input type = "text" id = "ProjectManager" {...register("project_manager")}></input> 
+              <label htmlFor = "ProjectManager"> Project Manager </label> <br/>
+              <select id = "projectManager" {...register("project_manager")}>
+                            {(empleados.map( (empleado) =>
+                                <option value = {empleado?.Nombre}> {empleado?.Nombre} {empleado?.Apellido} </option>))}
+                            </select>
             </div>
             <div>
-              <label htmlFor = "FechaDeInicio"> Fecha de inicio </label>
-              <br/>
+              <label htmlFor = "FechaDeInicio"> Fecha de inicio </label> <br/>
               <input type = "date" id = "FechaDeInicio" {...register("fecha_inicio")}  size={50}>
               </input>
             </div>
-            <br />
             <div>
               <label htmlFor = "FechaDeFin"> Fecha estimada de fin </label>
               <br/>

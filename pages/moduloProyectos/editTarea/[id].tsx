@@ -8,15 +8,15 @@ import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form';
 
 interface TareasProperties{
-    id: Number,
-    id_proyecto: Number,
-    legajo_recurso: Number,
+    id: number,
+    id_proyecto: number,
+    legajo_recurso: number,
     estado: string,
     id_ticket: number,
     prioridad: string ,
     descripcion: string,
-    horas_estimadas: Number,
-    horas_reales: Number,
+    horas_estimadas: number,
+    horas_reales: number,
     fecha_inicio: string,
     fecha_fin: string,
   }
@@ -31,6 +31,13 @@ interface TareasProperties{
     descripción:string,
     project_manager:string,
     id_cliente:number,
+  }
+
+
+  interface RecursoProperties{
+    legajo: number,
+    nombre: string,
+    apellido: string,
   }
 
 export default function editTarea() {
@@ -60,6 +67,19 @@ export default function editTarea() {
 
   const {register, handleSubmit} = useForm<TareasProperties>();
 
+
+
+const [recursos, setRecursos]: [Array<RecursoProperties> ,any] = useState([])
+
+useEffect(() => {
+  fetch("https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/754f50e8-20d8-4223-bbdc-56d50131d0ae/recursos-psa/1.0.0/m/api/recursos")
+    .then((res) => res.json())
+    .then((data) => {
+      setRecursos(data)
+    })
+}, [])
+
+
   const onSubmit = handleSubmit((data) =>{
     console.log(JSON.stringify(data))
     fetch("https://aninfo2c222back-production.up.railway.app/api/tareas/" +id , {
@@ -71,6 +91,8 @@ export default function editTarea() {
         })
     alert("La tarea se edito correctamente")
 })
+
+
 
     
 
@@ -92,6 +114,7 @@ export default function editTarea() {
                             <div>Prioridad</div>
                             <div>Fecha inicio</div>
                             <div>Fecha estimada de fin</div>
+                            <div>Recurso asignado</div>
                         </div>
                         <div className={styles.info} >
                             <form onSubmit = {onSubmit} id = "form_id">
@@ -122,6 +145,10 @@ export default function editTarea() {
                                 <input type = "date" id="fecha_inicio" {...register("fecha_inicio")}></input>
                             </div>
                                 <input type = "date" id="fecha_fin" {...register("fecha_fin")}></input>
+                                <select id = "legajo_id" {...register("legajo_recurso")}>
+                                    {(recursos.map( (recurso) =>
+                                <option value = {recurso?.legajo}> {recurso?.nombre} - {recurso?.apellido} </option>))}
+                            </select>
                             </form>
                         </div>
                     </div>

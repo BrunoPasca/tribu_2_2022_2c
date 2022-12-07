@@ -138,8 +138,12 @@ export default function crearTarea(){
                             <div>
                                 <input type = "date" id="fecha_inicio" {...register("fecha_inicio")}></input>
                             </div>
+
+                            <select id = "legajo_id" {...register("legajo_recurso")}>
                             {(recursos.map( (recurso) =>
                                 <option value = {recurso?.legajo}> {recurso?.nombre} - {recurso?.apellido} </option>))}
+                            </select>
+                            
 
                             </form>
                         </div>

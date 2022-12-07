@@ -21,6 +21,17 @@ interface ProyectosProperties{
   id_cliente:number,
 }
 
+interface ClientesProperties {
+  id: number;
+  'razon social': string;
+  CUIT: string;
+}
+interface EmpleadoProperties {
+  legajo: number,
+  Nombre: string,
+  Apellido: string,
+}
+
 
 
 export default function proyectoEdit(this: any) {
@@ -42,6 +53,26 @@ export default function proyectoEdit(this: any) {
   
 
   const {register, handleSubmit} = useForm<ProyectosProperties>()
+
+  const [clientes, setClientes]: [Array<ClientesProperties> ,any] = useState([])
+
+  const [empleados, setEmpleados]: [Array<EmpleadoProperties> ,any] = useState([])
+
+  useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/clients_ext")
+      .then((res) => res.json())
+      .then((data) => {
+        setClientes(data)
+      })
+  }, [])
+
+  useEffect(() => {
+    fetch("https://aninfo2c222back-production.up.railway.app/api/recursos_ext")
+      .then((res) => res.json())
+      .then((data) => {
+        setEmpleados(data)
+      })
+  }, [])
 
 
   const onSubmit = handleSubmit((data) =>{
@@ -70,21 +101,20 @@ export default function proyectoEdit(this: any) {
             <div>
               <label htmlFor="fname">Nombre proyecto </label>
               <br/>
-              <input type="text"  {...register("nombre")} placeholder="Nombre de proyecto" size={50} >
+              <input type="text"  {...register("nombre")} placeholder="Nombre de proyecto" size={20} >
               </input>
             </div>
 
-            <br />
             <div>
 
             <div>
-              <label htmlFor = "Descripción"> Descripción</label>
+              <label htmlFor = "Descripción"> Descripción</label> <br/>
               <input type = "text" id = "Descripción" {...register("descripción")} size = {20}>
               </input>
             </div> 
 
-              <br/>
-              <label htmlFor = "EstadoProyecto">Estado: </label>
+
+              <label htmlFor = "EstadoProyecto">Estado: </label><br/>
               <select id = "EstadoProyecto" {...register("estado")}>
                   <option value = "Estado" disabled>Estado</option>
                   <option value = "Pendiente">Pendiente</option>
@@ -94,20 +124,23 @@ export default function proyectoEdit(this: any) {
               </select>
               
             </div>
-            <br />
            
 
-            <br />
+          
 
             <div>
-              <label htmlFor = "ClientId">
-                Id cliente: 
-              </label>
-              <input type= "number" id = "ClientId" {...register("id_cliente")}></input>
+            <label >Cliente</label><br/>
+            <select id = "cliente_id" {...register("id_cliente")}>
+                            {(clientes.map( (cliente) =>
+                                <option value = {cliente?.id}> {cliente?.['razon social']}</option>))}
+                            </select>
             </div>
             <div>
-              <label htmlFor = "ProjectManager"> Project Manager id: </label> 
-              <input type = "text" id = "ProjectManager" {...register("project_manager")}></input> 
+              <label htmlFor = "ProjectManager"> Project Manager </label> <br/>
+              <select id = "projectManager" {...register("project_manager")}>
+                            {(empleados.map( (empleado) =>
+                                <option value = {empleado?.Nombre}> {empleado?.Nombre} {empleado?.Apellido} </option>))}
+                            </select>
             </div>
             <div>
               <label htmlFor = "FechaDeInicio"> Fecha de inicio </label>
