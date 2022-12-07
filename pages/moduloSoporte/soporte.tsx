@@ -18,7 +18,7 @@ export default function Soporte() {
     return(
     <div className={styles.container}>
 
-       <Head_ nombre='Soporte'></Head_>
+       <Head_ nombre='Tickets'></Head_>
       
         <HeaderSoporte></HeaderSoporte>
 

@@ -81,7 +81,7 @@ useEffect(() => {
 
     <form className={styles.form} onSubmit={onSubmit}>
 
-      <Head_ nombre='Crear Version'></Head_>
+      <Head_ nombre='Agregar Producto'></Head_>
 
 
       <HeaderSoporte></HeaderSoporte>

@@ -87,7 +87,7 @@ export default function TicketView() {
     return (
 
         <>
-        <Head_ nombre='Detalle producto'></Head_>
+        <Head_ nombre='Clientes'></Head_>
 
         <HeaderSoporte></HeaderSoporte>
 

@@ -29,7 +29,7 @@ export default function Productos() {
 
     return(<div className={styles.container}>
 
-       <Head_ nombre='Productos y Versiones'></Head_>
+       <Head_ nombre='Clientes'></Head_>
       
        <HeaderSoporte></HeaderSoporte>
 
